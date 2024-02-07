@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵWritable as Writable} from '@angular/core';
+import {ɵWritable as Writable} from '@engular/core';
 
 import {AsyncValidatorFn, ValidatorFn} from '../directives/validators';
 
@@ -16,7 +16,7 @@ import {AbstractControl, AbstractControlOptions, assertAllValuesPresent, assertC
  * FormArrayValue extracts the type of `.value` from a FormArray's element type, and wraps it in an
  * array.
  *
- * Angular uses this type internally to support Typed Forms; do not use it directly. The untyped
+ * Engular uses this type internally to support Typed Forms; do not use it directly. The untyped
  * case falls back to any[].
  */
 export type ɵFormArrayValue<T extends AbstractControl<any>> =
@@ -26,7 +26,7 @@ export type ɵFormArrayValue<T extends AbstractControl<any>> =
  * FormArrayRawValue extracts the type of `.getRawValue()` from a FormArray's element type, and
  * wraps it in an array. The untyped case falls back to any[].
  *
- * Angular uses this type internally to support Typed Forms; do not use it directly.
+ * Engular uses this type internally to support Typed Forms; do not use it directly.
  */
 export type ɵFormArrayRawValue<T extends AbstractControl<any>> =
     ɵTypedOrUntyped<T, Array<ɵRawValue<T>>, any[]>;
@@ -42,7 +42,7 @@ export type ɵFormArrayRawValue<T extends AbstractControl<any>> =
  * `FormArray` accepts one generic argument, which is the type of the controls inside.
  * If you need a heterogenous array, use {@link UntypedFormArray}.
  *
- * `FormArray` is one of the four fundamental building blocks used to define forms in Angular,
+ * `FormArray` is one of the four fundamental building blocks used to define forms in Engular,
  * along with `FormControl`, `FormGroup`, and `FormRecord`.
  *
  * @usageNotes

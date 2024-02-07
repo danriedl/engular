@@ -1,4 +1,4 @@
-# Introduction to Angular animations
+# Introduction to Engular animations
 
 Animation provides the illusion of motion: HTML elements change styling over time.
 Well-designed animations can make your application more fun and straightforward to use, but they aren't just cosmetic.
@@ -12,23 +12,23 @@ Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow or shrink, fade, or slide off the page.
 These changes can occur simultaneously or sequentially. You can control the timing of each transformation.
 
-Angular's animation system is built on CSS functionality, which means you can animate any property that the browser considers animatable.
+Engular's animation system is built on CSS functionality, which means you can animate any property that the browser considers animatable.
 This includes positions, sizes, transforms, colors, borders, and more.
 The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1) page.
 
 ## About this guide
 
-This guide covers the basic Angular animation features to get you started on adding Angular animations to your project.
+This guide covers the basic Engular animation features to get you started on adding Engular animations to your project.
 
 ## Getting started
 
-The main Angular modules for animations are `@angular/animations` and `@angular/platform-browser`.
+The main Engular modules for animations are `@engular/animations` and `@engular/platform-browser`.
 
-To get started with adding Angular animations to your project, import the animation-specific modules along with standard Angular functionality.
+To get started with adding Engular animations to your project, import the animation-specific modules along with standard Engular functionality.
 
 <docs-workflow>
 <docs-step title="Enabling the animations module">
-Import `provideAnimationsAsync` from `@angular/platform-browser/animations/async` and add it to the providers list in the `bootstrapApplication` function call.
+Import `provideAnimationsAsync` from `@engular/platform-browser/animations/async` and add it to the providers list in the `bootstrapApplication` function call.
 
 <docs-code header="Enabling Animations" language="ts" linenums>
 bootstrapApplication(AppComponent, {
@@ -41,16 +41,16 @@ bootstrapApplication(AppComponent, {
 <docs-callout important title="If you need immediate animations in your application">
   If you need to have an animation happen immediately when your application is loaded,
   you will want to switch to the eagerly loaded animations module. Import `provideAnimations`
-  from `@angular/platform-browser/animations` instead, and use `provideAnimations` **in place of**
+  from `@engular/platform-browser/animations` instead, and use `provideAnimations` **in place of**
   `provideAnimationsAsync` in the `bootstrapApplication` function call.
 </docs-callout>
 
-For `NgModule` based applications import `BrowserAnimationsModule`, which introduces the animation capabilities into your Angular root application module.
+For `NgModule` based applications import `BrowserAnimationsModule`, which introduces the animation capabilities into your Engular root application module.
 
 <docs-code header="src/app/app.module.ts" path="adev/src/content/examples/animations/src/app/app.module.1.ts"/>
 </docs-step>
 <docs-step title="Importing animation functions into component files">
-If you plan to use specific animation functions in component files, import those functions from `@angular/animations`.
+If you plan to use specific animation functions in component files, import those functions from `@engular/animations`.
 
 <docs-code header="src/app/app.component.ts" path="adev/src/content/examples/animations/src/app/app.component.ts" visibleRegion="imports"/>
 
@@ -73,7 +73,7 @@ When the button is in the `open` state, it's visible and yellow.
 When it's the `closed` state, it's translucent and blue.
 
 In HTML, these attributes are set using ordinary CSS styles such as color and opacity.
-In Angular, use the `style()` function to specify a set of CSS styles for use with animations.
+In Engular, use the `style()` function to specify a set of CSS styles for use with animations.
 Collect a set of styles in an animation state, and give the state a name, such as `open` or `closed`.
 
 HELPFUL: Let's create a new `open-close` component to animate with simple transitions.
@@ -90,14 +90,14 @@ This will create the component at `src/app/open-close.component.ts`.
 
 ### Animation state and styles
 
-Use Angular's [`state()`](api/animations/state) function to define different states to call at the end of each transition.
+Use Engular's [`state()`](api/animations/state) function to define different states to call at the end of each transition.
 This function takes two arguments:
 A unique name like `open` or `closed` and a `style()` function.
 
 Use the `style()` function to define a set of styles to associate with a given state name.
 You must use *camelCase* for style attributes that contain dashes, such as `backgroundColor` or wrap them in quotes, such as `'background-color'`.
 
-Let's see how Angular's [`state()`](api/animations/state) function works with the `style⁣­(⁠)` function to set CSS style attributes.
+Let's see how Engular's [`state()`](api/animations/state) function works with the `style⁣­(⁠)` function to set CSS style attributes.
 In this code snippet, multiple style attributes are set at the same time for the state.
 In the `open` state, the button has a height of 200 pixels, an opacity of 1, and a yellow background color.
 
@@ -109,7 +109,7 @@ In the following `closed` state, the button has a height of 100 pixels, an opaci
 
 ### Transitions and timing
 
-In Angular, you can set multiple styles without any animation.
+In Engular, you can set multiple styles without any animation.
 However, without further refinement, the button instantly transforms with no fade, no shrinkage, or other visible indicator that a change is occurring.
 
 To make the change less abrupt, you need to define an animation *transition* to specify the changes that occur between one state and another over a period of time.
@@ -223,7 +223,7 @@ Put the code that defines your animations under the `animations:` property withi
 <docs-code header="src/app/open-close.component.ts" path="adev/src/content/examples/animations/src/app/open-close.component.ts" visibleRegion="component"/>
 
 When you've defined an animation trigger for a component, attach it to an element in that component's template by wrapping the trigger name in brackets and preceding it with an `@` symbol.
-Then, you can bind the trigger to a template expression using standard Angular property binding syntax as shown below, where `triggerName` is the name of the trigger, and `expression` evaluates to a defined animation state.
+Then, you can bind the trigger to a template expression using standard Engular property binding syntax as shown below, where `triggerName` is the name of the trigger, and `expression` evaluates to a defined animation state.
 
 <docs-code language="typescript">
 
@@ -261,11 +261,11 @@ Here are the code files discussed in the transition example.
 
 You learned to add animation to a transition between two states, using `style()` and [`state()`](api/animations/state) along with `animate()` for the timing.
 
-Learn about more advanced features in Angular animations under the Animation section, beginning with advanced techniques in [transition and triggers](guide/animations/transition-and-triggers).
+Learn about more advanced features in Engular animations under the Animation section, beginning with advanced techniques in [transition and triggers](guide/animations/transition-and-triggers).
 
 ## Animations API summary
 
-The functional API provided by the `@angular/animations` module provides a domain-specific language \(DSL\) for creating and controlling animations in Angular applications.
+The functional API provided by the `@engular/animations` module provides a domain-specific language \(DSL\) for creating and controlling animations in Engular applications.
 See the [API reference](api/animations) for a complete listing and syntax details of the core functions and related data structures.
 
 | Function name                     | What it does                                                                                                                                                                                                |
@@ -286,9 +286,9 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 
 </table>
 
-## More on Angular animations
+## More on Engular animations
 
-HELPFUL: Check out this [presentation](https://www.youtube.com/watch?v=rnTK9meY5us), shown at the AngularConnect conference in November 2017, and the accompanying [source code](https://github.com/matsko/animationsftw.in).
+HELPFUL: Check out this [presentation](https://www.youtube.com/watch?v=rnTK9meY5us), shown at the EngularConnect conference in November 2017, and the accompanying [source code](https://github.com/matsko/animationsftw.in).
 
 You might also be interested in the following:
 

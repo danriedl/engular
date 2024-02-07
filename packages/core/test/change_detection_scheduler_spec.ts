@@ -3,20 +3,20 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AsyncPipe} from '@angular/common';
-import {PLATFORM_BROWSER_ID} from '@angular/common/src/platform_id';
-import {ApplicationRef, ChangeDetectorRef, Component, createComponent, destroyPlatform, ElementRef, EnvironmentInjector, ErrorHandler, inject, Input, PLATFORM_ID, signal, TemplateRef, Type, ViewChild, ViewContainerRef, ɵprovideZonelessChangeDetection as provideZonelessChangeDetection} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {bootstrapApplication} from '@angular/platform-browser';
-import {withBody} from '@angular/private/testing';
+import {AsyncPipe} from '@engular/common';
+import {PLATFORM_BROWSER_ID} from '@engular/common/src/platform_id';
+import {ApplicationRef, ChangeDetectorRef, Component, createComponent, destroyPlatform, ElementRef, EnvironmentInjector, ErrorHandler, inject, Input, PLATFORM_ID, signal, TemplateRef, Type, ViewChild, ViewContainerRef, ɵprovideZonelessChangeDetection as provideZonelessChangeDetection} from '@engular/core';
+import {toSignal} from '@engular/core/rxjs-interop';
+import {ComponentFixture, TestBed} from '@engular/core/testing';
+import {bootstrapApplication} from '@engular/platform-browser';
+import {withBody} from '@engular/private/testing';
 import {BehaviorSubject, firstValueFrom} from 'rxjs';
 import {filter, take, tap} from 'rxjs/operators';
 
-describe('Angular with NoopNgZone', () => {
+describe('Engular with NoopNgZone', () => {
   async function createFixture<T>(type: Type<T>): Promise<ComponentFixture<T>> {
     const fixture = TestBed.createComponent(type);
     await fixture.whenStable();

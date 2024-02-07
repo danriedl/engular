@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, Directive, DoCheck, inject, Input, signal, TemplateRef, Type, ViewChild, ViewContainerRef} from '@angular/core';
-import {AfterViewChecked, EmbeddedViewRef} from '@angular/core/src/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {CommonModule} from '@engular/common';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, Directive, DoCheck, inject, Input, signal, TemplateRef, Type, ViewChild, ViewContainerRef} from '@engular/core';
+import {AfterViewChecked, EmbeddedViewRef} from '@engular/core/src/core';
+import {ComponentFixture, TestBed} from '@engular/core/testing';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 describe('change detection for transplanted views', () => {
   describe('when declaration appears before insertion', () => {
@@ -192,7 +192,7 @@ describe('change detection for transplanted views', () => {
       });
 
       it('should CD at insertion and declaration', () => {
-        signalDeclareComp.name.set('Angular');
+        signalDeclareComp.name.set('Engular');
         fixture.detectChanges(false);
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
@@ -200,7 +200,7 @@ describe('change detection for transplanted views', () => {
             .withContext(
                 'CD did not run on the transplanted template because it is inside an OnPush component and no signal changed')
             .toEqual(
-                'SignalOnPushDeclareComp(Angular) OnPushInsertComp(Hello) Hello templateName!');
+                'SignalOnPushDeclareComp(Engular) OnPushInsertComp(Hello) Hello templateName!');
 
         onPushInsertComp.greeting = 'Hi';
         fixture.detectChanges(false);
@@ -209,21 +209,21 @@ describe('change detection for transplanted views', () => {
         expect(trim(fixture.nativeElement.textContent))
             .withContext('Insertion component is OnPush.')
             .toEqual(
-                'SignalOnPushDeclareComp(Angular) OnPushInsertComp(Hello) Hello templateName!');
+                'SignalOnPushDeclareComp(Engular) OnPushInsertComp(Hello) Hello templateName!');
 
         onPushInsertComp.changeDetectorRef.markForCheck();
         fixture.detectChanges(false);
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('SignalOnPushDeclareComp(Angular) OnPushInsertComp(Hi) Hi templateName!');
+            .toEqual('SignalOnPushDeclareComp(Engular) OnPushInsertComp(Hi) Hi templateName!');
 
         // Destroy insertion should also destroy declaration
         appComp.showOnPushInsert = false;
         fixture.detectChanges(false);
         expect(viewExecutionLog).toEqual([]);
         viewExecutionLog.length = 0;
-        expect(trim(fixture.nativeElement.textContent)).toEqual('SignalOnPushDeclareComp(Angular)');
+        expect(trim(fixture.nativeElement.textContent)).toEqual('SignalOnPushDeclareComp(Engular)');
 
         // Restore both
         appComp.showOnPushInsert = true;
@@ -232,7 +232,7 @@ describe('change detection for transplanted views', () => {
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
             .toEqual(
-                'SignalOnPushDeclareComp(Angular) OnPushInsertComp(Hello) Hello templateName!');
+                'SignalOnPushDeclareComp(Engular) OnPushInsertComp(Hello) Hello templateName!');
       });
     });
 
@@ -251,13 +251,13 @@ describe('change detection for transplanted views', () => {
       });
 
       it('should CD at insertion point only', () => {
-        declareComp.name = 'Angular';
+        declareComp.name = 'Engular';
         fixture.detectChanges(false);
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
             .toEqual(
-                'DeclareComp(Angular) OnPushInsertComp(Hello) Hello Angular!',
+                'DeclareComp(Engular) OnPushInsertComp(Hello) Hello Engular!',
                 'Expect transplanted LView to be CD because the declaration is CD.');
 
         onPushInsertComp.greeting = 'Hi';
@@ -266,7 +266,7 @@ describe('change detection for transplanted views', () => {
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
             .toEqual(
-                'DeclareComp(Angular) OnPushInsertComp(Hello) Hello Angular!',
+                'DeclareComp(Engular) OnPushInsertComp(Hello) Hello Engular!',
                 'expect no change because it is on push.');
 
         onPushInsertComp.changeDetectorRef.markForCheck();
@@ -274,14 +274,14 @@ describe('change detection for transplanted views', () => {
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('DeclareComp(Angular) OnPushInsertComp(Hi) Hi Angular!');
+            .toEqual('DeclareComp(Engular) OnPushInsertComp(Hi) Hi Engular!');
 
         // Destroy insertion should also destroy declaration
         appComp.showOnPushInsert = false;
         fixture.detectChanges(false);
         expect(viewExecutionLog).toEqual([]);
         viewExecutionLog.length = 0;
-        expect(trim(fixture.nativeElement.textContent)).toEqual('DeclareComp(Angular)');
+        expect(trim(fixture.nativeElement.textContent)).toEqual('DeclareComp(Engular)');
 
         // Restore both
         appComp.showOnPushInsert = true;
@@ -289,7 +289,7 @@ describe('change detection for transplanted views', () => {
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('DeclareComp(Angular) OnPushInsertComp(Hello) Hello Angular!');
+            .toEqual('DeclareComp(Engular) OnPushInsertComp(Hello) Hello Engular!');
 
         // Destroy declaration, But we should still be able to see updates in insertion
         appComp.showCheckAlwaysDeclare = false;
@@ -299,16 +299,16 @@ describe('change detection for transplanted views', () => {
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('OnPushInsertComp(Hello) Hello Angular!');
+            .toEqual('OnPushInsertComp(Hello) Hello Engular!');
       });
 
       it('is not checked if detectChanges is called in declaration component', () => {
-        declareComp.name = 'Angular';
+        declareComp.name = 'Engular';
         declareComp.changeDetector.detectChanges();
         expect(viewExecutionLog).toEqual([]);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('DeclareComp(Angular) OnPushInsertComp(Hello) Hello world!');
+            .toEqual('DeclareComp(Engular) OnPushInsertComp(Hello) Hello world!');
       });
 
       it('is checked as part of CheckNoChanges pass', () => {
@@ -341,7 +341,7 @@ describe('change detection for transplanted views', () => {
       });
 
       it('should CD at insertion point only', () => {
-        onPushDeclareComp.name = 'Angular';
+        onPushDeclareComp.name = 'Engular';
         onPushInsertComp.greeting = 'Hi';
         // mark declaration point dirty
         onPushDeclareComp.changeDetector.markForCheck();
@@ -349,7 +349,7 @@ describe('change detection for transplanted views', () => {
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('OnPushDeclareComp(Angular) OnPushInsertComp(Hello) Hello Angular!');
+            .toEqual('OnPushDeclareComp(Engular) OnPushInsertComp(Hello) Hello Engular!');
 
         // mark insertion point dirty
         onPushInsertComp.changeDetectorRef.markForCheck();
@@ -357,7 +357,7 @@ describe('change detection for transplanted views', () => {
         expect(viewExecutionLog).toEqual(['Insert']);
         viewExecutionLog.length = 0;
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('OnPushDeclareComp(Angular) OnPushInsertComp(Hi) Hi Angular!');
+            .toEqual('OnPushDeclareComp(Engular) OnPushInsertComp(Hi) Hi Engular!');
 
         // mark both insertion and declaration point dirty
         onPushInsertComp.changeDetectorRef.markForCheck();
@@ -368,13 +368,13 @@ describe('change detection for transplanted views', () => {
       });
 
       it('is checked if detectChanges is called in declaration component', () => {
-        onPushDeclareComp.name = 'Angular';
+        onPushDeclareComp.name = 'Engular';
         onPushDeclareComp.changeDetector.detectChanges();
         expect(trim(fixture.nativeElement.textContent))
-            .toEqual('OnPushDeclareComp(Angular) OnPushInsertComp(Hello) Hello world!');
+            .toEqual('OnPushDeclareComp(Engular) OnPushInsertComp(Hello) Hello world!');
       });
 
-      // TODO(FW-1774): blocked by https://github.com/angular/angular/pull/34443
+      // TODO(FW-1774): blocked by https://github.com/engular/engular/pull/34443
       xit('is checked as part of CheckNoChanges pass', () => {
         // mark declaration point dirty
         onPushDeclareComp.changeDetector.markForCheck();

@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule, ɵgetDOM as getDOM} from '@angular/common';
-import {Component, Directive, ElementRef, forwardRef, Input, Type, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
-import {AbstractControl, AsyncValidator, COMPOSITION_BUFFER_MODE, ControlValueAccessor, FormControl, FormsModule, MaxValidator, MinValidator, NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgForm, NgModel, Validator} from '@angular/forms';
-import {By} from '@angular/platform-browser/src/dom/debug/by';
-import {dispatchEvent, sortedClassList} from '@angular/platform-browser/testing/src/browser_util';
+import {CommonModule, ɵgetDOM as getDOM} from '@engular/common';
+import {Component, Directive, ElementRef, forwardRef, Input, Type, ViewChild} from '@engular/core';
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@engular/core/testing';
+import {AbstractControl, AsyncValidator, COMPOSITION_BUFFER_MODE, ControlValueAccessor, FormControl, FormsModule, MaxValidator, MinValidator, NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgForm, NgModel, Validator} from '@engular/forms';
+import {By} from '@engular/platform-browser/src/dom/debug/by';
+import {dispatchEvent, sortedClassList} from '@engular/platform-browser/testing/src/browser_util';
 import {merge} from 'rxjs';
 
 import {NgModelCustomComp, NgModelCustomWrapper} from './value_accessor_integration_spec';
@@ -58,7 +58,7 @@ describe('template-driven forms integration tests', () => {
     it('should report properties which are written outside of template bindings', async () => {
       // For example ngModel writes to `checked` property programmatically
       // (template does not contain binding to `checked` explicitly)
-      // https://github.com/angular/angular/issues/33695
+      // https://github.com/engular/engular/issues/33695
       @Component({
         selector: 'app-root',
         template: `<input type="radio" value="one" [(ngModel)]="active"/>`
@@ -86,7 +86,7 @@ describe('template-driven forms integration tests', () => {
          expect(form.nativeElement.getAttribute('novalidate')).toEqual('');
        }));
 
-    it('should be possible to use native validation and angular forms', fakeAsync(() => {
+    it('should be possible to use native validation and engular forms', fakeAsync(() => {
          const fixture = initTest(NgModelNativeValidateForm);
 
          fixture.detectChanges();

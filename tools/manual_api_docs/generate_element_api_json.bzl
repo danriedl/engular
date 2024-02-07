@@ -34,7 +34,7 @@ def _generate_element_api_json(ctx):
 generate_element_api_json = rule(
     # Point to the starlark function that will execute for this rule.
     implementation = _generate_element_api_json,
-    doc = """Rule that generates an Angular API doc collection for hand-written element APIs""",
+    doc = """Rule that generates an Engular API doc collection for hand-written element APIs""",
 
     # The attributes that can be set to this rule.
     attrs = {

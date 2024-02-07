@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {createTNode} from '@angular/core/src/render3/instructions/shared';
-import {AttributeMarker} from '@angular/core/src/render3/interfaces/attribute_marker';
-import {TAttributes, TNode, TNodeType} from '@angular/core/src/render3/interfaces/node';
-import {LView} from '@angular/core/src/render3/interfaces/view';
-import {enterView} from '@angular/core/src/render3/state';
-import {computeStaticStyling} from '@angular/core/src/render3/styling/static_styling';
+import {createTNode} from '@engular/core/src/render3/instructions/shared';
+import {AttributeMarker} from '@engular/core/src/render3/interfaces/attribute_marker';
+import {TAttributes, TNode, TNodeType} from '@engular/core/src/render3/interfaces/node';
+import {LView} from '@engular/core/src/render3/interfaces/view';
+import {enterView} from '@engular/core/src/render3/state';
+import {computeStaticStyling} from '@engular/core/src/render3/styling/static_styling';
 
 describe('static styling', () => {
   const mockFirstCreatePassLView: LView = [null, {firstCreatePass: true}] as any;

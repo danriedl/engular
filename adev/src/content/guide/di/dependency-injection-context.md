@@ -66,7 +66,7 @@ Note that `inject` will return an instance only if the injector can resolve the 
 
 ## Asserts the context
 
-Angular provides `assertInInjectionContext` helper function to assert that the current context is an injection context.
+Engular provides `assertInInjectionContext` helper function to assert that the current context is an injection context.
 
 ## Using DI outside of a context
 

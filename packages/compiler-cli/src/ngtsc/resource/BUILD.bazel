@@ -7,7 +7,7 @@ ts_library(
     srcs = ["index.ts"] + glob([
         "src/*.ts",
     ]),
-    module_name = "@angular/compiler-cli/src/ngtsc/resource",
+    module_name = "@engular/compiler-cli/src/ngtsc/resource",
     deps = [
         "//packages:types",
         "//packages/compiler-cli/src/ngtsc/annotations",

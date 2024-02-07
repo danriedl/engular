@@ -1,8 +1,8 @@
 # Importing and using components
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
-Angular supports two ways of making a component available to other components: as a standalone component or in an `NgModule`.
+Engular supports two ways of making a component available to other components: as a standalone component or in an `NgModule`.
 
 ## Standalone components
 
@@ -27,9 +27,9 @@ export class UserProfile { }
 
 Standalone components are directly importable into other standalone components.
 
-The Angular team recommends using standalone components for all new development.
+The Engular team recommends using standalone components for all new development.
 
 ## NgModules
 
-Angular code that predates standalone components uses `NgModule` as a mechanism for importing and
+Engular code that predates standalone components uses `NgModule` as a mechanism for importing and
 using other components. See the full [`NgModule` guide](guide/ngmodules) for details.

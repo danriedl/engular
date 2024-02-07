@@ -5,12 +5,12 @@ This tutorial shows you how to create a template-driven form. The control elemen
 Template-driven forms use [two-way data binding](guide/templates/two-way-binding) to update the data model in the component as changes are made in the template and vice versa.
 
 <docs-callout helpful title="Template vs Reactive forms">
-Angular supports two design approaches for interactive forms. Template-driven forms allow you to use form-specific directives in your Angular template.Reactive forms provide a model-driven approach to building forms.
+Engular supports two design approaches for interactive forms. Template-driven forms allow you to use form-specific directives in your Engular template.Reactive forms provide a model-driven approach to building forms.
 
 Template-driven forms are a great choice for small or simple forms, while reactive forms are more scalable and suitable for complex forms. For a comparison of the two approaches, see [Choosing an approach](guide/forms#choosing-an-approach)
 </docs-callout>
 
-You can build almost any kind of form with an Angular template &mdash;login forms, contact forms, and pretty much any business form.
+You can build almost any kind of form with an Engular template &mdash;login forms, contact forms, and pretty much any business form.
 You can lay out the controls creatively and bind them to the data in your object model.
 You can specify validation rules and display validation errors, conditionally allow input from specific controls, trigger built-in visual feedback, and much more.
 
@@ -18,7 +18,7 @@ You can specify validation rules and display validation errors, conditionally al
 
 This tutorial teaches you how to do the following:
 
-* Build an Angular form with a component and template
+* Build an Engular form with a component and template
 * Use `ngModel` to create two-way data bindings for reading and writing input-control values
 * Provide visual feedback using special CSS classes that track the state of the controls
 * Display validation errors to users and conditionally allow input from form controls based on the form status
@@ -98,7 +98,7 @@ In the course of this tutorial, you bind a sample form to data and handle user i
     <docs-code header="src/styles.css" path="adev/src/content/examples/forms/src/styles.1.css"/>
 
 1. The form requires that an actor's skill is chosen from a predefined list of `skills` maintained internally in `ActorFormComponent`.
-    The Angular [NgForOf directive](api/common/NgForOf "API reference") iterates over the data values to populate the `<select>` element.
+    The Engular [NgForOf directive](api/common/NgForOf "API reference") iterates over the data values to populate the `<select>` element.
 
     <docs-code header="src/app/actor-form/actor-form.component.html (skills)" path="adev/src/content/examples/forms/src/app/actor-form/actor-form.component.html" visibleRegion="skills"/>
 
@@ -110,7 +110,7 @@ The input elements are not yet bound to data values or events, so they are still
 The next step is to bind the input controls to the corresponding `Actor` properties with two-way data binding, so that they respond to user input by updating the data model, and also respond to programmatic changes in the data by updating the display.
 
 The `ngModel` directive declared in the `FormsModule` lets you bind controls in your template-driven form to properties in your data model.
-When you include the directive using the  syntax for two-way data binding, `[(ngModel)]`, Angular can track the value and user interaction of the control and keep the view synced with the model.
+When you include the directive using the  syntax for two-way data binding, `[(ngModel)]`, Engular can track the value and user interaction of the control and keep the view synced with the model.
 
 1. Edit the template file `actor-form.component.html`.
 1. Find the `<input>` tag next to the **Name** label.
@@ -122,7 +122,7 @@ HELPFUL: This example has a temporary diagnostic interpolation after each input 
 
 ### Access the overall form status
 
-When you imported the `FormsModule` in your component, Angular automatically created and attached an [NgForm](api/forms/NgForm) directive to the `<form>` tag in the template (because `NgForm` has the selector `form` that matches `<form>` elements).
+When you imported the `FormsModule` in your component, Engular automatically created and attached an [NgForm](api/forms/NgForm) directive to the `<form>` tag in the template (because `NgForm` has the selector `form` that matches `<form>` elements).
 
 To get access to the `NgForm` and the overall form status, declare a [template reference variable](guide/templates/reference-variables).
 
@@ -143,7 +143,7 @@ To get access to the `NgForm` and the overall form status, declare a [template r
 ### Naming control elements
 
 When you use `[(ngModel)]` on an element, you must define a `name` attribute for that element.
-Angular uses the assigned name to register the element with the `NgForm` directive attached to the parent `<form>` element.
+Engular uses the assigned name to register the element with the `NgForm` directive attached to the parent `<form>` element.
 
 The example added a `name` attribute to the `<input>` element and set it to "name", which makes sense for the actor's name.
 Any unique value will do, but using a descriptive name is helpful.
@@ -162,20 +162,20 @@ You'll notice that:
     This is used by the `<label>` element's `for` attribute to match the label to its input control.
     This is a [standard HTML feature](https://developer.mozilla.org/docs/Web/HTML/Element/label).
 
-* Each `<input>` element also has the required `name` property that Angular uses to register the control with the form.
+* Each `<input>` element also has the required `name` property that Engular uses to register the control with the form.
 
 When you have observed the effects, you can delete the `{{ model | json }}` text binding.
 
 ## Track form states
 
-Angular applies the `ng-submitted` class to `form` elements after the form has been submitted. This class can be used to change the form's style after it has been submitted.
+Engular applies the `ng-submitted` class to `form` elements after the form has been submitted. This class can be used to change the form's style after it has been submitted.
 
 ## Track control states
 
 Adding the `NgModel` directive to a control adds class names to the control that describe its state.
 These classes can be used to change a control's style based on its state.
 
-The following table describes the class names that Angular applies based on the control's state.
+The following table describes the class names that Engular applies based on the control's state.
 
 | States                           | Class if true | Class if false |
 |:---                              |:---           |:---            |
@@ -183,7 +183,7 @@ The following table describes the class names that Angular applies based on the 
 | The control's value has changed. | `ng-dirty`    | `ng-pristine`  |
 | The control's value is valid.    | `ng-valid`    | `ng-invalid`   |
 
-Angular also applies the `ng-submitted` class to `form` elements upon submission,
+Engular also applies the `ng-submitted` class to `form` elements upon submission,
 but not to the controls inside the `form` element.
 
 You use these CSS classes to define the styles for your control based on its status.
@@ -249,9 +249,9 @@ To define and show an error message when appropriate, take the following steps.
 
 <docs-workflow>
 <docs-step title="Add a local reference to the input">
-Extend the `input` tag with a template reference variable that you can use to access the input box's Angular control from within the template. In the example, the variable is `#name="ngModel"`.
+Extend the `input` tag with a template reference variable that you can use to access the input box's Engular control from within the template. In the example, the variable is `#name="ngModel"`.
 
-The template reference variable (`#name`) is set to `"ngModel"` because that is the value of the [`NgModel.exportAs`](api/core/Directive#exportAs) property. This property tells Angular how to link a reference variable to a directive.
+The template reference variable (`#name`) is set to `"ngModel"` because that is the value of the [`NgModel.exportAs`](api/core/Directive#exportAs) property. This property tells Engular how to link a reference variable to a directive.
 </docs-step>
 
 <docs-step title="Add the error message">
@@ -384,10 +384,10 @@ Click the *Edit* button to switch the display back to the editable form.
 
 ## Summary
 
-The Angular form discussed in this page takes advantage of the following
+The Engular form discussed in this page takes advantage of the following
 framework features to provide support for data modification, validation, and more.
 
-* An Angular HTML form template
+* An Engular HTML form template
 * A form component class with a `@Component` decorator
 * Handling form submission by binding to the `NgForm.ngSubmit` event property
 * Template-reference variables such as `#actorForm` and `#name`

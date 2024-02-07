@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 /**
  * This is an example of a Hero-oriented InMemoryDbService with method overrides.
  */
-import {Injectable} from '@angular/core';
+import {Injectable} from '@engular/core';
 import {
   getStatusText,
   ParsedRequestUrl,
@@ -17,7 +17,7 @@ import {
   RequestInfoUtilities,
   ResponseOptions,
   STATUS,
-} from 'angular-in-memory-web-api';
+} from 'engular-in-memory-web-api';
 import {Observable} from 'rxjs';
 
 import {HeroInMemDataService} from './hero-in-mem-data-service';

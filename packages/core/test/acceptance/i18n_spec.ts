@@ -3,23 +3,23 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 // Make the `$localize()` global function available to the compiled templates, and the direct calls
 // below. This would normally be done inside the application `polyfills.ts` file.
-import '@angular/localize/init';
+import '@engular/localize/init';
 
-import {CommonModule, DOCUMENT, registerLocaleData} from '@angular/common';
-import localeEs from '@angular/common/locales/es';
-import localeRo from '@angular/common/locales/ro';
-import {computeMsgId} from '@angular/compiler';
-import {Attribute, Component, ContentChild, ContentChildren, Directive, ElementRef, HostBinding, Input, LOCALE_ID, NO_ERRORS_SCHEMA, Pipe, PipeTransform, QueryList, TemplateRef, Type, ViewChild, ViewContainerRef, ɵsetDocument} from '@angular/core';
-import {HEADER_OFFSET} from '@angular/core/src/render3/interfaces/view';
-import {getComponentLView} from '@angular/core/src/render3/util/discovery_utils';
-import {DeferBlockBehavior, DeferBlockState, TestBed} from '@angular/core/testing';
-import {clearTranslations, loadTranslations} from '@angular/localize';
-import {By} from '@angular/platform-browser';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {CommonModule, DOCUMENT, registerLocaleData} from '@engular/common';
+import localeEs from '@engular/common/locales/es';
+import localeRo from '@engular/common/locales/ro';
+import {computeMsgId} from '@engular/compiler';
+import {Attribute, Component, ContentChild, ContentChildren, Directive, ElementRef, HostBinding, Input, LOCALE_ID, NO_ERRORS_SCHEMA, Pipe, PipeTransform, QueryList, TemplateRef, Type, ViewChild, ViewContainerRef, ɵsetDocument} from '@engular/core';
+import {HEADER_OFFSET} from '@engular/core/src/render3/interfaces/view';
+import {getComponentLView} from '@engular/core/src/render3/util/discovery_utils';
+import {DeferBlockBehavior, DeferBlockState, TestBed} from '@engular/core/testing';
+import {clearTranslations, loadTranslations} from '@engular/localize';
+import {By} from '@engular/platform-browser';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 import {BehaviorSubject} from 'rxjs';
 
 
@@ -48,7 +48,7 @@ describe('runtime i18n', () => {
   it('should support interpolations', () => {
     loadTranslations({[computeMsgId('Hello {$INTERPOLATION}!')]: 'Bonjour {$INTERPOLATION}!'});
     const fixture = initWithTemplate(AppComp, `<div i18n>Hello {{name}}!</div>`);
-    expect(fixture.nativeElement.innerHTML).toEqual(`<div>Bonjour Angular!</div>`);
+    expect(fixture.nativeElement.innerHTML).toEqual(`<div>Bonjour Engular!</div>`);
     fixture.componentRef.instance.name = `John`;
     fixture.detectChanges();
     expect(fixture.nativeElement.innerHTML).toEqual(`<div>Bonjour John!</div>`);
@@ -65,7 +65,7 @@ describe('runtime i18n', () => {
         Emails: {{ count // i18n(ph="amount of emails received") }}
       </div>
     `);
-    expect(fixture.nativeElement.innerHTML).toEqual(`<div> Bonjour Angular! Emails: 0 </div>`);
+    expect(fixture.nativeElement.innerHTML).toEqual(`<div> Bonjour Engular! Emails: 0 </div>`);
     fixture.componentRef.instance.name = `John`;
     fixture.componentRef.instance.count = 5;
     fixture.detectChanges();
@@ -80,7 +80,7 @@ describe('runtime i18n', () => {
         Hello {{ name // i18n(ph="ph_name") }} {{ description // i18n(ph="ph_name") }}!
       </div>
     `);
-    expect(fixture.nativeElement.innerHTML).toEqual(`<div> Bonjour Angular Web Framework! </div>`);
+    expect(fixture.nativeElement.innerHTML).toEqual(`<div> Bonjour Engular Web Framework! </div>`);
     fixture.componentRef.instance.name = 'Other';
     fixture.componentRef.instance.description = 'Backend Framework';
     fixture.detectChanges();
@@ -94,7 +94,7 @@ describe('runtime i18n', () => {
     TestBed.overrideComponent(AppComp, {set: {interpolation}});
     const fixture = initWithTemplate(AppComp, `<div i18n>Hello {% name %}</div>`);
 
-    expect(fixture.nativeElement.innerHTML).toBe('<div>Bonjour Angular</div>');
+    expect(fixture.nativeElement.innerHTML).toBe('<div>Bonjour Engular</div>');
   });
 
   it('should support &ngsp; in translatable sections', () => {
@@ -211,7 +211,7 @@ describe('runtime i18n', () => {
       </div>`);
     expect(fixture.nativeElement.innerHTML)
         .toEqual(
-            `<div><a>traduction Angular</a> hello <b title="start Angular middle 0 end"><e></e><c>traduction</c></b></div>`);
+            `<div><a>traduction Engular</a> hello <b title="start Engular middle 0 end"><e></e><c>traduction</c></b></div>`);
   });
 
   it('should support multiple sibling i18n blocks', () => {
@@ -284,7 +284,7 @@ describe('runtime i18n', () => {
   it('should handle i18n attribute with directives', () => {
     loadTranslations({[computeMsgId('Hello {$INTERPOLATION}')]: 'Bonjour {$INTERPOLATION}'});
     const fixture = initWithTemplate(AppComp, `<div *ngIf="visible" i18n>Hello {{ name }}</div>`);
-    expect(fixture.nativeElement.firstChild).toHaveText('Bonjour Angular');
+    expect(fixture.nativeElement.firstChild).toHaveText('Bonjour Engular');
   });
 
   it('should work correctly with event listeners', () => {
@@ -293,7 +293,7 @@ describe('runtime i18n', () => {
     @Component(
         {selector: 'app-comp', template: `<div i18n (click)="onClick()">Hello {{ name }}</div>`})
     class ListenerComp {
-      name = `Angular`;
+      name = `Engular`;
       clicks = 0;
 
       onClick() {
@@ -308,7 +308,7 @@ describe('runtime i18n', () => {
     const element = fixture.nativeElement.firstChild;
     const instance = fixture.componentInstance;
 
-    expect(element).toHaveText('Bonjour Angular');
+    expect(element).toHaveText('Bonjour Engular');
     expect(instance.clicks).toBe(0);
 
     element.click();
@@ -531,7 +531,7 @@ describe('runtime i18n', () => {
           initWithTemplate(AppComp, `<ng-template i18n tplRef>Hello {{ name }}</ng-template>`);
 
       const element = fixture.nativeElement;
-      expect(element).toHaveText('Bonjour Angular');
+      expect(element).toHaveText('Bonjour Engular');
     });
 
     // Note: applying structural directives to <ng-template> is typically user error, but it
@@ -542,7 +542,7 @@ describe('runtime i18n', () => {
           AppComp, `<ng-template *ngIf="name" i18n tplRef>Hello {{ name }}</ng-template>`);
 
       const element = fixture.nativeElement;
-      expect(element).toHaveText('Bonjour Angular');
+      expect(element).toHaveText('Bonjour Engular');
     });
 
     it('should be able to act as child elements inside i18n block (plain text content)', () => {
@@ -803,7 +803,7 @@ describe('runtime i18n', () => {
             other {{{count}} minutes ago}
           }
           {name, select,
-            Angular {Mr. Angular}
+            Engular {Mr. Engular}
             other {Sir}
           }
         `);
@@ -811,7 +811,7 @@ describe('runtime i18n', () => {
         // This is because the content is instance dependent and therefore can't be shared
         // across `TNode`s.
         expect(fixture.nativeElement.innerHTML)
-            .toEqual(`just now<!--ICU ${HEADER_OFFSET + 0}:0-->Mr. Angular<!--ICU ${
+            .toEqual(`just now<!--ICU ${HEADER_OFFSET + 0}:0-->Mr. Engular<!--ICU ${
                 HEADER_OFFSET + 1}:0-->`);
       });
     });
@@ -908,14 +908,14 @@ describe('runtime i18n', () => {
         other {({{name}})}
       }</div>`);
       expect(fixture.nativeElement.innerHTML)
-          .toEqual(`<div>aucun <b>email</b>!<!--ICU ${HEADER_OFFSET + 1}:0--> - (Angular)<!--ICU ${
+          .toEqual(`<div>aucun <b>email</b>!<!--ICU ${HEADER_OFFSET + 1}:0--> - (Engular)<!--ICU ${
               HEADER_OFFSET + 1}:3--></div>`);
 
       fixture.componentRef.instance.count = 4;
       fixture.detectChanges();
       expect(fixture.nativeElement.innerHTML)
-          .toEqual(`<div>4 <span title="Angular">emails</span><!--ICU ${
-              HEADER_OFFSET + 1}:0--> - (Angular)<!--ICU ${HEADER_OFFSET + 1}:3--></div>`);
+          .toEqual(`<div>4 <span title="Engular">emails</span><!--ICU ${
+              HEADER_OFFSET + 1}:0--> - (Engular)<!--ICU ${HEADER_OFFSET + 1}:3--></div>`);
 
       fixture.componentRef.instance.count = 0;
       fixture.componentRef.instance.name = 'John';
@@ -935,7 +935,7 @@ describe('runtime i18n', () => {
       const fixture =
           initWithTemplate(AppComp, `<div i18n>{count, select, 10 {ten} other {{% name %}}}</div>`);
 
-      expect(fixture.nativeElement).toHaveText(`Angular`);
+      expect(fixture.nativeElement).toHaveText(`Engular`);
     });
 
     it('inside HTML elements', () => {
@@ -963,7 +963,7 @@ describe('runtime i18n', () => {
               `<div>` +
               `<span>aucun <b>email</b>!<!--ICU ${HEADER_OFFSET + 1}:0--></span>` +
               ` - ` +
-              `<span>(Angular)<!--ICU ${HEADER_OFFSET + 1}:3--></span>` +
+              `<span>(Engular)<!--ICU ${HEADER_OFFSET + 1}:3--></span>` +
               `</div>`);
 
       fixture.componentRef.instance.count = 4;
@@ -971,10 +971,10 @@ describe('runtime i18n', () => {
       expect(fixture.nativeElement.innerHTML)
           .toEqual(
               `<div>` +
-              `<span>4 <span title="Angular">emails</span><!--ICU ${
+              `<span>4 <span title="Engular">emails</span><!--ICU ${
                   HEADER_OFFSET + 1}:0--></span>` +
               ` - ` +
-              `<span>(Angular)<!--ICU ${HEADER_OFFSET + 1}:3--></span>` +
+              `<span>(Engular)<!--ICU ${HEADER_OFFSET + 1}:3--></span>` +
               `</div>`);
 
       fixture.componentRef.instance.count = 0;
@@ -1000,7 +1000,7 @@ describe('runtime i18n', () => {
         other {({{name}})}
       }</span></div>`);
       expect(fixture.nativeElement.innerHTML)
-          .toEqual(`<div><span>(Angular)<!--ICU ${HEADER_OFFSET + 0}:0--></span><!--bindings={
+          .toEqual(`<div><span>(Engular)<!--ICU ${HEADER_OFFSET + 0}:0--></span><!--bindings={
   "ng-reflect-ng-if": "true"
 }--></div>`);
 
@@ -1020,7 +1020,7 @@ describe('runtime i18n', () => {
         other {({{name}})}
       }</ng-container>`);
       expect(fixture.nativeElement.innerHTML)
-          .toEqual(`(Angular)<!--ICU ${HEADER_OFFSET + 1}:0--><!--ng-container-->`);
+          .toEqual(`(Engular)<!--ICU ${HEADER_OFFSET + 1}:0--><!--ng-container-->`);
     });
 
     it('inside <ng-template>', () => {
@@ -1735,7 +1735,7 @@ describe('runtime i18n', () => {
       loadTranslations({[computeMsgId('hello {$INTERPOLATION}')]: 'bonjour {$INTERPOLATION}'});
       const fixture =
           initWithTemplate(AppComp, `<div i18n i18n-title title="hello {{name}}"></div>`);
-      expect(fixture.nativeElement.innerHTML).toEqual(`<div title="bonjour Angular"></div>`);
+      expect(fixture.nativeElement.innerHTML).toEqual(`<div title="bonjour Engular"></div>`);
 
       fixture.componentRef.instance.name = 'John';
       fixture.detectChanges();
@@ -1760,7 +1760,7 @@ describe('runtime i18n', () => {
           AppComp,
           `<input i18n i18n-title title="hello {{name}} - {{count}}" i18n-placeholder placeholder="bye {{count}} - {{name}}">`);
       expect(fixture.nativeElement.innerHTML)
-          .toEqual(`<input title="bonjour Angular - 0" placeholder="au revoir 0 - Angular">`);
+          .toEqual(`<input title="bonjour Engular - 0" placeholder="au revoir 0 - Engular">`);
 
       fixture.componentRef.instance.name = 'John';
       fixture.componentRef.instance.count = 5;
@@ -1787,7 +1787,7 @@ describe('runtime i18n', () => {
           initWithTemplate(AppComp, `<div i18n-title="m|d" title="Hello {% name %}"></div>`);
 
       const element = fixture.nativeElement.firstChild;
-      expect(element.title).toBe('Bonjour Angular');
+      expect(element.title).toBe('Bonjour Engular');
     });
 
     it('in nested template', () => {
@@ -1810,7 +1810,7 @@ describe('runtime i18n', () => {
           initWithTemplate(AppComp, `<img src="logo.png" i18n-title title="Hello {{ name }}">`);
 
       const element = fixture.nativeElement.firstChild;
-      expect(element.title).toBe('Bonjour Angular');
+      expect(element.title).toBe('Bonjour Engular');
     });
 
     it('should process i18n attributes on explicit <ng-template> elements', () => {
@@ -1920,14 +1920,14 @@ describe('runtime i18n', () => {
         template: '<ng-template i18n-dir dir="Hello {{ name }}"></ng-template>',
       })
       class TestComp {
-        name = 'Angular';
+        name = 'Engular';
       }
 
       TestBed.configureTestingModule({declarations: [TestComp, WithInput]});
       const fixture = TestBed.createComponent(TestComp);
       fixture.detectChanges();
 
-      expect(dirInstance!.dir).toBe('Bonjour Angular');
+      expect(dirInstance!.dir).toBe('Bonjour Engular');
     });
 
     it('should allow directive inputs (as interpolated props)' +
@@ -1949,14 +1949,14 @@ describe('runtime i18n', () => {
            template: '<ng-template *ngIf="true" i18n-dir dir="Hello {{ name }}"></ng-template>',
          })
          class TestComp {
-           name = 'Angular';
+           name = 'Engular';
          }
 
          TestBed.configureTestingModule({declarations: [TestComp, WithInput]});
          const fixture = TestBed.createComponent(TestComp);
          fixture.detectChanges();
 
-         expect(dirInstance!.dir).toBe('Bonjour Angular');
+         expect(dirInstance!.dir).toBe('Bonjour Engular');
        });
 
     it('should apply i18n attributes during second template pass', () => {
@@ -2181,7 +2181,7 @@ describe('runtime i18n', () => {
     const directive = fixture.debugElement.children[0].injector.get(MyComp);
     expect(calledValue).toEqual(true);
     expect(calledTitle).toEqual(true);
-    expect(directive.value).toEqual(`Bonjour Angular`);
+    expect(directive.value).toEqual(`Bonjour Engular`);
     expect(directive.title).toEqual(`fonctionne`);
   });
 
@@ -2492,15 +2492,15 @@ describe('runtime i18n', () => {
       @Component({
         selector: 'parent',
         template:
-            `<child i18n>and projection from {name, select, angular {Angular} other {{{name}}}}</child>`
+            `<child i18n>and projection from {name, select, engular {Engular} other {{{name}}}}</child>`
       })
       class Parent {
         name: string = 'Parent';
       }
       TestBed.configureTestingModule({declarations: [Parent, Child]});
       loadTranslations({
-        [computeMsgId('{VAR_SELECT, select, angular {Angular} other {{INTERPOLATION}}}')]:
-            '{VAR_SELECT, select, angular {Angular} other {{INTERPOLATION}}}',
+        [computeMsgId('{VAR_SELECT, select, engular {Engular} other {{INTERPOLATION}}}')]:
+            '{VAR_SELECT, select, engular {Engular} other {{INTERPOLATION}}}',
         [computeMsgId('Child content {$START_TAG_NG_CONTENT}{$CLOSE_TAG_NG_CONTENT}')]:
             'Contenu enfant {$START_TAG_NG_CONTENT}{$CLOSE_TAG_NG_CONTENT}',
         [computeMsgId('and projection from {$ICU}')]: 'et projection depuis {$ICU}'
@@ -2511,10 +2511,10 @@ describe('runtime i18n', () => {
           .toEqual(`<child><div>Contenu enfant et projection depuis Parent<!--ICU ${
               HEADER_OFFSET + 1}:0--></div></child>`);
 
-      fixture.componentRef.instance.name = 'angular';
+      fixture.componentRef.instance.name = 'engular';
       fixture.detectChanges();
       expect(fixture.nativeElement.innerHTML)
-          .toEqual(`<child><div>Contenu enfant et projection depuis Angular<!--ICU ${
+          .toEqual(`<child><div>Contenu enfant et projection depuis Engular<!--ICU ${
               HEADER_OFFSET + 1}:0--></div></child>`);
     });
 
@@ -3214,7 +3214,7 @@ function initWithTemplate(compType: Type<any>, template: string) {
 
 @Component({selector: 'app-comp', template: ``})
 class AppComp {
-  name = `Angular`;
+  name = `Engular`;
   description = `Web Framework`;
   visible = true;
   count = 0;

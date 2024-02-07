@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, Directive, Self} from '@angular/core';
-import {createLView, createTView, getOrCreateTNode} from '@angular/core/src/render3/instructions/shared';
-import {NodeInjectorOffset} from '@angular/core/src/render3/interfaces/injector';
-import {TestBed} from '@angular/core/testing';
+import {Component, Directive, Self} from '@engular/core';
+import {createLView, createTView, getOrCreateTNode} from '@engular/core/src/render3/instructions/shared';
+import {NodeInjectorOffset} from '@engular/core/src/render3/interfaces/injector';
+import {TestBed} from '@engular/core/testing';
 
 import {bloomAdd, bloomHashBitOrFactory as bloomHash, bloomHasToken, getOrCreateNodeInjectorForNode} from '../../src/render3/di';
 import {TNodeType} from '../../src/render3/interfaces/node';
@@ -44,7 +44,7 @@ describe('di', () => {
           TestBed.createComponent(App).detectChanges();
         })
             .toThrowError(
-                'NG0201: No provider for DirNotOnSelf found in NodeInjector. Find more at https://angular.io/errors/NG0201');
+                'NG0201: No provider for DirNotOnSelf found in NodeInjector. Find more at https://engular.io/errors/NG0201');
       });
     });
   });

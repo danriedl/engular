@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, Directive} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {Component, Directive} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
 
-describe('@angular/common integration', () => {
+describe('@engular/common integration', () => {
   describe('NgForOf', () => {
     @Directive({selector: '[dir]'})
     class MyDirective {

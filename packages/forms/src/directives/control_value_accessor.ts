@@ -3,18 +3,18 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Directive, ElementRef, InjectionToken, Renderer2} from '@angular/core';
+import {Directive, ElementRef, InjectionToken, Renderer2} from '@engular/core';
 
 /**
  * @description
- * Defines an interface that acts as a bridge between the Angular forms API and a
+ * Defines an interface that acts as a bridge between the Engular forms API and a
  * native element in the DOM.
  *
  * Implement this interface to create a custom form control directive
- * that integrates with Angular forms.
+ * that integrates with Engular forms.
  *
  * @see {@link DefaultValueAccessor}
  *

@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
-import {TestBed} from '@angular/core/testing';
+import {TestBed} from '@engular/core/testing';
 import type {FileSystemTree} from '@webcontainer/api';
 
-import type {TutorialConfig, TutorialMetadata} from '@angular/docs';
+import type {TutorialConfig, TutorialMetadata} from '@engular/docs';
 import {TUTORIALS_ASSETS_WEB_PATH} from '../editor/constants';
-import {TutorialType} from '@angular/docs';
+import {TutorialType} from '@engular/docs';
 import {EmbeddedTutorialManager} from './embedded-tutorial-manager.service';
 
 describe('EmbeddedTutorialManager', () => {
@@ -308,7 +308,7 @@ describe('EmbeddedTutorialManager', () => {
           new Response(
             JSON.stringify({
               dependencies: {
-                '@angular/core': '2.0.0',
+                '@engular/core': '2.0.0',
               },
               allFiles: [],
             }),
@@ -335,7 +335,7 @@ describe('EmbeddedTutorialManager', () => {
           new Response(
             JSON.stringify({
               dependencies: {
-                '@angular/core': '2.0.0',
+                '@engular/core': '2.0.0',
               },
               allFiles: [],
             }),
@@ -346,7 +346,7 @@ describe('EmbeddedTutorialManager', () => {
 
       service['tutorialId'].set('previous-tutorial');
       service['dependencies'].set({
-        '@angular/core': '1.0.0',
+        '@engular/core': '1.0.0',
       });
 
       await service['fetchAndSetTutorialFiles'](tutorial);
@@ -366,7 +366,7 @@ describe('EmbeddedTutorialManager', () => {
           new Response(
             JSON.stringify({
               dependencies: {
-                '@angular/core': '2.0.0',
+                '@engular/core': '2.0.0',
               },
               allFiles: [],
             }),
@@ -395,7 +395,7 @@ describe('EmbeddedTutorialManager', () => {
           new Response(
             JSON.stringify({
               dependencies: {
-                '@angular/core': '1.0.0',
+                '@engular/core': '1.0.0',
               },
               allFiles: [],
             }),
@@ -406,7 +406,7 @@ describe('EmbeddedTutorialManager', () => {
 
       service['tutorialId'].set('previous-tutorial');
       service['dependencies'].set({
-        '@angular/core': '1.0.0',
+        '@engular/core': '1.0.0',
       });
 
       await service['fetchAndSetTutorialFiles'](tutorial);

@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {
@@ -14,13 +14,13 @@ import {
   Injector,
   Input,
   NgModule,
-} from '@angular/core';
-import {waitForAsync} from '@angular/core/testing';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {downgradeComponent, UpgradeComponent, UpgradeModule} from '@angular/upgrade/static';
+} from '@engular/core';
+import {waitForAsync} from '@engular/core/testing';
+import {BrowserModule} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
+import {downgradeComponent, UpgradeComponent, UpgradeModule} from '@engular/upgrade/static';
 
-import * as angular from '../../../src/common/src/angular1';
+import * as engular from '../../../src/common/src/engular1';
 import {
   html,
   multiTrim,
@@ -34,11 +34,11 @@ withEachNg1Version(() => {
     beforeEach(() => destroyPlatform());
     afterEach(() => destroyPlatform());
 
-    it('should have AngularJS loaded', () =>
-      expect(angular.getAngularJSGlobal().version.major).toBe(1));
+    it('should have EngularJS loaded', () =>
+      expect(engular.getEngularJSGlobal().version.major).toBe(1));
 
     it('should verify UpgradeAdapter example', waitForAsync(() => {
-      // This is wrapping (upgrading) an AngularJS component to be used in an Angular
+      // This is wrapping (upgrading) an EngularJS component to be used in an Engular
       // component
       @Directive({selector: 'ng1'})
       class Ng1Component extends UpgradeComponent {
@@ -49,7 +49,7 @@ withEachNg1Version(() => {
         }
       }
 
-      // This is an Angular component that will be downgraded
+      // This is an Engular component that will be downgraded
       @Component({
         selector: 'ng2',
         template: 'ng2[<ng1 [title]="nameProp">transclude</ng1>](<ng-content></ng-content>)',
@@ -58,7 +58,7 @@ withEachNg1Version(() => {
         @Input('name') nameProp: string = '';
       }
 
-      // This module represents the Angular pieces of the application
+      // This module represents the Engular pieces of the application
       @NgModule({
         declarations: [Ng1Component, Ng2Component],
         imports: [BrowserModule, UpgradeModule],
@@ -70,10 +70,10 @@ withEachNg1Version(() => {
         }
       }
 
-      // This module represents the AngularJS pieces of the application
-      const ng1Module = angular
+      // This module represents the EngularJS pieces of the application
+      const ng1Module = engular
         .module_('myExample', [])
-        // This is an AngularJS component that will be upgraded
+        // This is an EngularJS component that will be upgraded
         .directive('ng1', () => {
           return {
             scope: {title: '='},
@@ -81,12 +81,12 @@ withEachNg1Version(() => {
             template: 'ng1[Hello {{title}}!](<span ng-transclude></span>)',
           };
         })
-        // This is wrapping (downgrading) an Angular component to be used in
-        // AngularJS
+        // This is wrapping (downgrading) an Engular component to be used in
+        // EngularJS
         .directive('ng2', downgradeComponent({component: Ng2Component}));
 
-      // This is the (AngularJS) application bootstrap element
-      // Notice that it is actually a downgraded Angular component
+      // This is the (EngularJS) application bootstrap element
+      // Notice that it is actually a downgraded Engular component
       const element = html('<ng2 name="World">project</ng2>');
 
       // Let's use a helper function to make this simpler

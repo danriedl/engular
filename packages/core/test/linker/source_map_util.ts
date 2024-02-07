@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {SourceMap} from '@angular/compiler';
+import {SourceMap} from '@engular/compiler';
 import {SourceMapConsumer} from 'source-map';
 
 export interface SourceLocation {

@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Injector, ɵcreateInjector, ɵInjectorProfilerContext, ɵsetInjectorProfilerContext, ɵɵFactoryTarget, ɵɵngDeclareFactory} from '@angular/core';
-import {ɵɵdefineInjector} from '@angular/core/src/di';
-import {setCurrentInjector} from '@angular/core/src/di/injector_compatibility';
+import {Injector, ɵcreateInjector, ɵInjectorProfilerContext, ɵsetInjectorProfilerContext, ɵɵFactoryTarget, ɵɵngDeclareFactory} from '@engular/core';
+import {ɵɵdefineInjector} from '@engular/core/src/di';
+import {setCurrentInjector} from '@engular/core/src/di/injector_compatibility';
 
 describe('Factory declaration jit compilation', () => {
   let previousInjector: Injector|null|undefined;

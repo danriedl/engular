@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import 'jasmine-ajax';
@@ -22,10 +22,10 @@ import {
   HttpResponse,
   provideHttpClient,
   withFetch,
-} from '@angular/common/http';
-import {importProvidersFrom, Injectable} from '@angular/core';
-import {TestBed, waitForAsync} from '@angular/core/testing';
-import {HttpClientBackendService, HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+} from '@engular/common/http';
+import {importProvidersFrom, Injectable} from '@engular/core';
+import {TestBed, waitForAsync} from '@engular/core/testing';
+import {HttpClientBackendService, HttpClientInMemoryWebApiModule} from 'engular-in-memory-web-api';
 import {Observable, zip} from 'rxjs';
 import {concatMap, map, tap} from 'rxjs/operators';
 
@@ -38,7 +38,7 @@ import {HttpClientHeroService} from './fixtures/http-client-hero-service';
 describe('HttpClient Backend Service', () => {
   const delay = 1; // some minimal simulated latency delay
 
-  describe('raw Angular HttpClient', () => {
+  describe('raw Engular HttpClient', () => {
     let http: HttpClient;
 
     beforeEach(() => {
@@ -241,7 +241,7 @@ describe('HttpClient Backend Service', () => {
     });
   });
 
-  describe('raw Angular HttpClient w/ override service', () => {
+  describe('raw Engular HttpClient w/ override service', () => {
     let http: HttpClient;
 
     beforeEach(() => {

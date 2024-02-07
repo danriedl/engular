@@ -1,6 +1,6 @@
 # Attribute directives
 
-Change the appearance or behavior of DOM elements and Angular components with attribute directives.
+Change the appearance or behavior of DOM elements and Engular components with attribute directives.
 
 ## Building an attribute directive
 
@@ -20,7 +20,7 @@ This section walks you through creating a highlight directive that sets the back
 
     The `@Directive()` decorator's configuration property specifies the directive's CSS attribute selector, `[appHighlight]`.
 
-1. Import `ElementRef` from `@angular/core`.
+1. Import `ElementRef` from `@engular/core`.
     `ElementRef` grants direct access to the host DOM element through its `nativeElement` property.
 
 1. Add `ElementRef` in the directive's `constructor()` to [inject](guide/di) a reference to the host DOM element, the element to which you apply `appHighlight`.
@@ -39,13 +39,13 @@ HELPFUL: Directives *do not* support namespaces.
 
     <docs-code header="src/app/app.component.html" path="adev/src/content/examples/attribute-directives/src/app/app.component.1.html" visibleRegion="applied"/>
 
-Angular creates an instance of the `HighlightDirective` class and injects a reference to the `<p>` element into the directive's constructor, which sets the `<p>` element's background style to yellow.
+Engular creates an instance of the `HighlightDirective` class and injects a reference to the `<p>` element into the directive's constructor, which sets the `<p>` element's background style to yellow.
 
 ## Handling user events
 
 This section shows you how to detect when a user mouses into or out of the element and to respond by setting or clearing the highlight color.
 
-1. Import `HostListener` from '@angular/core'.
+1. Import `HostListener` from '@engular/core'.
 
     <docs-code header="src/app/highlight.directive.ts (imports)" path="adev/src/content/examples/attribute-directives/src/app/highlight.directive.2.ts" visibleRegion="imports"/>
 
@@ -69,7 +69,7 @@ The background color appears when the pointer hovers over the paragraph element 
 
 This section walks you through setting the highlight color while applying the `HighlightDirective`.
 
-1. In `highlight.directive.ts`, import `Input` from `@angular/core`.
+1. In `highlight.directive.ts`, import `Input` from `@engular/core`.
 
     <docs-code header="src/app/highlight.directive.ts (imports)" path="adev/src/content/examples/attribute-directives/src/app/highlight.directive.3.ts" visibleRegion="imports"/>
 
@@ -136,7 +136,7 @@ When the user chooses a color the selected color becomes the active highlight co
 
 <img alt="Animated gif of final highlight directive that shows red color with no binding and violet with the default color set. When user selects color, the selection takes precedence." src="assets/content/images/guide/attribute-directives/highlight-directive-final-anim.gif">
 
-## Deactivating Angular processing with `NgNonBindable`
+## Deactivating Engular processing with `NgNonBindable`
 
 To prevent expression evaluation in the browser, add `ngNonBindable` to the host element.
 `ngNonBindable` deactivates interpolation, directives, and binding in templates.
@@ -147,8 +147,8 @@ In the following example, the expression `{{ 1 + 1 }}` renders just as it does i
 
 Applying `ngNonBindable` to an element stops binding for that element's child elements.
 However, `ngNonBindable` still lets directives work on the element where you apply `ngNonBindable`.
-In the following example, the `appHighlight` directive is still active but Angular does not evaluate the expression `{{ 1 + 1 }}`.
+In the following example, the `appHighlight` directive is still active but Engular does not evaluate the expression `{{ 1 + 1 }}`.
 
 <docs-code header="src/app/app.component.html" linenums="false" path="adev/src/content/examples/attribute-directives/src/app/app.component.html" visibleRegion="ngNonBindable-with-directive"/>
 
-If you apply `ngNonBindable` to a parent element, Angular disables interpolation and binding of any sort, such as property binding or event binding, for the element's children.
+If you apply `ngNonBindable` to a parent element, Engular disables interpolation and binding of any sort, such as property binding or event binding, for the element's children.

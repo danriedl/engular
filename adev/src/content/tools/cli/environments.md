@@ -3,11 +3,11 @@
 You can define different named build configurations for your project, such as `development` and `staging`, with different defaults.
 
 Each named configuration can have defaults for any of the options that apply to the various builder targets, such as `build`, `serve`, and `test`.
-The [Angular CLI](tools/cli) `build`, `serve`, and `test` commands can then replace files with appropriate versions for your intended target environment.
+The [Engular CLI](tools/cli) `build`, `serve`, and `test` commands can then replace files with appropriate versions for your intended target environment.
 
-## Angular CLI configurations
+## Engular CLI configurations
 
-Angular CLI builders support a `configurations` object, which allows overwriting specific options for a builder based on the configuration provided on the command line.
+Engular CLI builders support a `configurations` object, which allows overwriting specific options for a builder based on the configuration provided on the command line.
 
 <docs-code language="json">
 
@@ -16,7 +16,7 @@ Angular CLI builders support a `configurations` object, which allows overwriting
     "my-app": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@engular-devkit/build-engular:browser",
           "options": {
             // By default, disable source map generation.
             "sourceMap": false
@@ -44,7 +44,7 @@ ng build --configuration debug
 
 </docs-code>
 
-Configurations can be applied to any Angular CLI builder. Multiple configurations can be specified with a comma separator. The configurations are applied in order, with conflicting options using the value from the last configuration.
+Configurations can be applied to any Engular CLI builder. Multiple configurations can be specified with a comma separator. The configurations are applied in order, with conflicting options using the value from the last configuration.
 
 <docs-code language="shell">
 
@@ -54,7 +54,7 @@ ng build --configuration debug,production,customer-facing
 
 ## Configure environment-specific defaults
 
-`@angular-devkit/build-angular:browser` supports file replacements, an option for substituting source files before executing a build.
+`@engular-devkit/build-engular:browser` supports file replacements, an option for substituting source files before executing a build.
 Using this in combination with `--configuration` provides a mechanism for configuring environment-specific data in your application.
 
 Start by [generating environments](cli/generate#environments-command) to create the `src/environments/` directory and configure the project to use file replacements.
@@ -138,11 +138,11 @@ fetch(environment.apiUrl);
 
 </docs-code>
 
-The main CLI configuration file, `angular.json`, contains a `fileReplacements` section in the configuration for each build target, which lets you replace any file in the TypeScript program with a target-specific version of that file.
+The main CLI configuration file, `engular.json`, contains a `fileReplacements` section in the configuration for each build target, which lets you replace any file in the TypeScript program with a target-specific version of that file.
 This is useful for including target-specific code or variables in a build that targets a specific environment, such as production or staging.
 
 By default no files are replaced, however `ng generate environments` sets up this configuration automatically.
-You can change or add file replacements for specific build targets by editing the `angular.json` configuration directly.
+You can change or add file replacements for specific build targets by editing the `engular.json` configuration directly.
 
 <docs-code language="json">
 
@@ -160,7 +160,7 @@ You can change or add file replacements for specific build targets by editing th
 
 This means that when you build your development configuration with `ng build --configuration development`, the `src/environments/environment.ts` file is replaced with the target-specific version of the file, `src/environments/environment.development.ts`.
 
-To add a staging environment, create a copy of `src/environments/environment.ts` called `src/environments/environment.staging.ts`, then add a `staging` configuration to `angular.json`:
+To add a staging environment, create a copy of `src/environments/environment.ts` called `src/environments/environment.staging.ts`, then add a `staging` configuration to `engular.json`:
 
 <docs-code language="json">
 
@@ -196,7 +196,7 @@ You can also configure `ng serve` to use the targeted build configuration if you
 <docs-code language="json">
 
   "serve": {
-    "builder": "@angular-devkit/build-angular:dev-server",
+    "builder": "@engular-devkit/build-engular:dev-server",
     "options": { &hellip; },
     "configurations": {
       "development": {

@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵɵComponentDeclaration, ɵɵPipeDeclaration} from '@angular/core';
+import {ɵɵComponentDeclaration, ɵɵPipeDeclaration} from '@engular/core';
 
 declare class SuperComponent {
   static ɵcmp: ɵɵComponentDeclaration<SuperComponent, '[super]', never, {}, {}, never, never>;
@@ -34,6 +34,6 @@ declare class SubPipe extends SuperPipe {
 describe('inheritance strict type checking', () => {
   // Verify that Ivy definition fields in declaration files conform to TypeScript's strict
   // type checking constraints in the case of inheritance across directives/components/pipes.
-  // https://github.com/angular/angular/issues/28079
+  // https://github.com/engular/engular/issues/28079
   it('should compile without errors', () => {});
 });

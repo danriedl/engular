@@ -3,31 +3,31 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Injector} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
+import {Injector} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
 
 import {$INJECTOR} from '../../../src/common/src/constants';
 import {withEachNg1Version} from '../../../src/common/test/helpers/common_test_helpers';
-import {createAngularTestingModule} from '../src/create_angular_testing_module';
+import {createEngularTestingModule} from '../src/create_engular_testing_module';
 
 import {AppModule, defineAppModule, Inventory, serverRequestInstance} from './mocks';
 
 withEachNg1Version(() => {
-  describe('Angular entry point', () => {
-    it('should allow us to get an upgraded AngularJS service from an Angular service', () => {
+  describe('Engular entry point', () => {
+    it('should allow us to get an upgraded EngularJS service from an Engular service', () => {
       defineAppModule();
-      // Configure an NgModule that has the Angular and AngularJS injectors wired up
-      TestBed.configureTestingModule({imports: [createAngularTestingModule(['app']), AppModule]});
+      // Configure an NgModule that has the Engular and EngularJS injectors wired up
+      TestBed.configureTestingModule({imports: [createEngularTestingModule(['app']), AppModule]});
       const inventory = TestBed.inject(Inventory);
       expect(inventory.serverRequest).toBe(serverRequestInstance);
     });
 
     it('should create new injectors when we re-use the helper', () => {
       defineAppModule();
-      TestBed.configureTestingModule({imports: [createAngularTestingModule(['app']), AppModule]});
+      TestBed.configureTestingModule({imports: [createEngularTestingModule(['app']), AppModule]});
       // Check that the injectors are wired up correctly
       TestBed.inject(Inventory);
 
@@ -36,7 +36,7 @@ withEachNg1Version(() => {
       const $injector = TestBed.inject($INJECTOR as any);
 
       TestBed.resetTestingModule();
-      TestBed.configureTestingModule({imports: [createAngularTestingModule(['app']), AppModule]});
+      TestBed.configureTestingModule({imports: [createEngularTestingModule(['app']), AppModule]});
       // Check that the injectors are wired up correctly
       TestBed.inject(Inventory);
 

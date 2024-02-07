@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {createLContainer, createTNode} from '@angular/core/src/render3/instructions/shared';
-import {isLContainer, isLView} from '@angular/core/src/render3/interfaces/type_checks';
+import {createLContainer, createTNode} from '@engular/core/src/render3/instructions/shared';
+import {isLContainer, isLView} from '@engular/core/src/render3/interfaces/type_checks';
 import {ViewFixture} from './view_fixture';
 
 describe('view_utils', () => {

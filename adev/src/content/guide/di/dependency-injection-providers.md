@@ -2,7 +2,7 @@
 
 The previous sections described how to use class instances as dependencies.
 Aside from classes, you can also use values such as `boolean`, `string`, `Date`, and objects as dependencies.
-Angular provides the necessary APIs to make the dependency configuration flexible, so you can make those values available in DI.
+Engular provides the necessary APIs to make the dependency configuration flexible, so you can make those values available in DI.
 
 ## Specifying a provider token
 
@@ -18,7 +18,7 @@ You can, however, configure DI to associate the `Logger` provider token with a d
 So when the `Logger` is injected, the configured value is used instead.
 
 In fact, the class provider syntax is a shorthand expression that expands into a provider configuration, defined by the `Provider` interface.
-Angular expands the `providers` value in this case into a full provider object as follows:
+Engular expands the `providers` value in this case into a full provider object as follows:
 
 <docs-code header="src/app/app.component.ts" language="typescript">
 [{ provide: Logger, useClass: Logger }]
@@ -28,7 +28,7 @@ The expanded provider configuration is an object literal with two properties:
 
 - The `provide` property holds the token that serves as the key for consuming the dependency value.
 - The second property is a provider definition object, which tells the injector **how** to create the dependency value. The provider-definition can be one of the following:
-  - `useClass` - this option tells Angular DI to instantiate a provided class when a dependency is injected
+  - `useClass` - this option tells Engular DI to instantiate a provided class when a dependency is injected
   - `useExisting` - allows you to alias a token and reference any existing one.
   - `useFactory` - allows you to define a function that constructs a dependency.
   - `useValue` - provides a static value that should be used as a dependency.
@@ -72,7 +72,7 @@ export class EvenBetterLogger extends Logger {
 }
 </docs-code>
 
-Angular DI knows how to construct the `UserService` dependency, since it has been configured above and is available in the injector.
+Engular DI knows how to construct the `UserService` dependency, since it has been configured above and is available in the injector.
 
 ### Alias providers: useExisting
 
@@ -159,7 +159,7 @@ Use an `InjectionToken` object as provider token for non-class dependencies.
 The following example defines a token, `APP_CONFIG` of the type `InjectionToken`.
 
 <docs-code header="src/app/app.config.ts" language="typescript" highlight="[3]">
-import { InjectionToken } from '@angular/core';
+import { InjectionToken } from '@engular/core';
 
 export const APP_CONFIG = new InjectionToken<AppConfig>('app.config description');
 </docs-code>
@@ -188,7 +188,7 @@ Though the TypeScript `AppConfig` interface supports typing within the class, th
 In TypeScript, an interface is a design-time artifact, and does not have a runtime representation, or token, that the DI framework can use.
 
 When the transpiler changes TypeScript to JavaScript, the interface disappears because JavaScript doesn't have interfaces.
-Because there is no interface for Angular to find at runtime, the interface cannot be a token, nor can you inject it.
+Because there is no interface for Engular to find at runtime, the interface cannot be a token, nor can you inject it.
 
 <docs-code header="src/app/app.component.ts" language="typescript">
 // Can't use interface as provider token

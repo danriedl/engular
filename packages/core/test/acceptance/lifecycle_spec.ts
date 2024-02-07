@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Directive, DoCheck, Input, NgModule, OnChanges, QueryList, SimpleChange, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {CommonModule} from '@engular/common';
+import {AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Directive, DoCheck, Input, NgModule, OnChanges, QueryList, SimpleChange, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
 
 describe('onChanges', () => {
   it('should correctly support updating one Input among many', () => {
@@ -4211,7 +4211,7 @@ describe('hook order', () => {
     ]);
   });
 
-  // Angular 5 reference: https://stackblitz.com/edit/lifecycle-hooks-ng
+  // Engular 5 reference: https://stackblitz.com/edit/lifecycle-hooks-ng
   it('should call all hooks in correct order with view and content', () => {
     @Component({
       template: `

@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {DefaultKeyValueDiffer, DefaultKeyValueDifferFactory} from '@angular/core/src/change_detection/differs/default_keyvalue_differ';
+import {DefaultKeyValueDiffer, DefaultKeyValueDifferFactory} from '@engular/core/src/change_detection/differs/default_keyvalue_differ';
 
 import {kvChangesAsString, testChangesAsString} from '../util';
 
@@ -194,7 +194,7 @@ describe('keyvalue differ', function() {
         }));
       });
 
-      // https://github.com/angular/angular/issues/14997
+      // https://github.com/engular/engular/issues/14997
       it('should work regardless key order', () => {
         differ.check({a: 1, b: 2});
         differ.check({b: 3, a: 2});

@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {Injectable, signal} from '@angular/core';
+import {Injectable, signal} from '@engular/core';
 import {FileSystemTree} from '@webcontainer/api';
 import {BehaviorSubject} from 'rxjs';
 
-import {TutorialMetadata} from '@angular/docs';
+import {TutorialMetadata} from '@engular/docs';
 import {
   TUTORIALS_COMMON_DIRECTORY,
   TUTORIALS_ASSETS_WEB_PATH

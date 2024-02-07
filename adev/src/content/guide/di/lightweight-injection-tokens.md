@@ -6,7 +6,7 @@ Designing your library with *lightweight injection tokens* helps optimize the bu
 You can manage the dependency structure among your components and injectable services to optimize bundle size by using tree-shakable providers.
 This normally ensures that if a provided component or service is never actually used by the application, the compiler can remove its code from the bundle.
 
-Due to the way Angular stores injection tokens, it is possible that such an unused component or service can end up in the bundle anyway.
+Due to the way Engular stores injection tokens, it is possible that such an unused component or service can end up in the bundle anyway.
 This page describes a dependency-injection design pattern that supports proper tree-shaking by using lightweight injection tokens.
 
 The lightweight injection token design pattern is especially important for library developers.
@@ -127,7 +127,7 @@ The `LibHeaderToken` is retained, but it is only a class declaration, with no co
 It is small and does not materially impact the application size when retained after compilation.
 
 Instead, `LibHeaderComponent` itself implements the abstract `LibHeaderToken` class.
-You can safely use that token as the provider in the component definition, allowing Angular to correctly inject the concrete type.
+You can safely use that token as the provider in the component definition, allowing Engular to correctly inject the concrete type.
 
 To summarize, the lightweight injection token pattern consists of the following.
 
@@ -186,7 +186,7 @@ If the child component has been tree-shaken, there is no runtime reference to it
 ### Naming your lightweight injection token
 
 Lightweight injection tokens are only useful with components.
-The Angular style guide suggests that you name components using the "Component" suffix.
+The Engular style guide suggests that you name components using the "Component" suffix.
 The example "LibHeaderComponent" follows this convention.
 
 You should maintain the relationship between the component and its token while still distinguishing between them.

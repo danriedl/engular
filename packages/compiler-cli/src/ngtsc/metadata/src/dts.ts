@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import ts from 'typescript';
@@ -92,7 +92,7 @@ export class DtsMetadataReader implements MetadataReader {
     // 2) it injects `TemplateRef`
     const isStructural = !isComponent && ctorParams !== null && ctorParams.some(param => {
       return param.typeValueReference.kind === TypeValueReferenceKind.IMPORTED &&
-          param.typeValueReference.moduleName === '@angular/core' &&
+          param.typeValueReference.moduleName === '@engular/core' &&
           param.typeValueReference.importedName === 'TemplateRef';
     });
 

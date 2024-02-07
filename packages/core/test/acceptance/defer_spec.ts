@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵPLATFORM_BROWSER_ID as PLATFORM_BROWSER_ID} from '@angular/common';
-import {ApplicationRef, Attribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, createComponent, DebugElement, Directive, EnvironmentInjector, ErrorHandler, getDebugNode, inject, Input, NgZone, Pipe, PipeTransform, PLATFORM_ID, QueryList, Type, ViewChildren, ɵDEFER_BLOCK_DEPENDENCY_INTERCEPTOR} from '@angular/core';
-import {getComponentDef} from '@angular/core/src/render3/definition';
-import {ComponentFixture, DeferBlockBehavior, fakeAsync, flush, TestBed, tick} from '@angular/core/testing';
+import {ɵPLATFORM_BROWSER_ID as PLATFORM_BROWSER_ID} from '@engular/common';
+import {ApplicationRef, Attribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, createComponent, DebugElement, Directive, EnvironmentInjector, ErrorHandler, getDebugNode, inject, Input, NgZone, Pipe, PipeTransform, PLATFORM_ID, QueryList, Type, ViewChildren, ɵDEFER_BLOCK_DEPENDENCY_INTERCEPTOR} from '@engular/core';
+import {getComponentDef} from '@engular/core/src/render3/definition';
+import {ComponentFixture, DeferBlockBehavior, fakeAsync, flush, TestBed, tick} from '@engular/core/testing';
 
 /**
  * Clears all associated directive defs from a given component class.
@@ -1347,7 +1347,7 @@ describe('@defer', () => {
         (callback: IdleRequestCallback, options?: IdleRequestOptions): number => {
           onIdleCallbackQueue.set(id, callback);
           expect(idleCallbacksRequested).toBe(0);
-          expect(NgZone.isInAngularZone()).toBe(true);
+          expect(NgZone.isInEngularZone()).toBe(true);
           idleCallbacksRequested++;
           return id++;
         };

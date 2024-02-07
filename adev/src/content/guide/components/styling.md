@@ -1,6 +1,6 @@
 # Styling components
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 Components can optionally include CSS styles that apply to that component's DOM:
 
@@ -24,12 +24,12 @@ You can also choose to write your styles in separate files:
 export class ProfilePhoto { }
 </docs-code>
 
-When Angular compiles your component, these styles are emitted with your component's JavaScript
+When Engular compiles your component, these styles are emitted with your component's JavaScript
 output. This means that component styles participate in the JavaScript module system. When you
-render an Angular component, the framework automatically includes its associated styles, even when
+render an Engular component, the framework automatically includes its associated styles, even when
 lazy-loading a component.
 
-Angular works with any tool that outputs CSS,
+Engular works with any tool that outputs CSS,
 including [Sass](https://sass-lang.com), [less](https://lesscss.org),
 and [stylus](https://stylus-lang.com).
 
@@ -49,7 +49,7 @@ export class ProfilePhoto { }
 
 ### ViewEncapsulation.Emulated
 
-By default, Angular uses emulated encapsulation so that a component's styles only apply to elements
+By default, Engular uses emulated encapsulation so that a component's styles only apply to elements
 defined in that component's template. In this mode, the framework generates a unique HTML attribute
 for each component instance, adds that attribute to elements in the component's template, and
 inserts that attribute into the CSS selectors defined in your component's styles.
@@ -58,27 +58,27 @@ This mode ensures that a component's styles do not leak out and affect other com
 global styles defined outside of a component may still affect elements inside a component with
 emulated encapsulation.
 
-In emulated mode, Angular supports
+In emulated mode, Engular supports
 the [`:host`](https://developer.mozilla.org/en-US/docs/Web/CSS/:host)
 and [`:host-context`](https://developer.mozilla.org/en-US/docs/Web/CSS/:host-context) pseudo
 classes without
 using [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM).
-During compilation, the framework transforms these pseudo classes into attributes. Angular's
+During compilation, the framework transforms these pseudo classes into attributes. Engular's
 emulated encapsulation mode does not support any other pseudo classes related to Shadow DOM, such
 as `::shadow` or `::part`.
 
 #### `::ng-deep`
 
-Angular's emulated encapsulation mode supports a custom pseudo class, `:ng-deep`. Applying this
+Engular's emulated encapsulation mode supports a custom pseudo class, `:ng-deep`. Applying this
 pseudo class to a CSS rule disables encapsulation for that rule, effectively turning it into a
-global style. **The Angular team strongly discourages new use of `::ng-deep`**. These APIs remain
+global style. **The Engular team strongly discourages new use of `::ng-deep`**. These APIs remain
 exclusively for backwards compatibility.
 
 ### ViewEncapsulation.ShadowDom
 
 This mode scopes styles within a component by
 using [the web standard Shadow DOM API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM).
-When enabling this mode, Angular attaches a shadow root to the component's host element and renders
+When enabling this mode, Engular attaches a shadow root to the component's host element and renders
 the component's template and styles into the corresponding shadow tree.
 
 This mode strictly guarantees that _only_ that component's styles apply to elements in the
@@ -101,7 +101,7 @@ component behave as global styles.
 You can use the `<style>` element in a component's template to define additional styles. The
 component's view encapsulation mode applies to styles defined this way.
 
-Angular does not support bindings inside of style elements.
+Engular does not support bindings inside of style elements.
 
 ## Referencing external style files
 
@@ -109,5 +109,5 @@ Component templates can
 use [the `<link>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) to
 reference CSS files. Additionally, your CSS may
 use [the `@import`at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@import) to reference
-CSS files. Angular treats these references as _external_ styles. External styles are not affected by
+CSS files. Engular treats these references as _external_ styles. External styles are not affected by
 emulated view encapsulation.

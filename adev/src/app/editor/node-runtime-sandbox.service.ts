@@ -3,18 +3,18 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {DestroyRef, inject, Injectable, signal} from '@angular/core';
-import {checkFilesInDirectory} from '@angular/docs';
+import {DestroyRef, inject, Injectable, signal} from '@engular/core';
+import {checkFilesInDirectory} from '@engular/docs';
 import {FileSystemTree, WebContainer, WebContainerProcess} from '@webcontainer/api';
 import {BehaviorSubject, filter, map, Subject} from 'rxjs';
 
-import type {FileAndContent} from '@angular/docs';
-import {TutorialType} from '@angular/docs';
+import type {FileAndContent} from '@engular/docs';
+import {TutorialType} from '@engular/docs';
 
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@engular/core/rxjs-interop';
 import {AlertManager} from './alert-manager.service';
 import {EmbeddedTutorialManager} from './embedded-tutorial-manager.service';
 import {LoadingStep} from './enums/loading-steps';
@@ -36,7 +36,7 @@ export const PACKAGE_MANAGER = 'npm';
 /**
  * This service is responsible for handling the WebContainer instance, which
  * allows running a Node.js environment in the browser. It is used by the
- * embedded editor to run an executable Angular project in the browser.
+ * embedded editor to run an executable Engular project in the browser.
  *
  * It boots the WebContainer, loads the project files into the WebContainer
  * filesystem, install the project dependencies and starts the dev server.
@@ -59,7 +59,7 @@ export class NodeRuntimeSandbox {
   private readonly typingsLoader = inject(TypingsLoader);
 
   private readonly _isProjectInitialized = signal(false);
-  private readonly _isAngularCliInitialized = signal(false);
+  private readonly _isEngularCliInitialized = signal(false);
 
   private urlToPreview$ = new BehaviorSubject<string | null>('');
   private readonly _previewUrl$ = this.urlToPreview$.asObservable();
@@ -100,7 +100,7 @@ export class NodeRuntimeSandbox {
       this.terminalHandler.clearTerminals();
 
       if (this.embeddedTutorialManager.type() === TutorialType.CLI) {
-        await this.initAngularCli();
+        await this.initEngularCli();
       } else {
         await this.initProject();
       }
@@ -142,7 +142,7 @@ export class NodeRuntimeSandbox {
   async getSolutionFiles(): Promise<FileAndContent[]> {
     const webContainer = await this.webContainerPromise!;
 
-    const excludeFolders = ['node_modules', '.angular', 'dist'];
+    const excludeFolders = ['node_modules', '.engular', 'dist'];
 
     return await checkFilesInDirectory(
       '/',
@@ -152,7 +152,7 @@ export class NodeRuntimeSandbox {
   }
 
   /**
-   * Initialize the WebContainer for an Angular project
+   * Initialize the WebContainer for an Engular project
    */
   private async initProject(): Promise<void> {
     // prevent re-initialization
@@ -160,9 +160,9 @@ export class NodeRuntimeSandbox {
 
     // clean up the sandbox if it was initialized before so that the CLI can
     // be initialized without conflicts
-    if (this._isAngularCliInitialized()) {
+    if (this._isEngularCliInitialized()) {
       await this.cleanup();
-      this._isAngularCliInitialized.set(false);
+      this._isEngularCliInitialized.set(false);
     }
 
     this._isProjectInitialized.set(true);
@@ -227,11 +227,11 @@ export class NodeRuntimeSandbox {
   }
 
   /**
-   * Initialize the WebContainer for the Angular CLI
+   * Initialize the WebContainer for the Engular CLI
    */
-  private async initAngularCli() {
+  private async initEngularCli() {
     // prevent re-initialization
-    if (this._isAngularCliInitialized()) return;
+    if (this._isEngularCliInitialized()) return;
 
     // clean up the sandbox if a project was initialized before so the CLI can
     // be initialized without conflicts
@@ -241,10 +241,10 @@ export class NodeRuntimeSandbox {
       this._isProjectInitialized.set(false);
     }
 
-    this._isAngularCliInitialized.set(true);
+    this._isEngularCliInitialized.set(true);
 
     this.setLoading(LoadingStep.INSTALL);
-    const exitCode = await this.installAngularCli();
+    const exitCode = await this.installEngularCli();
 
     if (![PROCESS_EXIT_CODE.SIGTERM, PROCESS_EXIT_CODE.SUCCESS].includes(exitCode))
       this.setLoading(LoadingStep.READY);
@@ -429,9 +429,9 @@ export class NodeRuntimeSandbox {
     await this.typingsLoader.retrieveTypeDefinitions(webContainer!);
   }
 
-  private async installAngularCli(): Promise<number> {
-    // install Angular CLI
-    const installProcess = await this.spawn(PACKAGE_MANAGER, ['install', '@angular/cli@latest']);
+  private async installEngularCli(): Promise<number> {
+    // install Engular CLI
+    const installProcess = await this.spawn(PACKAGE_MANAGER, ['install', '@engular/cli@latest']);
 
     installProcess.output.pipeTo(
       new WritableStream({

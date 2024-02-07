@@ -3,9 +3,9 @@ to capture user input.
 
 Use this API to register directives, build form and data models, and provide validation to your forms. Validators can
 be synchronous or asynchronous depending on your use case. You can also extend the built-in functionality
-provided by forms in Angular by using the interfaces and tokens to create custom validators and input elements.
+provided by forms in Engular by using the interfaces and tokens to create custom validators and input elements.
 
-Angular forms allow you to:
+Engular forms allow you to:
 
 * Capture the current value and validation status of a form.
 * Track and listen for changes to the form's data model.

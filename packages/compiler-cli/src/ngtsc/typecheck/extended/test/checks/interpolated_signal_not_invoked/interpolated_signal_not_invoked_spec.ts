@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import ts from 'typescript';
@@ -33,7 +33,7 @@ runInEachFileSystem(() => {
             'TestCmp': `<div>{{ mySignal() }}</div>`,
           },
           source: `
-          import {signal} from '@angular/core';
+          import {signal} from '@engular/core';
 
           export class TestCmp {
             mySignal = signal(0);
@@ -60,7 +60,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ mySignal1 }} {{ mySignal2 }}</div>`,
         },
         source: `
-          import {signal, Signal} from '@angular/core';
+          import {signal, Signal} from '@engular/core';
 
           export class TestCmp {
             mySignal1 = signal<number>(0);
@@ -90,7 +90,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ count }}</div>`,
         },
         source: `
-          import {signal} from '@angular/core';
+          import {signal} from '@engular/core';
 
           export class TestCmp {
             count = signal(0).asReadonly();
@@ -118,7 +118,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ mySignal2 }}</div>`,
         },
         source: `
-          import {signal, Signal, computed} from '@angular/core';
+          import {signal, Signal, computed} from '@engular/core';
 
           export class TestCmp {
             mySignal1 = signal<number>(0);
@@ -147,7 +147,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ myInput }}</div>`,
         },
         source: `
-          import {input} from '@angular/core';
+          import {input} from '@engular/core';
 
           export class TestCmp {
             myInput = input(0);
@@ -175,7 +175,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ myRequiredInput }}</div>`,
         },
         source: `
-          import {input} from '@angular/core';
+          import {input} from '@engular/core';
 
           export class TestCmp {
             myRequiredInput = input.required(0);
@@ -203,7 +203,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ mySignal2() }}</div>`,
         },
         source: `
-          import {signal, Signal, computed} from '@angular/core';
+          import {signal, Signal, computed} from '@engular/core';
 
           export class TestCmp {
             mySignal1 = signal<number>(0);
@@ -229,7 +229,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ myInput() }} - {{ myRequiredInput() }}</div>`,
         },
         source: `
-          import {input} from '@angular/core';
+          import {input} from '@engular/core';
 
           export class TestCmp {
             myInput = input(0);
@@ -255,7 +255,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div id="{{mySignal}}"></div>`,
         },
         source: `
-          import {signal, Signal, computed} from '@angular/core';
+          import {signal, Signal, computed} from '@engular/core';
 
           export class TestCmp {
             mySignal = signal<number>(0);
@@ -283,7 +283,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div id="{{mySignal()}}"></div>`,
         },
         source: `
-          import {signal, Signal, computed} from '@angular/core';
+          import {signal, Signal, computed} from '@engular/core';
 
           export class TestCmp {
             mySignal = signal<number>(0);
@@ -308,7 +308,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div attr.id="my-{{mySignal}}-item"></div>`,
         },
         source: `
-          import {signal, Signal, computed} from '@angular/core';
+          import {signal, Signal, computed} from '@engular/core';
 
           export class TestCmp {
             mySignal = signal<number>(0);
@@ -337,7 +337,7 @@ runInEachFileSystem(() => {
              'TestCmp': `<div attr.id="my-{{mySignal()}}-item"></div>`,
            },
            source: `
-          import {signal, Signal, computed} from '@angular/core';
+          import {signal, Signal, computed} from '@engular/core';
 
           export class TestCmp {
             mySignal = signal<number>(0);
@@ -363,7 +363,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div id="{{myObject.myObject2.myNestedSignal}}"></div>`,
         },
         source: `
-          import {signal, Signal, computed} from '@angular/core';
+          import {signal, Signal, computed} from '@engular/core';
 
           export class TestCmp {
             myObject = {myObject2: {myNestedSignal: signal<number>(0)}};
@@ -391,7 +391,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ mySignal }} {{ mySignal2 }}</div>`,
         },
         source: `
-          import {signal} from '@not-angular/core';
+          import {signal} from '@not-engular/core';
 
           export class TestCmp {
             mySignal = signal(0);
@@ -417,7 +417,7 @@ runInEachFileSystem(() => {
           'TestCmp': `<div>{{ foo(mySignal) }} </div>`,
         },
         source: `
-          import {signal} from '@angular/core';
+          import {signal} from '@engular/core';
 
           export class TestCmp {
             mySignal = signal(0);

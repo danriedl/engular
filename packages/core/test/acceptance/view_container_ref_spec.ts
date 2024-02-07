@@ -3,21 +3,21 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule, DOCUMENT} from '@angular/common';
-import {computeMsgId} from '@angular/compiler';
-import {ChangeDetectorRef, Compiler, Component, createComponent, createEnvironmentInjector, Directive, DoCheck, ElementRef, EmbeddedViewRef, EnvironmentInjector, ErrorHandler, InjectionToken, Injector, Input, NgModule, NgModuleRef, NO_ERRORS_SCHEMA, OnDestroy, OnInit, Pipe, PipeTransform, QueryList, Renderer2, RendererFactory2, RendererType2, Sanitizer, TemplateRef, ViewChild, ViewChildren, ViewContainerRef, ɵsetDocument} from '@angular/core';
-import {ngDevModeResetPerfCounters} from '@angular/core/src/util/ng_dev_mode';
-import {ComponentFixture, TestBed, TestComponentRenderer} from '@angular/core/testing';
-import {clearTranslations, loadTranslations} from '@angular/localize';
-import {By, DomSanitizer} from '@angular/platform-browser';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {CommonModule, DOCUMENT} from '@engular/common';
+import {computeMsgId} from '@engular/compiler';
+import {ChangeDetectorRef, Compiler, Component, createComponent, createEnvironmentInjector, Directive, DoCheck, ElementRef, EmbeddedViewRef, EnvironmentInjector, ErrorHandler, InjectionToken, Injector, Input, NgModule, NgModuleRef, NO_ERRORS_SCHEMA, OnDestroy, OnInit, Pipe, PipeTransform, QueryList, Renderer2, RendererFactory2, RendererType2, Sanitizer, TemplateRef, ViewChild, ViewChildren, ViewContainerRef, ɵsetDocument} from '@engular/core';
+import {ngDevModeResetPerfCounters} from '@engular/core/src/util/ng_dev_mode';
+import {ComponentFixture, TestBed, TestComponentRenderer} from '@engular/core/testing';
+import {clearTranslations, loadTranslations} from '@engular/localize';
+import {By, DomSanitizer} from '@engular/platform-browser';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 describe('ViewContainerRef', () => {
   /**
-   * Gets the inner HTML of the given element with all HTML comments and Angular internal
+   * Gets the inner HTML of the given element with all HTML comments and Engular internal
    * reflect attributes omitted. This makes HTML comparisons easier and less verbose.
    */
   function getElementHtml(element: Element) {
@@ -1685,7 +1685,7 @@ describe('ViewContainerRef', () => {
       constructor(public vcr: ViewContainerRef) {}
     }
 
-    // see running stackblitz example: https://stackblitz.com/edit/angular-w3myy6
+    // see running stackblitz example: https://stackblitz.com/edit/engular-w3myy6
     it('should work with a template declared in a different component view from insertion', () => {
       @Component({selector: 'child', template: `<div [tplDir]="tpl">{{name}}</div>`})
       class Child {
@@ -1721,7 +1721,7 @@ describe('ViewContainerRef', () => {
       expect(getElementHtml(fixture.nativeElement)).toEqual(`<child><div>Child</div></child>`);
     });
 
-    // see running stackblitz example: https://stackblitz.com/edit/angular-3vplec
+    // see running stackblitz example: https://stackblitz.com/edit/engular-3vplec
     it('should work with nested for loops with different declaration / insertion points', () => {
       @Component({
         selector: 'loop-comp',
@@ -1953,7 +1953,7 @@ describe('ViewContainerRef', () => {
   });
 
   describe('lifecycle hooks', () => {
-    // Angular 5 reference: https://stackblitz.com/edit/lifecycle-hooks-vcref
+    // Engular 5 reference: https://stackblitz.com/edit/lifecycle-hooks-vcref
     const log: string[] = [];
 
     @Component({selector: 'hooks', template: `{{name}}`})

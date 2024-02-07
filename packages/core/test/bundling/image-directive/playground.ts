@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {NgOptimizedImage, provideImgixLoader} from '@angular/common';
-import {Component} from '@angular/core';
+import {NgOptimizedImage, provideImgixLoader} from '@engular/common';
+import {Component} from '@engular/core';
 
 @Component({
   selector: 'basic',
@@ -35,7 +35,7 @@ import {Component} from '@angular/core';
   template: `
     <h1> 
       <img ngSrc="a.png" width="50" height="50" priority ngSrcset="1x, 2x">
-      <span>Angular image app</span>
+      <span>Engular image app</span>
     </h1>
     <main>
       <div class="spacer"></div>

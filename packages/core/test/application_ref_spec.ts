@@ -3,20 +3,20 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {DOCUMENT, ɵgetDOM as getDOM} from '@angular/common';
-import {ResourceLoader} from '@angular/compiler';
-import {APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, Compiler, CompilerFactory, Component, EnvironmentInjector, InjectionToken, LOCALE_ID, NgModule, NgZone, PlatformRef, RendererFactory2, TemplateRef, Type, ViewChild, ViewContainerRef} from '@angular/core';
-import {ErrorHandler} from '@angular/core/src/error_handler';
-import {ComponentRef} from '@angular/core/src/linker/component_factory';
-import {createEnvironmentInjector, getLocaleId} from '@angular/core/src/render3';
-import {BrowserModule} from '@angular/platform-browser';
-import {DomRendererFactory2} from '@angular/platform-browser/src/dom/dom_renderer';
-import {createTemplate, dispatchEvent, getContent} from '@angular/platform-browser/testing/src/browser_util';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
-import type {ServerModule} from '@angular/platform-server';
+import {DOCUMENT, ɵgetDOM as getDOM} from '@engular/common';
+import {ResourceLoader} from '@engular/compiler';
+import {APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, Compiler, CompilerFactory, Component, EnvironmentInjector, InjectionToken, LOCALE_ID, NgModule, NgZone, PlatformRef, RendererFactory2, TemplateRef, Type, ViewChild, ViewContainerRef} from '@engular/core';
+import {ErrorHandler} from '@engular/core/src/error_handler';
+import {ComponentRef} from '@engular/core/src/linker/component_factory';
+import {createEnvironmentInjector, getLocaleId} from '@engular/core/src/render3';
+import {BrowserModule} from '@engular/platform-browser';
+import {DomRendererFactory2} from '@engular/platform-browser/src/dom/dom_renderer';
+import {createTemplate, dispatchEvent, getContent} from '@engular/platform-browser/testing/src/browser_util';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
+import type {ServerModule} from '@engular/platform-server';
 
 import {ApplicationRef} from '../src/application/application_ref';
 import {NoopNgZone} from '../src/zone/ng_zone';
@@ -27,7 +27,7 @@ let serverPlatformModule: Promise<Type<ServerModule>>|null = null;
 if (isNode) {
   // Only when we are in Node, we load the platform-server module. It will
   // be required later in specs for declaring the platform module.
-  serverPlatformModule = import('@angular/platform-server').then(m => m.ServerModule);
+  serverPlatformModule = import('@engular/platform-server').then(m => m.ServerModule);
 }
 
 @Component({selector: 'bootstrap-app', template: 'hello'})
@@ -449,7 +449,7 @@ describe('bootstrap', () => {
                const expectedErrMsg = `NG0403: The module MyModule was bootstrapped, ` +
                    `but it does not declare "@NgModule.bootstrap" components nor a "ngDoBootstrap" method. ` +
                    `Please define one of these. ` +
-                   `Find more at https://angular.io/errors/NG0403`;
+                   `Find more at https://engular.io/errors/NG0403`;
                expect(e.message).toEqual(expectedErrMsg);
                expect(mockConsole.res[0].join('#')).toEqual('ERROR#Error: ' + expectedErrMsg);
              });
@@ -857,13 +857,13 @@ describe('injector', () => {
 class MockConsole {
   res: any[][] = [];
   log(...args: any[]): void {
-    // Logging from ErrorHandler should run outside of the Angular Zone.
-    NgZone.assertNotInAngularZone();
+    // Logging from ErrorHandler should run outside of the Engular Zone.
+    NgZone.assertNotInEngularZone();
     this.res.push(args);
   }
   error(...args: any[]): void {
-    // Logging from ErrorHandler should run outside of the Angular Zone.
-    NgZone.assertNotInAngularZone();
+    // Logging from ErrorHandler should run outside of the Engular Zone.
+    NgZone.assertNotInEngularZone();
     this.res.push(args);
   }
 }

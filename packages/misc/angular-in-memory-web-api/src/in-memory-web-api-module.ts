@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {XhrFactory} from '@angular/common';
-import {HttpBackend, ɵPRIMARY_HTTP_BACKEND as PRIMARY_HTTP_BACKEND} from '@angular/common/http';
-import {ModuleWithProviders, NgModule, Type} from '@angular/core';
+import {XhrFactory} from '@engular/common';
+import {HttpBackend, ɵPRIMARY_HTTP_BACKEND as PRIMARY_HTTP_BACKEND} from '@engular/common/http';
+import {ModuleWithProviders, NgModule, Type} from '@engular/core';
 
 import {httpClientInMemBackendServiceFactory} from './http-client-in-memory-web-api-module';
 import {InMemoryBackendConfig, InMemoryBackendConfigArgs, InMemoryDbService} from './interfaces';
@@ -16,7 +16,7 @@ import {InMemoryBackendConfig, InMemoryBackendConfigArgs, InMemoryDbService} fro
 @NgModule()
 export class InMemoryWebApiModule {
   /**
-   *  Redirect BOTH Angular `Http` and `HttpClient` XHR calls
+   *  Redirect BOTH Engular `Http` and `HttpClient` XHR calls
    *  to in-memory data store that implements `InMemoryDbService`.
    *  with class that implements InMemoryDbService and creates an in-memory database.
    *
@@ -56,7 +56,7 @@ export class InMemoryWebApiModule {
    *
    * Enable and configure the in-memory web api in a lazy-loaded feature module.
    * Same as `forRoot`.
-   * This is a feel-good method so you can follow the Angular style guide for lazy-loaded modules.
+   * This is a feel-good method so you can follow the Engular style guide for lazy-loaded modules.
    */
   static forFeature(
     dbCreator: Type<InMemoryDbService>,

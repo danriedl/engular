@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {isFirefox, isIos} from '@angular/docs';
+import {NgIf, NgSwitch, NgSwitchCase} from '@engular/common';
+import {ChangeDetectionStrategy, Component, inject} from '@engular/core';
+import {isFirefox, isIos} from '@engular/docs';
 
 import {ErrorType, NodeRuntimeState} from '../node-runtime-state.service';
 

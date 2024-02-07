@@ -3,16 +3,16 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import '@angular/localize/init';
-import '@angular/compiler';
+import '@engular/localize/init';
+import '@engular/compiler';
 
-import {clearTranslations} from '@angular/localize';
-import {withBody} from '@angular/private/testing';
+import {clearTranslations} from '@engular/localize';
+import {withBody} from '@engular/private/testing';
 import * as path from 'path';
 
-const PACKAGE = 'angular/packages/core/test/bundling/todo_i18n';
+const PACKAGE = 'engular/packages/core/test/bundling/todo_i18n';
 const BUNDLES = ['bundle.js', 'bundle.debug.min.js', 'bundle.min.js'];
 
 describe('functional test for todo i18n', () => {

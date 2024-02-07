@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {PLATFORM_BROWSER_ID, PLATFORM_SERVER_ID} from '@angular/common/src/platform_id';
-import {afterNextRender, afterRender, AfterRenderPhase, AfterRenderRef, ApplicationRef, ChangeDetectorRef, Component, computed, createComponent, effect, ErrorHandler, inject, Injector, NgZone, PLATFORM_ID, signal, Type, ViewContainerRef, ɵinternalAfterNextRender as internalAfterNextRender} from '@angular/core';
-import {NoopNgZone} from '@angular/core/src/zone/ng_zone';
-import {TestBed} from '@angular/core/testing';
+import {PLATFORM_BROWSER_ID, PLATFORM_SERVER_ID} from '@engular/common/src/platform_id';
+import {afterNextRender, afterRender, AfterRenderPhase, AfterRenderRef, ApplicationRef, ChangeDetectorRef, Component, computed, createComponent, effect, ErrorHandler, inject, Injector, NgZone, PLATFORM_ID, signal, Type, ViewContainerRef, ɵinternalAfterNextRender as internalAfterNextRender} from '@engular/core';
+import {NoopNgZone} from '@engular/core/src/zone/ng_zone';
+import {TestBed} from '@engular/core/testing';
 
 import {EnvironmentInjector} from '../../src/di';
 
@@ -370,14 +370,14 @@ describe('after render hooks', () => {
         expect(innerHookCount).toBe(2);
       });
 
-      it('should run outside of the Angular zone', () => {
+      it('should run outside of the Engular zone', () => {
         const zoneLog: boolean[] = [];
 
         @Component({selector: 'comp'})
         class Comp {
           constructor() {
             afterRender(() => {
-              zoneLog.push(NgZone.isInAngularZone());
+              zoneLog.push(NgZone.isInEngularZone());
             });
           }
         }
@@ -764,14 +764,14 @@ describe('after render hooks', () => {
         expect(innerHookCount).toBe(1);
       });
 
-      it('should run outside of the Angular zone', () => {
+      it('should run outside of the Engular zone', () => {
         const zoneLog: boolean[] = [];
 
         @Component({selector: 'comp'})
         class Comp {
           constructor() {
             afterNextRender(() => {
-              zoneLog.push(NgZone.isInAngularZone());
+              zoneLog.push(NgZone.isInEngularZone());
             });
           }
         }

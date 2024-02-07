@@ -1,7 +1,7 @@
 # Complex animation sequences
 
 So far, we've learned simple animations of single HTML elements.
-Angular also lets you animate coordinated sequences, such as an entire grid or list of elements as they enter and leave a page.
+Engular also lets you animate coordinated sequences, such as an entire grid or list of elements as they enter and leave a page.
 You can choose to run multiple animations in parallel, or run discrete animations sequentially, one following another.
 
 The functions that control complex animation sequences are:
@@ -22,7 +22,7 @@ Most complex animations rely on the `query()` function to find child elements an
 | `query()` followed by `animate()`      | Used to query simple HTML elements and directly apply animations to them.                                                                                                                            |
 | `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation \(which would be otherwise be blocked by the current/parent element's animation\). |
 
-The first argument of `query()` is a [css selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) string which can also contain the following Angular-specific tokens:
+The first argument of `query()` is a [css selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) string which can also contain the following Engular-specific tokens:
 
 | Tokens                     | Details |
 |:---                        |:---     |
@@ -110,17 +110,17 @@ For each change:
 
 ## Animating the items of a reordering list
 
-Although Angular animates correctly `*ngFor` list items out of the box, it will not be able to do so if their ordering changes.
+Although Engular animates correctly `*ngFor` list items out of the box, it will not be able to do so if their ordering changes.
 This is because it will lose track of which element is which, resulting in broken animations.
-The only way to help Angular keep track of such elements is by assigning a `TrackByFunction` to the `NgForOf` directive.
-This makes sure that Angular always knows which element is which, thus allowing it to apply the correct animations to the correct elements all the time.
+The only way to help Engular keep track of such elements is by assigning a `TrackByFunction` to the `NgForOf` directive.
+This makes sure that Engular always knows which element is which, thus allowing it to apply the correct animations to the correct elements all the time.
 
 IMPORTANT:
 If you need to animate the items of an `*ngFor` list and there is a possibility that the order of such items will change during runtime, always use a `TrackByFunction`.
 
 ## Animations and Component View Encapsulation
 
-Angular animations are based on the components DOM structure and do not directly take [View Encapsulation](/guide/components/styling#style-scoping) into account, this means that components using `ViewEncapsulation.Emulated` behave exactly as if they were using `ViewEncapsulation.None` (`ViewEncapsulation.ShadowDom` behaves differently as we'll discuss shortly).
+Engular animations are based on the components DOM structure and do not directly take [View Encapsulation](/guide/components/styling#style-scoping) into account, this means that components using `ViewEncapsulation.Emulated` behave exactly as if they were using `ViewEncapsulation.None` (`ViewEncapsulation.ShadowDom` behaves differently as we'll discuss shortly).
 
 For example if the `query()` function (which you'll see more of in the rest of the Animations guide) were to be applied at the top of a tree of components using the emulated view encapsulation, such query would be able to identify (and thus animate) DOM elements on any depth of the tree.
 
@@ -128,15 +128,15 @@ On the other hand the `ViewEncapsulation.ShadowDom` changes the component's DOM 
 
 ## Animation sequence summary
 
-Angular functions for animating multiple elements start with `query()` to find inner elements; for example, gathering all images within a `<div>`.
+Engular functions for animating multiple elements start with `query()` to find inner elements; for example, gathering all images within a `<div>`.
 The remaining functions, `stagger()`, [`group()`](api/animations/group), and `sequence()`, apply cascades or let you control how multiple animation steps are applied.
 
-## More on Angular animations
+## More on Engular animations
 
 You might also be interested in the following:
 
 <docs-pill-row>
-  <docs-pill href="guide/animations" title="Introduction to Angular animations"/>
+  <docs-pill href="guide/animations" title="Introduction to Engular animations"/>
   <docs-pill href="guide/animations/transition-and-triggers" title="Transition and triggers"/>
   <docs-pill href="guide/animations/reusable-animations" title="Reusable animations"/>
   <docs-pill href="guide/animations/route-animations" title="Route transition animations"/>

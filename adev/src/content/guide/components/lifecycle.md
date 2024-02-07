@@ -1,20 +1,20 @@
 # Component Lifecycle
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 A component's **lifecycle** is the sequence of steps that happen between the component's creation
-and its destruction. Each step represents a different part of Angular's process for rendering
+and its destruction. Each step represents a different part of Engular's process for rendering
 components and checking them for updates over time.
 
 In your components, you can implement **lifecycle hooks** to run code during these steps.
 Lifecycle hooks that relate to a specific component instance are implemented as methods on your
-component class. Lifecycle hooks that relate the Angular application as a whole are implemented
+component class. Lifecycle hooks that relate the Engular application as a whole are implemented
 as functions that accept a callback.
 
-A component's lifecycle is tightly connected to how Angular checks your components for changes over
-time. For the purposes of understanding this lifecycle, you only need to know that Angular walks
+A component's lifecycle is tightly connected to how Engular checks your components for changes over
+time. For the purposes of understanding this lifecycle, you only need to know that Engular walks
 your application tree from top to bottom, checking template bindings for changes. The lifecycle
-hooks described below run while Angular is doing this traversal. This traversal visits each
+hooks described below run while Engular is doing this traversal. This traversal visits each
 component exactly once, so you should always avoid making further state changes in the middle of the
 process.
 
@@ -33,14 +33,14 @@ process.
       <td>
         <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor" target="_blank">
           Standard JavaScript class constructor
-        </a>. Runs when Angular instantiates the component.
+        </a>. Runs when Engular instantiates the component.
       </td>
     </tr>
     <tr>
       <td rowspan="7">Change<p>Detection</td>
       <td><code>ngOnInit</code>
       </td>
-      <td>Runs once after Angular has initialized all the component's inputs.</td>
+      <td>Runs once after Engular has initialized all the component's inputs.</td>
     </tr>
     <tr>
       <td><code>ngOnChanges</code></td>
@@ -85,7 +85,7 @@ process.
 
 ### ngOnInit
 
-The `ngOnInit` method runs after Angular has initialized all the components inputs with their
+The `ngOnInit` method runs after Engular has initialized all the components inputs with their
 initial values. A component's `ngOnInit` runs exactly once.
 
 This step happens _before_ the component's own template is initialized. This means that you can
@@ -131,7 +131,7 @@ TypeScript property name as a key, rather than the alias.
 
 ### ngOnDestroy
 
-The `ngOnDestroy` method runs once just before a component is destroyed. Angular destroys a
+The `ngOnDestroy` method runs once just before a component is destroyed. Engular destroys a
 component when it is no longer shown on the page, such as being hidden by `NgIf` or upon navigating
 to another page.
 
@@ -163,9 +163,9 @@ all cleanup code in the `ngOnDestroy` method.
 
 ### ngDoCheck
 
-The `ngDoCheck` method runs before every time Angular checks a component's template for changes.
+The `ngDoCheck` method runs before every time Engular checks a component's template for changes.
 
-You can use this lifecycle hook to manually check for state changes outside of Angular's normal
+You can use this lifecycle hook to manually check for state changes outside of Engular's normal
 change detection, manually updating the component's state.
 
 This method runs very frequently and can significantly impact your page's performance. Avoid
@@ -222,7 +222,7 @@ an [ExpressionChangedAfterItHasBeenCheckedError](errors/NG0100).
 ### afterRender and afterNextRender
 
 The `afterRender` and `afterNextRender` functions let you register a **render callback** to be
-invoked after Angular has finished rendering _all components_ on the page into the DOM.
+invoked after Engular has finished rendering _all components_ on the page into the DOM.
 
 These functions are different from the other lifecycle hooks described in this guide. Rather than a
 class method, they are standalone functions that accept a callback. The execution of render
@@ -233,7 +233,7 @@ an [injection context](guide/di/dependency-injection-context), typically a
 component's constructor.
 
 You can use render callbacks to perform manual DOM operations.
-See [Using DOM APIs](guide/components/dom-apis) for guidance on working with the DOM in Angular.
+See [Using DOM APIs](guide/components/dom-apis) for guidance on working with the DOM in Engular.
 
 Render callbacks do not run during server-side rendering or during build-time pre-rendering.
 
@@ -245,7 +245,7 @@ before _read_ operations in order to minimize
 [layout thrashing](https://web.dev/avoid-large-complex-layouts-and-layout-thrashing).
 
 ```ts
-import {Component, ElementRef, afterNextRender, AfterRenderPhase} from '@angular/core';
+import {Component, ElementRef, afterNextRender, AfterRenderPhase} from '@engular/core';
 
 @Component({...})
 export class UserProfile {
@@ -278,7 +278,7 @@ There are four phases, run in the following order:
 
 ## Lifecycle interfaces
 
-Angular provides a TypeScript interface for each lifecycle method. You can optionally import
+Engular provides a TypeScript interface for each lifecycle method. You can optionally import
 and `implement` these interfaces to ensure that your implementation does not have any typos or
 misspellings.
 
@@ -298,7 +298,7 @@ export class UserProfile implements OnInit {
 
 ## Execution order
 
-The following diagrams show the execution order of Angular's lifecycle hooks.
+The following diagrams show the execution order of Engular's lifecycle hooks.
 
 ### During initialization
 
@@ -337,4 +337,4 @@ CHANGE--Rendering-->afterRender
 When you put one or more directives on the same element as a component, either in a template or with
 the `hostDirectives` property, the framework does not guarantee any ordering of a given lifecycle
 hook between the component and the directives on a single element. Never depend on an observed
-ordering, as this may change in later versions of Angular.
+ordering, as this may change in later versions of Engular.

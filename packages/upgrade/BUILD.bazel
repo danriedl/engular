@@ -20,7 +20,7 @@ ng_module(
 
 ng_package(
     name = "npm_package",
-    package_name = "@angular/upgrade",
+    package_name = "@engular/upgrade",
     srcs = [
         "package.json",
     ],
@@ -48,8 +48,8 @@ api_golden_test_npm_package(
         ":npm_package",
         "//goldens:public-api",
     ],
-    golden_dir = "angular/goldens/public-api/upgrade",
-    npm_package = "angular/packages/upgrade/npm_package",
+    golden_dir = "engular/goldens/public-api/upgrade",
+    npm_package = "engular/packages/upgrade/npm_package",
 )
 
 filegroup(
@@ -67,5 +67,5 @@ generate_api_docs(
         "//packages:common_files_and_deps_for_docs",
     ],
     entry_point = ":index.ts",
-    module_name = "@angular/upgrade",
+    module_name = "@engular/upgrade",
 )

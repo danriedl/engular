@@ -1,6 +1,6 @@
 # Server-side rendering
 
-Server-side rendering (SSR) is a process that involves rendering pages on the server, resulting in initial HTML content which contains initial page state. Once the HTML content is delivered to a browser, Angular initializes the application and utilizes the data contained within the HTML.
+Server-side rendering (SSR) is a process that involves rendering pages on the server, resulting in initial HTML content which contains initial page state. Once the HTML content is delivered to a browser, Engular initializes the application and utilizes the data contained within the HTML.
 
 ## Why use SSR?
 
@@ -20,11 +20,11 @@ ng new --ssr
 
 </docs-code>
 
-To add SSR to an **existing** project, use the Angular CLI `ng add` command.
+To add SSR to an **existing** project, use the Engular CLI `ng add` command.
 
 <docs-code language="shell">
 
-ng add @angular/ssr
+ng add @engular/ssr
 
 </docs-code>
 
@@ -45,7 +45,7 @@ To verify that the application is server-side rendered, run it locally with `ng 
 
 ## Configure server-side rendering
 
-The `server.ts` file configures a Node.js Express server and Angular server-side rendering. `CommonEngine` is used to render an Angular application.
+The `server.ts` file configures a Node.js Express server and Engular server-side rendering. `CommonEngine` is used to render an Engular application.
 
 <docs-code path="adev/src/content/examples/ssr/server.ts" visibleLines="[31,45]"></docs-code>
 
@@ -61,7 +61,7 @@ The `render` method of `CommonEngine` accepts an object with the following prope
 | `document`          | The initial DOM to use for bootstrapping the server application.                         |               |
 | `documentFilePath`  | File path of the initial DOM to use to bootstrap the server application.                 |               |
 
-Angular CLI will scaffold an initial server implementation focused on server-side rendering your Angular application. This server can be extended to support other features such as API routes, redirects, static assets, and more. See [Express documentation](https://expressjs.com/) for more details.
+Engular CLI will scaffold an initial server implementation focused on server-side rendering your Engular application. This server can be extended to support other features such as API routes, redirects, static assets, and more. See [Express documentation](https://expressjs.com/) for more details.
 
 ## Hydration
 
@@ -93,7 +93,7 @@ In general, code which relies on browser-specific symbols should only be execute
 
 <docs-code language="typescript">
 
-import { Component, ViewChild, afterNextRender } from '@angular/core';
+import { Component, ViewChild, afterNextRender } from '@engular/core';
 
 @Component({
   selector: 'my-cmp',
@@ -112,6 +112,6 @@ export class MyComponent {
 
 </docs-code>
 
-## Using Angular Service Worker
+## Using Engular Service Worker
 
-If you are using Angular on the server in combination with the Angular service worker, the behavior deviates from the normal server-side rendering behavior. The initial server request will be rendered on the server as expected. However, after that initial request, subsequent requests are handled by the service worker and always client-side rendered.
+If you are using Engular on the server in combination with the Engular service worker, the behavior deviates from the normal server-side rendering behavior. The initial server request will be rendered on the server as expected. However, after that initial request, subsequent requests are handled by the service worker and always client-side rendered.

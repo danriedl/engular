@@ -3,7 +3,7 @@ load("//tools/circular_dependency_test:index.bzl", "circular_dependency_test")
 
 circular_dependency_test(
     name = "circular_deps_test",
-    entry_point = "angular/packages/upgrade/static/index.mjs",
+    entry_point = "engular/packages/upgrade/static/index.mjs",
     deps = ["//packages/upgrade/static"],
 )
 
@@ -29,7 +29,7 @@ ts_library(
 karma_web_test_suite(
     name = "test",
     static_files = [
-        "//:angularjs_scripts",
+        "//:engularjs_scripts",
     ],
     deps = [
         ":test_lib",

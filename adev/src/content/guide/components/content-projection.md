@@ -1,6 +1,6 @@
 # Content projection with ng-content
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 You often need to create components that act as containers for different types of content. For
 example, you may want to create a custom card component:
@@ -25,7 +25,7 @@ export class CustomCard {/* ... */}
 
 Tip: `<ng-content>` works similarly
 to [the native `<slot>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot),
-but with some Angular-specific functionality.
+but with some Engular-specific functionality.
 
 When you use a component with `<ng-content>`, any children of the component host element are
 rendered, or **projected**, at the location of that `<ng-content>`:
@@ -59,12 +59,12 @@ export class CustomCard {/* ... */}
 </custom-card>
 ```
 
-Angular refers to any children of a component passed this way as that component's **content**. This
+Engular refers to any children of a component passed this way as that component's **content**. This
 is distinct from the component's **view**, which refers to the elements defined in the component's
 template.
 
 **The `<ng-content>` element is neither a component nor DOM element**. Instead, it is a special
-placeholder that tells Angular where to render content. Angular's compiler processes
+placeholder that tells Engular where to render content. Engular's compiler processes
 all `<ng-content>` elements at build-time. You cannot insert, remove, or modify `<ng-content>` at
 run time. You cannot add **<span style="text-decoration:underline;">directives</span>**, styles, or
 arbitrary attributes to `<ng-content>`.
@@ -74,7 +74,7 @@ conditional rendering of component content, see [Template fragments](api/core/ng
 
 ## Multiple content placeholders
 
-Angular supports projecting multiple different elements into different `<ng-content>` placeholders
+Engular supports projecting multiple different elements into different `<ng-content>` placeholders
 based on CSS selector. Expanding the card example from above, you could create two placeholders for
 a card title and a card body by using the `select` attribute:
 
@@ -149,9 +149,9 @@ elements that don't match one of the component's placeholders do not render into
 
 ## Aliasing content for projection
 
-Angular supports a special attribute, `ngProjectAs`, that allows you to specify a CSS selector on
+Engular supports a special attribute, `ngProjectAs`, that allows you to specify a CSS selector on
 any element. Whenever an element with `ngProjectAs` is checked against an `<ng-content>`
-placeholder, Angular compares against the `ngProjectAs` value instead of the element's identity:
+placeholder, Engular compares against the `ngProjectAs` value instead of the element's identity:
 
 ```html
 <!-- Component template -->

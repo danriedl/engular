@@ -1,8 +1,8 @@
 # Custom events with outputs
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
-Angular components can define custom events by assigning a property to a new `EventEmitter` and adding the `@Output` decorator:
+Engular components can define custom events by assigning a property to a new `EventEmitter` and adding the `@Output` decorator:
 
 <docs-code language="ts" highlight="">
 @Component({...})
@@ -21,9 +21,9 @@ You can emit an event by calling the `emit` method on the `EventEmitter`:
   this.panelClosed.emit();
 </docs-code>
 
-Angular refers to properties marked with the `@Output` decorator as **outputs**. You can use outputs to pass data to other components, similar to native browser events like `click`.
+Engular refers to properties marked with the `@Output` decorator as **outputs**. You can use outputs to pass data to other components, similar to native browser events like `click`.
 
-**Angular custom events do not bubble up the DOM**.
+**Engular custom events do not bubble up the DOM**.
 
 **Output names are case-sensitive.**
 

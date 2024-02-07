@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {IInjectorService} from '../../src/common/src/angular1';
+import {IInjectorService} from '../../src/common/src/engular1';
 
 // We have to do a little dance to get the ng1 injector into the module injector.
 // We store the ng1 injector so that the provider in the module injector can access it
@@ -18,7 +18,7 @@ export function setTempInjectorRef(injector: IInjectorService) {
 }
 export function injectorFactory() {
   if (!tempInjectorRef) {
-    throw new Error('Trying to get the AngularJS injector before it being set.');
+    throw new Error('Trying to get the EngularJS injector before it being set.');
   }
 
   const injector: IInjectorService = tempInjectorRef;
@@ -38,7 +38,7 @@ export function parseFactory(i: IInjectorService) {
   return i.get('$parse');
 }
 
-export const angular1Providers = [
+export const engular1Providers = [
   // We must use exported named functions for the ng2 factories to keep the compiler happy:
   // > Metadata collected contains an error that will be reported at runtime:
   // >   Function calls are not supported.

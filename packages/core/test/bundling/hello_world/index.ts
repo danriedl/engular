@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import {Component, NgModule} from '@angular/core';
-import {platformBrowser} from '@angular/platform-browser';
+import {Component, NgModule} from '@engular/core';
+import {platformBrowser} from '@engular/platform-browser';
 
 @Component({selector: 'hello-world', template: 'Hello World!'})
 export class HelloWorldComponent {

@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 export {
-  getAngularJSGlobal,
-  getAngularLib,
-  setAngularJSGlobal,
-  setAngularLib,
-} from '../src/common/src/angular1';
+  getEngularJSGlobal,
+  getEngularLib,
+  setEngularJSGlobal,
+  setEngularLib,
+} from '../src/common/src/engular1';
 export {downgradeComponent} from '../src/common/src/downgrade_component';
 export {downgradeInjectable} from '../src/common/src/downgrade_injectable';
 export {VERSION} from '../src/common/src/version';

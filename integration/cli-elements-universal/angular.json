@@ -1,12 +1,12 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./node_modules/@engular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "cli-elements-universal": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:application": {
+        "@schematics/engular:application": {
           "strict": true
         }
       },
@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@engular-devkit/build-engular:browser",
           "options": {
             "outputPath": "dist/cli-elements-universal/browser",
             "index": "src/index.html",
@@ -62,7 +62,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@engular-devkit/build-engular:dev-server",
           "options": {
             "browserTarget": "cli-elements-universal:build"
           },
@@ -73,13 +73,13 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@engular-devkit/build-engular:extract-i18n",
           "options": {
             "browserTarget": "cli-elements-universal:build"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@engular-devkit/build-engular:karma",
           "options": {
             "polyfills": [
               "zone.js",
@@ -99,7 +99,7 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@engular-devkit/build-engular:tslint",
           "options": {
             "tsConfig": [
               "tsconfig.app.json",
@@ -113,7 +113,7 @@
           }
         },
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@engular-devkit/build-engular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "cli-elements-universal:serve",
@@ -126,7 +126,7 @@
           }
         },
         "server": {
-          "builder": "@angular-devkit/build-angular:server",
+          "builder": "@engular-devkit/build-engular:server",
           "options": {
             "outputPath": "dist/cli-elements-universal/server",
             "main": "src/main.server.ts",
@@ -143,7 +143,7 @@
           }
         },
         "app-shell": {
-          "builder": "@angular-devkit/build-angular:app-shell",
+          "builder": "@engular-devkit/build-engular:app-shell",
           "options": {
             "browserTarget": "cli-elements-universal:build",
             "serverTarget": "cli-elements-universal:server",

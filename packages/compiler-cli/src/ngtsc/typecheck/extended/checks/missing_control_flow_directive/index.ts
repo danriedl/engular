@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AST, TmplAstNode, TmplAstTemplate} from '@angular/compiler';
+import {AST, TmplAstNode, TmplAstTemplate} from '@engular/compiler';
 import ts from 'typescript';
 
 import {NgCompilerOptions} from '../../../../core/api';
@@ -74,7 +74,7 @@ class MissingControlFlowDirectiveCheck extends
         `The \`*${controlFlowAttr.name}\` directive was used in the template, ` +
         `but neither the \`${
             directiveAndBuiltIn?.directive}\` directive nor the \`CommonModule\` was imported. ` +
-        `Use Angular's built-in control flow ${directiveAndBuiltIn?.builtIn} or ` +
+        `Use Engular's built-in control flow ${directiveAndBuiltIn?.builtIn} or ` +
         `make sure that either the \`${
             directiveAndBuiltIn?.directive}\` directive or the \`CommonModule\` ` +
         `is included in the \`@Component.imports\` array of this component.`;

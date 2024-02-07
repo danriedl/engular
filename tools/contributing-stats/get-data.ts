@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 /**
- * This script gets contribution stats for all members of the angular org,
+ * This script gets contribution stats for all members of the engular org,
  * since a provided date.
  * The script expects the following flag(s):
  *
@@ -27,9 +27,9 @@ import {alias, params, query as graphqlQuery, types} from 'typed-graphqlify';
 import yargs from 'yargs';
 
 // The organization to be considered for the queries.
-const ORG = 'angular';
+const ORG = 'engular';
 // The repositories to be considered for the queries.
-const REPOS = ['angular', 'components', 'angular-cli'];
+const REPOS = ['engular', 'components', 'engular-cli'];
 
 /**
  * Handle flags for the script.

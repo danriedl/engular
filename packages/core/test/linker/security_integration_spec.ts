@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, Directive, HostBinding, Input, NO_ERRORS_SCHEMA} from '@angular/core';
-import {ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
-import {DomSanitizer} from '@angular/platform-browser/src/security/dom_sanitization_service';
+import {Component, Directive, HostBinding, Input, NO_ERRORS_SCHEMA} from '@engular/core';
+import {ComponentFixture, getTestBed, TestBed} from '@engular/core/testing';
+import {DomSanitizer} from '@engular/platform-browser/src/security/dom_sanitization_service';
 
 @Component({selector: 'my-comp', template: ''})
 class SecuredComponent {

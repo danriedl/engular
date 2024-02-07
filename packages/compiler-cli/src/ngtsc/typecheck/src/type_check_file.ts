@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 import ts from 'typescript';
 
@@ -57,7 +57,7 @@ export class TypeCheckFile extends Environment {
     // NOTE: We are conditionally adding imports whenever we discover signal inputs. This has a
     // risk of changing the import graph of the TypeScript program, degrading incremental program
     // re-use due to program structure changes. For type check block files, we are ensuring an
-    // import to e.g. `@angular/core` always exists to guarantee a stable graph.
+    // import to e.g. `@engular/core` always exists to guarantee a stable graph.
     ensureTypeCheckFilePreparationImports(this);
 
     let source: string = this.importManager.getAllImports(this.contextFile.fileName)

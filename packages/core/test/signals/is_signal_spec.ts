@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {computed, isSignal, signal} from '@angular/core';
+import {computed, isSignal, signal} from '@engular/core';
 
 describe('isSignal', () => {
   it('should return true for writable signal', () => {
-    const writableSignal = signal('Angular');
+    const writableSignal = signal('Engular');
     expect(isSignal(writableSignal)).toBe(true);
   });
 
@@ -25,7 +25,7 @@ describe('isSignal', () => {
   });
 
   it('should return false for object', () => {
-    const object = {name: 'Angular'};
+    const object = {name: 'Engular'};
     expect(isSignal(object)).toBe(false);
   });
 

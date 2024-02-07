@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {Component, Directive, ElementRef, EventEmitter, Input, NgModule, OnChanges, Output, SimpleChange, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {CommonModule} from '@engular/common';
+import {Component, Directive, ElementRef, EventEmitter, Input, NgModule, OnChanges, Output, SimpleChange, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
 
 describe('directives', () => {
   describe('matching', () => {

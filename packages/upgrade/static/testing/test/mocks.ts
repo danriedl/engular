@@ -3,26 +3,26 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Inject, Injectable, NgModule} from '@angular/core';
-import {downgradeInjectable} from '@angular/upgrade/static';
-import * as ng from '../../../src/common/src/angular1';
+import {Inject, Injectable, NgModule} from '@engular/core';
+import {downgradeInjectable} from '@engular/upgrade/static';
+import * as ng from '../../../src/common/src/engular1';
 /*
  * This mock application code contains the following services and their dependencies:
  *
- * shoppingCart (AngularJS)
- *   -> Inventory (Angular - downgraded)
- *      -> serverRequest (AngularJS - upgraded)
- *         -> Logger (Angular - downgraded)
+ * shoppingCart (EngularJS)
+ *   -> Inventory (Engular - downgraded)
+ *      -> serverRequest (EngularJS - upgraded)
+ *         -> Logger (Engular - downgraded)
  *
  * This allows us to test two scenarios:
- *  * AngularJS -> Angular -> AngularJS
- *  * Angular -> AngularJS -> Angular
+ *  * EngularJS -> Engular -> EngularJS
+ *  * Engular -> EngularJS -> Engular
  */
 
-/* START: Angular bits */
+/* START: Engular bits */
 @Injectable()
 export class Logger {
   warn() {}
@@ -45,9 +45,9 @@ export function serverRequestFactory(i: ng.IInjectorService) {
   ],
 })
 export class AppModule {}
-/* END: Angular bits */
+/* END: Engular bits */
 
-/* START: AngularJS bits */
+/* START: EngularJS bits */
 export const serverRequestInstance: {logger?: Logger} = {};
 export const shoppingCartInstance: {inventory?: Inventory} = {};
 
@@ -70,4 +70,4 @@ export function defineAppModule() {
       },
     ]);
 }
-/* END: AngularJS bits */
+/* END: EngularJS bits */

@@ -1,26 +1,26 @@
-# Angular elements overview
+# Engular elements overview
 
-_Angular elements_ are Angular components packaged as _custom elements_ \(also called Web Components\), a web standard for defining new HTML elements in a framework-agnostic way.
+_Engular elements_ are Engular components packaged as _custom elements_ \(also called Web Components\), a web standard for defining new HTML elements in a framework-agnostic way.
 
-[Custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) are a Web Platform feature available on all browsers supported by Angular.
+[Custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) are a Web Platform feature available on all browsers supported by Engular.
 A custom element extends HTML by allowing you to define a tag whose content is created and controlled by JavaScript code.
 The browser maintains a `CustomElementRegistry` of defined custom elements, which maps an instantiable JavaScript class to an HTML tag.
 
-The `@angular/elements` package exports a `createCustomElement()` API that provides a bridge from Angular's component interface and change detection functionality to the built-in DOM API.
+The `@engular/elements` package exports a `createCustomElement()` API that provides a bridge from Engular's component interface and change detection functionality to the built-in DOM API.
 
-Transforming a component to a custom element makes all the required Angular infrastructure available to the browser.
-Creating a custom element is simple and straightforward, and automatically connects your component-defined view with change detection and data binding, mapping Angular functionality to the corresponding built-in HTML equivalents.
+Transforming a component to a custom element makes all the required Engular infrastructure available to the browser.
+Creating a custom element is simple and straightforward, and automatically connects your component-defined view with change detection and data binding, mapping Engular functionality to the corresponding built-in HTML equivalents.
 
 ## Using custom elements
 
 Custom elements bootstrap themselves - they start when they are added to the DOM, and are destroyed when removed from the DOM.
-Once a custom element is added to the DOM for any page, it looks and behaves like any other HTML element, and does not require any special knowledge of Angular terms or usage conventions.
+Once a custom element is added to the DOM for any page, it looks and behaves like any other HTML element, and does not require any special knowledge of Engular terms or usage conventions.
 
-To add the `@angular/elements` package to your workspace, run the following command:
+To add the `@engular/elements` package to your workspace, run the following command:
 
 <docs-code language="shell">
 
-npm install @angular/elements --save
+npm install @engular/elements --save
 
 </docs-code>
 
@@ -31,17 +31,17 @@ After you register your configured class with the browser's custom-element regis
 
 <docs-code language="html">
 
-&lt;my-popup message="Use Angular!"&gt;&lt;/my-popup&gt;
+&lt;my-popup message="Use Engular!"&gt;&lt;/my-popup&gt;
 
 </docs-code>
 
 When your custom element is placed on a page, the browser creates an instance of the registered class and adds it to the DOM.
-The content is provided by the component's template, which uses Angular template syntax, and is rendered using the component and DOM data.
+The content is provided by the component's template, which uses Engular template syntax, and is rendered using the component and DOM data.
 Input properties in the component correspond to input attributes for the element.
 
 ## Transforming components to custom elements
 
-Angular provides the `createCustomElement()` function for converting an Angular component, together with its dependencies, to a custom element.
+Engular provides the `createCustomElement()` function for converting an Engular component, together with its dependencies, to a custom element.
 
 The conversion process implements the `NgElementConstructor` interface, and creates a
 constructor class that is configured to produce a self-bootstrapping instance of your component.
@@ -50,12 +50,12 @@ Use the browser's native [`customElements.define()`](https://developer.mozilla.o
 When the browser encounters the tag for the registered element, it uses the constructor to create a custom-element instance.
 
 IMPORTANT: Avoid using the component's selector as the custom element tag name.
-This can lead to unexpected behavior, due to Angular creating two component instances for a single DOM element:
-One regular Angular component and a second one using the custom element.
+This can lead to unexpected behavior, due to Engular creating two component instances for a single DOM element:
+One regular Engular component and a second one using the custom element.
 
 ### Mapping
 
-A custom element _hosts_ an Angular component, providing a bridge between the data and logic defined in the component and standard DOM APIs.
+A custom element _hosts_ an Engular component, providing a bridge between the data and logic defined in the component and standard DOM APIs.
 Component properties and logic maps directly into HTML attributes and the browser's event system.
 
 * The creation API parses the component looking for input properties, and defines corresponding attributes for the custom element.
@@ -73,7 +73,7 @@ For more information, see Web Component documentation for [Creating custom event
 
 Previously, when you wanted to add a component to an application at runtime, you had to define a _dynamic component_, and then you would have to load it, attach it to an element in the DOM, and wire up all of the dependencies, change detection, and event handling.
 
-Using an Angular custom element makes the process simpler and more transparent, by providing all the infrastructure and framework automatically &mdash;all you have to do is define the kind of event handling you want.
+Using an Engular custom element makes the process simpler and more transparent, by providing all the infrastructure and framework automatically &mdash;all you have to do is define the kind of event handling you want.
 \(You do still have to exclude the component from compilation, if you are not going to use it in your application.\)
 
 The following Popup Service example application defines a component that you can either load dynamically or convert to a custom element.
@@ -102,7 +102,7 @@ Similarly, `document.createElement('div')` returns an `HTMLDivElement`, which Ty
 
 When called with unknown elements, such as a custom element name \(`popup-element` in our example\), the methods return a generic type, such as `HTMLElement`, because TypeScript can't infer the correct type of the returned element.
 
-Custom elements created with Angular extend `NgElement` \(which in turn extends `HTMLElement`\).
+Custom elements created with Engular extend `NgElement` \(which in turn extends `HTMLElement`\).
 Additionally, these custom elements will have a property for each input of the corresponding component.
 For example, our `popup-element` has a `message` property of type `string`.
 
@@ -119,7 +119,7 @@ class MyDialog {
 </docs-code>
 
 The most straightforward way to get accurate typings is to cast the return value of the relevant DOM methods to the correct type.
-For that, use the `NgElement` and `WithProperties` types \(both exported from `@angular/elements`\):
+For that, use the `NgElement` and `WithProperties` types \(both exported from `@engular/elements`\):
 
 <docs-code language="typescript">
 

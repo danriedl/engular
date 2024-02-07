@@ -1,10 +1,10 @@
 # Common Routing Tasks
 
-This topic describes how to implement many of the common tasks associated with adding the Angular router to your application.
+This topic describes how to implement many of the common tasks associated with adding the Engular router to your application.
 
 ## Generate an application with routing enabled
 
-The following command uses the Angular CLI to generate a basic Angular application with application routes. The application name in the following example is `routing-app`.
+The following command uses the Engular CLI to generate a basic Engular application with application routes. The application name in the following example is `routing-app`.
 
 ```shell
 ng new routing-app
@@ -12,7 +12,7 @@ ng new routing-app
 
 ### Adding components for routing
 
-To use the Angular router, an application needs to have at least two components so that it can navigate from one to the other. To create a component using the CLI, enter the following at the command line where `first` is the name of your component:
+To use the Engular router, an application needs to have at least two components so that it can navigate from one to the other. To create a component using the CLI, enter the following at the command line where `first` is the name of your component:
 
 ```shell
 ng generate component first
@@ -30,7 +30,7 @@ The CLI automatically appends `Component`, so if you were to write `first-compon
 
 <docs-callout title="`base href`">
 
-This guide works with a CLI-generated Angular application.
+This guide works with a CLI-generated Engular application.
 
 </docs-callout>
 
@@ -59,16 +59,16 @@ export const appConfig: ApplicationConfig = {
 
 </docs-code>
 
-The Angular CLI performs this step for you. However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct.
+The Engular CLI performs this step for you. However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct.
 
 <docs-workflow>
 
 <docs-step title="Set up a `Routes` array for your routes">
 
-The Angular CLI performs this step automatically.
+The Engular CLI performs this step automatically.
 
 ```ts
-import { Routes } from '@angular/router';
+import { Routes } from '@engular/router';
 
 export const routes: Routes = [];
 ```
@@ -77,7 +77,7 @@ export const routes: Routes = [];
 
 <docs-step title="Define your routes in your `Routes` array">
 
-Each route in this array is a JavaScript object that contains two properties. The first property, `path`, defines the URL path for the route. The second property, `component`, defines the component Angular should use for the corresponding path.
+Each route in this array is a JavaScript object that contains two properties. The first property, `path`, defines the URL path for the route. The second property, `component`, defines the component Engular should use for the corresponding path.
 
 ```ts
 const routes: Routes = [
@@ -90,10 +90,10 @@ const routes: Routes = [
 
 <docs-step title="Add your routes to your application">
 
-Now that you have defined your routes, add them to your application. First, add links to the two components. Assign the anchor tag that you want to add the route to the `routerLink` attribute. Set the value of the attribute to the component to show when a user clicks on each link. Next, update your component template to include `<router-outlet>`. This element informs Angular to update the application view with the component for the selected route.
+Now that you have defined your routes, add them to your application. First, add links to the two components. Assign the anchor tag that you want to add the route to the `routerLink` attribute. Set the value of the attribute to the component to show when a user clicks on each link. Next, update your component template to include `<router-outlet>`. This element informs Engular to update the application view with the component for the selected route.
 
 ```html
-<h1>Angular Router App</h1>
+<h1>Engular Router App</h1>
 <nav>
   <ul>
     <li><a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
@@ -185,7 +185,7 @@ If you want to use the parent components route info you will need to set the rou
 
 A well-functioning application should gracefully handle when users attempt to navigate to a part of your application that does not exist.
 To add this functionality to your application, you set up a wildcard route.
-The Angular router selects this route any time the requested URL doesn't match any router paths.
+The Engular router selects this route any time the requested URL doesn't match any router paths.
 
 To set up a wildcard route, add the following code to your `routes` definition.
 
@@ -195,7 +195,7 @@ To set up a wildcard route, add the following code to your `routes` definition.
 
 </docs-code>
 
-The two asterisks, `**`, indicate to Angular that this `routes` definition is a wildcard route.
+The two asterisks, `**`, indicate to Engular that this `routes` definition is a wildcard route.
 For the component property, you can define any component in your application.
 Common choices include an application-specific `PageNotFoundComponent`, which you can define to [display a 404 page](guide/routing/common-router-tasks#displaying-a-404-page) to your users; or a redirect to your application's main component.
 A wildcard route is the last route because it matches any URL.
@@ -356,7 +356,7 @@ In addition to `../`, use `./` or no leading slash to specify the current level.
 ### Specifying a relative route
 
 To specify a relative route, use the `NavigationExtras` `relativeTo` property.
-In the component class, import `NavigationExtras` from the `@angular/router`.
+In the component class, import `NavigationExtras` from the `@engular/router`.
 
 Then use `relativeTo` in your navigation method.
 After the link parameters array, which here contains `items`, add an object with the `relativeTo` property set to the `ActivatedRoute`, which is `this.route`.
@@ -380,7 +380,7 @@ The router uses an `id` to show the correct hero's details.
 First, import the following members in the component you want to navigate from.
 
 ```ts
-import { ActivatedRoute } from '&commat;angular/router';
+import { ActivatedRoute } from '&commat;engular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 ```
@@ -412,7 +412,7 @@ ngOnInit() {
 Next, in the component that you want to navigate to, import the following members.
 
 ```ts
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@engular/router';
 import { Observable } from 'rxjs';
 ```
 
@@ -440,7 +440,7 @@ gotoItems(hero: Hero) {
 
 ## Lazy loading
 
-You can configure your routes to lazy load modules, which means that Angular only loads modules as needed, rather than loading all modules when the application launches.
+You can configure your routes to lazy load modules, which means that Engular only loads modules as needed, rather than loading all modules when the application launches.
 Additionally, preload parts of your application in the background to improve the user experience.
 
 For more information on lazy loading and preloading see the dedicated guide [Lazy loading](guide/ngmodules/lazy-loading).
@@ -448,7 +448,7 @@ For more information on lazy loading and preloading see the dedicated guide [Laz
 ## Preventing unauthorized access
 
 Use route guards to prevent users from navigating to parts of an application without authorization.
-The following route guards are available in Angular:
+The following route guards are available in Engular:
 
 <docs-pill-row>
   <docs-pill href="api/router/CanActivateFn" title="`canActivate`"/>
@@ -549,7 +549,7 @@ You could also redefine the `AppComponent` template with Crisis Center routes ex
 
 ```ts
 template: `
-  <h1 class="title">Angular Router</h1>
+  <h1 class="title">Engular Router</h1>
   <nav>
     <a [routerLink]="['/crisis-center']">Crisis Center</a>
     <a [routerLink]="['/crisis-center/1', { foo: 'foo' }]">Dragon Crisis</a>
@@ -599,7 +599,7 @@ HELPFUL: For more information on providers and the bootstrap process, see [Depen
 
 You must choose a routing strategy early in the development of your project because once the application is in production, visitors to your site use and depend on application URL references.
 
-Almost all Angular projects should use the default HTML5 style.
+Almost all Engular projects should use the default HTML5 style.
 It produces URLs that are easier for users to understand and it preserves the option to do server-side rendering.
 
 Rendering critical pages on the server is a technique that can greatly improve perceived responsiveness when the application first loads.
@@ -660,7 +660,7 @@ Those developers can still use HTML5 URLs by taking the following two steps:
      This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
 
    - If a link in the page is a root URL \(has an `authority`\), the `<base href>` is not used.
-     In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
+     In this way, an `APP_BASE_HREF` with an authority will cause all links created by Engular to ignore the `<base href>` value.
 
    - A fragment in the `<base href>` is _never_ persisted
 

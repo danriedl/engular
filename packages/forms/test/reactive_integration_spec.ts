@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵgetDOM as getDOM} from '@angular/common';
-import {Component, Directive, ElementRef, forwardRef, Input, NgModule, OnDestroy, Type, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {AbstractControl, AsyncValidator, AsyncValidatorFn, COMPOSITION_BUFFER_MODE, ControlValueAccessor, DefaultValueAccessor, FormArray, FormBuilder, FormControl, FormControlDirective, FormControlName, FormGroup, FormGroupDirective, FormsModule, MaxValidator, MinLengthValidator, MinValidator, NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validator, Validators} from '@angular/forms';
-import {By} from '@angular/platform-browser/src/dom/debug/by';
-import {dispatchEvent, sortedClassList} from '@angular/platform-browser/testing/src/browser_util';
+import {ɵgetDOM as getDOM} from '@engular/common';
+import {Component, Directive, ElementRef, forwardRef, Input, NgModule, OnDestroy, Type, ViewChild} from '@engular/core';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@engular/core/testing';
+import {AbstractControl, AsyncValidator, AsyncValidatorFn, COMPOSITION_BUFFER_MODE, ControlValueAccessor, DefaultValueAccessor, FormArray, FormBuilder, FormControl, FormControlDirective, FormControlName, FormGroup, FormGroupDirective, FormsModule, MaxValidator, MinLengthValidator, MinValidator, NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validator, Validators} from '@engular/forms';
+import {By} from '@engular/platform-browser/src/dom/debug/by';
+import {dispatchEvent, sortedClassList} from '@engular/platform-browser/testing/src/browser_util';
 import {merge, NEVER, of, Subscription, timer} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 
@@ -2755,7 +2755,7 @@ describe('reactive forms integration tests', () => {
              '', Validators.required, asyncValidator(c => !!c.value && c.value.length > 3, 100));
          const form = new FormGroup(
              {'login': control}, null,
-             asyncValidator(c => c.get('login')!.value.includes('angular'), 200));
+             asyncValidator(c => c.get('login')!.value.includes('engular'), 200));
          fixture.componentInstance.form = form;
          fixture.detectChanges();
          tick();
@@ -2787,13 +2787,13 @@ describe('reactive forms integration tests', () => {
          tick(100);
 
          // Login form control is valid. However, the form control is invalid because `angul` does
-         // not include `angular`
+         // not include `engular`
          expect(control.invalid).toEqual(false);
          expect(form.pending).toEqual(false);
          expect(form.invalid).toEqual(true);
 
          // Setting a value that would be trigger "VALID" form state
-         input.nativeElement.value = 'angular!';
+         input.nativeElement.value = 'engular!';
          dispatchEvent(input.nativeElement, 'input');
 
          // Since the form control value changed, its asynchronous validation runs for 100ms
@@ -2809,7 +2809,7 @@ describe('reactive forms integration tests', () => {
          tick(100);
 
          // Now, the form is valid because its own asynchronous validation has resolved
-         // successfully, because the form control value `angular` includes the `angular` string
+         // successfully, because the form control value `engular` includes the `engular` string
          expect(control.invalid).toEqual(false);
          expect(form.pending).toEqual(false);
          expect(form.invalid).toEqual(false);
@@ -5217,7 +5217,7 @@ describe('reactive forms integration tests', () => {
       });
     });
 
-    // See https://github.com/angular/angular/issues/40521.
+    // See https://github.com/engular/engular/issues/40521.
     it('should properly clean up when FormControlName has no CVA', () => {
       @Component({
         selector: 'no-cva-compo',
@@ -5236,7 +5236,7 @@ describe('reactive forms integration tests', () => {
         fixture.detectChanges();
       })
           .toThrowError(
-              `NG01203: No value accessor for form control name: 'control'. Find more at https://angular.io/errors/NG01203`);
+              `NG01203: No value accessor for form control name: 'control'. Find more at https://engular.io/errors/NG01203`);
 
       // Making sure that cleanup between tests doesn't cause any issues
       // for not fully initialized controls.

@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {DOCUMENT, ɵgetDOM as getDOM} from '@angular/common';
-import {ApplicationRef, Component, ComponentRef, ContentChild, createComponent, destroyPlatform, Directive, EnvironmentInjector, ErrorHandler, EventEmitter, HostListener, InjectionToken, Injector, Input, NgModule, NgZone, Output, Pipe, PipeTransform, Provider, QueryList, Renderer2, SimpleChanges, TemplateRef, ViewChildren, ViewContainerRef} from '@angular/core';
-import {fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
-import {BrowserModule, By} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {DOCUMENT, ɵgetDOM as getDOM} from '@engular/common';
+import {ApplicationRef, Component, ComponentRef, ContentChild, createComponent, destroyPlatform, Directive, EnvironmentInjector, ErrorHandler, EventEmitter, HostListener, InjectionToken, Injector, Input, NgModule, NgZone, Output, Pipe, PipeTransform, Provider, QueryList, Renderer2, SimpleChanges, TemplateRef, ViewChildren, ViewContainerRef} from '@engular/core';
+import {fakeAsync, inject, TestBed, tick} from '@engular/core/testing';
+import {BrowserModule, By} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 describe('regressions', () => {
   beforeEach(() => {
@@ -384,7 +384,7 @@ describe('regressions using bootstrap', () => {
           this.throwIfNeeded();
         }
         throwIfNeeded() {
-          NgZone.assertInAngularZone();
+          NgZone.assertInEngularZone();
           if (this.thrownValue !== this.value) {
             this.thrownValue = this.value;
             throw new Error(`Error: ${this.value}`);
@@ -412,7 +412,7 @@ describe('regressions using bootstrap', () => {
       }
 
       platformBrowserDynamic().bootstrapModule(TestModule).then((ref) => {
-        NgZone.assertNotInAngularZone();
+        NgZone.assertNotInEngularZone();
         const appRef = ref.injector.get(ApplicationRef) as ApplicationRef;
         const compRef = appRef.components[0] as ComponentRef<ErrorComp>;
         const compEl = compRef.location.nativeElement;

@@ -33,5 +33,5 @@ generate_api_docs(
         "//packages:common_files_and_deps_for_docs",
     ],
     entry_point = ":index.ts",
-    module_name = "@angular/upgrade/static/testing",
+    module_name = "@engular/upgrade/static/testing",
 )

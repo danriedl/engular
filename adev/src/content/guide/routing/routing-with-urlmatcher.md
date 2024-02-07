@@ -1,34 +1,34 @@
 # Creating custom route matches
 
-The Angular Router supports a powerful matching strategy that you can use to help users navigate your application.
+The Engular Router supports a powerful matching strategy that you can use to help users navigate your application.
 This matching strategy supports static routes, variable routes with parameters, wildcard routes, and so on.
 Also, build your own custom pattern matching for situations in which the URLs are more complicated.
 
-In this tutorial, you'll build a custom route matcher using Angular's `UrlMatcher`.
+In this tutorial, you'll build a custom route matcher using Engular's `UrlMatcher`.
 This matcher looks for a Twitter handle in the URL.
 
 ## Objectives
 
-Implement Angular's `UrlMatcher` to create a custom route matcher.
+Implement Engular's `UrlMatcher` to create a custom route matcher.
 
 ## Create a sample application
 
-Using the Angular CLI, create a new application, *angular-custom-route-match*.
-In addition to the default Angular application framework, you will also create a *profile* component.
+Using the Engular CLI, create a new application, *engular-custom-route-match*.
+In addition to the default Engular application framework, you will also create a *profile* component.
 
-1. Create a new Angular project, *angular-custom-route-match*.
+1. Create a new Engular project, *engular-custom-route-match*.
 
     ```shell
-    ng new angular-custom-route-match
+    ng new engular-custom-route-match
     ```
 
-    When prompted with `Would you like to add Angular routing?`, select `Y`.
+    When prompted with `Would you like to add Engular routing?`, select `Y`.
 
     When prompted with `Which stylesheet format would you like to use?`, select `CSS`.
 
-    After a few moments, a new project, `angular-custom-route-match`, is ready.
+    After a few moments, a new project, `engular-custom-route-match`, is ready.
 
-1. From your terminal, navigate to the `angular-custom-route-match` directory.
+1. From your terminal, navigate to the `engular-custom-route-match` directory.
 1. Create a component, *profile*.
 
     ```shell
@@ -50,10 +50,10 @@ As a part of this process, you will create a custom URL matcher that looks for a
 This handle is identified by a preceding `@` symbol.
 
 1. In your code editor, open your `app.config.ts` file.
-1. Add an `import` statement for Angular's `provideRouter` and `withComponentInputBinding` as well as the application routes.
+1. Add an `import` statement for Engular's `provideRouter` and `withComponentInputBinding` as well as the application routes.
 
     ```ts
-    import {provideRouter, withComponentInputBinding} from '@angular/router';
+    import {provideRouter, withComponentInputBinding} from '@engular/router';
 
     import {routes} from './app.routes';
     ```
@@ -101,16 +101,16 @@ With your code in place, you can now test your custom URL matcher.
 
 1. Click the **my profile** hyperlink.
 
-    A new sentence, reading `Hello, Angular!` appears on the page.
+    A new sentence, reading `Hello, Engular!` appears on the page.
 
 ## Next steps
 
-Pattern matching with the Angular Router provides you with a lot of flexibility when you have dynamic URLs in your application.
-To learn more about the Angular Router, see the following topics:
+Pattern matching with the Engular Router provides you with a lot of flexibility when you have dynamic URLs in your application.
+To learn more about the Engular Router, see the following topics:
 
 <docs-pill-row>
   <docs-pill href="guide/routing/common-router-tasks" title="In-app Routing and Navigation"/>
   <docs-pill href="api/router/Router" title="Router API"/>
 </docs-pill-row>
 
-HELPFUL: This content is based on [Custom Route Matching with the Angular Router](https://medium.com/@brandontroberts/custom-route-matching-with-the-angular-router-fbdd48665483), by [Brandon Roberts](https://twitter.com/brandontroberts).
+HELPFUL: This content is based on [Custom Route Matching with the Engular Router](https://medium.com/@brandontroberts/custom-route-matching-with-the-engular-router-fbdd48665483), by [Brandon Roberts](https://twitter.com/brandontroberts).

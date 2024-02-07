@@ -39,7 +39,7 @@ This method returns a `Promise<boolean>` which indicates if an update is availab
 The check might fail, which will cause a rejection of the `Promise`.
 
 <docs-callout important title="Stabilization and service worker registration">
-In order to avoid negatively affecting the initial rendering of the page, by default the Angular service worker service waits for up to 30 seconds for the application to stabilize before registering the ServiceWorker script.
+In order to avoid negatively affecting the initial rendering of the page, by default the Engular service worker service waits for up to 30 seconds for the application to stabilize before registering the ServiceWorker script.
 
 Constantly polling for updates, for example, with [setInterval()](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) or RxJS' [interval()](https://rxjs.dev/api/index/function/interval), prevents the application from stabilizing and the ServiceWorker script is not registered with the browser until the 30 seconds upper limit is reached.
 
@@ -97,7 +97,7 @@ Subscribe to `SwUpdate#unrecoverable` to be notified and handle these errors.
 
 <docs-code header="handle-unrecoverable-state.service.ts" path="adev/src/content/examples/service-worker-getting-started/src/app/handle-unrecoverable-state.service.ts" visibleRegion="sw-unrecoverable-state"/>
 
-## More on Angular service workers
+## More on Engular service workers
 
 You might also be interested in the following:
 

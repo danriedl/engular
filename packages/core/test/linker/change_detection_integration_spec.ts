@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ResourceLoader} from '@angular/compiler';
-import {AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, DebugElement, Directive, DoCheck, EventEmitter, HostBinding, Injectable, Input, OnChanges, OnDestroy, OnInit, Output, Pipe, PipeTransform, Provider, RendererFactory2, RendererType2, SimpleChange, SimpleChanges, TemplateRef, Type, ViewChild, ViewContainerRef, ɵgetEnsureDirtyViewsAreAlwaysReachable, ɵsetEnsureDirtyViewsAreAlwaysReachable} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser/src/dom/debug/by';
-import {isTextNode} from '@angular/platform-browser/testing/src/browser_util';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {ResourceLoader} from '@engular/compiler';
+import {AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, DebugElement, Directive, DoCheck, EventEmitter, HostBinding, Injectable, Input, OnChanges, OnDestroy, OnInit, Output, Pipe, PipeTransform, Provider, RendererFactory2, RendererType2, SimpleChange, SimpleChanges, TemplateRef, Type, ViewChild, ViewContainerRef, ɵgetEnsureDirtyViewsAreAlwaysReachable, ɵsetEnsureDirtyViewsAreAlwaysReachable} from '@engular/core';
+import {ComponentFixture, fakeAsync, TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser/src/dom/debug/by';
+import {isTextNode} from '@engular/platform-browser/testing/src/browser_util';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 import {MockResourceLoader} from './resource_loader_mock';
 

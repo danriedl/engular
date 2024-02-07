@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Directive, HostListener, Input} from '@angular/core';
+import {Directive, HostListener, Input} from '@engular/core';
 
 import {convertToR3QueryMetadata, directiveMetadata, extendsDirectlyFromObject} from '../../../src/render3/jit/directive';
 import {setClassMetadata} from '../../../src/render3/metadata';

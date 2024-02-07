@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
 import {
@@ -16,14 +16,14 @@ import {
   ViewChild,
   ViewEncapsulation,
   inject,
-} from '@angular/core';
+} from '@engular/core';
 
 import {fromEvent} from 'rxjs/internal/observable/fromEvent';
 import {debounceTime} from 'rxjs/operators';
 import {TerminalHandler, TerminalType} from './terminal-handler.service';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {WINDOW} from '@angular/docs';
-import {NgIf} from '@angular/common';
+import {takeUntilDestroyed} from '@engular/core/rxjs-interop';
+import {WINDOW} from '@engular/docs';
+import {NgIf} from '@engular/common';
 
 @Component({
   selector: 'docs-tutorial-terminal',

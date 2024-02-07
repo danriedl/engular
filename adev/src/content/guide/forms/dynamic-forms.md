@@ -30,7 +30,7 @@ The basic version can evolve to support a richer variety of questions, more grac
 
 Dynamic forms are based on reactive forms.
 
-To give the application access reactive forms directives, import `ReactiveFormsModule` from the `@angular/forms` library into the necessary components.
+To give the application access reactive forms directives, import `ReactiveFormsModule` from the `@engular/forms` library into the necessary components.
 
 The following code from the example shows the setup in the root module.
 

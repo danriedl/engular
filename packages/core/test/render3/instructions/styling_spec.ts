@@ -3,20 +3,20 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AttributeMarker, DirectiveDef} from '@angular/core/src/render3';
-import {ɵɵdefineDirective} from '@angular/core/src/render3/definition';
-import {classStringParser, styleStringParser, toStylingKeyValueArray, ɵɵclassProp, ɵɵstyleMap, ɵɵstyleProp} from '@angular/core/src/render3/instructions/styling';
-import {TAttributes} from '@angular/core/src/render3/interfaces/node';
-import {getTStylingRangeNext, getTStylingRangeNextDuplicate, getTStylingRangePrev, getTStylingRangePrevDuplicate, setTStylingRangeNext, setTStylingRangePrev, StylingRange, toTStylingRange, TStylingKey, TStylingRange} from '@angular/core/src/render3/interfaces/styling';
-import {HEADER_OFFSET, TVIEW} from '@angular/core/src/render3/interfaces/view';
-import {getLView, leaveView, setBindingRootForHostBindings} from '@angular/core/src/render3/state';
-import {getNativeByIndex} from '@angular/core/src/render3/util/view_utils';
-import {keyValueArraySet} from '@angular/core/src/util/array_utils';
-import {ngDevModeResetPerfCounters} from '@angular/core/src/util/ng_dev_mode';
-import {getElementClasses, getElementStyles} from '@angular/core/testing/src/styling';
+import {AttributeMarker, DirectiveDef} from '@engular/core/src/render3';
+import {ɵɵdefineDirective} from '@engular/core/src/render3/definition';
+import {classStringParser, styleStringParser, toStylingKeyValueArray, ɵɵclassProp, ɵɵstyleMap, ɵɵstyleProp} from '@engular/core/src/render3/instructions/styling';
+import {TAttributes} from '@engular/core/src/render3/interfaces/node';
+import {getTStylingRangeNext, getTStylingRangeNextDuplicate, getTStylingRangePrev, getTStylingRangePrevDuplicate, setTStylingRangeNext, setTStylingRangePrev, StylingRange, toTStylingRange, TStylingKey, TStylingRange} from '@engular/core/src/render3/interfaces/styling';
+import {HEADER_OFFSET, TVIEW} from '@engular/core/src/render3/interfaces/view';
+import {getLView, leaveView, setBindingRootForHostBindings} from '@engular/core/src/render3/state';
+import {getNativeByIndex} from '@engular/core/src/render3/util/view_utils';
+import {keyValueArraySet} from '@engular/core/src/util/array_utils';
+import {ngDevModeResetPerfCounters} from '@engular/core/src/util/ng_dev_mode';
+import {getElementClasses, getElementStyles} from '@engular/core/testing/src/styling';
 
 import {clearFirstUpdatePass, enterViewWithOneDiv, rewindBindingIndex} from './shared_spec';
 

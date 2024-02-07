@@ -1,6 +1,6 @@
 # Directive composition API
 
-Angular directives offer a great way to encapsulate reusable behaviors— directives can apply
+Engular directives offer a great way to encapsulate reusable behaviors— directives can apply
 attributes, CSS classes, and event listeners to an element.
 
 The *directive composition API* lets you apply directives to a component's host element from
@@ -24,17 +24,17 @@ works similarly to applying the `MenuBehavior` to the `<admin-menu>` element in 
 export class AdminMenu { }
 ```
 
-When the framework renders a component, Angular also creates an instance of each host directive. The
+When the framework renders a component, Engular also creates an instance of each host directive. The
 directives' host bindings apply to the component's host element. By default, host directive inputs
 and outputs are not exposed as part of the component's public API. See
 [Including inputs and outputs](#including-inputs-and-outputs) below for more information.
 
-**Angular applies host directives statically at compile time.** You cannot dynamically add
+**Engular applies host directives statically at compile time.** You cannot dynamically add
 directives at runtime.
 
 **Directives used in `hostDirectives` must be `standalone: true`.**
 
-**Angular ignores the `selector` of directives applied in the `hostDirectives` property.**
+**Engular ignores the `selector` of directives applied in the `hostDirectives` property.**
 
 ## Including inputs and outputs
 
@@ -221,7 +221,7 @@ export class CustomCheckbox { }
 ```
 
 This example declares a custom checkbox component that includes five host directives. This
-means that Angular will create six objects each time a `CustomCheckbox` renders— one for the
+means that Engular will create six objects each time a `CustomCheckbox` renders— one for the
 component and one for each host directive. For a few checkboxes on a page, this won't pose any
 significant issues. However, if your page renders *hundreds* of checkboxes, such as in a table, then
 you could start to see an impact of the additional object allocations. Always be sure to profile

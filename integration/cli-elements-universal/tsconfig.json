@@ -1,4 +1,4 @@
-/* To learn more about this file see: https://angular.io/guide/typescript-configuration. */
+/* To learn more about this file see: https://engular.io/guide/typescript-configuration. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -21,7 +21,7 @@
       "dom"
     ]
   },
-  "angularCompilerOptions": {
+  "engularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true

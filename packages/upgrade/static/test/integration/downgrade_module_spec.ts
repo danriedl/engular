@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {
@@ -31,13 +31,13 @@ import {
   StaticProvider,
   Type,
   ViewRef,
-} from '@angular/core';
-import {fakeAsync, tick, waitForAsync} from '@angular/core/testing';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {downgradeComponent, downgradeModule, UpgradeComponent} from '@angular/upgrade/static';
+} from '@engular/core';
+import {fakeAsync, tick, waitForAsync} from '@engular/core/testing';
+import {BrowserModule} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
+import {downgradeComponent, downgradeModule, UpgradeComponent} from '@engular/upgrade/static';
 
-import * as angular from '../../../src/common/src/angular1';
+import * as engular from '../../../src/common/src/engular1';
 import {
   $EXCEPTION_HANDLER,
   $ROOT_SCOPE,
@@ -50,7 +50,7 @@ import {
   multiTrim,
   withEachNg1Version,
 } from '../../../src/common/test/helpers/common_test_helpers';
-import {setTempInjectorRef} from '../../src/angular1_providers';
+import {setTempInjectorRef} from '../../src/engular1_providers';
 
 withEachNg1Version(() => {
   [true, false].forEach((propagateDigest) => {
@@ -89,7 +89,7 @@ withEachNg1Version(() => {
 
         const downModA = doDowngradeModule(Ng2ModuleA);
         const downModB = doDowngradeModule(Ng2ModuleB);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [downModA, downModB])
           .directive(
             'ng2A',
@@ -109,7 +109,7 @@ withEachNg1Version(() => {
           );
 
         const element = html('<ng2-a></ng2-a> | <ng2-b></ng2-b>');
-        angular.bootstrap(element, [ng1Module.name]);
+        engular.bootstrap(element, [ng1Module.name]);
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => expect(element.textContent).toBe('a | b'));
@@ -140,7 +140,7 @@ withEachNg1Version(() => {
 
         const downModA = downgradeModule(Ng2ModuleA);
         const downModB = downgradeModule(Ng2ModuleB);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [downModA, downModB])
           .directive(
             'ng2A',
@@ -160,7 +160,7 @@ withEachNg1Version(() => {
           );
 
         const element = html('<ng2-a></ng2-a> | <ng2-b></ng2-b>');
-        angular.bootstrap(element, [ng1Module.name]);
+        engular.bootstrap(element, [ng1Module.name]);
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => expect(element.textContent).toBe('a | b'));
@@ -212,7 +212,7 @@ withEachNg1Version(() => {
 
         const downModA = doDowngradeModule(Ng2ModuleA);
         const downModB = doDowngradeModule(Ng2ModuleB);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [downModA, downModB])
           .directive('ng1A', () => ({template: 'ng1A(<ng2-b ng-if="showB"></ng2-b>)'}))
           .directive(
@@ -233,8 +233,8 @@ withEachNg1Version(() => {
           );
 
         const element = html('<ng2-a></ng2-a>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         // Wait for module A to be bootstrapped.
         setTimeout(() => {
@@ -289,7 +289,7 @@ withEachNg1Version(() => {
 
         const downModA = doDowngradeModule(Ng2ModuleA);
         const downModB = doDowngradeModule(Ng2ModuleB);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [downModA, downModB])
           .directive(
             'ng2A',
@@ -309,8 +309,8 @@ withEachNg1Version(() => {
           );
 
         const element = html('<ng2-a><ng2-b ng-if="showB"></ng2-b></ng2-a>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         // Wait for module A to be bootstrapped.
         setTimeout(() => {
@@ -386,7 +386,7 @@ withEachNg1Version(() => {
 
         const downModA = doDowngradeModule(Ng2ModuleA);
         const downModB = doDowngradeModule(Ng2ModuleB);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [downModA, downModB])
           .directive(
             'ng2A',
@@ -409,8 +409,8 @@ withEachNg1Version(() => {
               <ng2-a><ng2-b ng-if="showB1"></ng2-b></ng2-a>
               <ng2-b ng-if="showB2"></ng2-b>
             `);
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         tick(); // Wait for module A to be bootstrapped.
         expect(multiTrim(element.textContent)).toBe('ng2A(Counter:1 | )');
@@ -480,7 +480,7 @@ withEachNg1Version(() => {
         };
 
         const downMod = downgradeModule(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [downMod])
           .directive('ng2A', downgradeComponent({component: Ng2ComponentA, propagateDigest}))
           .directive('ng2B', downgradeComponent({component: Ng2ComponentB, propagateDigest}));
@@ -489,8 +489,8 @@ withEachNg1Version(() => {
               <ng2-a><ng2-b ng-if="showB1"></ng2-b></ng2-a>
               <ng2-b ng-if="showB2"></ng2-b>
             `);
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => {
@@ -582,7 +582,7 @@ withEachNg1Version(() => {
 
         const downModA = doDowngradeModule(Ng2ModuleA);
         const downModB = doDowngradeModule(Ng2ModuleB);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [downModA, downModB])
           .directive(
             'ng2A',
@@ -605,8 +605,8 @@ withEachNg1Version(() => {
               <ng2-a><ng2-b ng-if="showB1"></ng2-b></ng2-a>
               <ng2-b ng-if="showB2"></ng2-b>
             `);
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         // Wait for module A to be bootstrapped.
         setTimeout(() => {
@@ -655,17 +655,17 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2AComponent, propagateDigest}))
           .run([
             '$rootScope',
-            ($rootScope: angular.IRootScopeService) => ($rootScope['value'] = 0),
+            ($rootScope: engular.IRootScopeService) => ($rootScope['value'] = 0),
           ]);
 
         const element = html('<div><ng2 [value]="value" ng-if="loadNg2"></ng2></div>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         expect(element.textContent).toBe('');
         expect(() => $injector.get(INJECTOR_KEY)).toThrowError();
@@ -709,7 +709,7 @@ withEachNg1Version(() => {
             Ng2Service,
             {
               provide: 'ng1Value',
-              useFactory: (i: angular.IInjectorService) => i.get('ng1Value'),
+              useFactory: (i: engular.IInjectorService) => i.get('ng1Value'),
               deps: ['$injector'],
             },
           ],
@@ -721,14 +721,14 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}))
           .value('ng1Value', 'foo');
 
         const element = html('<div><ng2 ng-if="loadNg2"></ng2></div>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         expect(element.textContent).toBe('');
         expect(() => $injector.get(INJECTOR_KEY)).toThrowError();
@@ -746,12 +746,12 @@ withEachNg1Version(() => {
         });
       }));
 
-      it('should create components inside the Angular zone', waitForAsync(() => {
+      it('should create components inside the Engular zone', waitForAsync(() => {
         @Component({selector: 'ng2', template: 'In the zone: {{ inTheZone }}'})
         class Ng2Component {
           private inTheZone = false;
           constructor() {
-            this.inTheZone = NgZone.isInAngularZone();
+            this.inTheZone = NgZone.isInEngularZone();
           }
         }
 
@@ -766,12 +766,12 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<ng2></ng2>');
-        angular.bootstrap(element, [ng1Module.name]);
+        engular.bootstrap(element, [ng1Module.name]);
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => {
@@ -780,13 +780,13 @@ withEachNg1Version(() => {
         });
       }));
 
-      it('should destroy components inside the Angular zone', waitForAsync(() => {
+      it('should destroy components inside the Engular zone', waitForAsync(() => {
         let destroyedInTheZone = false;
 
         @Component({selector: 'ng2', template: ''})
         class Ng2Component implements OnDestroy {
           ngOnDestroy() {
-            destroyedInTheZone = NgZone.isInAngularZone();
+            destroyedInTheZone = NgZone.isInEngularZone();
           }
         }
 
@@ -801,13 +801,13 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<ng2 ng-if="!hideNg2"></ng2>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => {
@@ -816,7 +816,7 @@ withEachNg1Version(() => {
         });
       }));
 
-      it('should propagate input changes inside the Angular zone', waitForAsync(() => {
+      it('should propagate input changes inside the Engular zone', waitForAsync(() => {
         let ng2Component: Ng2Component;
 
         @Component({selector: 'ng2', template: ''})
@@ -841,26 +841,26 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}))
           .run([
             '$rootScope',
-            ($rootScope: angular.IRootScopeService) => {
+            ($rootScope: engular.IRootScopeService) => {
               $rootScope['attrVal'] = 'bar';
               $rootScope['propVal'] = 'bar';
             },
           ]);
 
         const element = html('<ng2 attr-input="{{ attrVal }}" [prop-input]="propVal"></ng2>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         setTimeout(() => {
           // Wait for the module to be bootstrapped.
           setTimeout(() => {
             // Wait for `$evalAsync()` to propagate inputs.
-            const expectToBeInNgZone = () => expect(NgZone.isInAngularZone()).toBe(true);
+            const expectToBeInNgZone = () => expect(NgZone.isInEngularZone()).toBe(true);
             const changesSpy = spyOn(ng2Component, 'ngOnChanges').and.callFake(expectToBeInNgZone);
 
             expect(ng2Component.attrInput).toBe('bar');
@@ -879,7 +879,7 @@ withEachNg1Version(() => {
         });
       }));
 
-      it('should create and destroy nested, asynchronously instantiated components inside the Angular zone', waitForAsync(() => {
+      it('should create and destroy nested, asynchronously instantiated components inside the Engular zone', waitForAsync(() => {
         let createdInTheZone = false;
         let destroyedInTheZone = false;
 
@@ -889,10 +889,10 @@ withEachNg1Version(() => {
         })
         class TestComponent implements OnDestroy {
           constructor() {
-            createdInTheZone = NgZone.isInAngularZone();
+            createdInTheZone = NgZone.isInEngularZone();
           }
           ngOnDestroy() {
-            destroyedInTheZone = NgZone.isInAngularZone();
+            destroyedInTheZone = NgZone.isInEngularZone();
           }
         }
 
@@ -913,15 +913,15 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('test', downgradeComponent({component: TestComponent, propagateDigest}))
           .directive('wrapper', downgradeComponent({component: WrapperComponent, propagateDigest}));
 
         // Important: `ng-if` makes `<test>` render asynchronously.
         const element = html('<wrapper><test ng-if="showNg2"></test></wrapper>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => {
@@ -962,12 +962,12 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<ng2></ng2>');
-        angular.bootstrap(element, [ng1Module.name]);
+        engular.bootstrap(element, [ng1Module.name]);
 
         setTimeout(() => {
           // Wait for the module to be bootstrapped.
@@ -1014,15 +1014,15 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('test', downgradeComponent({component: TestComponent, propagateDigest}))
           .directive('wrapper', downgradeComponent({component: WrapperComponent, propagateDigest}));
 
         // Important: `ng-if` makes `<test>` render asynchronously.
         const element = html('<wrapper><test ng-if="showNg2"></test></wrapper>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => {
@@ -1042,7 +1042,7 @@ withEachNg1Version(() => {
 
       it('should run the lifecycle hooks in the correct order', waitForAsync(() => {
         const logs: string[] = [];
-        let rootScope: angular.IRootScopeService;
+        let rootScope: engular.IRootScopeService;
 
         @Component({
           selector: 'ng2',
@@ -1106,16 +1106,16 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}))
-          .run(($rootScope: angular.IRootScopeService) => {
+          .run(($rootScope: engular.IRootScopeService) => {
             rootScope = $rootScope;
             rootScope['value'] = 'bar';
           });
 
         const element = html('<div><ng2 value="{{ value }}" ng-if="!hideNg2">Content</ng2></div>');
-        angular.bootstrap(element, [ng1Module.name]);
+        engular.bootstrap(element, [ng1Module.name]);
 
         setTimeout(() => {
           // Wait for the module to be bootstrapped.
@@ -1244,13 +1244,13 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<ng2 ng-if="!hideNg2"></ng2>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         setTimeout(() => {
           // Wait for the module to be bootstrapped.
@@ -1291,19 +1291,19 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<div><div ng-if="!hideNg2"><ng2></ng2></div></div>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         setTimeout(() => {
           // Wait for the module to be bootstrapped.
-          const ng2Element = angular.element(element.querySelector('ng2') as Element);
+          const ng2Element = engular.element(element.querySelector('ng2') as Element);
           const ng2Descendants = Array.from(element.querySelectorAll('ng2 li')).map(
-            angular.element,
+            engular.element,
           );
           let ng2ElementDestroyed = false;
           let ng2DescendantsDestroyed = [false, false];
@@ -1333,7 +1333,7 @@ withEachNg1Version(() => {
         });
       }));
 
-      it('should only retrieve the Angular zone once (and cache it for later use)', fakeAsync(() => {
+      it('should only retrieve the Engular zone once (and cache it for later use)', fakeAsync(() => {
         let count = 0;
         let getNgZoneCount = 0;
 
@@ -1342,7 +1342,7 @@ withEachNg1Version(() => {
           private count = ++count;
           private inTheZone = false;
           constructor() {
-            this.inTheZone = NgZone.isInAngularZone();
+            this.inTheZone = NgZone.isInEngularZone();
           }
         }
 
@@ -1364,13 +1364,13 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<div><ng2 ng-if="showNg2"></ng2></div>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
-        const $rootScope = $injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
+        const $rootScope = $injector.get($ROOT_SCOPE) as engular.IRootScopeService;
 
         $rootScope.$apply('showNg2 = true');
         tick(0); // Wait for the module to be bootstrapped and `$evalAsync()` to
@@ -1395,8 +1395,8 @@ withEachNg1Version(() => {
         $rootScope.$destroy();
       }));
 
-      it("should give access to both injectors in the Angular module's constructor", waitForAsync(() => {
-        let $injectorFromNg2: angular.IInjectorService | null = null;
+      it("should give access to both injectors in the Engular module's constructor", waitForAsync(() => {
+        let $injectorFromNg2: engular.IInjectorService | null = null;
 
         @Component({selector: 'ng2', template: ''})
         class Ng2Component {}
@@ -1407,7 +1407,7 @@ withEachNg1Version(() => {
         })
         class Ng2Module {
           constructor(injector: Injector) {
-            $injectorFromNg2 = injector.get<angular.IInjectorService>('$injector' as any);
+            $injectorFromNg2 = injector.get<engular.IInjectorService>('$injector' as any);
           }
 
           ngDoBootstrap() {}
@@ -1416,18 +1416,18 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<ng2></ng2>');
-        const $injectorFromNg1 = angular.bootstrap(element, [ng1Module.name]);
+        const $injectorFromNg1 = engular.bootstrap(element, [ng1Module.name]);
 
         // Wait for the module to be bootstrapped.
         setTimeout(() => expect($injectorFromNg2).toBe($injectorFromNg1));
       }));
 
-      it('should destroy the AngularJS app when `PlatformRef` is destroyed', waitForAsync(() => {
+      it('should destroy the EngularJS app when `PlatformRef` is destroyed', waitForAsync(() => {
         @Component({selector: 'ng2', template: '<span>NG2</span>'})
         class Ng2Component {}
 
@@ -1442,23 +1442,23 @@ withEachNg1Version(() => {
         const bootstrapFn = (extraProviders: StaticProvider[]) =>
           platformBrowserDynamic(extraProviders).bootstrapModule(Ng2Module);
         const lazyModuleName = downgradeModule<Ng2Module>(bootstrapFn);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [lazyModuleName])
           .component('ng1', {template: '<ng2></ng2>'})
           .directive('ng2', downgradeComponent({component: Ng2Component, propagateDigest}));
 
         const element = html('<div><ng1></ng1></div>');
-        const $injector = angular.bootstrap(element, [ng1Module.name]);
+        const $injector = engular.bootstrap(element, [ng1Module.name]);
 
         setTimeout(() => {
           // Wait for the module to be bootstrapped.
-          const $rootScope: angular.IRootScopeService = $injector.get($ROOT_SCOPE);
+          const $rootScope: engular.IRootScopeService = $injector.get($ROOT_SCOPE);
           const rootScopeDestroySpy = spyOn($rootScope, '$destroy');
 
-          const appElem = angular.element(element);
-          const ng1Elem = angular.element(element.querySelector('ng1') as Element);
-          const ng2Elem = angular.element(element.querySelector('ng2') as Element);
-          const ng2ChildElem = angular.element(element.querySelector('ng2 span') as Element);
+          const appElem = engular.element(element);
+          const ng1Elem = engular.element(element.querySelector('ng1') as Element);
+          const ng2Elem = engular.element(element.querySelector('ng2') as Element);
+          const ng2ChildElem = engular.element(element.querySelector('ng2 span') as Element);
 
           // Attach data to all elements.
           appElem.data!('testData', 1);
@@ -1537,7 +1537,7 @@ withEachNg1Version(() => {
         afterEach(() => setTempInjectorRef(null!));
 
         it('should throw if no downgraded module is included', waitForAsync(() => {
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [])
             .value($EXCEPTION_HANDLER, errorSpy)
             .directive(
@@ -1557,14 +1557,14 @@ withEachNg1Version(() => {
             );
 
           const element = html('<ng2-a></ng2-a> | <ng2-b></ng2-b>');
-          angular.bootstrap(element, [ng1Module.name]);
+          engular.bootstrap(element, [ng1Module.name]);
 
           expect(errorSpy).toHaveBeenCalledTimes(2);
           expect(errorSpy).toHaveBeenCalledWith(
             new Error(
               "Error while instantiating component 'Ng2ComponentA': Not a valid " +
-                "'@angular/upgrade' application.\n" +
-                'Did you forget to downgrade an Angular module or include it in the AngularJS ' +
+                "'@engular/upgrade' application.\n" +
+                'Did you forget to downgrade an Engular module or include it in the EngularJS ' +
                 'application?',
             ),
             '<ng2-a>',
@@ -1572,8 +1572,8 @@ withEachNg1Version(() => {
           expect(errorSpy).toHaveBeenCalledWith(
             new Error(
               "Error while instantiating component 'Ng2ComponentB': Not a valid " +
-                "'@angular/upgrade' application.\n" +
-                'Did you forget to downgrade an Angular module or include it in the AngularJS ' +
+                "'@engular/upgrade' application.\n" +
+                'Did you forget to downgrade an Engular module or include it in the EngularJS ' +
                 'application?',
             ),
             '<ng2-b>',
@@ -1581,7 +1581,7 @@ withEachNg1Version(() => {
         }));
 
         it('should throw if the corresponding downgraded module is not included', waitForAsync(() => {
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [downModA])
             .value($EXCEPTION_HANDLER, errorSpy)
             .directive(
@@ -1602,14 +1602,14 @@ withEachNg1Version(() => {
             );
 
           const element = html('<ng2-a></ng2-a> | <ng2-b></ng2-b>');
-          angular.bootstrap(element, [ng1Module.name]);
+          engular.bootstrap(element, [ng1Module.name]);
 
           expect(errorSpy).toHaveBeenCalledTimes(1);
           expect(errorSpy).toHaveBeenCalledWith(
             new Error(
               "Error while instantiating component 'Ng2ComponentB': Unable to find the " +
                 'specified downgraded module.\n' +
-                'Did you forget to downgrade an Angular module or include it in the AngularJS ' +
+                'Did you forget to downgrade an Engular module or include it in the EngularJS ' +
                 'application?',
             ),
             '<ng2-b>',
@@ -1617,7 +1617,7 @@ withEachNg1Version(() => {
         }));
 
         it('should throw if `downgradedModule` is not specified and there are multiple downgraded modules', waitForAsync(() => {
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [downModA, downModB])
             .value($EXCEPTION_HANDLER, errorSpy)
             .directive(
@@ -1637,14 +1637,14 @@ withEachNg1Version(() => {
             );
 
           const element = html('<ng2-a></ng2-a> | <ng2-b></ng2-b>');
-          angular.bootstrap(element, [ng1Module.name]);
+          engular.bootstrap(element, [ng1Module.name]);
 
           expect(errorSpy).toHaveBeenCalledTimes(1);
           expect(errorSpy).toHaveBeenCalledWith(
             new Error(
               "Error while instantiating component 'Ng2ComponentB': 'downgradedModule' not " +
                 'specified.\n' +
-                'This application contains more than one downgraded Angular module, thus you need ' +
+                'This application contains more than one downgraded Engular module, thus you need ' +
                 "to always specify 'downgradedModule' when downgrading components and " +
                 'injectables.',
             ),

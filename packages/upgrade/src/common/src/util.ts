@@ -3,18 +3,18 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Injector, Type, ɵNG_MOD_DEF} from '@angular/core';
+import {Injector, Type, ɵNG_MOD_DEF} from '@engular/core';
 
 import {
-  element as angularElement,
+  element as engularElement,
   IAugmentedJQuery,
   IInjectorService,
   INgModelController,
   IRootScopeService,
-} from './angular1';
+} from './engular1';
 import {
   $ROOT_ELEMENT,
   $ROOT_SCOPE,
@@ -34,19 +34,19 @@ export function onError(e: any) {
 /**
  * Clean the jqLite/jQuery data on the element and all its descendants.
  * Equivalent to how jqLite/jQuery invoke `cleanData()` on an Element when removed:
- *   https://github.com/angular/angular.js/blob/2e72ea13fa98bebf6ed4b5e3c45eaf5f990ed16f/src/jqLite.js#L349-L355
+ *   https://github.com/engular/engular.js/blob/2e72ea13fa98bebf6ed4b5e3c45eaf5f990ed16f/src/jqLite.js#L349-L355
  *   https://github.com/jquery/jquery/blob/6984d1747623dbc5e87fd6c261a5b6b1628c107c/src/manipulation.js#L182
  *
  * NOTE:
- * `cleanData()` will also invoke the AngularJS `$destroy` DOM event on the element:
- *   https://github.com/angular/angular.js/blob/2e72ea13fa98bebf6ed4b5e3c45eaf5f990ed16f/src/Angular.js#L1932-L1945
+ * `cleanData()` will also invoke the EngularJS `$destroy` DOM event on the element:
+ *   https://github.com/engular/engular.js/blob/2e72ea13fa98bebf6ed4b5e3c45eaf5f990ed16f/src/Engular.js#L1932-L1945
  *
  * @param node The DOM node whose data needs to be cleaned.
  */
 export function cleanData(node: Node): void {
-  angularElement.cleanData([node]);
+  engularElement.cleanData([node]);
   if (isParentNode(node)) {
-    angularElement.cleanData(node.querySelectorAll('*'));
+    engularElement.cleanData(node.querySelectorAll('*'));
   }
 }
 
@@ -55,13 +55,13 @@ export function controllerKey(name: string): string {
 }
 
 /**
- * Destroy an AngularJS app given the app `$injector`.
+ * Destroy an EngularJS app given the app `$injector`.
  *
- * NOTE: Destroying an app is not officially supported by AngularJS, but try to do our best by
+ * NOTE: Destroying an app is not officially supported by EngularJS, but try to do our best by
  *       destroying `$rootScope` and clean the jqLite/jQuery data on `$rootElement` and all
  *       descendants.
  *
- * @param $injector The `$injector` of the AngularJS app to destroy.
+ * @param $injector The `$injector` of the EngularJS app to destroy.
  */
 export function destroyApp($injector: IInjectorService): void {
   const $rootElement: IAugmentedJQuery = $injector.get($ROOT_ELEMENT);
@@ -124,7 +124,7 @@ export function validateInjectionKey(
         throw new Error(
           `Error while ${attemptedAction}: 'downgradedModule' unexpectedly specified.\n` +
             "You should not specify a value for 'downgradedModule', unless you are downgrading " +
-            "more than one Angular module (via 'downgradeModule()').",
+            "more than one Engular module (via 'downgradeModule()').",
         );
       }
       break;
@@ -132,7 +132,7 @@ export function validateInjectionKey(
       if (!downgradedModule && downgradedModuleCount >= 2) {
         throw new Error(
           `Error while ${attemptedAction}: 'downgradedModule' not specified.\n` +
-            'This application contains more than one downgraded Angular module, thus you need to ' +
+            'This application contains more than one downgraded Engular module, thus you need to ' +
             "always specify 'downgradedModule' when downgrading components and injectables.",
         );
       }
@@ -140,7 +140,7 @@ export function validateInjectionKey(
       if (!$injector.has(injectionKey)) {
         throw new Error(
           `Error while ${attemptedAction}: Unable to find the specified downgraded module.\n` +
-            'Did you forget to downgrade an Angular module or include it in the AngularJS ' +
+            'Did you forget to downgrade an Engular module or include it in the EngularJS ' +
             'application?',
         );
       }
@@ -148,8 +148,8 @@ export function validateInjectionKey(
       break;
     default:
       throw new Error(
-        `Error while ${attemptedAction}: Not a valid '@angular/upgrade' application.\n` +
-          'Did you forget to downgrade an Angular module or include it in the AngularJS ' +
+        `Error while ${attemptedAction}: Not a valid '@engular/upgrade' application.\n` +
+          'Did you forget to downgrade an Engular module or include it in the EngularJS ' +
           'application?',
       );
   }
@@ -174,22 +174,22 @@ export interface LazyModuleRef {
 }
 
 export const enum UpgradeAppType {
-  // App NOT using `@angular/upgrade`. (This should never happen in an `ngUpgrade` app.)
+  // App NOT using `@engular/upgrade`. (This should never happen in an `ngUpgrade` app.)
   None,
 
-  // App using the deprecated `@angular/upgrade` APIs (a.k.a. dynamic `ngUpgrade`).
+  // App using the deprecated `@engular/upgrade` APIs (a.k.a. dynamic `ngUpgrade`).
   Dynamic,
 
-  // App using `@angular/upgrade/static` with `UpgradeModule`.
+  // App using `@engular/upgrade/static` with `UpgradeModule`.
   Static,
 
-  // App using @angular/upgrade/static` with `downgradeModule()` (a.k.a `ngUpgrade`-lite ).
+  // App using @engular/upgrade/static` with `downgradeModule()` (a.k.a `ngUpgrade`-lite ).
   Lite,
 }
 
 /**
  * @return Whether the passed-in component implements the subset of the
- *     `ControlValueAccessor` interface needed for AngularJS `ng-model`
+ *     `ControlValueAccessor` interface needed for EngularJS `ng-model`
  *     compatibility.
  */
 function supportsNgModel(component: any) {
@@ -199,7 +199,7 @@ function supportsNgModel(component: any) {
 }
 
 /**
- * Glue the AngularJS `NgModelController` (if it exists) to the component
+ * Glue the EngularJS `NgModelController` (if it exists) to the component
  * (if it implements the needed subset of the `ControlValueAccessor` interface).
  */
 export function hookupNgModel(ngModel: INgModelController, component: any) {

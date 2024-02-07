@@ -8,7 +8,7 @@
 
 ## Compiler
 - [X] Remove ` tslib_1.__decorate([core_1.Input(), tslib_1.__metadata("design:type", Object)], TodoComponent.prototype, "todo", void 0);` from generated output.
-- [ ] Allow compilation of `@angular/common` through ivy.
+- [ ] Allow compilation of `@engular/common` through ivy.
  
 ## Ivy Runtime
 - [X] Work on `ViewContainerRef` needs to cause change detection so that `todo` app renders correctly on first render.

@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ApplicationRef, COMPILER_OPTIONS, Component, destroyPlatform, forwardRef, NgModule, NgZone, TestabilityRegistry, ViewContainerRef, ViewEncapsulation} from '@angular/core';
-import {bootstrapApplication, BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {withBody} from '@angular/private/testing';
+import {ApplicationRef, COMPILER_OPTIONS, Component, destroyPlatform, forwardRef, NgModule, NgZone, TestabilityRegistry, ViewContainerRef, ViewEncapsulation} from '@engular/core';
+import {bootstrapApplication, BrowserModule} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
+import {withBody} from '@engular/private/testing';
 
 describe('bootstrap', () => {
   beforeEach(destroyPlatform);

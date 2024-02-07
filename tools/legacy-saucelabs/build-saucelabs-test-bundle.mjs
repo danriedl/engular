@@ -5,7 +5,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import esbuild from 'esbuild';
@@ -28,7 +28,7 @@ const outFile = join(distDir, 'legacy-test-bundle.spec.js');
 const jitTransformOutFile = join(distDir, 'legacy-test-jit-transform-bundle.mjs');
 
 /**
- * This script builds the whole library in `angular/angular` together with its
+ * This script builds the whole library in `engular/engular` together with its
  * spec files into a single IIFE bundle.
  *
  * The bundle can then be used in the legacy Saucelabs or Browserstack tests. Bundling
@@ -137,20 +137,20 @@ async function createEntryPointSpecFile() {
 }
 
 /**
- * Creates an ESBuild plugin which maps `@angular/<..>` module names to their
+ * Creates an ESBuild plugin which maps `@engular/<..>` module names to their
  * locally-built output (for the packages which are built as part of this repo).
  */
 async function createResolveEsbuildPlugin() {
   const resolveMappings = new Map([
-    [/@angular\//, `${legacyOutputDir}/`],
-    [/^angular-in-memory-web-api$/, join(legacyOutputDir, 'misc/angular-in-memory-web-api')],
+    [/@engular\//, `${legacyOutputDir}/`],
+    [/^engular-in-memory-web-api$/, join(legacyOutputDir, 'misc/engular-in-memory-web-api')],
     [/^zone.js\//, `${legacyOutputDir}/zone.js/`],
   ]);
 
   return {
     name: 'ng-resolve-esbuild',
     setup: (build) => {
-      build.onResolve({filter: /(@angular\/|angular-in-memory-web-api|zone.js)/}, async (args) => {
+      build.onResolve({filter: /(@engular\/|engular-in-memory-web-api|zone.js)/}, async (args) => {
         const matchedPattern =
             Array.from(resolveMappings.keys()).find((pattern) => args.path.match(pattern));
 
@@ -208,14 +208,14 @@ async function transpileJitTransformTransform() {
  * JS output of the packages and tests.
  */
 async function compileProjectWithTsc() {
-  const {angularJitApplicationTransform} = await import(url.pathToFileURL(jitTransformOutFile));
+  const {engularJitApplicationTransform} = await import(url.pathToFileURL(jitTransformOutFile));
   const config = parseTsconfigFile(legacyTsconfigPath, dirname(legacyTsconfigPath));
   const program = ts.createProgram(config.fileNames, config.options);
 
   const result = program.emit(undefined, undefined, undefined, undefined, {
     // We need the JIT transform to make ES2015 JIT work and signal inputs.
-    // More details on the ES2015 forwardRef issue: https://github.com/angular/angular/pull/37382.
-    before: [angularJitApplicationTransform(program, /* isCore */ true)],
+    // More details on the ES2015 forwardRef issue: https://github.com/engular/engular/pull/37382.
+    before: [engularJitApplicationTransform(program, /* isCore */ true)],
   });
 
   const diagnostics = [

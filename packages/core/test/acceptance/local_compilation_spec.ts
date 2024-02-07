@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, forwardRef, ɵɵdefineNgModule, ɵɵgetComponentDepsFactory, ɵɵsetNgModuleScope} from '@angular/core';
-import {ComponentType} from '@angular/core/src/render3';
-import {getNgModuleDef} from '@angular/core/src/render3/definition';
+import {Component, forwardRef, ɵɵdefineNgModule, ɵɵgetComponentDepsFactory, ɵɵsetNgModuleScope} from '@engular/core';
+import {ComponentType} from '@engular/core/src/render3';
+import {getNgModuleDef} from '@engular/core/src/render3/definition';
 
 describe('component dependencies in local compilation', () => {
   it('should compute correct set of dependencies when importing ng-modules directly', () => {

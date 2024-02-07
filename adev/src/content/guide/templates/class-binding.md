@@ -8,7 +8,7 @@ To create a single class binding, type the following:
 
 `[class.sale]="onSale"`
 
-Angular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy&mdash;with the exception of `undefined`.
+Engular adds the class when the bound expression, `onSale` is truthy, and it removes the class when the expression is falsy&mdash;with the exception of `undefined`.
 
 ## Binding to multiple CSS classes
 
@@ -22,12 +22,12 @@ The expression can be one of:
 * An object with class names as the keys and truthy or falsy expressions as the values.
 * An array of class names.
 
-With the object format, Angular adds a class only if its associated value is truthy.
+With the object format, Engular adds a class only if its associated value is truthy.
 
-IMPORTANT: With any object-like expression&mdash;such as `object`, `Array`, `Map`, or `Set` &mdash;the identity of the object must change for Angular to update the class list.
+IMPORTANT: With any object-like expression&mdash;such as `object`, `Array`, `Map`, or `Set` &mdash;the identity of the object must change for Engular to update the class list.
 Updating the property without changing object identity has no effect.
 
-If there are multiple bindings to the same class name, Angular uses styling precedence to determine which binding to use.
+If there are multiple bindings to the same class name, Engular uses styling precedence to determine which binding to use.
 
 The following table summarizes class binding syntax.
 
@@ -44,7 +44,7 @@ To create a single style binding, use the prefix `style` followed by a dot and t
 
 For example, to set the `width` style, type the following:  `[style.width]="width"`
 
-Angular sets the property to the value of the bound expression, which is usually a string. Optionally, you can add a unit extension like `em` or `%`, which requires a number type.
+Engular sets the property to the value of the bound expression, which is usually a string. Optionally, you can add a unit extension like `em` or `%`, which requires a number type.
 
 1. To write a style in dash-case, type the following:
 
@@ -63,14 +63,14 @@ To toggle multiple styles, bind to the `[style]` attribute&mdash;for example, `[
 
 Note that binding an array to `[style]` is not supported.
 
-IMPORTANT: When binding `[style]` to an object expression, the identity of the object must change for Angular to update the class list.
+IMPORTANT: When binding `[style]` to an object expression, the identity of the object must change for Engular to update the class list.
 Updating the property without changing object identity has no effect.
 
 ### Single and multiple-style binding example
 
 <docs-code path="adev/src/content/examples/attribute-binding/src/app/single-and-multiple-style-binding.component.ts" header="nav-bar.component.ts"/>
 
-If there are multiple bindings to the same style attribute, Angular uses styling precedence to determine which binding to use.
+If there are multiple bindings to the same style attribute, Engular uses styling precedence to determine which binding to use.
 
 The following table summarizes style binding syntax.
 
@@ -89,5 +89,5 @@ A single HTML element can have its CSS class list and style values bound to mult
 
 <docs-pill-row>
   <docs-pill href="/guide/components/styling" title="Component Styling"/>
-  <docs-pill href="/guide/animations" title="Introduction to Angular animations"/>
+  <docs-pill href="/guide/animations" title="Introduction to Engular animations"/>
 </docs-pill-row>

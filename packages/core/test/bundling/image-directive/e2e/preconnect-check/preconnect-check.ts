@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {DOCUMENT, IMAGE_LOADER, NgOptimizedImage} from '@angular/common';
-import {Component, Inject} from '@angular/core';
+import {DOCUMENT, IMAGE_LOADER, NgOptimizedImage} from '@engular/common';
+import {Component, Inject} from '@engular/core';
 
 @Component({
   selector: 'preconnect-check',
@@ -20,7 +20,7 @@ import {Component, Inject} from '@angular/core';
   `,
   providers: [{
     provide: IMAGE_LOADER,
-    useValue: (config: {src: string}) => `https://angular.io/assets/images/${config.src}`
+    useValue: (config: {src: string}) => `https://engular.io/assets/images/${config.src}`
   }],
 })
 export class PreconnectCheckComponent {
@@ -38,7 +38,7 @@ export class PreconnectCheckComponent {
     const url = new URL(win.location.href).searchParams;
     const preconnect = url.get('preconnect');
     if (preconnect !== null) {
-      const link = this.createLinkElement('preconnect', 'https://angular.io');
+      const link = this.createLinkElement('preconnect', 'https://engular.io');
       this.doc.head.appendChild(link);
     }
   }

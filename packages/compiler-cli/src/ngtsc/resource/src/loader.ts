@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import ts from 'typescript';
@@ -188,7 +188,7 @@ export class AdapterResourceLoader implements ResourceLoader {
       } else if (CSS_PREPROCESSOR_EXT.test(candidate)) {
         /**
          * If the user specified styleUrl points to *.scss, but the Sass compiler was run before
-         * Angular, then the resource may have been generated as *.css. Simply try the resolution
+         * Engular, then the resource may have been generated as *.css. Simply try the resolution
          * again.
          */
         const cssFallbackUrl = candidate.replace(CSS_PREPROCESSOR_EXT, '.css');

@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {assertInInjectionContext, Attribute, ChangeDetectorRef, Component, ComponentRef, createEnvironmentInjector, createNgModule, Directive, ElementRef, ENVIRONMENT_INITIALIZER, EnvironmentInjector, EventEmitter, forwardRef, Host, HostBinding, ImportedNgModuleProviders, importProvidersFrom, ImportProvidersSource, inject, Inject, Injectable, InjectFlags, InjectionToken, InjectOptions, INJECTOR, Injector, Input, LOCALE_ID, makeEnvironmentProviders, ModuleWithProviders, NgModule, NgModuleRef, NgZone, Optional, Output, Pipe, PipeTransform, Provider, runInInjectionContext, Self, SkipSelf, TemplateRef, Type, ViewChild, ViewContainerRef, ViewEncapsulation, ViewRef, ɵcreateInjector as createInjector, ɵDEFAULT_LOCALE_ID as DEFAULT_LOCALE_ID, ɵINJECTOR_SCOPE, ɵInternalEnvironmentProviders as InternalEnvironmentProviders} from '@angular/core';
-import {RuntimeError, RuntimeErrorCode} from '@angular/core/src/errors';
-import {ViewRef as ViewRefInternal} from '@angular/core/src/render3/view_ref';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {CommonModule} from '@engular/common';
+import {assertInInjectionContext, Attribute, ChangeDetectorRef, Component, ComponentRef, createEnvironmentInjector, createNgModule, Directive, ElementRef, ENVIRONMENT_INITIALIZER, EnvironmentInjector, EventEmitter, forwardRef, Host, HostBinding, ImportedNgModuleProviders, importProvidersFrom, ImportProvidersSource, inject, Inject, Injectable, InjectFlags, InjectionToken, InjectOptions, INJECTOR, Injector, Input, LOCALE_ID, makeEnvironmentProviders, ModuleWithProviders, NgModule, NgModuleRef, NgZone, Optional, Output, Pipe, PipeTransform, Provider, runInInjectionContext, Self, SkipSelf, TemplateRef, Type, ViewChild, ViewContainerRef, ViewEncapsulation, ViewRef, ɵcreateInjector as createInjector, ɵDEFAULT_LOCALE_ID as DEFAULT_LOCALE_ID, ɵINJECTOR_SCOPE, ɵInternalEnvironmentProviders as InternalEnvironmentProviders} from '@engular/core';
+import {RuntimeError, RuntimeErrorCode} from '@engular/core/src/errors';
+import {ViewRef as ViewRefInternal} from '@engular/core/src/render3/view_ref';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
 import {BehaviorSubject} from 'rxjs';
 
 const getProvidersByToken =
@@ -965,7 +965,7 @@ describe('di', () => {
 
     it('should not have access to the directive injector in a standalone injector from within a directive-level provider factory',
        () => {
-         // https://github.com/angular/angular/issues/42651
+         // https://github.com/engular/engular/issues/42651
          class TestA {
            constructor(public injector: string) {}
          }
@@ -1063,7 +1063,7 @@ describe('di', () => {
       TestBed.configureTestingModule({declarations: [DirectiveA, DirectiveB, MyComp]});
       expect(() => TestBed.createComponent(MyComp))
           .toThrowError(
-              'NG0200: Circular dependency in DI detected for DirectiveA. Find more at https://angular.io/errors/NG0200');
+              'NG0200: Circular dependency in DI detected for DirectiveA. Find more at https://engular.io/errors/NG0200');
     });
 
     describe('flags', () => {
@@ -2160,7 +2160,7 @@ describe('di', () => {
           TestBed.configureTestingModule({declarations: [DirectiveString, MyComp, MyApp]});
           expect(() => TestBed.createComponent(MyApp))
               .toThrowError(
-                  'NG0201: No provider for String found in NodeInjector. Find more at https://angular.io/errors/NG0201');
+                  'NG0201: No provider for String found in NodeInjector. Find more at https://engular.io/errors/NG0201');
         });
 
         it('should not find other directives on the host itself', () => {
@@ -2236,11 +2236,11 @@ describe('di', () => {
           TestBed.configureTestingModule({declarations: [DirectiveComp, MyComp, MyApp]});
           expect(() => TestBed.createComponent(MyApp))
               .toThrowError(
-                  'NG0201: No provider for MyApp found in NodeInjector. Find more at https://angular.io/errors/NG0201');
+                  'NG0201: No provider for MyApp found in NodeInjector. Find more at https://engular.io/errors/NG0201');
         });
 
         describe('regression', () => {
-          // based on https://stackblitz.com/edit/angular-riss8k?file=src/app/app.component.ts
+          // based on https://stackblitz.com/edit/engular-riss8k?file=src/app/app.component.ts
           it('should allow directives with Host flag to inject view providers from containing component',
              () => {
                class ControlContainer {}
@@ -2517,7 +2517,7 @@ describe('di', () => {
 
       expect(warnSpy).toHaveBeenCalledWith(
           `DEPRECATED: DI is instantiating a token "SubSubClass" that inherits its @Injectable decorator but does not provide one itself.\n` +
-          `This will become an error in a future version of Angular. Please add @Injectable() to the "SubSubClass" class.`);
+          `This will become an error in a future version of Engular. Please add @Injectable() to the "SubSubClass" class.`);
     });
 
     it('should instantiate correct class when undecorated class extends an injectable', () => {
@@ -2546,7 +2546,7 @@ describe('di', () => {
 
       expect(warnSpy).toHaveBeenCalledWith(
           `DEPRECATED: DI is instantiating a token "MyRootService" that inherits its @Injectable decorator but does not provide one itself.\n` +
-          `This will become an error in a future version of Angular. Please add @Injectable() to the "MyRootService" class.`);
+          `This will become an error in a future version of Engular. Please add @Injectable() to the "MyRootService" class.`);
     });
 
     it('should inject services in constructor with overloads', () => {
@@ -4302,7 +4302,7 @@ describe('di', () => {
     expect(fixture.nativeElement.textContent.trim()).toBe('2 (transformed) items');
   });
 
-  // TODO: https://angular-team.atlassian.net/browse/FW-1779
+  // TODO: https://engular-team.atlassian.net/browse/FW-1779
   it('should prioritize useFactory over useExisting', () => {
     abstract class Base {}
     @Directive({selector: '[dirA]'})

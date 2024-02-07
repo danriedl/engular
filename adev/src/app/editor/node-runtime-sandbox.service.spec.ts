@@ -3,19 +3,19 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {TestBed} from '@angular/core/testing';
+import {TestBed} from '@engular/core/testing';
 import {BehaviorSubject, of as observableOf} from 'rxjs';
 
-import {signal} from '@angular/core';
+import {signal} from '@engular/core';
 import {WebContainer} from '@webcontainer/api';
-import {TutorialType} from '@angular/docs';
+import {TutorialType} from '@engular/docs';
 import {
   FakeWebContainer,
   FakeWebContainerProcess,
-} from '@angular/docs/testing';
+} from '@engular/docs/testing';
 import {AlertManager} from './alert-manager.service';
 import {EmbeddedTutorialManager} from './embedded-tutorial-manager.service';
 import {LoadingStep} from './enums/loading-steps';
@@ -61,7 +61,7 @@ describe('NodeRuntimeSandbox', () => {
     filesToDeleteFromPreviousProject: signal(new Set([])),
   };
 
-  const setValuesToInitializeAngularCLI = () => {
+  const setValuesToInitializeEngularCLI = () => {
     service['embeddedTutorialManager'].type.set(TutorialType.CLI);
     service['webContainerPromise'] = Promise.resolve(new FakeWebContainer());
   };
@@ -180,14 +180,14 @@ describe('NodeRuntimeSandbox', () => {
     expect(writeFileSpy).toHaveBeenCalledOnceWith(path, content);
   });
 
-  it('should initialize the Angular CLI based on the tutorial config', async () => {
-    setValuesToInitializeAngularCLI();
+  it('should initialize the Engular CLI based on the tutorial config', async () => {
+    setValuesToInitializeEngularCLI();
 
-    const initAngularCliSpy = spyOn(service, 'initAngularCli' as any);
+    const initEngularCliSpy = spyOn(service, 'initEngularCli' as any);
 
     await service.init();
 
-    expect(initAngularCliSpy).toHaveBeenCalled();
+    expect(initEngularCliSpy).toHaveBeenCalled();
   });
 
   it('should initialize a project based on the tutorial config', async () => {
@@ -201,7 +201,7 @@ describe('NodeRuntimeSandbox', () => {
     expect(initProjectSpy).toHaveBeenCalled();
   });
 
-  it('should cleanup when initializing the Angular CLI if a project was initialized before', async () => {
+  it('should cleanup when initializing the Engular CLI if a project was initialized before', async () => {
     const cleanupSpy = spyOn(service, 'cleanup' as any);
 
     setValuesToInitializeProject();
@@ -209,16 +209,16 @@ describe('NodeRuntimeSandbox', () => {
 
     expect(cleanupSpy).not.toHaveBeenCalled();
 
-    setValuesToInitializeAngularCLI();
+    setValuesToInitializeEngularCLI();
     await service.init();
 
     expect(cleanupSpy).toHaveBeenCalledOnceWith();
   });
 
-  it('should cleanup when initializing a project if the Angular CLI was initialized before', async () => {
+  it('should cleanup when initializing a project if the Engular CLI was initialized before', async () => {
     const cleanupSpy = spyOn(service, 'cleanup' as any);
 
-    setValuesToInitializeAngularCLI();
+    setValuesToInitializeEngularCLI();
     await service.init();
 
     expect(cleanupSpy).not.toHaveBeenCalled();

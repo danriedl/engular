@@ -1,11 +1,11 @@
-# Serving Angular apps for development
+# Serving Engular apps for development
 
-You can serve your Angular CLI application with the `ng serve` command.
+You can serve your Engular CLI application with the `ng serve` command.
 This will compile your application, skip unnecessary optimizations, start a devserver, and automatically rebuild and live reload any subsequent changes.
 You can stop the server by pressing `Ctrl+C`.
 
-`ng serve` only executes the builder for the `serve` target in the default project as specified in `angular.json`.
-While any builder can be used here, the most common (and default) builder is `@angular-devkit/build-angular:dev-server`.
+`ng serve` only executes the builder for the `serve` target in the default project as specified in `engular.json`.
+While any builder can be used here, the most common (and default) builder is `@engular-devkit/build-engular:dev-server`.
 
 You can determine which builder is being used for a particular project by looking up the `serve` target for that project.
 
@@ -17,7 +17,7 @@ You can determine which builder is being used for a particular project by lookin
       "architect": {
         // `ng serve` invokes the Architect target named `serve`.
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@engular-devkit/build-engular:dev-server",
           // ...
         },
         "build": { /* ... */ }
@@ -29,7 +29,7 @@ You can determine which builder is being used for a particular project by lookin
 
 </docs-code>
 
-This page discusses usage and options of `@angular-devkit/build-angular:dev-server`.
+This page discusses usage and options of `@engular-devkit/build-engular:dev-server`.
 
 ## Proxying to a backend server
 
@@ -50,7 +50,7 @@ For example, to divert all calls for `http://localhost:4200/api` to a server run
 
     </docs-code>
 
-1. In the CLI configuration file, `angular.json`, add the `proxyConfig` option to the `serve` target:
+1. In the CLI configuration file, `engular.json`, add the `proxyConfig` option to the `serve` target:
 
     <docs-code language="json">
 
@@ -59,7 +59,7 @@ For example, to divert all calls for `http://localhost:4200/api` to a server run
         "my-app": {
           "architect": {
             "serve": {
-              "builder": "@angular-devkit/build-angular:dev-server",
+              "builder": "@engular-devkit/build-engular:dev-server",
               "options": {
                 "proxyConfig": "src/proxy.conf.json"
               }

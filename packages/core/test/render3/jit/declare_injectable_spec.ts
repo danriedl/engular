@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {forwardRef, InjectionToken, Injector, ɵcreateInjector, ɵInjectorProfilerContext, ɵsetCurrentInjector, ɵsetInjectorProfilerContext, ɵɵdefineInjector, ɵɵInjectableDeclaration, ɵɵngDeclareInjectable, ɵɵngDeclareInjector, ɵɵngDeclareNgModule} from '@angular/core';
+import {forwardRef, InjectionToken, Injector, ɵcreateInjector, ɵInjectorProfilerContext, ɵsetCurrentInjector, ɵsetInjectorProfilerContext, ɵɵdefineInjector, ɵɵInjectableDeclaration, ɵɵngDeclareInjectable, ɵɵngDeclareInjector, ɵɵngDeclareNgModule} from '@engular/core';
 
 describe('Injectable declaration jit compilation', () => {
   let previousInjector: Injector|null|undefined;

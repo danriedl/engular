@@ -1,11 +1,11 @@
 # Setting up the local environment and workspace
 
-This guide explains how to set up your environment for Angular development using the [Angular CLI](cli "CLI command reference").
+This guide explains how to set up your environment for Engular development using the [Engular CLI](cli "CLI command reference").
 It includes information about installing the CLI, creating an initial workspace and starter app, and running that app locally to verify your setup.
 
-<docs-callout title="Try Angular without local setup">
+<docs-callout title="Try Engular without local setup">
 
-If you are new to Angular, you might want to start with [Try it now!](tutorials/learn-angular), which introduces the essentials of Angular in your browser.
+If you are new to Engular, you might want to start with [Try it now!](tutorials/learn-engular), which introduces the essentials of Engular in your browser.
 This standalone tutorial takes advantage of the interactive [StackBlitz](https://stackblitz.com) environment for online development.
 You don't need to set up your local environment until you're ready.
 
@@ -13,7 +13,7 @@ You don't need to set up your local environment until you're ready.
 
 ## Before you start
 
-To use Angular CLI, you should be familiar with the following:
+To use Engular CLI, you should be familiar with the following:
 
 <docs-pill-row>
   <docs-pill href="https://developer.mozilla.org/docs/Web/JavaScript/A_re-introduction_to_JavaScript" title="JavaScript"/>
@@ -26,20 +26,20 @@ Knowledge of [TypeScript](https://www.typescriptlang.org) is helpful, but not re
 
 ## Dependencies
 
-To install Angular CLI on your local system, you need to install [Node.js](https://nodejs.org/).
-Angular CLI uses Node and its associated package manager, npm, to install and run JavaScript tools outside the browser.
+To install Engular CLI on your local system, you need to install [Node.js](https://nodejs.org/).
+Engular CLI uses Node and its associated package manager, npm, to install and run JavaScript tools outside the browser.
 
 [Download and install Node.js](https://nodejs.org/en/download), which will include the `npm` CLI as well.
-Angular requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js.
-See [Angular's version compatibility](reference/versions) guide for more information.
+Engular requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js.
+See [Engular's version compatibility](reference/versions) guide for more information.
 
-## Install the Angular CLI
+## Install the Engular CLI
 
-To install the Angular CLI, open a terminal window and run the following command:
+To install the Engular CLI, open a terminal window and run the following command:
 
 <docs-code language="shell">
 
-npm install -g @angular/cli
+npm install -g @engular/cli
 
 </docs-code>
 
@@ -63,7 +63,7 @@ Run with `sudo` to execute the command as the root user and enter your password 
 
 <docs-code language="sh">
 
-sudo npm install -g @angular/cli
+sudo npm install -g @engular/cli
 
 </docs-code>
 
@@ -71,7 +71,7 @@ Make sure you understand the implications of running commands as root.
 
 ## Create a workspace and initial application
 
-You develop apps in the context of an Angular **workspace**.
+You develop apps in the context of an Engular **workspace**.
 
 To create a new workspace and initial starter app, run the CLI command `ng new` and provide the name `my-app`, as shown here, then answer prompts about features to include:
 
@@ -81,7 +81,7 @@ ng new my-app
 
 </docs-code>
 
-The Angular CLI installs the necessary Angular npm packages and other dependencies.
+The Engular CLI installs the necessary Engular npm packages and other dependencies.
 This can take a few minutes.
 
 The CLI creates a new workspace and a small welcome app in a new directory with the same name as the workspace, ready to run.
@@ -95,7 +95,7 @@ cd my-app
 
 ## Run the application
 
-The Angular CLI includes a development server, for you to build and serve your app locally. Run the following command:
+The Engular CLI includes a development server, for you to build and serve your app locally. Run the following command:
 
 <docs-code language="shell">
 
@@ -109,7 +109,7 @@ The `--open` (or just `-o`) option automatically opens your browser to `http://l
 
 ## Workspaces and project files
 
-The [`ng new`](cli/new) command creates an [Angular workspace](reference/configs/workspace-config) folder and generates a new application inside it.
+The [`ng new`](cli/new) command creates an [Engular workspace](reference/configs/workspace-config) folder and generates a new application inside it.
 A workspace can contain multiple applications and libraries.
 The initial application created by the [`ng new`](cli/new) command is at the root directory of the workspace.
 When you generate an additional application or library in an existing workspace, it goes into a `projects/` subfolder by default.

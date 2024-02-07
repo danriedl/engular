@@ -1,10 +1,10 @@
 # Testing
 
-Testing your Angular application helps you check that your application is working as you expect.
+Testing your Engular application helps you check that your application is working as you expect.
 
 ## Set up testing
 
-The Angular CLI downloads and installs everything you need to test an Angular application with [Jasmine testing framework](https://jasmine.github.io).
+The Engular CLI downloads and installs everything you need to test an Engular application with [Jasmine testing framework](https://jasmine.github.io).
 
 The project you create with the CLI is immediately ready to test.
 Just run the [`ng test`](cli/test) CLI command:
@@ -46,7 +46,7 @@ The tests run again, the browser refreshes, and the new test results appear.
 
 ## Configuration
 
-The Angular CLI takes care of Jasmine and Karma configuration for you. It constructs the full configuration in memory, based on options specified in the `angular.json` file.
+The Engular CLI takes care of Jasmine and Karma configuration for you. It constructs the full configuration in memory, based on options specified in the `engular.json` file.
 
 If you want to customize Karma, you can create a `karma.conf.js` by running the following command:
 
@@ -60,12 +60,12 @@ HELPFUL: Read more about Karma configuration in the [Karma configuration guide](
 
 ### Other test frameworks
 
-You can also unit test an Angular application with other testing libraries and test runners.
+You can also unit test an Engular application with other testing libraries and test runners.
 Each library and runner has its own distinctive installation procedures, configuration, and syntax.
 
 ### Test file name and location
 
-Inside the `src/app` folder the Angular CLI generated a test file for the `AppComponent` named `app.component.spec.ts`.
+Inside the `src/app` folder the Engular CLI generated a test file for the `AppComponent` named `app.component.spec.ts`.
 
 IMPORTANT: The test file extension **must be `.spec.ts`** so that tooling can identify it as a file with tests \(also known as a *spec* file\).
 
@@ -103,7 +103,7 @@ One of the best ways to keep your project bug-free is through a test suite, but 
 
 Continuous integration \(CI\) servers let you set up your project repository so that your tests run on every commit and pull request.
 
-To test your Angular CLI application in Continuous integration \(CI\) run the following command:
+To test your Engular CLI application in Continuous integration \(CI\) run the following command:
 
 <docs-code language="shell">
 ng test --no-watch --no-progress --browsers=ChromeHeadless
@@ -117,9 +117,9 @@ After you've set up your application for testing, you might find the following t
 |:---                                                                |:---     |
 | [Code coverage](guide/testing/code-coverage)                       | How much of your app your tests are covering and how to specify required amounts. |
 | [Testing services](guide/testing/services)                         | How to test the services your application uses.                                   |
-| [Basics of testing components](guide/testing/components-basics)    | Basics of testing Angular components.                                             |
+| [Basics of testing components](guide/testing/components-basics)    | Basics of testing Engular components.                                             |
 | [Component testing scenarios](guide/testing/components-scenarios)  | Various kinds of component testing scenarios and use cases.                       |
 | [Testing attribute directives](guide/testing/attribute-directives) | How to test your attribute directives.                                            |
 | [Testing pipes](guide/testing/pipes)                               | How to test pipes.                                                                |
 | [Debugging tests](guide/testing/debugging)                            | Common testing bugs.                                                              |
-| [Testing utility APIs](guide/testing/utility-apis)                 | Angular testing features.                                                         |
+| [Testing utility APIs](guide/testing/utility-apis)                 | Engular testing features.                                                         |

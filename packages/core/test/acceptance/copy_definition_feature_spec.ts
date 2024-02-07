@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, NgModule, ɵɵCopyDefinitionFeature as CopyDefinitionFeature, ɵɵdefineComponent as defineComponent, ɵɵInheritDefinitionFeature as InheritDefinitionFeature} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
+import {Component, NgModule, ɵɵCopyDefinitionFeature as CopyDefinitionFeature, ɵɵdefineComponent as defineComponent, ɵɵInheritDefinitionFeature as InheritDefinitionFeature} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
 
 describe('CopyDefinitionFeature', () => {
   it('should copy the template function of a component definition from parent to child', () => {

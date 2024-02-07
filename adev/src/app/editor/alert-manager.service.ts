@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {Injectable, inject} from '@angular/core';
-import {LOCAL_STORAGE, WINDOW, isMobile} from '@angular/docs';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {Injectable, inject} from '@engular/core';
+import {LOCAL_STORAGE, WINDOW, isMobile} from '@engular/docs';
+import {MatSnackBar} from '@engular/material/snack-bar';
 import {ErrorSnackBar, ErrorSnackBarData} from '../core/services/errors-handling/error-snack-bar';
 
 export const MAX_RECOMMENDED_WEBCONTAINERS_INSTANCES = 3;
@@ -87,7 +87,7 @@ export class AlertManager {
     let message = '';
     switch (reason) {
       case AlertReason.OUT_OF_MEMORY:
-        message = `Your browser is currently limiting the memory available to run the Angular Tutorials or Playground. If you have multiple tabs open with Tutorials or Playground, please close some of them and refresh this page.`;
+        message = `Your browser is currently limiting the memory available to run the Engular Tutorials or Playground. If you have multiple tabs open with Tutorials or Playground, please close some of them and refresh this page.`;
         break;
       case AlertReason.MOBILE:
         message = `You are running the embedded editor in a mobile device, this may result in an Out of memory error.`;

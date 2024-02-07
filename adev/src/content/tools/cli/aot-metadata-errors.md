@@ -4,7 +4,7 @@ The following are metadata errors you may encounter, with explanations and sugge
 
 ## Expression form not supported
 
-HELPFUL: The compiler encountered an expression it didn't understand while evaluating Angular metadata.
+HELPFUL: The compiler encountered an expression it didn't understand while evaluating Engular metadata.
 
 Language features outside of the compiler's [restricted expression syntax](tools/cli/aot-compiler#expression-syntax)
 can produce this error, as seen in the following example:
@@ -21,10 +21,10 @@ const prop = typeof Fooish; // typeof is not valid in metadata
 </docs-code>
 
 You can use `typeof` and bracket notation in normal application code.
-You just can't use those features within expressions that define Angular metadata.
+You just can't use those features within expressions that define Engular metadata.
 
 Avoid this error by sticking to the compiler's [restricted expression syntax](tools/cli/aot-compiler#expression-syntax)
-when writing Angular metadata
+when writing Engular metadata
 and be wary of new or unusual TypeScript features.
 
 ## Reference to a local (non-exported) symbol
@@ -151,7 +151,7 @@ To correct this error, provide the initial value of the variable in an initializ
 <docs-code language="typescript">
 
 // CORRECTED
-export let someTemplate = '&lt;h1&gt;Greetings from Angular&lt;/h1&gt;';
+export let someTemplate = '&lt;h1&gt;Greetings from Engular&lt;/h1&gt;';
 
 &commat;Component({
   selector: 'my-component',
@@ -183,7 +183,7 @@ abstract class MyStrategy { }
 
 </docs-code>
 
-Angular generates a class factory in a separate module and that factory [can only access exported classes](tools/cli/aot-compiler#exported-symbols).
+Engular generates a class factory in a separate module and that factory [can only access exported classes](tools/cli/aot-compiler#exported-symbols).
 To correct this error, export the referenced class.
 
 <docs-code language="typescript">
@@ -218,7 +218,7 @@ function myStrategy() { &hellip; }
 
 </docs-code>
 
-Angular generates a class factory in a separate module and that factory [can only access exported functions](tools/cli/aot-compiler#exported-symbols).
+Engular generates a class factory in a separate module and that factory [can only access exported functions](tools/cli/aot-compiler#exported-symbols).
 To correct this error, export the function.
 
 <docs-code language="typescript">
@@ -349,7 +349,7 @@ export class MyComponent {
 </docs-code>
 
 TypeScript understands ambient types so you don't import them.
-The Angular compiler does not understand a type that you neglect to export or import.
+The Engular compiler does not understand a type that you neglect to export or import.
 
 In this case, the compiler doesn't understand how to inject something with the `Window` token.
 
@@ -368,7 +368,7 @@ Here's an illustrative example.
 <docs-code language="typescript">
 
 // CORRECTED
-import { Inject } from '&commat;angular/core';
+import { Inject } from '&commat;engular/core';
 
 export const WINDOW = new InjectionToken('Window');
 export function _window() { return window; }
@@ -388,12 +388,12 @@ export class MyComponent {
 The `Window` type in the constructor is no longer a problem for the compiler because it
 uses the `@Inject(WINDOW)` to generate the injection code.
 
-Angular does something similar with the `DOCUMENT` token so you can inject the browser's `document` object \(or an abstraction of it, depending upon the platform in which the application runs\).
+Engular does something similar with the `DOCUMENT` token so you can inject the browser's `document` object \(or an abstraction of it, depending upon the platform in which the application runs\).
 
 <docs-code language="typescript">
 
-import { Inject }   from '&commat;angular/core';
-import { DOCUMENT } from '&commat;angular/common';
+import { Inject }   from '&commat;engular/core';
+import { DOCUMENT } from '&commat;engular/common';
 
 &commat;Component({ &hellip; })
 export class MyComponent {
@@ -426,7 +426,7 @@ provider: [{ provide: Foo, useValue: { '0': 'test' } }]
 
 ## Unsupported enum member name
 
-HELPFUL: *Angular couldn't determine the value of the [enum member](https://www.typescriptlang.org/docs/handbook/enums.html) that you referenced in metadata.*
+HELPFUL: *Engular couldn't determine the value of the [enum member](https://www.typescriptlang.org/docs/handbook/enums.html) that you referenced in metadata.*
 
 The compiler can understand simple enum values but not complex values such as those derived from computed properties.
 
@@ -478,4 +478,4 @@ HELPFUL: *The compiler expected a reference to a symbol at the location specifie
 
 This error can occur if you use an expression in the `extends` clause of a class.
 
-<!--todo: Chuck: After reviewing your PR comment I'm still at a loss. See [comment there](https://github.com/angular/angular/pull/17712#discussion_r132025495). -->
+<!--todo: Chuck: After reviewing your PR comment I'm still at a loss. See [comment there](https://github.com/engular/engular/pull/17712#discussion_r132025495). -->

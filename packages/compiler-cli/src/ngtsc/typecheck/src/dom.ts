@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {DomElementSchemaRegistry, ParseSourceSpan, SchemaMetadata, TmplAstElement} from '@angular/compiler';
+import {DomElementSchemaRegistry, ParseSourceSpan, SchemaMetadata, TmplAstElement} from '@engular/compiler';
 import ts from 'typescript';
 
 import {ErrorCode, ngErrorCode} from '../../diagnostics';
@@ -19,7 +19,7 @@ const REGISTRY = new DomElementSchemaRegistry();
 const REMOVE_XHTML_REGEX = /^:xhtml:/;
 
 /**
- * Checks every non-Angular element/property processed in a template and potentially produces
+ * Checks every non-Engular element/property processed in a template and potentially produces
  * `ts.Diagnostic`s related to improper usage.
  *
  * A `DomSchemaChecker`'s job is to check DOM nodes and their attributes written used in templates
@@ -35,7 +35,7 @@ export interface DomSchemaChecker {
   readonly diagnostics: ReadonlyArray<TemplateDiagnostic>;
 
   /**
-   * Check a non-Angular element and record any diagnostics about it.
+   * Check a non-Engular element and record any diagnostics about it.
    *
    * @param id the template ID, suitable for resolution with a `TcbSourceResolver`.
    * @param element the element node in question.
@@ -65,8 +65,8 @@ export interface DomSchemaChecker {
 }
 
 /**
- * Checks non-Angular elements and properties against the `DomElementSchemaRegistry`, a schema
- * maintained by the Angular team via extraction from a browser IDL.
+ * Checks non-Engular elements and properties against the `DomElementSchemaRegistry`, a schema
+ * maintained by the Engular team via extraction from a browser IDL.
  */
 export class RegistryDomSchemaChecker implements DomSchemaChecker {
   private _diagnostics: TemplateDiagnostic[] = [];
@@ -90,7 +90,7 @@ export class RegistryDomSchemaChecker implements DomSchemaChecker {
 
       const schemas = `'${hostIsStandalone ? '@Component' : '@NgModule'}.schemas'`;
       let errorMsg = `'${name}' is not a known element:\n`;
-      errorMsg += `1. If '${name}' is an Angular component, then verify that it is ${
+      errorMsg += `1. If '${name}' is an Engular component, then verify that it is ${
           hostIsStandalone ? 'included in the \'@Component.imports\' of this component' :
                              'part of this module'}.\n`;
       if (name.indexOf('-') > -1) {
@@ -119,13 +119,13 @@ export class RegistryDomSchemaChecker implements DomSchemaChecker {
       let errorMsg =
           `Can't bind to '${name}' since it isn't a known property of '${element.name}'.`;
       if (element.name.startsWith('ng-')) {
-        errorMsg += `\n1. If '${name}' is an Angular directive, then add 'CommonModule' to the '${
+        errorMsg += `\n1. If '${name}' is an Engular directive, then add 'CommonModule' to the '${
                         decorator}.imports' of this component.` +
             `\n2. To allow any property add 'NO_ERRORS_SCHEMA' to the ${
                         schemas} of this component.`;
       } else if (element.name.indexOf('-') > -1) {
         errorMsg +=
-            `\n1. If '${element.name}' is an Angular component and it has '${
+            `\n1. If '${element.name}' is an Engular component and it has '${
                 name}' input, then verify that it is ${
                 hostIsStandalone ? 'included in the \'@Component.imports\' of this component' :
                                    'part of this module'}.` +

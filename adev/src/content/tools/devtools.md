@@ -1,17 +1,17 @@
 # DevTools Overview
 
-Angular DevTools is a browser extension that provides debugging and profiling capabilities for Angular applications.
+Engular DevTools is a browser extension that provides debugging and profiling capabilities for Engular applications.
 
 <docs-video src="https://www.youtube.com/embed/bavWOHZM6zE"/>
 
-Install Angular DevTools from the [Chrome Web Store](https://chrome.google.com/webstore/detail/angular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh) or from [Firefox Addons](https://addons.mozilla.org/en-GB/firefox/addon/angular-devtools/).
+Install Engular DevTools from the [Chrome Web Store](https://chrome.google.com/webstore/detail/engular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh) or from [Firefox Addons](https://addons.mozilla.org/en-GB/firefox/addon/engular-devtools/).
 
 You can open Chrome or Firefox DevTools on any web page by pressing <kbd>F12</kbd> or <kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></kbd> (Windows or Linux) and <kbd><kbd>Fn</kbd>+<kbd>F12</kbd></kbd> or <kbd><kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd></kbd> (Mac).
-Once browser DevTools is open and Angular DevTools is installed, you can find it under the "Angular" tab.
+Once browser DevTools is open and Engular DevTools is installed, you can find it under the "Engular" tab.
 
-HELPFUL: Chrome's new tab page does not run installed extensions, so the Angular tab will not appear in DevTools. Visit any other page to see it.
+HELPFUL: Chrome's new tab page does not run installed extensions, so the Engular tab will not appear in DevTools. Visit any other page to see it.
 
-<img src="assets/content/images/guide/devtools/devtools.png" alt="An overview of Angular DevTools showing a tree of components for an application.">
+<img src="assets/content/images/guide/devtools/devtools.png" alt="An overview of Engular DevTools showing a tree of components for an application.">
 
 ## Open your application
 
@@ -22,20 +22,20 @@ When you open the extension, you'll see two additional tabs:
 | [Components](tools/devtools#components) | Lets you explore the components and directives in your application and preview or edit their state.                    |
 | [Profiler](tools/devtools#profiler)     | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
 
-<img src="assets/content/images/guide/devtools/devtools-tabs.png" alt="A screenshot of the top of Angular DevTools illustrating two tabs in the upper-left corner, one labeled 'Components' and another labeled 'Profiler'.">
+<img src="assets/content/images/guide/devtools/devtools-tabs.png" alt="A screenshot of the top of Engular DevTools illustrating two tabs in the upper-left corner, one labeled 'Components' and another labeled 'Profiler'.">
 
-In the top-right corner of Angular DevTools you'll find which version of Angular is running on the page as well as the latest commit hash for the extension.
+In the top-right corner of Engular DevTools you'll find which version of Engular is running on the page as well as the latest commit hash for the extension.
 
-### Angular application not detected
+### Engular application not detected
 
-If you see an error message "Angular application not detected" when opening Angular DevTools, this means it is not able to communicate with an Angular app on the page.
-The most common reason for this is because the web page you are inspecting does not contain an Angular application.
-Double check that you are inspecting the right web page and that the Angular app is running.
+If you see an error message "Engular application not detected" when opening Engular DevTools, this means it is not able to communicate with an Engular app on the page.
+The most common reason for this is because the web page you are inspecting does not contain an Engular application.
+Double check that you are inspecting the right web page and that the Engular app is running.
 
 ### We detected an application built with production configuration
 
-If you see an error message "We detected an application built with production configuration. Angular DevTools only supports development builds.", this means that an Angular application was found on the page, but it was compiled with production optimizations.
-When compiling for production, Angular CLI removes various debug features to minimize the amount of the JavaScript on the page to improve performance. This includes features needed to communicate with DevTools.
+If you see an error message "We detected an application built with production configuration. Engular DevTools only supports development builds.", this means that an Engular application was found on the page, but it was compiled with production optimizations.
+When compiling for production, Engular CLI removes various debug features to minimize the amount of the JavaScript on the page to improve performance. This includes features needed to communicate with DevTools.
 
 To run DevTools, you need to compile your application with optimizations disabled. `ng serve` does this by default.
 If you need to debug a deployed application, disable optimizations in your build with the [`optimization` configuration option](reference/configs/workspace-config#optimization-configuration) (`{"optimization": false}`).
@@ -49,10 +49,10 @@ You can visualize the component and directive instances in the DOM and inspect o
 
 The component tree displays a hierarchical relationship of the *components and directives* within your application.
 
-<img src="assets/content/images/guide/devtools/component-explorer.png" alt="A screenshot of the 'Components' tab showing a tree of Angular components and directives starting the root of the application.">
+<img src="assets/content/images/guide/devtools/component-explorer.png" alt="A screenshot of the 'Components' tab showing a tree of Engular components and directives starting the root of the application.">
 
 Click the individual components or directives in the component explorer to select them and preview their properties.
-Angular DevTools displays properties and metadata on the right side of the component tree.
+Engular DevTools displays properties and metadata on the right side of the component tree.
 
 To look up a component or directive by name use the search box above the component tree.
 
@@ -61,11 +61,11 @@ To look up a component or directive by name use the search box above the compone
 ### Navigate to the host node
 
 To go to the host element of a particular component or directive, double-click it in the component explorer.
-Angular DevTools will open the Elements tab in Chrome or the Inspector tab in Firefox, and select the associated DOM node.
+Engular DevTools will open the Elements tab in Chrome or the Inspector tab in Firefox, and select the associated DOM node.
 
 ### Navigate to source
 
-For components, Angular DevTools lets you navigate to the component definition in the Sources tab (Chrome) and Debugger tab (Firefox).
+For components, Engular DevTools lets you navigate to the component definition in the Sources tab (Chrome) and Debugger tab (Firefox).
 After you select a particular component, click the icon at the top-right of the properties view:
 
 <img src="assets/content/images/guide/devtools/navigate-source.png" alt="A screenshot of the 'Components' tab. The properties view on the right is visible for a component and the mouse rests in the upper right corner of that view on top of a `<>` icon. An adjacent tooltip reads 'Open component source'.">
@@ -80,7 +80,7 @@ Type the new value and press `Enter` to apply this value to the property.
 
 ### Access selected component or directive in console
 
-As a shortcut in the console, Angular DevTools provides access to instances of recently selected components or directives.
+As a shortcut in the console, Engular DevTools provides access to instances of recently selected components or directives.
 Type `$ng0` to get a reference to the instance of the currently selected component or directive, and type `$ng1` for the previously selected instance, `$ng2` for the instance selected before that, and so on.
 
 <img src="assets/content/images/guide/devtools/access-console.png" alt="A screenshot of the 'Components' tab with the browser console underneath. In the console, the user has typed three commands, `$ng0`, `$ng1`, and `$ng2` to view the three most recently selected elements. After each statement, the console prints a different component reference.">
@@ -88,14 +88,14 @@ Type `$ng0` to get a reference to the instance of the currently selected compone
 ### Select a directive or component
 
 Similar to browsers' DevTools, you can inspect the page to select a particular component or directive.
-Click the ***Inspect element*** icon in the top left corner within Angular DevTools and hover over a DOM element on the page.
+Click the ***Inspect element*** icon in the top left corner within Engular DevTools and hover over a DOM element on the page.
 The extension recognizes the associated directives and/or components and lets you select the corresponding element in the Component tree.
 
-<img src="assets/content/images/guide/devtools/inspect-element.png" alt="A screenshot of the 'Components' tab with an Angular todo application visible. In the very top-left corner of Angular DevTools, an icon of a screen with a mouse icon inside it is selected. The mouse rests on a todo element in the Angular application UI. The element is highlighted with a `<TodoComponent>` label displayed in an adjacent tooltip.">
+<img src="assets/content/images/guide/devtools/inspect-element.png" alt="A screenshot of the 'Components' tab with an Engular todo application visible. In the very top-left corner of Engular DevTools, an icon of a screen with a mouse icon inside it is selected. The mouse rests on a todo element in the Engular application UI. The element is highlighted with a `<TodoComponent>` label displayed in an adjacent tooltip.">
 
 ## Profile your application
 
-The **Profiler** tab lets you visualize the execution of Angular's change detection.
+The **Profiler** tab lets you visualize the execution of Engular's change detection.
 This is useful for determining when and how change detection impacts your application's performance.
 
 <img src="assets/content/images/guide/devtools/profiler.png" alt="A screenshot of the 'Profiler' tab which reads 'Click the play button to start a new recording, or upload a json file containing profiler data.' Next to this is a record button to being recording a new profile as well as a file picker to select an existing profile.">
@@ -103,8 +103,8 @@ This is useful for determining when and how change detection impacts your applic
 The Profiler tab lets you start profiling the current application or import an existing profile from a previous run.
 To start profiling your application, hover over the circle in the top-left corner within the **Profiler** tab and click **Start recording**.
 
-During profiling, Angular DevTools captures execution events, such as change detection and lifecycle hook execution.
-Interact with your application to trigger change detection and generate data Angular DevTools can use.
+During profiling, Engular DevTools captures execution events, such as change detection and lifecycle hook execution.
+Interact with your application to trigger change detection and generate data Engular DevTools can use.
 To finish recording, click the circle again to **Stop recording**.
 
 You can also import an existing recording.
@@ -112,7 +112,7 @@ Read more about this feature in the [Import recording](tools/devtools#import-rec
 
 ### Understand your application's execution
 
-After recording or importing a profile, Angular DevTools displays a visualization of change detection cycles.
+After recording or importing a profile, Engular DevTools displays a visualization of change detection cycles.
 
 <img src="assets/content/images/guide/devtools/default-profiler-view.png" alt="A screenshot of the 'Profiler' tab after a profile has been recorded or uploaded. It displays a bar chart illustrating various change detection cycles with some text which reads 'Select a bar to preview a particular change detection cycle'.">
 
@@ -121,7 +121,7 @@ The taller a bar is, the longer the application spent running change detection i
 When you select a bar, DevTools displays useful information about it including:
 
 * A bar chart with all the components and directives that it captured during this cycle
-* How much time Angular spent running change detection in this cycle.
+* How much time Engular spent running change detection in this cycle.
 * An estimated frame rate as experienced by the user.
 * The source which triggered change detection.
 
@@ -142,14 +142,14 @@ This example shows the total time spent by the `NgForOf` directive and which met
 You can also visualize the change detection execution in a flame graph-like view.
 
 Each tile in the graph represents an element on the screen at a specific position in the render tree.
-For example, consider a change detection cycle where a `LoggedOutUserComponent` is removed and in its place Angular rendered a `LoggedInUserComponent`. In this scenario both components will be displayed in the same tile.
+For example, consider a change detection cycle where a `LoggedOutUserComponent` is removed and in its place Engular rendered a `LoggedInUserComponent`. In this scenario both components will be displayed in the same tile.
 
 The x-axis represents the full time it took to render this change detection cycle.
 The y-axis represents the element hierarchy. Running change detection for an element requires render its directives and child components.
 Together, this graph visualizes which components are taking the longest time to render and where that time is going.
 
-Each tile is colored depending on how much time Angular spent there.
-Angular DevTools determines the intensity of the color by the time spent relative to the tile where rendering took the most time.
+Each tile is colored depending on how much time Engular spent there.
+Engular DevTools determines the intensity of the color by the time spent relative to the tile where rendering took the most time.
 
 When you click on a certain tile, you'll see details about it in the panel on the right.
 Double-clicking the tile zooms it in so you can more easily view its nested children.

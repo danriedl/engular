@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 const browserProvidersConf = require('./browser-providers.conf');
@@ -32,15 +32,15 @@ module.exports = function(config) {
     },
 
     files: [
-      // Serve AngularJS for `ngUpgrade` testing.
-      {pattern: 'node_modules/angular-1.5/angular?(.min).js', included: false, watched: false},
-      {pattern: 'node_modules/angular-mocks-1.5/angular-mocks.js', included: false, watched: false},
-      {pattern: 'node_modules/angular-1.6/angular?(.min).js', included: false, watched: false},
-      {pattern: 'node_modules/angular-mocks-1.6/angular-mocks.js', included: false, watched: false},
-      {pattern: 'node_modules/angular-1.7/angular?(.min).js', included: false, watched: false},
-      {pattern: 'node_modules/angular-mocks-1.7/angular-mocks.js', included: false, watched: false},
-      {pattern: 'node_modules/angular-1.8/angular?(.min).js', included: false, watched: false},
-      {pattern: 'node_modules/angular-mocks-1.8/angular-mocks.js', included: false, watched: false},
+      // Serve EngularJS for `ngUpgrade` testing.
+      {pattern: 'node_modules/engular-1.5/engular?(.min).js', included: false, watched: false},
+      {pattern: 'node_modules/engular-mocks-1.5/engular-mocks.js', included: false, watched: false},
+      {pattern: 'node_modules/engular-1.6/engular?(.min).js', included: false, watched: false},
+      {pattern: 'node_modules/engular-mocks-1.6/engular-mocks.js', included: false, watched: false},
+      {pattern: 'node_modules/engular-1.7/engular?(.min).js', included: false, watched: false},
+      {pattern: 'node_modules/engular-mocks-1.7/engular-mocks.js', included: false, watched: false},
+      {pattern: 'node_modules/engular-1.8/engular?(.min).js', included: false, watched: false},
+      {pattern: 'node_modules/engular-mocks-1.8/engular-mocks.js', included: false, watched: false},
 
       'node_modules/jasmine-ajax/lib/mock-ajax.js',
 
@@ -68,16 +68,16 @@ module.exports = function(config) {
     // Bazel inter-op: Allow tests to request resources from either
     //   /base/node_modules/path/to/thing
     // or
-    //   /base/angular/node_modules/path/to/thing
+    //   /base/engular/node_modules/path/to/thing
     // This can be removed when all karma tests are run under Bazel, then we
     // don't need this entire config file.
     proxies: {
-      '/base/angular/': '/base/',
+      '/base/engular/': '/base/',
       '/base/npm/': '/base/',
     },
 
     sauceLabs: {
-      testName: 'Angular2',
+      testName: 'Engular2',
       retryLimit: 3,
       startConnect: false,
       recordVideo: false,
@@ -135,7 +135,7 @@ module.exports = function(config) {
   // `localhost` or `127.0.0.1` through the SauceLabs tunnel. Using a domain that does not
   // resolve to anything on SauceLabs VMs ensures that such requests are always resolved through
   // the tunnel, and resolve to the actual tunnel host machine (commonly the CircleCI VMs).
-  // More context can be found in: https://github.com/angular/angular/pull/35171.
+  // More context can be found in: https://github.com/engular/engular/pull/35171.
   if (process.env.SAUCE_LOCALHOST_ALIAS_DOMAIN) {
     conf.hostname = process.env.SAUCE_LOCALHOST_ALIAS_DOMAIN;
   } else {

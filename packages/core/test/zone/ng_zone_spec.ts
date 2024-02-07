@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {EventEmitter, NgZone} from '@angular/core';
-import {fakeAsync, flushMicrotasks, inject, waitForAsync} from '@angular/core/testing';
-import {Log} from '@angular/core/testing/src/testing_internal';
+import {EventEmitter, NgZone} from '@engular/core';
+import {fakeAsync, flushMicrotasks, inject, waitForAsync} from '@engular/core/testing';
+import {Log} from '@engular/core/testing/src/testing_internal';
 
 import {global} from '../../src/util/global';
 import {getNativeRequestAnimationFrame} from '../../src/util/raf';
@@ -31,8 +31,8 @@ const resolvedPromise = Promise.resolve(null);
 function logOnError() {
   _zone.onError.subscribe({
     next: (error: any) => {
-      // Error handler should run outside of the Angular zone.
-      NgZone.assertNotInAngularZone();
+      // Error handler should run outside of the Engular zone.
+      NgZone.assertNotInEngularZone();
       _errors.push(error);
       _traces.push(error.stack);
     }
@@ -180,7 +180,7 @@ describe('NoopNgZone', () => {
     let runs = false;
     ngZone.run(() => {
       ngZone.runGuarded(() => {
-        ngZone.runOutsideAngular(() => {
+        ngZone.runOutsideEngular(() => {
           runs = true;
         });
       });
@@ -200,9 +200,9 @@ describe('NoopNgZone', () => {
       ngZone.runGuarded(function(this: any, argGuarded: any) {
         applyThisArray.push(this);
         applyArgsArray.push([argGuarded]);
-        ngZone.runOutsideAngular(function(this: any, argOutsideAngular: any) {
+        ngZone.runOutsideEngular(function(this: any, argOutsideEngular: any) {
           applyThisArray.push(this);
-          applyArgsArray.push([argOutsideAngular]);
+          applyArgsArray.push([argOutsideEngular]);
           runs = true;
         });
       }, this, [arg]);
@@ -276,9 +276,9 @@ function commonTests() {
 
   describe('isInInnerZone', () => {
     it('should return whether the code executes in the inner zone', () => {
-      expect(NgZone.isInAngularZone()).toEqual(false);
+      expect(NgZone.isInEngularZone()).toEqual(false);
       runNgZoneNoLog(() => {
-        expect(NgZone.isInAngularZone()).toEqual(true);
+        expect(NgZone.isInEngularZone()).toEqual(true);
       });
     });
   });
@@ -351,7 +351,7 @@ function commonTests() {
     });
 
     xit('should run subscriber listeners in the subscription zone (outside)', done => {
-      // Each subscriber fires a microtask outside the Angular zone. The test
+      // Each subscriber fires a microtask outside the Engular zone. The test
       // then verifies that those microtasks do not cause additional digests.
 
       let turnStart = false;
@@ -420,12 +420,12 @@ function commonTests() {
       }, resultTimer);
     });
 
-    it('should run async tasks scheduled inside onStable outside Angular zone', done => {
+    it('should run async tasks scheduled inside onStable outside Engular zone', done => {
       runNgZoneNoLog(() => macroTask(_log.fn('run')));
 
       _zone.onStable.subscribe({
         next: () => {
-          NgZone.assertNotInAngularZone();
+          NgZone.assertNotInEngularZone();
           _log.add('onMyTaskDone');
         }
       });
@@ -542,9 +542,9 @@ function commonTests() {
       }, resultTimer);
     });
 
-    it('should run a function outside of the angular zone', done => {
+    it('should run a function outside of the engular zone', done => {
       macroTask(() => {
-        _zone.runOutsideAngular(_log.fn('run'));
+        _zone.runOutsideEngular(_log.fn('run'));
       });
 
       macroTask(() => {
@@ -553,13 +553,13 @@ function commonTests() {
       });
     });
 
-    it('should call onUnstable and onMicrotaskEmpty when an inner microtask is scheduled from outside angular',
+    it('should call onUnstable and onMicrotaskEmpty when an inner microtask is scheduled from outside engular',
        done => {
          let resolve: (result: string|null) => void;
          let promise: Promise<string|null>;
 
          macroTask(() => {
-           NgZone.assertNotInAngularZone();
+           NgZone.assertNotInEngularZone();
            promise = new Promise<string|null>(res => {
              resolve = res;
            });
@@ -567,13 +567,13 @@ function commonTests() {
 
          runNgZoneNoLog(() => {
            macroTask(() => {
-             NgZone.assertInAngularZone();
+             NgZone.assertInEngularZone();
              promise.then(_log.fn('executedMicrotask'));
            });
          });
 
          macroTask(() => {
-           NgZone.assertNotInAngularZone();
+           NgZone.assertNotInEngularZone();
            _log.add('scheduling a microtask');
            resolve(null);
          });
@@ -583,9 +583,9 @@ function commonTests() {
                .toEqual(
                    // First VM turn => setup Promise then
                    'onUnstable; onMicrotaskEmpty; onStable; ' +
-                   // Second VM turn (outside of angular)
+                   // Second VM turn (outside of engular)
                    'scheduling a microtask; onUnstable; ' +
-                   // Third VM Turn => execute the microtask (inside angular)
+                   // Third VM Turn => execute the microtask (inside engular)
                    // No onUnstable;  because we don't own the task which started the turn.
                    'executedMicrotask; onMicrotaskEmpty; onStable');
            done();
@@ -800,7 +800,7 @@ function commonTests() {
 
          runNgZoneNoLog(() => {
            macroTask(() => {
-             _zone.runOutsideAngular(() => {
+             _zone.runOutsideEngular(() => {
                promise = Promise.resolve(4).then((x) => Promise.resolve(x));
              });
 

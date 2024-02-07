@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import ts from 'typescript';
@@ -464,7 +464,7 @@ export interface Import {
   /**
    * The module from which the symbol was imported.
    *
-   * This could either be an absolute module name (@angular/core for example) or a relative path.
+   * This could either be an absolute module name (@engular/core for example) or a relative path.
    */
   from: string;
 
@@ -601,14 +601,14 @@ export interface ReflectionHost {
    * this method also returns the absolute path of the imported module. For example, if the code is:
    *
    * ```
-   * import {RouterModule} from '@angular/core';
+   * import {RouterModule} from '@engular/core';
    *
    * export const ROUTES = RouterModule.forRoot([...]);
    * ```
    *
    * and if `getDeclarationOfIdentifier` is called on `RouterModule` in the `ROUTES` expression,
-   * then it would trace `RouterModule` via its import from `@angular/core`, and note that the
-   * definition was imported from `@angular/core` into the application where it was referenced.
+   * then it would trace `RouterModule` via its import from `@engular/core`, and note that the
+   * definition was imported from `@engular/core` into the application where it was referenced.
    *
    * If the definition is re-exported several times from different absolute module names, only
    * the first one (the one by which the application refers to the module) is returned.

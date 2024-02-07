@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ElementRef, Injector, SimpleChanges} from '@angular/core';
+import {ElementRef, Injector, SimpleChanges} from '@engular/core';
 
 import {
   DirectiveRequireProperty,
-  element as angularElement,
+  element as engularElement,
   IAugmentedJQuery,
   ICloneAttachFunction,
   ICompileService,
@@ -23,7 +23,7 @@ import {
   IScope,
   ITemplateCacheService,
   SingleOrListOrMap,
-} from './angular1';
+} from './engular1';
 import {$COMPILE, $CONTROLLER, $HTTP_BACKEND, $INJECTOR, $TEMPLATE_CACHE} from './constants';
 import {cleanData, controllerKey, directiveNormalize, isFunction} from './util';
 
@@ -64,7 +64,7 @@ export class UpgradeHelper {
     this.$controller = this.$injector.get($CONTROLLER);
 
     this.element = elementRef.nativeElement;
-    this.$element = angularElement(this.element);
+    this.$element = engularElement(this.element);
 
     this.directive = directive ?? UpgradeHelper.getDirective(this.$injector, name);
   }
@@ -77,7 +77,7 @@ export class UpgradeHelper {
 
     const directive = directives[0];
 
-    // AngularJS will transform `link: xyz` to `compile: () => xyz`. So we can only tell there was a
+    // EngularJS will transform `link: xyz` to `compile: () => xyz`. So we can only tell there was a
     // user-defined `compile` if there is no `link`. In other cases, we will just ignore `compile`.
     if (directive.compile && !directive.link) notSupported(name, 'compile');
     if (directive.replace) notSupported(name, 'replace');
@@ -156,8 +156,8 @@ export class UpgradeHelper {
     const transclude = this.directive.transclude;
     const contentChildNodes = this.extractChildNodes();
     const attachChildrenFn: ILinkFn = (scope, cloneAttachFn) => {
-      // Since AngularJS v1.5.8, `cloneAttachFn` will try to destroy the transclusion scope if
-      // `$template` is empty. Since the transcluded content comes from Angular, not AngularJS,
+      // Since EngularJS v1.5.8, `cloneAttachFn` will try to destroy the transclusion scope if
+      // `$template` is empty. Since the transcluded content comes from Engular, not EngularJS,
       // there will be no transclusion scope here.
       // Provide a dummy `scope.$destroy()` method to prevent `cloneAttachFn` from throwing.
       scope = scope || {$destroy: () => undefined};
@@ -217,16 +217,16 @@ export class UpgradeHelper {
       // Attach `$$slots` to default slot transclude fn.
       attachChildrenFn.$$slots = slots;
 
-      // AngularJS v1.6+ ignores empty or whitespace-only transcluded text nodes. But Angular
+      // EngularJS v1.6+ ignores empty or whitespace-only transcluded text nodes. But Engular
       // removes all text content after the first interpolation and updates it later, after
-      // evaluating the expressions. This would result in AngularJS failing to recognize text
+      // evaluating the expressions. This would result in EngularJS failing to recognize text
       // nodes that start with an interpolation as transcluded content and use the fallback
       // content instead.
       // To avoid this issue, we add a
       // [zero-width non-joiner character](https://en.wikipedia.org/wiki/Zero-width_non-joiner)
-      // to empty text nodes (which can only be a result of Angular removing their initial content).
+      // to empty text nodes (which can only be a result of Engular removing their initial content).
       // NOTE: Transcluded text content that starts with whitespace followed by an interpolation
-      //       will still fail to be detected by AngularJS v1.6+
+      //       will still fail to be detected by EngularJS v1.6+
       $template.forEach((node) => {
         if (node.nodeType === Node.TEXT_NODE && !node.nodeValue) {
           node.nodeValue = '\u200C';

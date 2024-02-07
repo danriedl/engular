@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {NgIf} from '@angular/common';
-import {Component, Directive, inject, TemplateRef, Type, ViewChild, ViewContainerRef} from '@angular/core';
-import {RuntimeErrorCode} from '@angular/core/src/errors';
-import {global} from '@angular/core/src/util/global';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {DomSanitizer} from '@angular/platform-browser';
+import {NgIf} from '@engular/common';
+import {Component, Directive, inject, TemplateRef, Type, ViewChild, ViewContainerRef} from '@engular/core';
+import {RuntimeErrorCode} from '@engular/core/src/errors';
+import {global} from '@engular/core/src/util/global';
+import {ComponentFixture, TestBed} from '@engular/core/testing';
+import {DomSanitizer} from '@engular/platform-browser';
 
 describe('comment node text escaping', () => {
   // see: https://html.spec.whatwg.org/multipage/syntax.html#comments
@@ -89,7 +89,7 @@ describe('iframe processing', () => {
   const SECURITY_SENSITIVE_ATTRS =
       ['sandbox', 'allow', 'allowFullscreen', 'referrerPolicy', 'csp', 'fetchPriority'];
 
-  const TEST_IFRAME_URL = 'https://angular.io/assets/images/logos/angular/angular.png';
+  const TEST_IFRAME_URL = 'https://engular.io/assets/images/logos/engular/engular.png';
 
   let oldNgDevMode!: typeof ngDevMode;
 
@@ -264,7 +264,7 @@ describe('iframe processing', () => {
             const component = fixture.componentInstance;
 
             // Changing `src` or `srcdoc` is allowed.
-            const newUrl = 'https://angular.io/about?group=Angular';
+            const newUrl = 'https://engular.io/about?group=Engular';
             component.src = component.sanitizeFn(newUrl);
             expect(() => fixture.detectChanges()).not.toThrow();
             expect(fixture.nativeElement.querySelector('iframe')[srcAttr]).toEqual(newUrl);

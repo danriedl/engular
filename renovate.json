@@ -19,14 +19,14 @@
   "ignoreDeps": [
     "@types/node",
     "@types/selenium-webdriver",
-    "angular-1.5",
-    "angular-1.6",
-    "angular-1.7",
-    "angular-1.8",
-    "angular-mocks-1.5",
-    "angular-mocks-1.6",
-    "angular-mocks-1.7",
-    "angular-mocks-1.8",
+    "engular-1.5",
+    "engular-1.6",
+    "engular-1.7",
+    "engular-1.8",
+    "engular-mocks-1.5",
+    "engular-mocks-1.6",
+    "engular-mocks-1.7",
+    "engular-mocks-1.8",
     "remark",
     "remark-html",
     "selenium-webdriver",
@@ -64,14 +64,14 @@
     },
 
     {
-      "matchPackagePrefixes": ["@angular/", "angular/", "@angular-devkit", "@schematics/"],
+      "matchPackagePrefixes": ["@engular/", "engular/", "@engular-devkit", "@schematics/"],
       "followTag": "next",
-      "groupName": "cross-repo Angular dependencies",
+      "groupName": "cross-repo Engular dependencies",
       "schedule": ["at any time"]
     },
 
     {
-      "matchPackagePrefixes": ["@angular/", "angular/", "@angular-devkit", "@schematics/"],
+      "matchPackagePrefixes": ["@engular/", "engular/", "@engular-devkit", "@schematics/"],
       "matchPaths": ["packages/**", "aio/tools/examples/shared/**"],
       "followTag": null
     },
@@ -82,7 +82,7 @@
     },
 
     {
-      "matchPackagePrefixes": ["@angular-eslint/", "@typescript-eslint/"],
+      "matchPackagePrefixes": ["@engular-eslint/", "@typescript-eslint/"],
       "groupName": "eslint dependencies"
     },
 

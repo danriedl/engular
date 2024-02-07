@@ -42,9 +42,9 @@ ts_library(
 )
 
 ts_library(
-    name = "node_no_angular",
+    name = "node_no_engular",
     testonly = 1,
-    srcs = ["node_no_angular_tests.init.ts"],
+    srcs = ["node_no_engular_tests.init.ts"],
     deps = [
         "//packages:types",
     ],

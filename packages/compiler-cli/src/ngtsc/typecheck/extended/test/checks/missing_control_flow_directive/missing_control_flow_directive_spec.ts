@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import ts from 'typescript';
@@ -51,7 +51,7 @@ runInEachFileSystem(() => {
                      correspondingImport
                          .directive}\` directive nor the \`CommonModule\` was imported. `);
              expect(diags[0].messageText)
-                 .toContain(`Use Angular's built-in control flow ${correspondingImport?.builtIn}`);
+                 .toContain(`Use Engular's built-in control flow ${correspondingImport?.builtIn}`);
              expect(getSourceCodeForDiagnostic(diags[0])).toBe(directive);
            });
 

@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {
@@ -19,7 +19,7 @@ import {
   SimpleChange,
   SimpleChanges,
   Type,
-} from '@angular/core';
+} from '@engular/core';
 
 import {
   IAttributes,
@@ -28,7 +28,7 @@ import {
   ILinkFn,
   IScope,
   ITranscludeFunction,
-} from '../../common/src/angular1';
+} from '../../common/src/engular1';
 import {$SCOPE} from '../../common/src/constants';
 import {
   IBindingDestination,
@@ -156,7 +156,7 @@ export class UpgradeNg1ComponentAdapterBuilder {
   }
 
   /**
-   * Upgrade ng1 components into Angular.
+   * Upgrade ng1 components into Engular.
    */
   static resolve(
     exportedComponents: {[name: string]: UpgradeNg1ComponentAdapterBuilder},

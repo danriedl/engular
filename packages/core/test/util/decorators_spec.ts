@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {getReflect} from '../../src/di/jit/util';
@@ -18,7 +18,7 @@ const TestDecorator = makeDecorator(
     'TestDecorator', (data: any) => data, Object, (fn: any) => fn.Terminal = TerminalDecorator);
 
 describe('Property decorators', () => {
-  // https://github.com/angular/angular/issues/12224
+  // https://github.com/engular/engular/issues/12224
   it('should work on the "watch" property', () => {
     const Prop = makePropDecorator('Prop', (value: any) => ({value}));
 

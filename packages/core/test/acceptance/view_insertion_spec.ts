@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {ChangeDetectorRef, Component, Directive, EmbeddedViewRef, Injectable, Injector, Input, TemplateRef, ViewChild, ViewContainerRef, ViewRef} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {CommonModule} from '@engular/common';
+import {ChangeDetectorRef, Component, Directive, EmbeddedViewRef, Injectable, Injector, Input, TemplateRef, ViewChild, ViewContainerRef, ViewRef} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
 
 describe('view insertion', () => {
   describe('of a simple template', () => {
@@ -519,7 +519,7 @@ describe('view insertion', () => {
   });
 
   describe('non-regression', () => {
-    // https://github.com/angular/angular/issues/31971
+    // https://github.com/engular/engular/issues/31971
     it('should insert component views into ViewContainerRef injected by querying <ng-container>',
        () => {
          @Component({selector: 'dynamic-cmpt', template: 'dynamic'})
@@ -556,7 +556,7 @@ describe('view insertion', () => {
          expect(fixture.nativeElement.textContent).toBe('start|dynamic|end|click');
        });
 
-    // https://github.com/angular/angular/issues/33679
+    // https://github.com/engular/engular/issues/33679
     it('should insert embedded views into ViewContainerRef injected by querying <ng-container>',
        () => {
          @Component({

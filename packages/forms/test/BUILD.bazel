@@ -3,7 +3,7 @@ load("//tools/circular_dependency_test:index.bzl", "circular_dependency_test")
 
 circular_dependency_test(
     name = "circular_deps_test",
-    entry_point = "angular/packages/forms/index.mjs",
+    entry_point = "engular/packages/forms/index.mjs",
     deps = ["//packages/forms"],
 )
 
@@ -39,7 +39,7 @@ karma_web_test_suite(
     name = "test_web",
     tags = [
         # disabled on 2020-04-14 due to failure on saucelabs monitor job
-        # https://app.circleci.com/pipelines/github/angular/angular/13320/workflows/9ca3527a-d448-4a64-880a-fb4de9d1fece/jobs/680645
+        # https://app.circleci.com/pipelines/github/engular/engular/13320/workflows/9ca3527a-d448-4a64-880a-fb4de9d1fece/jobs/680645
         # ```
         # IE 11.0.0 (Windows 8.1.0.0) template-driven forms integration tests basic functionality should report properties which are written outside of template bindings FAILED
         #   InvalidStateError: InvalidStateError

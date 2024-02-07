@@ -3,9 +3,9 @@
 Push notifications are a compelling way to engage users.
 Through the power of service workers, notifications can be delivered to a device even when your application is not in focus.
 
-The Angular service worker enables the display of push notifications and the handling of notification click events.
+The Engular service worker enables the display of push notifications and the handling of notification click events.
 
-HELPFUL: When using the Angular service worker, push notification interactions are handled using the `SwPush` service.
+HELPFUL: When using the Engular service worker, push notification interactions are handled using the `SwPush` service.
 To learn more about the browser APIs involved see [Push API](https://developer.mozilla.org/docs/Web/API/Push_API) and [Using the Notifications API](https://developer.mozilla.org/docs/Web/API/Notifications_API/Using_the_Notifications_API).
 
 ## Notification payload
@@ -40,7 +40,7 @@ This is especially useful for when there are no open clients when a notification
 
 ### Operations
 
-The Angular service worker supports the following operations:
+The Engular service worker supports the following operations:
 
 | Operations                  | Details |
 |:---                         |:---     |
@@ -88,7 +88,7 @@ In addition, using the `onActionClick` property on the `data` object, you can ti
 
 IMPORTANT: If an action does not have a corresponding `onActionClick` entry, then the notification is closed and `SwPush.notificationClicks` is notified on existing clients.
 
-## More on Angular service workers
+## More on Engular service workers
 
 You might also be interested in the following:
 

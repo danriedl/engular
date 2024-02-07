@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Inject, InjectionToken, ɵRuntimeError as RuntimeError} from '@angular/core';
+import {Inject, InjectionToken, ɵRuntimeError as RuntimeError} from '@engular/core';
 
 import {RuntimeErrorCode} from '../errors';
 import {AbstractControl} from '../model/abstract_model';
@@ -111,7 +111,7 @@ export function cleanUpControl(
   // instances and there is a logic in `selectValueAccessor` function that throws if it's not the
   // case. We still check the presence of `valueAccessor` before invoking its methods to make sure
   // that cleanup works correctly if app code or tests are setup to ignore the error thrown from
-  // `selectValueAccessor`. See https://github.com/angular/angular/issues/40521.
+  // `selectValueAccessor`. See https://github.com/engular/engular/issues/40521.
   if (dir.valueAccessor) {
     dir.valueAccessor.registerOnChange(noop);
     dir.valueAccessor.registerOnTouched(noop);
@@ -361,7 +361,7 @@ export function syncPendingControls(form: FormGroup, directives: Set<NgControl>|
   });
 }
 
-// TODO: vsavkin remove it once https://github.com/angular/angular/issues/3011 is implemented
+// TODO: vsavkin remove it once https://github.com/engular/engular/issues/3011 is implemented
 export function selectValueAccessor(
     dir: NgControl, valueAccessors: ControlValueAccessor[]): ControlValueAccessor|null {
   if (!valueAccessors) return null;

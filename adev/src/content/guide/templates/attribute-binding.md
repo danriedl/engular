@@ -1,6 +1,6 @@
 # Attribute binding
 
-Attribute binding in Angular helps you set values for attributes directly.
+Attribute binding in Engular helps you set values for attributes directly.
 With attribute binding, you can improve accessibility, style your application dynamically, and manage multiple CSS classes or styles simultaneously.
 
 ## Syntax
@@ -14,7 +14,7 @@ Then, you set the attribute value with an expression that resolves to a string.
 
 </docs-code>
 
-HELPFUL: When the expression resolves to `null` or `undefined`, Angular removes the attribute altogether.
+HELPFUL: When the expression resolves to `null` or `undefined`, Engular removes the attribute altogether.
 
 ## Binding ARIA attributes
 

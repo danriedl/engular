@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ChangeDetectorRef, Component, Injectable, NgModule, ViewEncapsulation} from '@angular/core';
-import {loadTranslations} from '@angular/localize';
-import {BrowserModule, platformBrowser} from '@angular/platform-browser';
+import {ChangeDetectorRef, Component, Injectable, NgModule, ViewEncapsulation} from '@engular/core';
+import {loadTranslations} from '@engular/localize';
+import {BrowserModule, platformBrowser} from '@engular/platform-browser';
 
 import {translations} from './translations';
 

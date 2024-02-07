@@ -25,4 +25,4 @@ If you want the pipe to apply to the result of the ternary expression, wrap the 
 (condition ? a : b) | pipe
 ```
 
-In general, you should always use parentheses to be sure Angular evaluates the expression as you intend.
+In general, you should always use parentheses to be sure Engular evaluates the expression as you intend.

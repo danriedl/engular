@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {APP_BASE_HREF} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {Router, RouterModule} from '@angular/router';
+import {APP_BASE_HREF} from '@engular/common';
+import {NgModule} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {Router, RouterModule} from '@engular/router';
 
 describe('router integration acceptance', () => {
   // Test case that ensures that we don't regress in multi-provider ordering

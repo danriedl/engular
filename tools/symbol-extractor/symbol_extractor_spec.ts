@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {runfiles} from '@bazel/runfiles';
@@ -14,7 +14,7 @@ import {SymbolExtractor} from './symbol_extractor';
 
 describe('scenarios', () => {
   const symbolExtractorSpecDir = path.dirname(
-    runfiles.resolve('angular/tools/symbol-extractor/symbol_extractor_spec/empty.json'),
+    runfiles.resolve('engular/tools/symbol-extractor/symbol_extractor_spec/empty.json'),
   );
   const scenarioFiles = fs.readdirSync(symbolExtractorSpecDir);
   for (let i = 0; i < scenarioFiles.length; i++) {
@@ -49,7 +49,7 @@ describe('scenarios', () => {
   it('should properly capture classes in TypeScript ES2015 class output', () => {
     const jsFileContent = fs.readFileSync(
       runfiles.resolve(
-        'angular/tools/symbol-extractor/symbol_extractor_spec/es2015_class_output.mjs',
+        'engular/tools/symbol-extractor/symbol_extractor_spec/es2015_class_output.mjs',
       ),
       'utf8',
     );

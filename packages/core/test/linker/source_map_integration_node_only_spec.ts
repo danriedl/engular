@@ -3,17 +3,17 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ResourceLoader, SourceMap} from '@angular/compiler';
-import {CompilerFacadeImpl} from '@angular/compiler/src/jit_compiler_facade';
-import {JitEvaluator} from '@angular/compiler/src/output/output_jit';
-import {escapeRegExp} from '@angular/compiler/src/util';
-import {Attribute, Component, Directive, ErrorHandler} from '@angular/core';
-import {CompilerFacade, ExportedCompilerFacade} from '@angular/core/src/compiler/compiler_facade';
-import {resolveComponentResources} from '@angular/core/src/metadata/resource_loading';
-import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ResourceLoader, SourceMap} from '@engular/compiler';
+import {CompilerFacadeImpl} from '@engular/compiler/src/jit_compiler_facade';
+import {JitEvaluator} from '@engular/compiler/src/output/output_jit';
+import {escapeRegExp} from '@engular/compiler/src/util';
+import {Attribute, Component, Directive, ErrorHandler} from '@engular/core';
+import {CompilerFacade, ExportedCompilerFacade} from '@engular/core/src/compiler/compiler_facade';
+import {resolveComponentResources} from '@engular/core/src/metadata/resource_loading';
+import {fakeAsync, TestBed, tick} from '@engular/core/testing';
 
 import {MockResourceLoader} from './resource_loader_mock';
 import {extractSourceMap, originalPositionFor} from './source_map_util';

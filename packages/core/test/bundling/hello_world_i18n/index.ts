@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 import './translations';
 
-import {Component, NgModule} from '@angular/core';
-import {BrowserModule, platformBrowser} from '@angular/platform-browser';
+import {Component, NgModule} from '@engular/core';
+import {BrowserModule, platformBrowser} from '@engular/platform-browser';
 
 @Component({
   selector: 'hello-world',

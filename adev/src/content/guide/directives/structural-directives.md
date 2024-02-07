@@ -18,15 +18,15 @@ The following is an example of using this directive directly on an `<ng-template
 
 The structural directive can wait for the data to become available and then render its `<ng-template>`.
 
-HELPFUL: Note that Angular's `<ng-template>` element defines a template that doesn't render anything by default, if you just wrap elements in an `<ng-template>` without applying a structural directive those elements will not be rendered.
+HELPFUL: Note that Engular's `<ng-template>` element defines a template that doesn't render anything by default, if you just wrap elements in an `<ng-template>` without applying a structural directive those elements will not be rendered.
 
 For more information, see the [ng-template API](api/core/ng-template) documentation.
 
 ## Structural directive shorthand
 
-Angular supports a shorthand syntax for structural directives which avoids the need to explicitly author an `<ng-template>` element.
+Engular supports a shorthand syntax for structural directives which avoids the need to explicitly author an `<ng-template>` element.
 
-Structural directives can be applied directly on an element by prefixing the directive attribute selector with an asterisk (`*`), such as `*select`. Angular transforms the asterisk in front of a structural directive into an `<ng-template>` that hosts the directive and surrounds the element and its descendants.
+Structural directives can be applied directly on an element by prefixing the directive attribute selector with an asterisk (`*`), such as `*select`. Engular transforms the asterisk in front of a structural directive into an `<ng-template>` that hosts the directive and surrounds the element and its descendants.
 
 You can use this with `SelectDirective` as follows:
 
@@ -64,19 +64,19 @@ This section guides you through creating the `SelectDirective`.
 
 <docs-workflow>
 <docs-step title="Generate the directive">
-Using the Angular CLI, run the following command, where `select` is the name of the directive:
+Using the Engular CLI, run the following command, where `select` is the name of the directive:
 
 ```shell
 ng generate directive select
 ```
 
-Angular creates the directive class and specifies the CSS selector, `[select]`, that identifies the directive in a template.
+Engular creates the directive class and specifies the CSS selector, `[select]`, that identifies the directive in a template.
 </docs-step>
 <docs-step title="Make the directive structural">
 Import `TemplateRef`, and `ViewContainerRef`. Inject `TemplateRef` and `ViewContainerRef` in the directive constructor as private variables.
 
 ```ts
-import {Directive, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, TemplateRef, ViewContainerRef} from '@engular/core';
 
 @Directive({
   standalone: true,
@@ -148,11 +148,11 @@ let = "let" :local "=" :export ";"?
 | `key`        | HTML attribute key                                 |
 | `local`      | Local variable name used in the template           |
 | `export`     | Value exported by the directive under a given name |
-| `expression` | Standard Angular expression                        |
+| `expression` | Standard Engular expression                        |
 
-### How Angular translates shorthand
+### How Engular translates shorthand
 
-Angular translates structural directive shorthand into the normal binding syntax as follows:
+Engular translates structural directive shorthand into the normal binding syntax as follows:
 
 | Shorthand | Translation |
 |:--- |:--- |
@@ -164,7 +164,7 @@ Angular translates structural directive shorthand into the normal binding syntax
 
 The following table provides shorthand examples:
 
-| Shorthand | How Angular interprets the syntax |
+| Shorthand | How Engular interprets the syntax |
 |:--- |:--- |
 | `*ngFor="let item of [1,2,3]"` | `<ng-template ngFor let-item [ngForOf]="[1, 2, 3]">` |
 | `*ngFor="let item of [1,2,3] as items; trackBy: myTrack; index as i"` | `<ng-template ngFor let-item [ngForOf]="[1,2,3]" let-items="ngForOf" [ngForTrackBy]="myTrack" let-i="index">` |
@@ -174,7 +174,7 @@ The following table provides shorthand examples:
 ## Improving template type checking for custom directives
 
 You can improve template type checking for custom directives by adding template guards to your directive definition.
-These guards help the Angular template type checker find mistakes in the template at compile time, which can avoid runtime errors.
+These guards help the Engular template type checker find mistakes in the template at compile time, which can avoid runtime errors.
 Two different types of guards are possible:
 
 * `ngTemplateGuard_(input)` lets you control how an input expression should be narrowed based on the type of a specific input.

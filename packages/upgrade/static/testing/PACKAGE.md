@@ -1,1 +1,1 @@
-Supplies testing functions for the AngularJS-to-Angular upgrade path.
+Supplies testing functions for the EngularJS-to-Engular upgrade path.

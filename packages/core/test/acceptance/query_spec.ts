@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {AfterViewInit, Component, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, forwardRef, InjectionToken, Input, QueryList, TemplateRef, Type, ViewChild, ViewChildren, ViewContainerRef, ViewRef} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {CommonModule} from '@engular/common';
+import {AfterViewInit, Component, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, forwardRef, InjectionToken, Input, QueryList, TemplateRef, Type, ViewChild, ViewChildren, ViewContainerRef, ViewRef} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
 
 describe('query logic', () => {
   beforeEach(() => {
@@ -2177,7 +2177,7 @@ describe('query logic', () => {
         expect(lotsOfContentInstance.foos2.length).toBe(0);
       });
 
-      // https://stackblitz.com/edit/angular-rrmmuf?file=src/app/app.component.ts
+      // https://stackblitz.com/edit/engular-rrmmuf?file=src/app/app.component.ts
       it('should report results when different instances of TemplateRef are inserted into one ViewContainerRefs',
          () => {
            @Component({
@@ -2252,8 +2252,8 @@ describe('query logic', () => {
            expect(qListArr[1].nativeElement.getAttribute('id')).toBe('middle');
          });
 
-      // https://stackblitz.com/edit/angular-7vvo9j?file=src%2Fapp%2Fapp.component.ts
-      // https://stackblitz.com/edit/angular-xzwp6n
+      // https://stackblitz.com/edit/engular-7vvo9j?file=src%2Fapp%2Fapp.component.ts
+      // https://stackblitz.com/edit/engular-xzwp6n
       it('should report results when the same TemplateRef is inserted into different ViewContainerRefs',
          () => {
            @Component({
@@ -2305,7 +2305,7 @@ describe('query logic', () => {
            expect(queryList.length).toBe(0);
          });
 
-      // https://stackblitz.com/edit/angular-wpd6gv?file=src%2Fapp%2Fapp.component.ts
+      // https://stackblitz.com/edit/engular-wpd6gv?file=src%2Fapp%2Fapp.component.ts
       it('should report results from views inserted in a lifecycle hook', () => {
         @Component({
           selector: 'my-app',

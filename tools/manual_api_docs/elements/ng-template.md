@@ -1,14 +1,14 @@
-Angular's `<ng-template>` element defines a template that is not rendered by default.
+Engular's `<ng-template>` element defines a template that is not rendered by default.
 
-With `<ng-template>`, you can define template content that is only being rendered by Angular when
+With `<ng-template>`, you can define template content that is only being rendered by Engular when
 you, whether directly or indirectly, specifically instruct it to do so, allowing you to have full
 control over how and when the content is displayed.
 
 <div class="alter is-helpful">
 
-  Note that if you wrap content inside an `<ng-template>` without instructing Angular to render it,
+  Note that if you wrap content inside an `<ng-template>` without instructing Engular to render it,
   such content will not appear on a page. For example, see the following HTML code, when handling it
-  Angular won't render the middle "Hip!" in the phrase "Hip! Hip! Hooray!" because of the
+  Engular won't render the middle "Hip!" in the phrase "Hip! Hip! Hooray!" because of the
   surrounding `<ng-template>`.
 
   ```html
@@ -32,7 +32,7 @@ of the template content based on their own logic.
 
 When using
 the [structural directive shorthand](guide/structural-directives#structural-directive-shorthand),
-Angular creates an `<ng-template>` element behind the scenes.
+Engular creates an `<ng-template>` element behind the scenes.
 
 ### TemplateRef
 
@@ -44,7 +44,7 @@ method `createEmbeddedView()`.
 ### Template Variables
 
 `<ng-template>` elements can be referenced in templates
-using [standard template variables](guide/template-reference-variables#how-angular-assigns-values-to-template-variables).
+using [standard template variables](guide/template-reference-variables#how-engular-assigns-values-to-template-variables).
 
 *This is how `<ng-template>` elements are used as `ngIf` else clauses.*
 

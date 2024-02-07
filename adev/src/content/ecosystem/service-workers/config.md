@@ -4,8 +4,8 @@ This topic describes the properties of the service worker configuration file.
 
 ## Modifying the configuration
 
-The `ngsw-config.json` JSON configuration file specifies which files and data URLs the Angular service worker should cache and how it should update the cached files and data.
-The [Angular CLI](tools/cli) processes this configuration file during `ng build`.
+The `ngsw-config.json` JSON configuration file specifies which files and data URLs the Engular service worker should cache and how it should update the cached files and data.
+The [Engular CLI](tools/cli) processes this configuration file during `ng build`.
 
 All file paths must begin with `/`, which corresponds to the deployment directory &mdash; usually `dist/<project-name>` in CLI projects.
 
@@ -120,8 +120,8 @@ The `installMode` can be either of two values:
 
 | Values     | Details |
 |:---        |:---     |
-| `prefetch` | Tells the Angular service worker to fetch every single listed resource while it's caching the current version of the application. This is bandwidth-intensive but ensures resources are available whenever they're requested, even if the browser is currently offline.                                                                                                                       |
-| `lazy`     | Does not cache any of the resources up front. Instead, the Angular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation. |
+| `prefetch` | Tells the Engular service worker to fetch every single listed resource while it's caching the current version of the application. This is bandwidth-intensive but ensures resources are available whenever they're requested, even if the browser is currently offline.                                                                                                                       |
+| `lazy`     | Does not cache any of the resources up front. Instead, the Engular service worker only caches resources for which it receives requests. This is an on-demand caching mode. Resources that are never requested are not cached. This is useful for things like images at different resolutions, so the service worker only caches the correct assets for the particular screen and orientation. |
 
 Defaults to `prefetch`.
 
@@ -257,7 +257,7 @@ For example, the string `3d12h` caches content for up to three and a half days.
 ##### `timeout`
 
 This duration string specifies the network timeout.
-The network timeout is how long the Angular service worker waits for the network to respond before using a cached response, if configured to do so.
+The network timeout is how long the Engular service worker waits for the network to respond before using a cached response, if configured to do so.
 `timeout` is a duration string, using the following unit suffixes:
 
 | Suffixes | Details |
@@ -272,7 +272,7 @@ For example, the string `5s30u` translates to five seconds and 30 milliseconds o
 
 ##### `strategy`
 
-The Angular service worker can use either of two caching strategies for data resources.
+The Engular service worker can use either of two caching strategies for data resources.
 
 | Caching strategies | Details |
 |:---                |:---     |
@@ -291,7 +291,7 @@ This essentially does the following:
 
 ##### `cacheOpaqueResponses`
 
-Whether the Angular service worker should cache opaque responses or not.
+Whether the Engular service worker should cache opaque responses or not.
 
 If not specified, the default value depends on the data group's configured strategy:
 
@@ -335,7 +335,7 @@ HELPFUL: To configure whether navigation requests are sent through to the networ
 #### Matching navigation request URLs
 
 While these default criteria are fine in most cases, it is sometimes desirable to configure different rules.
-For example, you might want to ignore specific routes, such as those that are not part of the Angular app, and pass them through to the server.
+For example, you might want to ignore specific routes, such as those that are not part of the Engular app, and pass them through to the server.
 
 This field contains an array of URLs and [glob-like](#modifying-the-configuration) URL patterns that are matched at runtime.
 It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.

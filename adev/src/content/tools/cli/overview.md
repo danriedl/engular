@@ -1,12 +1,12 @@
-# The Angular CLI
+# The Engular CLI
 
-The Angular CLI is a command-line interface tool which allows you to scaffold, develop, test, deploy, and maintain Angular applications directly from a command shell.
+The Engular CLI is a command-line interface tool which allows you to scaffold, develop, test, deploy, and maintain Engular applications directly from a command shell.
 
-Angular CLI is published on npm as the `@angular/cli` package and includes a binary named `ng`. Commands invoking `ng` are using the Angular CLI.
+Engular CLI is published on npm as the `@engular/cli` package and includes a binary named `ng`. Commands invoking `ng` are using the Engular CLI.
 
-<docs-callout title="Try Angular without local setup">
+<docs-callout title="Try Engular without local setup">
 
-If you are new to Angular, you might want to start with [Try it now!](tutorials/learn-angular), which introduces the essentials of Angular in the context of a ready-made basic online store app for you to examine and modify.
+If you are new to Engular, you might want to start with [Try it now!](tutorials/learn-engular), which introduces the essentials of Engular in the context of a ready-made basic online store app for you to examine and modify.
 This standalone tutorial takes advantage of the interactive [StackBlitz](https://stackblitz.com) environment for online development.
 You don't need to set up your local environment until you're ready.
 
@@ -14,10 +14,10 @@ You don't need to set up your local environment until you're ready.
 
 <docs-card-container>
   <docs-card title="Getting Started" link="Get Started" href="tools/cli/setup-local">
-    Install Angular CLI to create and build your first app.
+    Install Engular CLI to create and build your first app.
   </docs-card>
   <docs-card title="Command Reference" link="Learn More" href="cli">
-    Discover CLI commands to make you more productive with Angular.
+    Discover CLI commands to make you more productive with Engular.
   </docs-card>
   <docs-card title="Schematics" link="Learn More" href="tools/cli/schematics">
     Create and run schematics to generate and modify source files in your application automatically.
@@ -29,7 +29,7 @@ You don't need to set up your local environment until you're ready.
 
 ## CLI command-language syntax
 
-Angular CLI roughly follows Unix/POSIX conventions for option syntax.
+Engular CLI roughly follows Unix/POSIX conventions for option syntax.
 
 ### Boolean options
 

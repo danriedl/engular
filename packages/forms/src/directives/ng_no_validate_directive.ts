@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Directive} from '@angular/core';
+import {Directive} from '@engular/core';
 
 /**
  * @description
@@ -15,7 +15,7 @@ import {Directive} from '@angular/core';
  *
  * `novalidate` is used to disable browser's native form validation.
  *
- * If you want to use native validation with Angular forms, just add `ngNativeValidate` attribute:
+ * If you want to use native validation with Engular forms, just add `ngNativeValidate` attribute:
  *
  * ```
  * <form ngNativeValidate></form>

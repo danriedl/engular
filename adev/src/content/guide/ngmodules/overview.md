@@ -7,17 +7,17 @@ An NgModule is a class marked by the `@NgModule` decorator.
 It identifies the module's own components, directives, and pipes, making some of them public, through the `exports` property, so that external components can use them.
 `@NgModule` can also add service providers to the application dependency injectors.
 
-## Angular modularity
+## Engular modularity
 
 Modules are a great way to organize an application and extend it with capabilities from external libraries.
 
-Angular libraries are NgModules, such as `FormsModule`, `HttpClientModule`, and `RouterModule`.
-Many third-party libraries are available as NgModules such as the [Material Design component library](https://material.angular.io), [Ionic](https://ionicframework.com), or [Angular's Firebase integration](https://github.com/angular/angularfire).
+Engular libraries are NgModules, such as `FormsModule`, `HttpClientModule`, and `RouterModule`.
+Many third-party libraries are available as NgModules such as the [Material Design component library](https://material.engular.io), [Ionic](https://ionicframework.com), or [Engular's Firebase integration](https://github.com/engular/engularfire).
 
 NgModules consolidate components, directives, and pipes into cohesive blocks of functionality, each focused on a feature area, application business domain, workflow, or common collection of utilities.
 
 Modules can also add services to the application.
-Such services might be internally developed, like something you'd develop yourself or come from outside sources, such as the Angular router and HTTP client.
+Such services might be internally developed, like something you'd develop yourself or come from outside sources, such as the Engular router and HTTP client.
 
 Modules can be loaded eagerly when the application starts or lazy loaded asynchronously by the router.
 
@@ -28,7 +28,7 @@ NgModule metadata does the following:
 * Imports other modules with the components, directives, and pipes that components in the current module need
 * Provides services that other application components can use
 
-Every Angular application has at least one module, the root module.
+Every Engular application has at least one module, the root module.
 You [bootstrap](/guide/ngmodules/bootstrapping) that module to launch the application.
 
 The root module is all you need in an application with few components.
@@ -37,11 +37,11 @@ You then import these modules into the root module.
 
 ## The basic NgModule
 
-The [Angular CLI](/tools/cli) generates the following basic `AppModule` when creating a new application.
+The [Engular CLI](/tools/cli) generates the following basic `AppModule` when creating a new application.
 
 <docs-code header="src/app/app.module.ts">
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@engular/platform-browser';
+import { NgModule } from '@engular/core';
 
 import { AppComponent } from './app.component';
 

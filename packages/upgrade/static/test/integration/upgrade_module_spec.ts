@@ -3,18 +3,18 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {destroyPlatform, NgModule, NgZone} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {destroyPlatform, NgModule, NgZone} from '@engular/core';
+import {BrowserModule} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
 
 import {
-  getAngularJSGlobal,
-  IAngularBootstrapConfig,
+  getEngularJSGlobal,
+  IEngularBootstrapConfig,
   module_,
-} from '../../../src/common/src/angular1';
+} from '../../../src/common/src/engular1';
 import {html, withEachNg1Version} from '../../../src/common/test/helpers/common_test_helpers';
 import {UpgradeModule} from '../../index';
 
@@ -105,9 +105,9 @@ withEachNg1Version(() => {
     });
 
     describe('bootstrap()', () => {
-      it('should call `angular.bootstrap()`', async () => {
+      it('should call `engular.bootstrap()`', async () => {
         // Set up spies.
-        const bootstrapSpy = spyOn(getAngularJSGlobal(), 'bootstrap').and.callThrough();
+        const bootstrapSpy = spyOn(getEngularJSGlobal(), 'bootstrap').and.callThrough();
 
         // Define `Ng2Module`.
         @NgModule({
@@ -123,15 +123,15 @@ withEachNg1Version(() => {
 
         // Bootstrap the hybrid app.
         const element = html(`<ng2></ng2>`);
-        const config: IAngularBootstrapConfig = {strictDi: true};
+        const config: IEngularBootstrapConfig = {strictDi: true};
         upgrade.bootstrap(element, [], config);
 
         expect(bootstrapSpy).toHaveBeenCalledOnceWith(element, jasmine.any(Array), config);
       });
 
-      it('should forward the return value of `angular.bootstrap()`', async () => {
+      it('should forward the return value of `engular.bootstrap()`', async () => {
         // Set up spies.
-        const bootstrapSpy = spyOn(getAngularJSGlobal(), 'bootstrap').and.callThrough();
+        const bootstrapSpy = spyOn(getEngularJSGlobal(), 'bootstrap').and.callThrough();
 
         // Define `Ng2Module`.
         @NgModule({

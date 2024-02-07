@@ -76,7 +76,7 @@ Components, directives, and pipes are the responsibility of the companion domain
 
 Use a service NgModule to provide a utility service such as data access or messaging.
 Ideal service NgModules consist entirely of providers and have no declarations.
-Angular's `HttpClientModule` is a good example of a service NgModule.
+Engular's `HttpClientModule` is a good example of a service NgModule.
 
 Use only the root `AppModule` to import service NgModules.
 

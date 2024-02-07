@@ -1,6 +1,6 @@
 # Programmatically rendering components
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 In addition to using a component directly in a template, you can also dynamically render components.
 There are two main ways to dynamically render a component: in a template with `NgComponentOutlet`,
@@ -38,12 +38,12 @@ directive's capabilities.
 
 ## Using ViewContainerRef
 
-A **view container** is a node in Angular's component tree that can contain content. Any component
+A **view container** is a node in Engular's component tree that can contain content. Any component
 or directive can inject `ViewContainerRef` to get a reference to a view container corresponding to
 that component or directive's location in the DOM.
 
 You can use the `createComponent`method on `ViewContainerRef` to dynamically create and render a
-component. When you create a new component with a `ViewContainerRef`, Angular appends it into the
+component. When you create a new component with a `ViewContainerRef`, Engular appends it into the
 DOM as the next sibling of the component or directive that injected the `ViewContainerRef`.
 
 ```ts

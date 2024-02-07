@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵgetDOM as getDOM} from '@angular/common';
-import {QueryList} from '@angular/core/src/linker/query_list';
-import {iterateListLike} from '@angular/core/src/util/iterable';
-import {fakeAsync, tick} from '@angular/core/testing';
+import {ɵgetDOM as getDOM} from '@engular/common';
+import {QueryList} from '@engular/core/src/linker/query_list';
+import {iterateListLike} from '@engular/core/src/util/iterable';
+import {fakeAsync, tick} from '@engular/core/testing';
 
 describe('QueryList', () => {
   let queryList: QueryList<string>;

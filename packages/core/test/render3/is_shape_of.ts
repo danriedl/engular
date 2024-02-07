@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {TI18n, TIcu} from '@angular/core/src/render3/interfaces/i18n';
-import {TNode} from '@angular/core/src/render3/interfaces/node';
-import {TView} from '@angular/core/src/render3/interfaces/view';
+import {TI18n, TIcu} from '@engular/core/src/render3/interfaces/i18n';
+import {TNode} from '@engular/core/src/render3/interfaces/node';
+import {TView} from '@engular/core/src/render3/interfaces/view';
 
 /**
  * A type used to create a runtime representation of a shape of object which matches the declared

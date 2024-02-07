@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ComponentFactory, ComponentFactoryResolver, Injector, NgZone, Type} from '@angular/core';
+import {ComponentFactory, ComponentFactoryResolver, Injector, NgZone, Type} from '@engular/core';
 
 import {
   IAnnotatedFunction,
@@ -18,7 +18,7 @@ import {
   INgModelController,
   IParseService,
   IScope,
-} from './angular1';
+} from './engular1';
 import {
   $COMPILE,
   $INJECTOR,
@@ -43,49 +43,49 @@ import {
 /**
  * @description
  *
- * A helper function that allows an Angular component to be used from AngularJS.
+ * A helper function that allows an Engular component to be used from EngularJS.
  *
  * *Part of the [upgrade/static](api?query=upgrade%2Fstatic)
  * library for hybrid upgrade apps that support AOT compilation*
  *
  * This helper function returns a factory function to be used for registering
- * an AngularJS wrapper directive for "downgrading" an Angular component.
+ * an EngularJS wrapper directive for "downgrading" an Engular component.
  *
  * @usageNotes
  * ### Examples
  *
- * Let's assume that you have an Angular component called `ng2Heroes` that needs
- * to be made available in AngularJS templates.
+ * Let's assume that you have an Engular component called `ng2Heroes` that needs
+ * to be made available in EngularJS templates.
  *
  * {@example upgrade/static/ts/full/module.ts region="ng2-heroes"}
  *
- * We must create an AngularJS [directive](https://docs.angularjs.org/guide/directive)
- * that will make this Angular component available inside AngularJS templates.
+ * We must create an EngularJS [directive](https://docs.engularjs.org/guide/directive)
+ * that will make this Engular component available inside EngularJS templates.
  * The `downgradeComponent()` function returns a factory function that we
- * can use to define the AngularJS directive that wraps the "downgraded" component.
+ * can use to define the EngularJS directive that wraps the "downgraded" component.
  *
  * {@example upgrade/static/ts/full/module.ts region="ng2-heroes-wrapper"}
  *
- * For more details and examples on downgrading Angular components to AngularJS components please
- * visit the [Upgrade guide](guide/upgrade#using-angular-components-from-angularjs-code).
+ * For more details and examples on downgrading Engular components to EngularJS components please
+ * visit the [Upgrade guide](guide/upgrade#using-engular-components-from-engularjs-code).
  *
  * @param info contains information about the Component that is being downgraded:
  *
  * - `component: Type<any>`: The type of the Component that will be downgraded
  * - `downgradedModule?: string`: The name of the downgraded module (if any) that the component
  *   "belongs to", as returned by a call to `downgradeModule()`. It is the module, whose
- *   corresponding Angular module will be bootstrapped, when the component needs to be instantiated.
+ *   corresponding Engular module will be bootstrapped, when the component needs to be instantiated.
  *   <br />
  *   (This option is only necessary when using `downgradeModule()` to downgrade more than one
- *   Angular module.)
+ *   Engular module.)
  * - `propagateDigest?: boolean`: Whether to perform {@link ChangeDetectorRef#detectChanges} on the
  * component on every
- *   [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest). If set to `false`,
+ *   [$digest](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$digest). If set to `false`,
  *   change detection will still be performed when any of the component's inputs changes.
  *   (Default: true)
  *
  * @returns a factory function that can be used to register the component in an
- * AngularJS module.
+ * EngularJS module.
  *
  * @publicApi
  */
@@ -99,7 +99,7 @@ export function downgradeComponent(info: {
   outputs?: string[];
   /** @deprecated since v4. This parameter is no longer used */
   selectors?: string[];
-}): any /* angular.IInjectable */ {
+}): any /* engular.IInjectable */ {
   const directiveFactory: IAnnotatedFunction = function (
     $compile: ICompileService,
     $injector: IInjectorService,
@@ -108,15 +108,15 @@ export function downgradeComponent(info: {
     // When using `downgradeModule()`, we need to handle certain things specially. For example:
     // - We always need to attach the component view to the `ApplicationRef` for it to be
     //   dirty-checked.
-    // - We need to ensure callbacks to Angular APIs (e.g. change detection) are run inside the
-    //   Angular zone.
+    // - We need to ensure callbacks to Engular APIs (e.g. change detection) are run inside the
+    //   Engular zone.
     //   NOTE: This is not needed, when using `UpgradeModule`, because `$digest()` will be run
-    //         inside the Angular zone (except if explicitly escaped, in which case we shouldn't
+    //         inside the Engular zone (except if explicitly escaped, in which case we shouldn't
     //         force it back in).
     const isNgUpgradeLite = getUpgradeAppType($injector) === UpgradeAppType.Lite;
     const wrapCallback: <T>(cb: () => T) => typeof cb = !isNgUpgradeLite
       ? (cb) => cb
-      : (cb) => () => (NgZone.isInAngularZone() ? cb() : ngZone.run(cb));
+      : (cb) => () => (NgZone.isInEngularZone() ? cb() : ngZone.run(cb));
     let ngZone: NgZone;
 
     // When downgrading multiple modules, special handling is needed wrt injectors.
@@ -126,14 +126,14 @@ export function downgradeComponent(info: {
       restrict: 'E',
       terminal: true,
       require: [REQUIRE_INJECTOR, REQUIRE_NG_MODEL],
-      // Controller needs to be set so that `angular-component-router.js` (from beta Angular 2)
+      // Controller needs to be set so that `engular-component-router.js` (from beta Engular 2)
       // configuration properties can be made available. See:
-      // See G3: javascript/angular2/angular1_router_lib.js
-      // https://github.com/angular/angular.js/blob/47bf11ee94664367a26ed8c91b9b586d3dd420f5/src/ng/compile.js#L1670-L1691.
+      // See G3: javascript/engular2/engular1_router_lib.js
+      // https://github.com/engular/engular.js/blob/47bf11ee94664367a26ed8c91b9b586d3dd420f5/src/ng/compile.js#L1670-L1691.
       controller: function () {},
       link: (scope: IScope, element: IAugmentedJQuery, attrs: IAttributes, required: any[]) => {
         // We might have to compile the contents asynchronously, because this might have been
-        // triggered by `UpgradeNg1ComponentAdapterBuilder`, before the Angular templates have
+        // triggered by `UpgradeNg1ComponentAdapterBuilder`, before the Engular templates have
         // been compiled.
 
         const ngModel: INgModelController = required[1];
@@ -159,7 +159,7 @@ export function downgradeComponent(info: {
         // - `finalModuleInjector` is used to retrieve `ComponentFactoryResolver`, thus it must be
         //   on the same tree as the `NgModule` that declares this downgraded component.
         // - `finalParentInjector` is used for all other injection purposes.
-        //   (Note that Angular knows to only traverse the component-tree part of that injector,
+        //   (Note that Engular knows to only traverse the component-tree part of that injector,
         //   when looking for an injectable and then switch to the module injector.)
         //
         // There are basically three cases:
@@ -185,10 +185,10 @@ export function downgradeComponent(info: {
         //           the same instance.
 
         // If there is a parent component, use its injector as parent injector.
-        // If this is a "top-level" Angular component, use the module injector.
+        // If this is a "top-level" Engular component, use the module injector.
         const finalParentInjector = parentInjector || moduleInjector!;
 
-        // If this is a "top-level" Angular component or the parent component may belong to a
+        // If this is a "top-level" Engular component or the parent component may belong to a
         // different `NgModule`, use the module injector for module-specific dependencies.
         // If there is a parent component that belongs to the same `NgModule`, use its injector.
         const finalModuleInjector = moduleInjector || parentInjector!;
@@ -264,7 +264,7 @@ export function downgradeComponent(info: {
 
 /**
  * Synchronous promise-like object to wrap parent injectors,
- * to preserve the synchronous nature of AngularJS's `$compile`.
+ * to preserve the synchronous nature of EngularJS's `$compile`.
  */
 class ParentInjectorPromise extends SyncPromise<Injector> {
   private injectorKey: string = controllerKey(INJECTOR_KEY);

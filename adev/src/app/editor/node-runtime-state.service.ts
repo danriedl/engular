@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {Injectable, signal} from '@angular/core';
-import {isFirefox, isIos} from '@angular/docs';
+import {Injectable, signal} from '@engular/core';
+import {isFirefox, isIos} from '@engular/docs';
 
 import {LoadingStep} from './enums/loading-steps';
 import {OUT_OF_MEMORY_MSG} from './node-runtime-sandbox.service';

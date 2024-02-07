@@ -3,19 +3,19 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import {animate, query, state, style, transition, trigger} from '@angular/animations';
-import {AnimationDriver, ɵAnimationEngine, ɵWebAnimationsDriver, ɵWebAnimationsPlayer} from '@angular/animations/browser';
-import {TransitionAnimationPlayer} from '@angular/animations/browser/src/render/transition_animation_engine';
-import {AnimationGroupPlayer} from '@angular/animations/src/players/animation_group_player';
-import {Component, ViewChild} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {animate, query, state, style, transition, trigger} from '@engular/animations';
+import {AnimationDriver, ɵAnimationEngine, ɵWebAnimationsDriver, ɵWebAnimationsPlayer} from '@engular/animations/browser';
+import {TransitionAnimationPlayer} from '@engular/animations/browser/src/render/transition_animation_engine';
+import {AnimationGroupPlayer} from '@engular/animations/src/players/animation_group_player';
+import {Component, ViewChild} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {BrowserAnimationsModule} from '@engular/platform-browser/animations';
 
 (function() {
 // these tests are only meant to be run within the DOM (for now)
-// Buggy in Chromium 39, see https://github.com/angular/angular/issues/15793
+// Buggy in Chromium 39, see https://github.com/engular/engular/issues/15793
 if (isNode) return;
 
 describe('animation integration tests using web animations', function() {

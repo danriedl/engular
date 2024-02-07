@@ -93,7 +93,7 @@ Including this option disables `HttpClient`'s built-in XSRF security functionali
 
 Some applications may configure `HttpClient` using the older API based on NgModules.
 
-This table lists the NgModules available from `@angular/common/http` and how they relate to the provider configuration functions above.
+This table lists the NgModules available from `@engular/common/http` and how they relate to the provider configuration functions above.
 
 | **NgModule** | `provideHttpClient()` equivalent |
 | - | - |

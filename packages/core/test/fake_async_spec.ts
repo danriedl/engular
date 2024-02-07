@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {discardPeriodicTasks, fakeAsync, flush, flushMicrotasks, inject, tick} from '@angular/core/testing';
-import {Log} from '@angular/core/testing/src/testing_internal';
-import {EventManager} from '@angular/platform-browser';
+import {discardPeriodicTasks, fakeAsync, flush, flushMicrotasks, inject, tick} from '@engular/core/testing';
+import {Log} from '@engular/core/testing/src/testing_internal';
+import {EventManager} from '@engular/platform-browser';
 
 const resolvedPromise = Promise.resolve(null);
 const ProxyZoneSpec: {assertPresent: () => void} = (Zone as any)['ProxyZoneSpec'];

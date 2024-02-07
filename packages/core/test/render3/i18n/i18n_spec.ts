@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵɵi18nAttributes, ɵɵi18nPostprocess, ɵɵi18nStart} from '@angular/core';
-import {ɵɵi18n} from '@angular/core/src/core';
-import {getTranslationForTemplate, i18nStartFirstCreatePass} from '@angular/core/src/render3/i18n/i18n_parse';
-import {getTIcu} from '@angular/core/src/render3/i18n/i18n_util';
-import {TNodeType} from '@angular/core/src/render3/interfaces/node';
+import {ɵɵi18nAttributes, ɵɵi18nPostprocess, ɵɵi18nStart} from '@engular/core';
+import {ɵɵi18n} from '@engular/core/src/core';
+import {getTranslationForTemplate, i18nStartFirstCreatePass} from '@engular/core/src/render3/i18n/i18n_parse';
+import {getTIcu} from '@engular/core/src/render3/i18n/i18n_util';
+import {TNodeType} from '@engular/core/src/render3/interfaces/node';
 
 import {ɵɵelementEnd, ɵɵelementStart} from '../../../src/render3/instructions/all';
 import {I18nCreateOpCode, I18nUpdateOpCodes, TI18n, TIcu} from '../../../src/render3/interfaces/i18n';

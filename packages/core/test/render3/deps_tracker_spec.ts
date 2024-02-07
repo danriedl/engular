@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, Directive, forwardRef, NgModule, Pipe} from '@angular/core';
+import {Component, Directive, forwardRef, NgModule, Pipe} from '@engular/core';
 
 import {NgModuleDef} from '../../src/r3_symbols';
 import {ComponentType, NgModuleType, ɵsetClassDebugInfo, ɵɵdefineComponent} from '../../src/render3';

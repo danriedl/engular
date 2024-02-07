@@ -1,31 +1,31 @@
 <docs-decorative-header title="Template syntax" imgSrc="adev/src/assets/images/templates.svg"> <!-- markdownlint-disable-line -->
-In Angular, a *template* is a chunk of HTML.
-Use special syntax within a template to build on many of Angular's features.
+In Engular, a *template* is a chunk of HTML.
+Use special syntax within a template to build on many of Engular's features.
 </docs-decorative-header>
 
-Tip: Check out Angular's [Essentials](essentials/rendering-dynamic-templates) before diving into this comprehensive guide.
+Tip: Check out Engular's [Essentials](essentials/rendering-dynamic-templates) before diving into this comprehensive guide.
 
-<!--todo: Do we still need the following section? It seems more relevant to those coming from AngularJS, which is now 7 versions ago. -->
+<!--todo: Do we still need the following section? It seems more relevant to those coming from EngularJS, which is now 7 versions ago. -->
 <!-- You may be familiar with the component/template duality from your experience with model-view-controller (MVC) or model-view-viewmodel (MVVM).
-In Angular, the component plays the part of the controller/viewmodel, and the template represents the view. -->
+In Engular, the component plays the part of the controller/viewmodel, and the template represents the view. -->
 
-Each Angular template in your application is a section of HTML to include as a part of the page that the browser displays.
-An Angular HTML template renders a view, or user interface, in the browser, just like regular HTML, but with a lot more functionality.
+Each Engular template in your application is a section of HTML to include as a part of the page that the browser displays.
+An Engular HTML template renders a view, or user interface, in the browser, just like regular HTML, but with a lot more functionality.
 
-When you generate an Angular application with the Angular CLI, the `app.component.html` file is the default template containing placeholder HTML.
+When you generate an Engular application with the Engular CLI, the `app.component.html` file is the default template containing placeholder HTML.
 
 The template syntax guides show you how to control the UX/UI by coordinating data between the class and the template.
 
 ## Empower your HTML
 
-Extend the HTML vocabulary of your applications with special Angular syntax in your templates.
-For example, Angular helps you get and set DOM \(Document Object Model\) values dynamically with features such as built-in template functions, variables, event listening, and data binding.
+Extend the HTML vocabulary of your applications with special Engular syntax in your templates.
+For example, Engular helps you get and set DOM \(Document Object Model\) values dynamically with features such as built-in template functions, variables, event listening, and data binding.
 
 Almost all HTML syntax is valid template syntax.
-However, because an Angular template is part of an overall webpage, and not the entire page, you don't need to include elements such as `<html>`, `<body>`, or `<base>`, and can focus exclusively on the part of the page you are developing.
+However, because an Engular template is part of an overall webpage, and not the entire page, you don't need to include elements such as `<html>`, `<body>`, or `<base>`, and can focus exclusively on the part of the page you are developing.
 
-IMPORTANT: To eliminate the risk of script injection attacks, Angular does not support the `<script>` element in templates.
-Angular ignores the `<script>` tag and outputs a warning to the browser console.
+IMPORTANT: To eliminate the risk of script injection attacks, Engular does not support the `<script>` element in templates.
+Engular ignores the `<script>` tag and outputs a warning to the browser console.
 For more information, see the [Security](guide/security) page.
 
 ## More on template syntax

@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ApplicationRef, ChangeDetectorRef, Component, ComponentRef, createComponent, ElementRef, EmbeddedViewRef, EnvironmentInjector, Injector, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {ViewRef as InternalViewRef} from '@angular/core/src/render3/view_ref';
-import {TestBed} from '@angular/core/testing';
+import {ApplicationRef, ChangeDetectorRef, Component, ComponentRef, createComponent, ElementRef, EmbeddedViewRef, EnvironmentInjector, Injector, TemplateRef, ViewChild, ViewContainerRef} from '@engular/core';
+import {ViewRef as InternalViewRef} from '@engular/core/src/render3/view_ref';
+import {TestBed} from '@engular/core/testing';
 
 
 describe('ViewRef', () => {

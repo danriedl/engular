@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import ts from 'typescript';
@@ -13,7 +13,7 @@ import {ClassDeclaration} from '../../reflection';
 import {SymbolWithValueDeclaration} from '../../util/src/typescript';
 
 /**
- * A PotentialImport for some Angular trait has a TypeScript module specifier, which can be
+ * A PotentialImport for some Engular trait has a TypeScript module specifier, which can be
  * relative, as well as an identifier name.
  */
 export interface PotentialImport {
@@ -25,7 +25,7 @@ export interface PotentialImport {
 }
 
 /**
- * Which kind of Angular Trait the import targets.
+ * Which kind of Engular Trait the import targets.
  */
 export enum PotentialImportKind {
   NgModule,

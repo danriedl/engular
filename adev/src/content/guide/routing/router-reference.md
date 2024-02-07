@@ -4,20 +4,20 @@ The following sections highlight some core router concepts.
 
 ## Router imports
 
-The Angular Router is an optional service that presents a particular component view for a given URL.
-It isn't part of the Angular core and thus is in its own library package, `@angular/router`.
+The Engular Router is an optional service that presents a particular component view for a given URL.
+It isn't part of the Engular core and thus is in its own library package, `@engular/router`.
 
-Import what you need from it as you would from any other Angular package.
+Import what you need from it as you would from any other Engular package.
 
 ```ts
-import { provideRouter } from '@angular/router';
+import { provideRouter } from '@engular/router';
 ```
 
 HELPFUL: For more on browser URL styles, see [`LocationStrategy` and browser URL styles](guide/routing/common-router-tasks#browser-url-styles).
 
 ## Configuration
 
-A routed Angular application has one singleton instance of the `Router` service.
+A routed Engular application has one singleton instance of the `Router` service.
 When the browser's URL changes, that router looks for a corresponding `Route` from which it can determine the component to display.
 
 A router has no routes until you configure it.
@@ -174,7 +174,7 @@ These events are shown in the following table.
 | [`NavigationError`](api/router/NavigationError)           | Triggered when navigation fails due to an unexpected error.                                                                                                                           |
 | [`Scroll`](api/router/Scroll)                             | Represents a scrolling event.                                                                                                                                                         |
 
-When you enable the `withDebugTracing` feature, Angular logs these events to the console.
+When you enable the `withDebugTracing` feature, Engular logs these events to the console.
 
 ## Router terminology
 
@@ -193,4 +193,4 @@ Here are the key `Router` terms and their meanings:
 | `ActivatedRoute`      | A service that's provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query parameters, and the global fragment.   |
 | `RouterState`         | The current state of the router including a tree of the currently activated routes together with convenience methods for traversing the route tree.                                              |
 | Link parameters array | An array that the router interprets as a routing instruction. You can bind that array to a `RouterLink` or pass the array as an argument to the `Router.navigate` method.                        |
-| Routing component     | An Angular component with a `RouterOutlet` that displays views based on router navigations.                                                                                                      |
+| Routing component     | An Engular component with a `RouterOutlet` that displays views based on router navigations.                                                                                                      |

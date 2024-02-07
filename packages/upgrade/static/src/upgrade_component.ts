@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {
@@ -16,9 +16,9 @@ import {
   OnDestroy,
   OnInit,
   SimpleChanges,
-} from '@angular/core';
+} from '@engular/core';
 
-import {ɵangular1, ɵconstants, ɵupgradeHelper, ɵutil} from '../common';
+import {ɵengular1, ɵconstants, ɵupgradeHelper, ɵutil} from '../common';
 
 const NOT_SUPPORTED: any = 'NOT_SUPPORTED';
 const INITIAL_VALUE = {
@@ -37,24 +37,24 @@ class Bindings {
 /**
  * @description
  *
- * A helper class that allows an AngularJS component to be used from Angular.
+ * A helper class that allows an EngularJS component to be used from Engular.
  *
  * *Part of the [upgrade/static](api?query=upgrade%2Fstatic)
  * library for hybrid upgrade apps that support AOT compilation.*
  *
- * This helper class should be used as a base class for creating Angular directives
- * that wrap AngularJS components that need to be "upgraded".
+ * This helper class should be used as a base class for creating Engular directives
+ * that wrap EngularJS components that need to be "upgraded".
  *
  * @usageNotes
  * ### Examples
  *
- * Let's assume that you have an AngularJS component called `ng1Hero` that needs
- * to be made available in Angular templates.
+ * Let's assume that you have an EngularJS component called `ng1Hero` that needs
+ * to be made available in Engular templates.
  *
  * {@example upgrade/static/ts/full/module.ts region="ng1-hero"}
  *
- * We must create a `Directive` that will make this AngularJS component
- * available inside Angular templates.
+ * We must create a `Directive` that will make this EngularJS component
+ * available inside Engular templates.
  *
  * {@example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper"}
  *
@@ -65,10 +65,10 @@ class Bindings {
  *
  * Note that we must do the following:
  * * specify the directive's selector (`ng1-hero`)
- * * specify all inputs and outputs that the AngularJS component expects
+ * * specify all inputs and outputs that the EngularJS component expects
  * * derive from `UpgradeComponent`
  * * call the base class from the constructor, passing
- *   * the AngularJS name of the component (`ng1Hero`)
+ *   * the EngularJS name of the component (`ng1Hero`)
  *   * the `ElementRef` and `Injector` for the component wrapper
  *
  * @publicApi
@@ -78,10 +78,10 @@ class Bindings {
 export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
   private helper: ɵupgradeHelper.UpgradeHelper;
 
-  private $element: ɵangular1.IAugmentedJQuery;
-  private $componentScope: ɵangular1.IScope;
+  private $element: ɵengular1.IAugmentedJQuery;
+  private $componentScope: ɵengular1.IScope;
 
-  private directive: ɵangular1.IDirective;
+  private directive: ɵengular1.IDirective;
   private bindings: Bindings;
 
   private controllerInstance?: ɵupgradeHelper.IControllerInstance;
@@ -101,8 +101,8 @@ export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
    *
    * {@example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper" }
    *
-   * * The `name` parameter should be the name of the AngularJS directive.
-   * * The `elementRef` and `injector` parameters should be acquired from Angular by dependency
+   * * The `name` parameter should be the name of the EngularJS directive.
+   * * The `elementRef` and `injector` parameters should be acquired from Engular by dependency
    *   injection into the base class constructor.
    */
   constructor(name: string, elementRef: ElementRef, injector: Injector) {
@@ -113,7 +113,7 @@ export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
     this.directive = this.helper.directive;
     this.bindings = this.initializeBindings(this.directive, name);
 
-    // We ask for the AngularJS scope from the Angular injector, since
+    // We ask for the EngularJS scope from the Engular injector, since
     // we will put the new component scope onto the new injector for each component
     const $parentScope = injector.get(ɵconstants.$SCOPE);
     // QUESTION 1: Should we create an isolated scope if the scope is only true?
@@ -126,7 +126,7 @@ export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
   /** @nodoc */
   ngOnInit() {
     // Collect contents, insert and compile template
-    const attachChildNodes: ɵangular1.ILinkFn | undefined = this.helper.prepareTransclusion();
+    const attachChildNodes: ɵengular1.ILinkFn | undefined = this.helper.prepareTransclusion();
     const linkFn = this.helper.compileTemplate();
 
     // Instantiate controller
@@ -178,8 +178,8 @@ export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
     const link = this.directive.link;
     const preLink = typeof link == 'object' && link.pre;
     const postLink = typeof link == 'object' ? link.post : link;
-    const attrs: ɵangular1.IAttributes = NOT_SUPPORTED;
-    const transcludeFn: ɵangular1.ITranscludeFunction = NOT_SUPPORTED;
+    const attrs: ɵengular1.IAttributes = NOT_SUPPORTED;
+    const transcludeFn: ɵengular1.ITranscludeFunction = NOT_SUPPORTED;
     if (preLink) {
       preLink(this.$componentScope, this.$element, attrs, requiredControllers, transcludeFn);
     }
@@ -233,7 +233,7 @@ export class UpgradeComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
     this.helper.onDestroy(this.$componentScope, this.controllerInstance);
   }
 
-  private initializeBindings(directive: ɵangular1.IDirective, name: string) {
+  private initializeBindings(directive: ɵengular1.IDirective, name: string) {
     const btcIsObject = typeof directive.bindToController === 'object';
     if (btcIsObject && Object.keys(directive.scope!).length) {
       throw new Error(

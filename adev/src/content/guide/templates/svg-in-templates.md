@@ -1,6 +1,6 @@
 # SVG as templates
 
-You can use SVG files as templates in your Angular applications.
+You can use SVG files as templates in your Engular applications.
 When you use an SVG as the template, you are able to use directives and bindings just like with HTML templates.
 Use these features to dynamically generate interactive graphics.
 

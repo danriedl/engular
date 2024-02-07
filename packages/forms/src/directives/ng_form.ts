@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AfterViewInit, Directive, EventEmitter, forwardRef, Inject, Input, Optional, Provider, Self, ɵWritable as Writable} from '@angular/core';
+import {AfterViewInit, Directive, EventEmitter, forwardRef, Inject, Input, Optional, Provider, Self, ɵWritable as Writable} from '@engular/core';
 
 import {AbstractControl, FormHooks} from '../model/abstract_model';
 import {FormControl} from '../model/form_control';
@@ -77,10 +77,10 @@ const resolvedPromise = (() => Promise.resolve())();
  *
  * ### Native DOM validation UI
  *
- * In order to prevent the native DOM form validation UI from interfering with Angular's form
- * validation, Angular automatically adds the `novalidate` attribute on any `<form>` whenever
+ * In order to prevent the native DOM form validation UI from interfering with Engular's form
+ * validation, Engular automatically adds the `novalidate` attribute on any `<form>` whenever
  * `FormModule` or `ReactiveFormModule` are imported into the application.
- * If you want to explicitly enable native DOM validation UI with Angular forms, you can add the
+ * If you want to explicitly enable native DOM validation UI with Engular forms, you can add the
  * `ngNativeValidate` attribute to the `<form>` element:
  *
  * ```html

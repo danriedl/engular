@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {
@@ -13,12 +13,12 @@ import {
   PlatformRef,
   StaticProvider,
   Type,
-} from '@angular/core';
-import {platformBrowser} from '@angular/platform-browser';
+} from '@engular/core';
+import {platformBrowser} from '@engular/platform-browser';
 
-import {ɵangular1, ɵconstants, ɵutil} from '../common';
+import {ɵengular1, ɵconstants, ɵutil} from '../common';
 
-import {angular1Providers, setTempInjectorRef} from './angular1_providers';
+import {engular1Providers, setTempInjectorRef} from './engular1_providers';
 import {NgAdapterInjector} from './util';
 
 let moduleUid = 0;
@@ -26,19 +26,19 @@ let moduleUid = 0;
 /**
  * @description
  *
- * A helper function for creating an AngularJS module that can bootstrap an Angular module
+ * A helper function for creating an EngularJS module that can bootstrap an Engular module
  * "on-demand" (possibly lazily) when a {@link downgradeComponent downgraded component} needs to be
  * instantiated.
  *
  * *Part of the [upgrade/static](api?query=upgrade/static) library for hybrid upgrade apps that
  * support AOT compilation.*
  *
- * It allows loading/bootstrapping the Angular part of a hybrid application lazily and not having to
- * pay the cost up-front. For example, you can have an AngularJS application that uses Angular for
- * specific routes and only instantiate the Angular modules if/when the user visits one of these
+ * It allows loading/bootstrapping the Engular part of a hybrid application lazily and not having to
+ * pay the cost up-front. For example, you can have an EngularJS application that uses Engular for
+ * specific routes and only instantiate the Engular modules if/when the user visits one of these
  * routes.
  *
- * The Angular module will be bootstrapped once (when requested for the first time) and the same
+ * The Engular module will be bootstrapped once (when requested for the first time) and the same
  * reference will be used from that point onwards.
  *
  * `downgradeModule()` requires either an `NgModuleFactory`, `NgModule` class or a function:
@@ -52,8 +52,8 @@ let moduleUid = 0;
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
  *   that are expected to be available from the returned `NgModuleRef`'s `Injector`.
  *
- * `downgradeModule()` returns the name of the created AngularJS wrapper module. You can use it to
- * declare a dependency in your main AngularJS module.
+ * `downgradeModule()` returns the name of the created EngularJS wrapper module. You can use it to
+ * declare a dependency in your main EngularJS module.
  *
  * {@example upgrade/static/ts/lite/module.ts region="basic-how-to"}
  *
@@ -63,7 +63,7 @@ let moduleUid = 0;
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
- * build a hybrid application. Note that the Angular pieces (e.g. downgraded services) will not be
+ * build a hybrid application. Note that the Engular pieces (e.g. downgraded services) will not be
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
@@ -79,11 +79,11 @@ let moduleUid = 0;
  * Besides their different API, there are two important internal differences between
  * `downgradeModule()` and `UpgradeModule` that affect the behavior of hybrid applications:
  *
- * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main AngularJS module
- *    inside the {@link NgZone Angular zone}.
+ * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main EngularJS module
+ *    inside the {@link NgZone Engular zone}.
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
- *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
- *    detected in the Angular part of the application.
+ *    [$digest()](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
+ *    detected in the Engular part of the application.
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -100,18 +100,18 @@ let moduleUid = 0;
  *
  * <div class="alert is-helpful">
  *
- *   You can manually trigger a change detection run in AngularJS using
- *   [scope.$apply(...)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply) or
- *   [$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest).
+ *   You can manually trigger a change detection run in EngularJS using
+ *   [scope.$apply(...)](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$apply) or
+ *   [$rootScope.$digest()](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$digest).
  *
- *   You can manually trigger a change detection run in Angular using {@link NgZone#run
+ *   You can manually trigger a change detection run in Engular using {@link NgZone#run
  *   ngZone.run(...)}.
  *
  * </div>
  *
  * ### Downgrading multiple modules
  *
- * It is possible to downgrade multiple modules and include them in an AngularJS application. In
+ * It is possible to downgrade multiple modules and include them in an EngularJS application. In
  * that case, each downgraded module will be bootstrapped when an associated downgraded component or
  * injectable needs to be instantiated.
  *
@@ -142,19 +142,19 @@ export function downgradeModule<T>(
 /**
  * @description
  *
- * A helper function for creating an AngularJS module that can bootstrap an Angular module
+ * A helper function for creating an EngularJS module that can bootstrap an Engular module
  * "on-demand" (possibly lazily) when a {@link downgradeComponent downgraded component} needs to be
  * instantiated.
  *
  * *Part of the [upgrade/static](api?query=upgrade/static) library for hybrid upgrade apps that
  * support AOT compilation.*
  *
- * It allows loading/bootstrapping the Angular part of a hybrid application lazily and not having to
- * pay the cost up-front. For example, you can have an AngularJS application that uses Angular for
- * specific routes and only instantiate the Angular modules if/when the user visits one of these
+ * It allows loading/bootstrapping the Engular part of a hybrid application lazily and not having to
+ * pay the cost up-front. For example, you can have an EngularJS application that uses Engular for
+ * specific routes and only instantiate the Engular modules if/when the user visits one of these
  * routes.
  *
- * The Angular module will be bootstrapped once (when requested for the first time) and the same
+ * The Engular module will be bootstrapped once (when requested for the first time) and the same
  * reference will be used from that point onwards.
  *
  * `downgradeModule()` requires either an `NgModuleFactory`, `NgModule` class or a function:
@@ -168,8 +168,8 @@ export function downgradeModule<T>(
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
  *   that are expected to be available from the returned `NgModuleRef`'s `Injector`.
  *
- * `downgradeModule()` returns the name of the created AngularJS wrapper module. You can use it to
- * declare a dependency in your main AngularJS module.
+ * `downgradeModule()` returns the name of the created EngularJS wrapper module. You can use it to
+ * declare a dependency in your main EngularJS module.
  *
  * {@example upgrade/static/ts/lite/module.ts region="basic-how-to"}
  *
@@ -179,7 +179,7 @@ export function downgradeModule<T>(
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
- * build a hybrid application. Note that the Angular pieces (e.g. downgraded services) will not be
+ * build a hybrid application. Note that the Engular pieces (e.g. downgraded services) will not be
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
@@ -195,11 +195,11 @@ export function downgradeModule<T>(
  * Besides their different API, there are two important internal differences between
  * `downgradeModule()` and `UpgradeModule` that affect the behavior of hybrid applications:
  *
- * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main AngularJS module
- *    inside the {@link NgZone Angular zone}.
+ * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main EngularJS module
+ *    inside the {@link NgZone Engular zone}.
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
- *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
- *    detected in the Angular part of the application.
+ *    [$digest()](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
+ *    detected in the Engular part of the application.
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -216,18 +216,18 @@ export function downgradeModule<T>(
  *
  * <div class="alert is-helpful">
  *
- *   You can manually trigger a change detection run in AngularJS using
- *   [scope.$apply(...)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply) or
- *   [$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest).
+ *   You can manually trigger a change detection run in EngularJS using
+ *   [scope.$apply(...)](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$apply) or
+ *   [$rootScope.$digest()](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$digest).
  *
- *   You can manually trigger a change detection run in Angular using {@link NgZone#run
+ *   You can manually trigger a change detection run in Engular using {@link NgZone#run
  *   ngZone.run(...)}.
  *
  * </div>
  *
  * ### Downgrading multiple modules
  *
- * It is possible to downgrade multiple modules and include them in an AngularJS application. In
+ * It is possible to downgrade multiple modules and include them in an EngularJS application. In
  * that case, each downgraded module will be bootstrapped when an associated downgraded component or
  * injectable needs to be instantiated.
  *
@@ -259,19 +259,19 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
 /**
  * @description
  *
- * A helper function for creating an AngularJS module that can bootstrap an Angular module
+ * A helper function for creating an EngularJS module that can bootstrap an Engular module
  * "on-demand" (possibly lazily) when a {@link downgradeComponent downgraded component} needs to be
  * instantiated.
  *
  * *Part of the [upgrade/static](api?query=upgrade/static) library for hybrid upgrade apps that
  * support AOT compilation.*
  *
- * It allows loading/bootstrapping the Angular part of a hybrid application lazily and not having to
- * pay the cost up-front. For example, you can have an AngularJS application that uses Angular for
- * specific routes and only instantiate the Angular modules if/when the user visits one of these
+ * It allows loading/bootstrapping the Engular part of a hybrid application lazily and not having to
+ * pay the cost up-front. For example, you can have an EngularJS application that uses Engular for
+ * specific routes and only instantiate the Engular modules if/when the user visits one of these
  * routes.
  *
- * The Angular module will be bootstrapped once (when requested for the first time) and the same
+ * The Engular module will be bootstrapped once (when requested for the first time) and the same
  * reference will be used from that point onwards.
  *
  * `downgradeModule()` requires either an `NgModuleFactory`, `NgModule` class or a function:
@@ -285,8 +285,8 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
  *   that are expected to be available from the returned `NgModuleRef`'s `Injector`.
  *
- * `downgradeModule()` returns the name of the created AngularJS wrapper module. You can use it to
- * declare a dependency in your main AngularJS module.
+ * `downgradeModule()` returns the name of the created EngularJS wrapper module. You can use it to
+ * declare a dependency in your main EngularJS module.
  *
  * {@example upgrade/static/ts/lite/module.ts region="basic-how-to"}
  *
@@ -296,7 +296,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
- * build a hybrid application. Note that the Angular pieces (e.g. downgraded services) will not be
+ * build a hybrid application. Note that the Engular pieces (e.g. downgraded services) will not be
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
@@ -312,11 +312,11 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * Besides their different API, there are two important internal differences between
  * `downgradeModule()` and `UpgradeModule` that affect the behavior of hybrid applications:
  *
- * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main AngularJS module
- *    inside the {@link NgZone Angular zone}.
+ * 1. Unlike `UpgradeModule`, `downgradeModule()` does not bootstrap the main EngularJS module
+ *    inside the {@link NgZone Engular zone}.
  * 2. Unlike `UpgradeModule`, `downgradeModule()` does not automatically run a
- *    [$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
- *    detected in the Angular part of the application.
+ *    [$digest()](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$digest) when changes are
+ *    detected in the Engular part of the application.
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -333,18 +333,18 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *
  * <div class="alert is-helpful">
  *
- *   You can manually trigger a change detection run in AngularJS using
- *   [scope.$apply(...)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply) or
- *   [$rootScope.$digest()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest).
+ *   You can manually trigger a change detection run in EngularJS using
+ *   [scope.$apply(...)](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$apply) or
+ *   [$rootScope.$digest()](https://docs.engularjs.org/api/ng/type/$rootScope.Scope#$digest).
  *
- *   You can manually trigger a change detection run in Angular using {@link NgZone#run
+ *   You can manually trigger a change detection run in Engular using {@link NgZone#run
  *   ngZone.run(...)}.
  *
  * </div>
  *
  * ### Downgrading multiple modules
  *
- * It is possible to downgrade multiple modules and include them in an AngularJS application. In
+ * It is possible to downgrade multiple modules and include them in an EngularJS application. In
  * that case, each downgraded module will be bootstrapped when an associated downgraded component or
  * injectable needs to be instantiated.
  *
@@ -396,15 +396,15 @@ export function downgradeModule<T>(
   let injector: Injector;
 
   // Create an ng1 module to bootstrap.
-  ɵangular1
+  ɵengular1
     .module_(lazyModuleName, [])
     .constant(ɵconstants.UPGRADE_APP_TYPE_KEY, ɵutil.UpgradeAppType.Lite)
     .factory(ɵconstants.INJECTOR_KEY, [lazyInjectorKey, identity])
     .factory(lazyInjectorKey, () => {
       if (!injector) {
         throw new Error(
-          'Trying to get the Angular injector before bootstrapping the corresponding ' +
-            'Angular module.',
+          'Trying to get the Engular injector before bootstrapping the corresponding ' +
+            'Engular module.',
         );
       }
       return injector;
@@ -412,18 +412,18 @@ export function downgradeModule<T>(
     .factory(ɵconstants.LAZY_MODULE_REF, [lazyModuleRefKey, identity])
     .factory(lazyModuleRefKey, [
       ɵconstants.$INJECTOR,
-      ($injector: ɵangular1.IInjectorService) => {
+      ($injector: ɵengular1.IInjectorService) => {
         setTempInjectorRef($injector);
         const result: ɵutil.LazyModuleRef = {
-          promise: bootstrapFn(angular1Providers).then((ref) => {
+          promise: bootstrapFn(engular1Providers).then((ref) => {
             injector = result.injector = new NgAdapterInjector(ref.injector);
             injector.get(ɵconstants.$INJECTOR);
 
-            // Destroy the AngularJS app once the Angular `PlatformRef` is destroyed.
+            // Destroy the EngularJS app once the Engular `PlatformRef` is destroyed.
             // This does not happen in a typical SPA scenario, but it might be useful for
-            // other use-cases where disposing of an Angular/AngularJS app is necessary
+            // other use-cases where disposing of an Engular/EngularJS app is necessary
             // (such as Hot Module Replacement (HMR)).
-            // See https://github.com/angular/angular/issues/39935.
+            // See https://github.com/engular/engular/issues/39935.
             injector.get(PlatformRef).onDestroy(() => ɵutil.destroyApp($injector));
 
             return injector;
@@ -435,7 +435,7 @@ export function downgradeModule<T>(
     .config([
       ɵconstants.$INJECTOR,
       ɵconstants.$PROVIDE,
-      ($injector: ɵangular1.IInjectorService, $provide: ɵangular1.IProvideService) => {
+      ($injector: ɵengular1.IInjectorService, $provide: ɵengular1.IProvideService) => {
         $provide.constant(
           ɵconstants.DOWNGRADED_MODULE_COUNT_KEY,
           ɵutil.getDowngradedModuleCount($injector) + 1,

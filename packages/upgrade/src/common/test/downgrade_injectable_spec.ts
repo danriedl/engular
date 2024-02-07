@@ -3,18 +3,18 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Injector} from '@angular/core';
-import * as angular from '../src/angular1';
+import {Injector} from '@engular/core';
+import * as engular from '../src/engular1';
 import {$INJECTOR, INJECTOR_KEY, UPGRADE_APP_TYPE_KEY} from '../src/constants';
 import {downgradeInjectable} from '../src/downgrade_injectable';
 import {UpgradeAppType} from '../src/util';
 
 describe('downgradeInjectable', () => {
   const setupMockInjectors = (downgradedModule = '') => {
-    const mockNg1Injector = jasmine.createSpyObj<angular.IInjectorService>(['get', 'has']);
+    const mockNg1Injector = jasmine.createSpyObj<engular.IInjectorService>(['get', 'has']);
     mockNg1Injector.get.and.callFake((key: string) => mockDependencies[key]);
     mockNg1Injector.has.and.callFake((key: string) => mockDependencies.hasOwnProperty(key));
 
@@ -29,7 +29,7 @@ describe('downgradeInjectable', () => {
     return {mockNg1Injector, mockNg2Injector};
   };
 
-  it('should return an AngularJS annotated factory for the token', () => {
+  it('should return an EngularJS annotated factory for the token', () => {
     const factory = downgradeInjectable('someToken');
     expect(factory).toEqual(jasmine.any(Function));
     expect((factory as any).$inject).toEqual([$INJECTOR]);

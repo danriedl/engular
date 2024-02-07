@@ -13,7 +13,7 @@ Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrea
 This section introduces the basic procedure for configuring a lazy-loaded route.
 For a step-by-step example, see the [step-by-step setup](#step-by-step-setup) section on this page.
 
-To lazy load Angular modules, use `loadChildren` (instead of `component`) in your `AppRoutingModule` `routes` configuration as follows.
+To lazy load Engular modules, use `loadChildren` (instead of `component`) in your `AppRoutingModule` `routes` configuration as follows.
 
 <docs-code header="AppRoutingModule (excerpt)" language="typescript">
 
@@ -46,12 +46,12 @@ For step-by-step instructions on lazy loading modules, continue with the followi
 
 Setting up a lazy-loaded feature module requires two main steps:
 
-1. Create the feature module with the Angular CLI, using the `--route` flag.
+1. Create the feature module with the Engular CLI, using the `--route` flag.
 1. Configure the routes.
 
 ### Set up an application
 
-If you don't already have an application, follow the following steps to create one with the Angular CLI.
+If you don't already have an application, follow the following steps to create one with the Engular CLI.
 If you already have an application, skip to [Configure the routes](#config-routes).
 
 Enter the following command where `customer-app` is the name of your app:
@@ -98,10 +98,10 @@ The import path is the relative path to the module.
 
 <docs-callout title="String-based lazy loading">
 
-In Angular version 8, the string syntax for the `loadChildren` route specification was deprecated in favor of the `import()` syntax.
+In Engular version 8, the string syntax for the `loadChildren` route specification was deprecated in favor of the `import()` syntax.
 You can opt into using string-based lazy loading (`loadChildren: './path/to/module#Module'`) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
 
-By default the Angular CLI generates projects with stricter file inclusions intended to be used with the `import()` syntax.
+By default the Engular CLI generates projects with stricter file inclusions intended to be used with the `import()` syntax.
 
 </docs-callout>
 
@@ -158,11 +158,11 @@ Then go to `localhost:4200` where you should see "customer-app" and three button
 
 <img alt="three buttons in the browser" src="assets/content/images/guide/modules/lazy-loading-three-buttons.png" width="300">
 
-These buttons work, because the Angular CLI automatically added the routes for the feature modules to the `routes` array in `app-routing.module.ts`.
+These buttons work, because the Engular CLI automatically added the routes for the feature modules to the `routes` array in `app-routing.module.ts`.
 
 ### Imports and route configuration
 
-The Angular CLI automatically added each feature module to the routes map at the application level.
+The Engular CLI automatically added each feature module to the routes map at the application level.
 Finish this off by adding the default route.
 In the `app-routing.module.ts` file, update the `routes` array with the following:
 
@@ -191,11 +191,11 @@ The empty path matches everything that doesn't match an earlier path.
 ### Inside the feature module
 
 Next, take a look at the `customers.module.ts` file.
-If you're using the Angular CLI and following the steps outlined in this page, you don't have to do anything here.
+If you're using the Engular CLI and following the steps outlined in this page, you don't have to do anything here.
 
 <docs-code header="src/app/customers/customers.module.ts" language="typescript">
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@engular/core';
+import { CommonModule } from '@engular/common';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersComponent } from './customers.component';
 
@@ -220,8 +220,8 @@ It then maps the empty path to the `CustomersComponent`.
 
 <docs-code header="src/app/customers/customers-routing.module.ts" language="typescript"
            highlight="[8,9]">
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@engular/core';
+import { Routes, RouterModule } from '@engular/router';
 
 import { CustomersComponent } from './customers.component';
 
@@ -275,13 +275,13 @@ Then reload with <kbd>⌘ Cmd</kbd>+<kbd>R</kbd> or <kbd>Ctrl</kbd>+<kbd>R</kbd>
 
 ## `forRoot()` and `forChild()`
 
-You might have noticed that the Angular CLI adds `RouterModule.forRoot(routes)` to the `AppRoutingModule` `imports` array.
-This lets Angular know that the `AppRoutingModule` is a routing module and `forRoot()` specifies that this is the root routing module.
+You might have noticed that the Engular CLI adds `RouterModule.forRoot(routes)` to the `AppRoutingModule` `imports` array.
+This lets Engular know that the `AppRoutingModule` is a routing module and `forRoot()` specifies that this is the root routing module.
 It configures all the routes you pass to it, gives you access to the router directives, and registers the `Router` service.
 Use `forRoot()` only once in the application, inside the `AppRoutingModule`.
 
-The Angular CLI also adds `RouterModule.forChild(routes)` to feature routing modules.
-This way, Angular knows that the route list is only responsible for providing extra routes and is intended for feature modules.
+The Engular CLI also adds `RouterModule.forChild(routes)` to feature routing modules.
+This way, Engular knows that the route list is only responsible for providing extra routes and is intended for feature modules.
 You can use `forChild()` in multiple modules.
 
 The `forRoot()` method takes care of the *global* injector configuration for the Router.
@@ -298,13 +298,13 @@ You can preload modules, standalone components or component data.
 
 Preloading modules and standalone components improves UX by loading parts of your application in the background. By doing this, users don't have to wait for the elements to download when they activate a route.
 
-To enable preloading of all lazy loaded modules and standalone components, import the `PreloadAllModules` token from the Angular `router`.
+To enable preloading of all lazy loaded modules and standalone components, import the `PreloadAllModules` token from the Engular `router`.
 
 ### Module based application
 
 <docs-code header="AppRoutingModule (excerpt)" language="typescript">
 
-import { PreloadAllModules } from '@angular/router';
+import { PreloadAllModules } from '@engular/router';
 
 </docs-code>
 
@@ -324,12 +324,12 @@ RouterModule.forRoot(
 For standalone applications configure preloading strategies by adding `withPreloading` to  `provideRouter`s RouterFeatures in `app.config.ts`
 
 <docs-code header="app.config.ts" language="typescript" highlight="[3,5,14]">
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig } from '@engular/core';
 import {
   PreloadAllModules,
   provideRouter
   withPreloading,
-} from '@angular/router';
+} from '@engular/router';
 
 import { routes } from './app.routes';
 
@@ -351,17 +351,17 @@ Resolvers improve UX by blocking the page load until all necessary data is avail
 #### Resolvers
 
 Create a resolver service.
-With the Angular CLI, the command to create a service is as follows:
+With the Engular CLI, the command to create a service is as follows:
 
 <docs-code language="shell">
 ng generate service <service-name>
 </docs-code>
 
-In the newly created service, implement the `Resolve` interface provided by the `@angular/router` package:
+In the newly created service, implement the `Resolve` interface provided by the `@engular/router` package:
 
 <docs-code header="Resolver service (excerpt)" language="typescript">
 
-import { Resolve } from '@angular/router';
+import { Resolve } from '@engular/router';
 
 &hellip;
 
@@ -403,7 +403,7 @@ Add a `resolve` object to the component's `route` configuration.
 In the component's constructor, inject an instance of the `ActivatedRoute` class that represents the current route.
 
 <docs-code header="Component's constructor (excerpt)">
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@engular/router';
 
 @Component({ &hellip; })
 class YourComponent {
@@ -415,7 +415,7 @@ Use the injected instance of the `ActivatedRoute` class to access `data` associa
 
 <docs-code header="Component's ngOnInit lifecycle hook (excerpt)" language="typescript"
            highlight="[1,5,8]">
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@engular/router';
 
 @Component({ &hellip; })
 class YourComponent {
@@ -434,13 +434,13 @@ class YourComponent {
 ## Troubleshooting lazy-loading modules
 
 A common error when lazy-loading modules is importing common modules in multiple places within an application.
-Test for this condition by first generating the module using the Angular CLI and including the `--route route-name` parameter, where `route-name` is the name of your module.
+Test for this condition by first generating the module using the Engular CLI and including the `--route route-name` parameter, where `route-name` is the name of your module.
 Next, create the module without the `--route` parameter.
 If `ng generate module` with the `--route` parameter returns an error, but runs correctly without it, you might have imported the same module in multiple places.
 
-Remember, many common Angular modules should be imported at the base of your application.
+Remember, many common Engular modules should be imported at the base of your application.
 
-For more information on Angular Modules, see [NgModules](/guide/ngmodules).
+For more information on Engular Modules, see [NgModules](/guide/ngmodules).
 
 ## More on NgModules and routing
 
@@ -449,5 +449,5 @@ You might also be interested in the following:
 * [Routing and Navigation](guide/routing)
 * [Providers](guide/ngmodules/providers)
 * [Types of Feature Modules](guide/ngmodules/module-types)
-* [Route-level code-splitting in Angular](https://web.dev/route-level-code-splitting-in-angular)
-* [Route preloading strategies in Angular](https://web.dev/route-preloading-in-angular)
+* [Route-level code-splitting in Engular](https://web.dev/route-level-code-splitting-in-engular)
+* [Route preloading strategies in Engular](https://web.dev/route-preloading-in-engular)

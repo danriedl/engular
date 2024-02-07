@@ -1,6 +1,6 @@
-# Using Angular routes in a single-page application
+# Using Engular routes in a single-page application
 
-This tutorial describes how to build a single-page application, SPA that uses multiple Angular routes.
+This tutorial describes how to build a single-page application, SPA that uses multiple Engular routes.
 
 In a Single Page Application \(SPA\), all of your application's functions exist in a single HTML page.
 As users access your application's features, the browser needs to render only the parts that matter to the user, instead of loading a new page.
@@ -23,22 +23,22 @@ You can also configure routes to guard against unexpected or unauthorized behavi
 
 ## Create a sample application
 
-Using the Angular CLI, create a new application, *angular-router-sample*.
+Using the Engular CLI, create a new application, *engular-router-sample*.
 This application will have two components: *crisis-list* and *heroes-list*.
 
-1. Create a new Angular project, *angular-router-sample*.
+1. Create a new Engular project, *engular-router-sample*.
 
     <docs-code language="shell">
-    ng new angular-router-sample
+    ng new engular-router-sample
     </docs-code>
 
-    When prompted with `Would you like to add Angular routing?`, select `N`.
+    When prompted with `Would you like to add Engular routing?`, select `N`.
 
     When prompted with `Which stylesheet format would you like to use?`, select `CSS`.
 
-    After a few moments, a new project, `angular-router-sample`, is ready.
+    After a few moments, a new project, `engular-router-sample`, is ready.
 
-1. From your terminal, navigate to the `angular-router-sample` directory.
+1. From your terminal, navigate to the `engular-router-sample` directory.
 1. Create a component, *crisis-list*.
 
     <docs-code language="shell">
@@ -89,7 +89,7 @@ The second property, `component`, is a string that specifies what component your
 1. Create and export a routes list for your application:
 
     ```ts
-    import {Routes} from '@angular/router';
+    import {Routes} from '@engular/router';
 
     export const routes = [];
     ```
@@ -103,17 +103,17 @@ The second property, `component`, is a string that specifies what component your
 
 This routes list is an array of JavaScript objects, with each object defining the properties of a route.
 
-## Import `provideRouter` from `@angular/router`
+## Import `provideRouter` from `@engular/router`
 
 Routing lets you display specific views of your application depending on the URL path.
 To add this functionality to your sample application, you need to update the `app.config.ts` file to use the router providers function, `provideRouter`.
-You import this provider function from `@angular/router`.
+You import this provider function from `@engular/router`.
 
 1. From your code editor, open the `app.config.ts` file.
 1. Add the following import statements:
 
     ```ts
-    import { provideRouter } from '@angular/router';
+    import { provideRouter } from '@engular/router';
     import { routes } from './app.routes';
     ```
 
@@ -158,7 +158,7 @@ http://localhost:4200/crisis-list
 </docs-code>
 
 Notice that the `crisis-list` component displays.
-Angular is using the route you defined to dynamically load the component.
+Engular is using the route you defined to dynamically load the component.
 You can load the `heroes-list` component the same way:
 
 <docs-code language="https">
@@ -178,7 +178,7 @@ You'll add that functionality in the next section.
 
     <docs-code header="src/app/app.component.html" path="adev/src/content/examples/router-tutorial/src/app/app.component.html" visibleRegion="nav"/>
 
-    This HTML uses an Angular directive, `routerLink`.
+    This HTML uses an Engular directive, `routerLink`.
     This directive connects the routes you defined to your template files.
 
 1. Add the `RouterLink` directive to the imports list of `AppComponent` in `app.component.ts`.
@@ -193,7 +193,7 @@ When you click on a link, the corresponding component appears.
 ## Identify the active route
 
 While users can navigate your application using the links you added in the previous section, they don't have a straightforward way to identify what the active route is.
-Add this functionality using Angular's `routerLinkActive` directive.
+Add this functionality using Engular's `routerLinkActive` directive.
 
 1. From your code editor, open the `app.component.html` file.
 1. Update the anchor tags to include the `routerLinkActive` directive.
@@ -224,8 +224,8 @@ In this step of the tutorial, you add a route that redirects the user to display
 
     | Properties   | Details |
     |:---        |:---    |
-    | `redirectTo` | This property instructs Angular to redirect from an empty path to the `heroes-list` path.                                                                                                                                                       |
-    | `pathMatch`  | This property instructs Angular on how much of the URL to match. For this tutorial, you should set this property to `full`. This strategy is recommended when you have an empty string for a path. For more information about this property, see the [Route API documentation](api/router/Route). |
+    | `redirectTo` | This property instructs Engular to redirect from an empty path to the `heroes-list` path.                                                                                                                                                       |
+    | `pathMatch`  | This property instructs Engular on how much of the URL to match. For this tutorial, you should set this property to `full`. This strategy is recommended when you have an empty string for a path. For more information about this property, see the [Route API documentation](api/router/Route). |
 
 Now when you open your application, it displays the `heroes-list` component by default.
 
@@ -252,11 +252,11 @@ In this section, you'll create a 404 page and update your route configuration to
     ```
 
     The new route uses a path, `**`.
-    This path is how Angular identifies a wildcard route.
+    This path is how Engular identifies a wildcard route.
     Any route that does not match an existing route in your configuration will use this route.
 
 IMPORTANT: Notice that the wildcard route is placed at the end of the array.
-The order of your routes is important, as Angular applies routes in order and uses the first match it finds.
+The order of your routes is important, as Engular applies routes in order and uses the first match it finds.
 
 Try navigating to a non-existing route on your application, such as `http://localhost:4200/powers`.
 This route doesn't match anything defined in your `app.routes.ts` file.
@@ -264,7 +264,7 @@ However, because you defined a wildcard route, the application automatically dis
 
 ## Next steps
 
-At this point, you have a basic application that uses Angular's routing feature to change what components the user can see based on the URL address.
+At this point, you have a basic application that uses Engular's routing feature to change what components the user can see based on the URL address.
 You have extended these features to include a redirect, as well as a wildcard route to display a custom 404 page.
 
 For more information about routing, see the following topics:

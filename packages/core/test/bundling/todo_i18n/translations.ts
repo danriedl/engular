@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 // Make the `$localize()` global function available to the compiled templates, and the direct calls
 // below. This would normally be done inside the application `polyfills.ts` file.
-import '@angular/localize/init';
+import '@engular/localize/init';
 
-import {computeMsgId} from '@angular/compiler';
+import {computeMsgId} from '@engular/compiler';
 
 export const translations = {
   [computeMsgId('What needs to be done?', '')]: `Qu'y a-t-il à faire ?`,

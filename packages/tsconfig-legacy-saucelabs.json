@@ -14,7 +14,7 @@
     // We run the decorator downlevel transform when compiling the sources and tests.
     // Given that is the case, we do not need additional `design` metadata being emitted.
     // The default TS decorator metadata would also not work with ES2015 JIT.
-    // https://github.com/angular/angular/issues/30106.
+    // https://github.com/engular/engular/issues/30106.
     "emitDecoratorMetadata": false
   },
   "exclude": [

@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {EventEmitter} from '@angular/core';
-import {Injectable} from '@angular/core/src/di';
-import {GetTestability, PendingMacrotask, Testability, TestabilityRegistry} from '@angular/core/src/testability/testability';
-import {NgZone} from '@angular/core/src/zone/ng_zone';
-import {fakeAsync, tick, waitForAsync} from '@angular/core/testing';
+import {EventEmitter} from '@engular/core';
+import {Injectable} from '@engular/core/src/di';
+import {GetTestability, PendingMacrotask, Testability, TestabilityRegistry} from '@engular/core/src/testability/testability';
+import {NgZone} from '@engular/core/src/zone/ng_zone';
+import {fakeAsync, tick, waitForAsync} from '@engular/core/testing';
 
 import {setTestabilityGetter} from '../../src/testability/testability';
 
@@ -136,7 +136,7 @@ describe('Testability', () => {
 
   describe('NgZone callback logic', () => {
     describe('whenStable with timeout', () => {
-      it('should fire if Angular is already stable', waitForAsync(() => {
+      it('should fire if Engular is already stable', waitForAsync(() => {
            testability.whenStable(execute, 200);
 
            microTask(() => {
@@ -157,7 +157,7 @@ describe('Testability', () => {
            expect(execute).toHaveBeenCalled();
          }));
 
-      it('calls the done callback when angular is stable', fakeAsync(() => {
+      it('calls the done callback when engular is stable', fakeAsync(() => {
            let timeout1Done = false;
            ngZone.run(() => setTimeout(() => timeout1Done = true, 500));
            testability.whenStable(execute, 1000);

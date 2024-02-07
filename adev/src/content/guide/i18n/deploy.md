@@ -4,12 +4,12 @@ If `myapp` is the directory that contains the distributable files of your projec
 For example, your French version is located in the `myapp/fr` directory and the Spanish version is located in the `myapp/es` directory.
 
 The HTML `base` tag with the `href` attribute specifies the base URI, or URL, for relative links.
-If you set the `"localize"` option in [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file to `true` or to an array of locale IDs, the CLI adjusts the base `href` for each version of the application.
+If you set the `"localize"` option in [`engular.json`][AioGuideWorkspaceConfig] workspace build configuration file to `true` or to an array of locale IDs, the CLI adjusts the base `href` for each version of the application.
 To adjust the base `href` for each version of the application, the CLI adds the locale to the configured `"baseHref"`.
-Specify the `"baseHref"` for each locale in your [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file.
+Specify the `"baseHref"` for each locale in your [`engular.json`][AioGuideWorkspaceConfig] workspace build configuration file.
 The following example displays `"baseHref"` set to an empty string.
 
-<docs-code header="angular.json" path="adev/src/content/examples/i18n/angular.json" visibleRegion="i18n-baseHref"/>
+<docs-code header="engular.json" path="adev/src/content/examples/i18n/engular.json" visibleRegion="i18n-baseHref"/>
 
 Also, to declare the base `href` at compile time, use the CLI `--baseHref` option with [`ng build`][AioCliBuild].
 
@@ -35,8 +35,8 @@ The following example displays an Apache configuration.
 
 <docs-code path="adev/src/content/examples/i18n/doc-files/apache2.conf" language="apache"/>
 
-[AioCliBuild]: cli/build "ng build | CLI | Angular"
+[AioCliBuild]: cli/build "ng build | CLI | Engular"
 
-[AioGuideDeployment]: tools/cli/deployment "Deployment | Angular"
+[AioGuideDeployment]: tools/cli/deployment "Deployment | Engular"
 
-[AioGuideWorkspaceConfig]: reference/configs/workspace-config "Angular workspace configuration | Angular"
+[AioGuideWorkspaceConfig]: reference/configs/workspace-config "Engular workspace configuration | Engular"

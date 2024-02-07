@@ -1,6 +1,6 @@
 # Referencing component children with queries
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 A component can define **queries** that find child elements and read values from their injectors.
 
@@ -36,7 +36,7 @@ export class CustomCard {
 
 In this example, the `CustomCard` component queries for a child `CustomCardHeader` and accesses the result in `ngAfterViewInit`.
 
-If the query does not find a result, its value is `undefined`. This may occur if the target element is hidden by `NgIf`. Angular keeps the result of `@ViewChild` up to date as your application state changes.
+If the query does not find a result, its value is `undefined`. This may occur if the target element is hidden by `NgIf`. Engular keeps the result of `@ViewChild` up to date as your application state changes.
 
 **View query results become available in the `ngAfterViewInit` lifecycle method**. Before this point, the value is `undefined`. See the [Lifecycle](guide/components/lifecycle) section for details on the component lifecycle.
 
@@ -110,7 +110,7 @@ export class CustomExpando {
 
 In this example, the `CustomExpando` component queries for a child `CustomToggle` and accesses the result in `ngAfterContentInit`.
 
-If the query does not find a result, its value is `undefined`. This may occur if the target element is absent or hidden by `NgIf`. Angular keeps the result of `@ContentChild` up to date as your application state changes.
+If the query does not find a result, its value is `undefined`. This may occur if the target element is absent or hidden by `NgIf`. Engular keeps the result of `@ContentChild` up to date as your application state changes.
 
 By default, content queries find only _direct_ children of the component and do not traverse into descendants.
 
@@ -180,11 +180,11 @@ export class ActionBar {
 
 If more than one element defines the same template reference variable, the query retrieves the first matching element.
 
-Angular does not support CSS selectors as query locators.
+Engular does not support CSS selectors as query locators.
 
 ### Queries and the injector tree
 
-Tip: See [Dependency Injection](guide/di) for background on providers and Angular's injection tree.
+Tip: See [Dependency Injection](guide/di) for background on providers and Engular's injection tree.
 
 For more advanced cases, you can use any `ProviderToken` as a locator. This lets you locate elements based on component and directive providers.
 
@@ -227,7 +227,7 @@ export class CustomCard {
 }
 ```
 
-By setting `static: true`, you guarantee to Angular that the target of this query is _always_ present and is not conditionally rendered. This makes the result available earlier, in the `ngOnInit` lifecycle method.
+By setting `static: true`, you guarantee to Engular that the target of this query is _always_ present and is not conditionally rendered. This makes the result available earlier, in the `ngOnInit` lifecycle method.
 
 Static query results do not update after initialization.
 

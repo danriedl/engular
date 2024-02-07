@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {LiveCollection, reconcile} from '@angular/core/src/render3/list_reconciliation';
-import {assertDefined} from '@angular/core/src/util/assert';
+import {LiveCollection, reconcile} from '@engular/core/src/render3/list_reconciliation';
+import {assertDefined} from '@engular/core/src/util/assert';
 
 interface ItemAdapter<T, V> {
   create(index: number, value: V): T;

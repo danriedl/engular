@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 
-import {CommonModule} from '@angular/common';
-import {ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Directive, DoCheck, EmbeddedViewRef, ErrorHandler, EventEmitter, inject, Input, NgModule, OnInit, Output, QueryList, TemplateRef, Type, ViewChild, ViewChildren, ViewContainerRef, ɵgetEnsureDirtyViewsAreAlwaysReachable, ɵsetEnsureDirtyViewsAreAlwaysReachable} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {CommonModule} from '@engular/common';
+import {ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Directive, DoCheck, EmbeddedViewRef, ErrorHandler, EventEmitter, inject, Input, NgModule, OnInit, Output, QueryList, TemplateRef, Type, ViewChild, ViewChildren, ViewContainerRef, ɵgetEnsureDirtyViewsAreAlwaysReachable, ɵsetEnsureDirtyViewsAreAlwaysReachable} from '@engular/core';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@engular/core/testing';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 import {BehaviorSubject} from 'rxjs';
 
 describe('change detection', () => {
@@ -572,7 +572,7 @@ describe('change detection', () => {
 
         expect(fixture.componentInstance.doCheckCount).toEqual(1);
 
-        // NOTE: in current Angular, detectChanges does not itself trigger doCheck, but you
+        // NOTE: in current Engular, detectChanges does not itself trigger doCheck, but you
         // may see doCheck called in some cases bc of the extra CD run triggered by zone.js.
         // It's important not to call doCheck to allow calls to detectChanges in that hook.
         fixture.componentInstance.cdr.detectChanges();

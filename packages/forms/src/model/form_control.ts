@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵWritable as Writable} from '@angular/core';
+import {ɵWritable as Writable} from '@engular/core';
 
 import {AsyncValidatorFn, ValidatorFn} from '../directives/validators';
 import {removeListItem} from '../util';
@@ -50,7 +50,7 @@ export interface FormControlOptions extends AbstractControlOptions {
 /**
  * Tracks the value and validation status of an individual form control.
  *
- * This is one of the four fundamental building blocks of Angular forms, along with
+ * This is one of the four fundamental building blocks of Engular forms, along with
  * `FormGroup`, `FormArray` and `FormRecord`. It extends the `AbstractControl` class that
  * implements most of the base functionality for accessing the value, validation status,
  * user interactions and events.

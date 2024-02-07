@@ -3,13 +3,13 @@
 To check that your services are working as you intend, you can write tests specifically for them.
 
 Services are often the smoothest files to unit test.
-Here are some synchronous and asynchronous unit tests of the `ValueService` written without assistance from Angular testing utilities.
+Here are some synchronous and asynchronous unit tests of the `ValueService` written without assistance from Engular testing utilities.
 
 <docs-code header="app/demo/demo.spec.ts" path="adev/src/content/examples/testing/src/app/demo/demo.spec.ts" visibleRegion="ValueService"/>
 
 ## Services with dependencies
 
-Services often depend on other services that Angular injects into the constructor.
+Services often depend on other services that Engular injects into the constructor.
 In many cases, you can create and *inject* these dependencies by hand while calling the service's constructor.
 
 The `MasterService` is a simple example:
@@ -32,24 +32,24 @@ HELPFUL: Prefer spies as they are usually the best way to mock services.
 
 These standard testing techniques are great for unit testing services in isolation.
 
-However, you almost always inject services into application classes using Angular dependency injection and you should have tests that reflect that usage pattern.
-Angular testing utilities make it straightforward to investigate how injected services behave.
+However, you almost always inject services into application classes using Engular dependency injection and you should have tests that reflect that usage pattern.
+Engular testing utilities make it straightforward to investigate how injected services behave.
 
 ## Testing services with the `TestBed`
 
-Your application relies on Angular [dependency injection (DI)](guide/di) to create services.
+Your application relies on Engular [dependency injection (DI)](guide/di) to create services.
 When a service has a dependent service, DI finds or creates that dependent service.
 And if that dependent service has its own dependencies, DI finds-or-creates them as well.
 
 As service *consumer*, you don't worry about any of this.
 You don't worry about the order of constructor arguments or how they're created.
 
-As a service *tester*, you must at least think about the first level of service dependencies but you *can* let Angular DI do the service creation and deal with constructor argument order when you use the `TestBed` testing utility to provide and create services.
+As a service *tester*, you must at least think about the first level of service dependencies but you *can* let Engular DI do the service creation and deal with constructor argument order when you use the `TestBed` testing utility to provide and create services.
 
-## Angular `TestBed`
+## Engular `TestBed`
 
-The `TestBed` is the most important of the Angular testing utilities.
-The `TestBed` creates a dynamically-constructed Angular *test* module that emulates an Angular [@NgModule](guide/ngmodules).
+The `TestBed` is the most important of the Engular testing utilities.
+The `TestBed` creates a dynamically-constructed Engular *test* module that emulates an Engular [@NgModule](guide/ngmodules).
 
 The `TestBed.configureTestingModule()` method takes a metadata object that can have most of the properties of an [@NgModule](guide/ngmodules).
 
@@ -59,8 +59,8 @@ To test a service, you set the `providers` metadata property with an array of th
 
 Then inject it inside a test by calling `TestBed.inject()` with the service class as the argument.
 
-HELPFUL: `TestBed.get()` was deprecated as of Angular version 9.
-To help minimize breaking changes, Angular introduces a new function called `TestBed.inject()`, which you should use instead.
+HELPFUL: `TestBed.get()` was deprecated as of Engular version 9.
+To help minimize breaking changes, Engular introduces a new function called `TestBed.inject()`, which you should use instead.
 
 <docs-code path="adev/src/content/examples/testing/src/app/demo/demo.testbed.spec.ts" visibleRegion="value-service-inject-it"/>
 
@@ -103,11 +103,11 @@ Notice how the test uses [*destructuring assignment*](https://developer.mozilla.
 
 Many developers feel this approach is cleaner and more explicit than the traditional `beforeEach()` style.
 
-Although this testing guide follows the traditional style and the default [CLI schematics](https://github.com/angular/angular-cli) generate test files with `beforeEach()` and `TestBed`, feel free to adopt *this alternative approach* in your own projects.
+Although this testing guide follows the traditional style and the default [CLI schematics](https://github.com/engular/engular-cli) generate test files with `beforeEach()` and `TestBed`, feel free to adopt *this alternative approach* in your own projects.
 
 ## Testing HTTP services
 
-Data services that make HTTP calls to remote servers typically inject and delegate to the Angular [`HttpClient`](guide/http/testing) service for XHR calls.
+Data services that make HTTP calls to remote servers typically inject and delegate to the Engular [`HttpClient`](guide/http/testing) service for XHR calls.
 
 You can test a data service with an injected `HttpClient` spy as you would test any service with a dependency.
 

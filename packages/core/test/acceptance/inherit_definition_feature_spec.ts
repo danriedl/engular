@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {state, style, trigger} from '@angular/animations';
-import {Component, ContentChildren, Directive, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output, QueryList, ViewChildren} from '@angular/core';
-import {getDirectiveDef} from '@angular/core/src/render3/definition';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {state, style, trigger} from '@engular/animations';
+import {Component, ContentChildren, Directive, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output, QueryList, ViewChildren} from '@engular/core';
+import {getDirectiveDef} from '@engular/core/src/render3/definition';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
+import {NoopAnimationsModule} from '@engular/platform-browser/animations';
 
 describe('inheritance', () => {
   it('should throw when trying to inherit a component from a directive', () => {
@@ -312,7 +312,7 @@ describe('inheritance', () => {
       let changes = 0;
 
       abstract class Base {
-        // Add an Input so that we have at least one Angular decorator on a class field.
+        // Add an Input so that we have at least one Engular decorator on a class field.
         @Input() inputBase: any;
         abstract input: any;
       }

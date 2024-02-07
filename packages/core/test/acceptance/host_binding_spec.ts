@@ -3,16 +3,16 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {state, style, transition, trigger} from '@angular/animations';
-import {CommonModule} from '@angular/common';
-import {AfterContentInit, Component, ComponentRef, ContentChildren, Directive, DoCheck, HostBinding, HostListener, Injectable, Input, NgModule, OnChanges, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef} from '@angular/core';
-import {bypassSanitizationTrustHtml, bypassSanitizationTrustStyle, bypassSanitizationTrustUrl} from '@angular/core/src/sanitization/bypass';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {state, style, transition, trigger} from '@engular/animations';
+import {CommonModule} from '@engular/common';
+import {AfterContentInit, Component, ComponentRef, ContentChildren, Directive, DoCheck, HostBinding, HostListener, Injectable, Input, NgModule, OnChanges, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef} from '@engular/core';
+import {bypassSanitizationTrustHtml, bypassSanitizationTrustStyle, bypassSanitizationTrustUrl} from '@engular/core/src/sanitization/bypass';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
+import {NoopAnimationsModule} from '@engular/platform-browser/animations';
 
 describe('host bindings', () => {
   it('should render host bindings on the root component', () => {
@@ -81,7 +81,7 @@ describe('host bindings', () => {
 
     it('should not cause problems if detectChanges is called when a property updates', () => {
       /**
-       * Angular Material CDK Tree contains a code path whereby:
+       * Engular Material CDK Tree contains a code path whereby:
        *
        * 1. During the execution of a template function in which **more than one** property is
        * updated in a row.
@@ -960,7 +960,7 @@ describe('host bindings', () => {
 
 
   // Note: This is a contrived example. For feature parity with render2, we should make sure it
-  // works in this way (see https://stackblitz.com/edit/angular-cbqpbe), but a more realistic
+  // works in this way (see https://stackblitz.com/edit/engular-cbqpbe), but a more realistic
   // example would be an animation host binding with a literal defining the animation config.
   // When animation support is added, we should add another test for that case.
   it('should support host bindings that contain array literals', () => {

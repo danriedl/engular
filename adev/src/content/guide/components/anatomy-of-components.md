@@ -1,7 +1,7 @@
 <docs-decorative-header title="Anatomy of a component" imgSrc="adev/src/assets/images/components.svg"> <!-- markdownlint-disable-line -->
 </docs-decorative-header>
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 Every component must have:
 
@@ -9,7 +9,7 @@ Every component must have:
 * An HTML template that controls what renders into the DOM
 * A [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors) that defines how the component is used in HTML
 
-You provide Angular-specific information for a component by adding a `@Component` [decorator](https://www.typescriptlang.org/docs/handbook/decorators.html) on top of the TypeScript class:
+You provide Engular-specific information for a component by adding a `@Component` [decorator](https://www.typescriptlang.org/docs/handbook/decorators.html) on top of the TypeScript class:
 
 <docs-code language="ts" highlight="[1, 2, 3, 4]">
 @Component({
@@ -19,7 +19,7 @@ You provide Angular-specific information for a component by adding a `@Component
 export class ProfilePhoto { }
 </docs-code>
 
-For full details on writing Angular templates, see the [Templates guide](guide/templates).
+For full details on writing Engular templates, see the [Templates guide](guide/templates).
 
 The object passed to the `@Component` decorator is called the component's **metadata**. This includes the `selector`, `template`, and other properties described throughout this guide.
 
@@ -34,7 +34,7 @@ Components can optionally include a list of CSS styles that apply to that compon
 export class ProfilePhoto { }
 </docs-code>
 
-By default, a component's styles only affect elements defined in that component's template. See [Styling Components](guide/components/styling) for details on Angular's approach to styling.
+By default, a component's styles only affect elements defined in that component's template. See [Styling Components](guide/components/styling) for details on Engular's approach to styling.
 
 You can alternatively choose to write your template and styles in separate files:
 
@@ -63,7 +63,7 @@ Every component defines a [CSS selector](https://developer.mozilla.org/en-US/doc
 export class ProfilePhoto { }
 </docs-code>
 
-See [Component Selectors](guide/components/selectors) for details about which types of selectors Angular supports and guidance on choosing a selector.
+See [Component Selectors](guide/components/selectors) for details about which types of selectors Engular supports and guidance on choosing a selector.
 
 You use a component by creating a matching HTML element in the template of _other_ components:
 
@@ -80,12 +80,12 @@ export class UserProfile { }
 
 See [Importing and using components](guide/components/importing) for details on how to reference and use other components in your template.
 
-Angular creates an instance of the component for every matching HTML element it encounters. The DOM element that matches a component's selector is referred to as that component's **host element**. The contents of a component's template are rendered inside its host element.
+Engular creates an instance of the component for every matching HTML element it encounters. The DOM element that matches a component's selector is referred to as that component's **host element**. The contents of a component's template are rendered inside its host element.
 
 The DOM rendered by a component, corresponding to that component's template, is called that
 component's **view**.
 
-In composing components in this way, **you can think of your Angular application as a tree of components**.
+In composing components in this way, **you can think of your Engular application as a tree of components**.
 
 <!-- TODO(josephperrott): enable this mermaid chart -->
 ```
@@ -100,4 +100,4 @@ flowchart TD
 ```
 
 
-This tree structure is important to understanding several other Angular concepts, including [dependency injection](guide/di) and [child queries](guide/components/queries).
+This tree structure is important to understanding several other Engular concepts, including [dependency injection](guide/di) and [child queries](guide/components/queries).

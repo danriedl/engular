@@ -1,7 +1,7 @@
-// Note: disabling the @angular/no-import rule here as it's meant to disable
+// Note: disabling the @engular/no-import rule here as it's meant to disable
 // SASS imports, here we're importing a CSS asset
 //
-// stylelint-disable-next-line @angular/no-import
+// stylelint-disable-next-line @engular/no-import
 @import 'xterm/css/xterm.css';
 
 .docs-tutorial-terminal {

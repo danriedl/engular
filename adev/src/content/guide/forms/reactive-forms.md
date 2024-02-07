@@ -36,7 +36,7 @@ In the example, the user enters their name into an input field, captures that in
 <docs-workflow>
 
 <docs-step title="Import the ReactiveFormsModule">
-To use reactive form controls, import `ReactiveFormsModule` from the `@angular/forms` package and add it to your NgModule's `imports` array.
+To use reactive form controls, import `ReactiveFormsModule` from the `@engular/forms` package and add it to your NgModule's `imports` array.
 
 <docs-code header="src/app/app.module.ts (excerpt)" path="adev/src/content/examples/reactive-forms/src/app/app.module.ts" visibleRegion="imports" />
 </docs-step>
@@ -116,7 +116,7 @@ Just as a form control instance gives you control over a single input field, a f
 Each control in a form group instance is tracked by name when creating the form group.
 The following example shows how to manage multiple form control instances in a single group.
 
-Generate a `ProfileEditor` component and import the `FormGroup` and `FormControl` classes from the `@angular/forms` package.
+Generate a `ProfileEditor` component and import the `FormGroup` and `FormControl` classes from the `@engular/forms` package.
 
 <docs-code language="shell">
 ng generate component ProfileEditor
@@ -252,7 +252,7 @@ The following examples show how to refactor the `ProfileEditor` component to use
 
 <docs-workflow>
 <docs-step title="Import the FormBuilder class">
-Import the `FormBuilder` class from the `@angular/forms` package.
+Import the `FormBuilder` class from the `@engular/forms` package.
 
 <docs-code header="src/app/profile-editor/profile-editor.component.ts (import)" path="adev/src/content/examples/reactive-forms/src/app/profile-editor/profile-editor.component.2.ts" visibleRegion="form-builder-imports"/>
 
@@ -300,7 +300,7 @@ The following example shows how to add a required validation to the `firstName` 
 <docs-step title="Import a validator function">
 Reactive forms include a set of validator functions for common use cases. These functions receive a control to validate against and return an error object or a null value based on the validation check.
 
-Import the `Validators` class from the `@angular/forms` package.
+Import the `Validators` class from the `@engular/forms` package.
 
 <docs-code header="src/app/profile-editor/profile-editor.component.ts (import)" path="adev/src/content/examples/reactive-forms/src/app/profile-editor/profile-editor.component.ts" visibleRegion="validator-imports"/>
 </docs-step>
@@ -341,7 +341,7 @@ The following example shows you how to manage an array of *aliases* in `ProfileE
 
 <docs-workflow>
 <docs-step title="Import the `FormArray` class">
-Import the `FormArray` class from `@angular/forms` to use for type information. The `FormBuilder` service is ready to create a `FormArray` instance.
+Import the `FormArray` class from `@engular/forms` to use for type information. The `FormBuilder` service is ready to create a `FormArray` instance.
 
 <docs-code header="src/app/profile-editor/profile-editor.component.ts (import)" path="adev/src/content/examples/reactive-forms/src/app/profile-editor/profile-editor.component.2.ts" visibleRegion="form-array-imports"/>
 </docs-step>

@@ -1,4 +1,4 @@
-# Angular Internationalization
+# Engular Internationalization
 
 *Internationalization*, sometimes referenced as i18n, is the process of designing and preparing your project for use in different locales around the world.
 *Localization* is the process of building versions of your project for different locales.
@@ -18,11 +18,11 @@ For a quick introduction to localization and internationalization watch this vid
 
 <docs-video src="https://www.youtube.com/embed/KNTN-nsbV7M"/>
 
-## Learn about Angular internationalization
+## Learn about Engular internationalization
 
 <docs-card-container>
   <docs-card title="Add the localize package" href="guide/i18n/add-package">
-    Learn how to add the Angular Localize package to your project
+    Learn how to add the Engular Localize package to your project
   </docs-card>
   <docs-card title="Refer to locales by ID" href="guide/i18n/locale-id">
     Learn how to identify and specify a locale identifier for your project
@@ -49,6 +49,6 @@ For a quick introduction to localization and internationalization watch this vid
     Learn how to implement custom IDs to help you manage your marked text
   </docs-card>
   <docs-card title="Internationalization example" href="guide/i18n/example">
-    Review an example of Angular internationalization.
+    Review an example of Engular internationalization.
   </docs-card>
 </docs-card-container>

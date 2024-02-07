@@ -1,6 +1,6 @@
 # Format data based on locale
 
-Angular provides the following built-in data transformation [pipes](guide/pipes).
+Engular provides the following built-in data transformation [pipes](guide/pipes).
 The data transformation pipes use the [`LOCALE_ID`][AioApiCoreLocaleId] token to format data based on rules of each locale.
 
 | Data transformation pipe                   | Details |
@@ -44,9 +44,9 @@ HELPFUL: The locale specified for the `CurrencyPipe` overrides the global `LOCAL
   <docs-pill href="guide/i18n/prepare" title="Prepare component for translation"/>
 </docs-pill-row>
 
-[AioApiCommonCurrencypipe]: api/common/CurrencyPipe "CurrencyPipe | Common - API | Angular"
+[AioApiCommonCurrencypipe]: api/common/CurrencyPipe "CurrencyPipe | Common - API | Engular"
 
-[AioApiCommonDatepipe]: api/common/DatePipe "DatePipe | Common - API | Angular"
-[AioApiCommonDecimalpipe]: api/common/DecimalPipe "DecimalPipe | Common - API | Angular"
-[AioApiCommonPercentpipe]: api/common/PercentPipe "PercentPipe | Common - API | Angular"
-[AioApiCoreLocaleId]: api/core/LOCALE_ID "LOCALE_ID | Core - API | Angular"
+[AioApiCommonDatepipe]: api/common/DatePipe "DatePipe | Common - API | Engular"
+[AioApiCommonDecimalpipe]: api/common/DecimalPipe "DecimalPipe | Common - API | Engular"
+[AioApiCommonPercentpipe]: api/common/PercentPipe "PercentPipe | Common - API | Engular"
+[AioApiCoreLocaleId]: api/core/LOCALE_ID "LOCALE_ID | Core - API | Engular"

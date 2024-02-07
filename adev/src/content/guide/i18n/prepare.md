@@ -17,7 +17,7 @@ In a component template, the i18n metadata is the value of the `i18n` attribute.
 Use the `i18n` attribute to mark a static text message in your component templates for translation.
 Place it on every element tag that contains fixed text you want to translate.
 
-HELPFUL: The `i18n` attribute is a custom attribute that the Angular tools and compilers recognize.
+HELPFUL: The `i18n` attribute is a custom attribute that the Engular tools and compilers recognize.
 
 ### `i18n` example
 
@@ -172,10 +172,10 @@ The following code example shows the value of the [`$localize`][AioApiLocalizeIn
 
 <docs-callout title="How meanings control text extraction and merges">
 
-The Angular extraction tool generates a translation unit entry for each `i18n` attribute in a template.
-The Angular extraction tool assigns each translation unit a unique ID based on the *meaning* and *description*.
+The Engular extraction tool generates a translation unit entry for each `i18n` attribute in a template.
+The Engular extraction tool assigns each translation unit a unique ID based on the *meaning* and *description*.
 
-HELPFUL: For more information about the Angular extraction tool, see [Work with translation files](guide/i18n/translation-files).
+HELPFUL: For more information about the Engular extraction tool, see [Work with translation files](guide/i18n/translation-files).
 
 The same text elements with different *meanings* are extracted with different IDs.
 For example, if the word "right" uses the following two definitions in two different locations, the word is translated differently and merged back into the application as different translation entries.
@@ -252,7 +252,7 @@ The following pluralization categories are available for English and may change 
 | `many`                 | Quantity is a large number | `many { }`                 |
 | `other`                | The default quantity       | `other { }`                |
 
-If none of the pluralization categories match, Angular uses `other` to match the standard fallback for a missing category.
+If none of the pluralization categories match, Engular uses `other` to match the standard fallback for a missing category.
 
 <!--todo: replace with docs-code -->
 
@@ -269,7 +269,7 @@ HELPFUL: For more information about pluralization categories, see [Choosing plur
 Many locales don't support some of the pluralization categories.
 The default locale \(`en-US`\) uses a very simple `plural()` function that doesn't support the `few` pluralization category.
 Another locale with a simple `plural()` function is `es`.
-The following code example shows the [en-US `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] function.
+The following code example shows the [en-US `plural()`][GithubEngularEngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] function.
 
 <docs-code path="adev/src/content/examples/i18n/doc-files/locale_plural_function.ts" class="no-box" hideCopy/>
 
@@ -351,7 +351,7 @@ selection_category { text }
 
 Different locales have different grammatical constructions that increase the difficulty of translation.
 Use HTML markup.
-If none of the selection categories match, Angular uses `other` to match the standard fallback for a missing category.
+If none of the selection categories match, Engular uses `other` to match the standard fallback for a missing category.
 
 <!--todo: replace with docs-code -->
 
@@ -419,14 +419,14 @@ The following code example shows nested clauses based on the `gender` and `minut
   <docs-pill href="guide/i18n/translation-files" title="Work with translation files"/>
 </docs-pill-row>
 
-[AioApiLocalizeInitLocalize]: api/localize/init/$localize "$localize | init - localize - API  | Angular"
+[AioApiLocalizeInitLocalize]: api/localize/init/$localize "$localize | init - localize - API  | Engular"
 
-[AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions]: guide/i18n/prepare#mark-alternates-and-nested-expressions "Mark alternates and nested expressions - Prepare templates for translation | Angular"
-[AioGuideI18nCommonPrepareMarkPlurals]: guide/i18n/prepare#mark-plurals "Mark plurals - Prepare component for translation | Angular"
+[AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions]: guide/i18n/prepare#mark-alternates-and-nested-expressions "Mark alternates and nested expressions - Prepare templates for translation | Engular"
+[AioGuideI18nCommonPrepareMarkPlurals]: guide/i18n/prepare#mark-plurals "Mark plurals - Prepare component for translation | Engular"
 
-[AioGuideI18nOptionalManageMarkedText]: guide/i18n/manage-marked-text "Manage marked text with custom IDs | Angular"
+[AioGuideI18nOptionalManageMarkedText]: guide/i18n/manage-marked-text "Manage marked text with custom IDs | Engular"
 
-[GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18]: <https://github.com/angular/angular/blob/ecffc3557fe1bff9718c01277498e877ca44588d/packages/core/src/i18n/locale_en.ts#L14-L18> "Line 14 to 18 - angular/packages/core/src/i18n/locale_en.ts | angular/angular | GitHub"
+[GithubEngularEngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18]: <https://github.com/engular/engular/blob/ecffc3557fe1bff9718c01277498e877ca44588d/packages/core/src/i18n/locale_en.ts#L14-L18> "Line 14 to 18 - engular/packages/core/src/i18n/locale_en.ts | engular/engular | GitHub"
 
 [GithubUnicodeOrgIcuUserguideFormatParseMessages]: https://unicode-org.github.io/icu/userguide/format_parse/messages "ICU Message Format - ICU Documentation | Unicode | GitHub"
 

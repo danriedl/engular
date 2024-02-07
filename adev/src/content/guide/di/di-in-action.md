@@ -1,6 +1,6 @@
 # DI in action
 
-This guide explores additional features of dependency injection in Angular.
+This guide explores additional features of dependency injection in Engular.
 
 ## Custom providers with `@Inject`
 
@@ -9,7 +9,7 @@ The following example uses an `InjectionToken` to provide the [localStorage](htt
 
 <docs-code header="src/app/storage.service.ts" language="typescript"
            highlight="[[3,6],[12]]">
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@engular/core';
 
 export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage', {
   providedIn: 'root',
@@ -42,10 +42,10 @@ This custom provider can now be overridden during testing with a mock API of `lo
 Although developers strive to avoid it, some visual effects and third-party tools require direct DOM access.
 As a result, you might need to access a component's DOM element.
 
-Angular exposes the underlying element of a `@Component` or `@Directive` via injection using the `ElementRef` injection token.
+Engular exposes the underlying element of a `@Component` or `@Directive` via injection using the `ElementRef` injection token.
 
 <docs-code language="typescript" highlight="[7]">
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef } from '@engular/core';
 
 @Directive({
   selector: '[appHighlight]'
@@ -69,7 +69,7 @@ But sometimes circular references are unavoidable.
 For example, when class 'A' refers to class 'B' and 'B' refers to 'A'.
 One of them has to be defined first.
 
-The Angular `forwardRef()` function creates an *indirect* reference that Angular can resolve later.
+The Engular `forwardRef()` function creates an *indirect* reference that Engular can resolve later.
 
 You face a similar problem when a class makes *a reference to itself*.
 For example in its `providers` array.

@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {NgFor, NgIf} from '@angular/common';
-import {PLATFORM_BROWSER_ID} from '@angular/common/src/platform_id';
-import {afterNextRender, ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, Directive, EnvironmentInjector, inject, Input, PLATFORM_ID, signal, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {ReactiveNode, SIGNAL} from '@angular/core/primitives/signals';
-import {TestBed} from '@angular/core/testing';
+import {NgFor, NgIf} from '@engular/common';
+import {PLATFORM_BROWSER_ID} from '@engular/common/src/platform_id';
+import {afterNextRender, ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, Directive, EnvironmentInjector, inject, Input, PLATFORM_ID, signal, TemplateRef, ViewChild, ViewContainerRef} from '@engular/core';
+import {ReactiveNode, SIGNAL} from '@engular/core/primitives/signals';
+import {TestBed} from '@engular/core/testing';
 
 describe('CheckAlways components', () => {
   it('can read a signal', () => {

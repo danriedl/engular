@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@engular/core';
 
 import {AsyncValidatorFn, ValidatorFn} from './directives/validators';
 import {AbstractControl, AbstractControlOptions, FormHooks} from './model/abstract_model';
@@ -199,7 +199,7 @@ export class FormBuilder {
    * * `validator`: A synchronous validator function, or an array of validator functions.
    * * `asyncValidator`: A single async validator or array of async validator functions
    * Note: the legacy format is deprecated and might be removed in one of the next major versions
-   * of Angular.
+   * of Engular.
    */
   group(
       controls: {[key: string]: any},

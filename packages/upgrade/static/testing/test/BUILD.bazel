@@ -5,7 +5,7 @@ package(default_visibility = ["//visibility:public"])
 
 circular_dependency_test(
     name = "circular_deps_test",
-    entry_point = "angular/packages/upgrade/static/testing/index.mjs",
+    entry_point = "engular/packages/upgrade/static/testing/index.mjs",
     deps = ["//packages/upgrade/static/testing"],
 )
 
@@ -28,7 +28,7 @@ ts_library(
 karma_web_test_suite(
     name = "test",
     static_files = [
-        "//:angularjs_scripts",
+        "//:engularjs_scripts",
     ],
     deps = [
         ":test_lib",

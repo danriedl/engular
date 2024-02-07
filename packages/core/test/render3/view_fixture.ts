@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Sanitizer, Type, ɵAfterRenderEventManager as AfterRenderEventManager} from '@angular/core';
-import {stringifyElement} from '@angular/platform-browser/testing/src/browser_util';
+import {Sanitizer, Type, ɵAfterRenderEventManager as AfterRenderEventManager} from '@engular/core';
+import {stringifyElement} from '@engular/platform-browser/testing/src/browser_util';
 
 import {extractDirectiveDef} from '../../src/render3/definition';
 import {refreshView} from '../../src/render3/instructions/change_detection';

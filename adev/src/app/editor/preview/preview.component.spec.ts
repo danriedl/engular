@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {DebugElement, signal} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import {TestBed, fakeAsync, tick} from '@engular/core/testing';
+import {DebugElement, signal} from '@engular/core';
+import {By} from '@engular/platform-browser';
 import {of} from 'rxjs';
 
 import {NodeRuntimeSandbox} from '../node-runtime-sandbox.service';
@@ -20,7 +20,7 @@ import {PreviewError} from './preview-error.component';
 describe('Preview', () => {
   // Before each is used as a callable function to prevent conflicts between tests
   const beforeEach = () => {
-    const PREVIEW_URL = 'https://angular.dev/';
+    const PREVIEW_URL = 'https://engular.dev/';
 
     const fakeNodeRuntimeSandbox: Partial<NodeRuntimeSandbox> = {
       previewUrl$: of(PREVIEW_URL),

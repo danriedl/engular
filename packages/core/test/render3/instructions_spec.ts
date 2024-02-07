@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {Component, Input} from '@angular/core/public_api';
-import {ngDevModeResetPerfCounters} from '@angular/core/src/util/ng_dev_mode';
-import {TestBed} from '@angular/core/testing';
-import {getSortedClassName} from '@angular/core/testing/src/styling';
+import {CommonModule} from '@engular/common';
+import {Component, Input} from '@engular/core/public_api';
+import {ngDevModeResetPerfCounters} from '@engular/core/src/util/ng_dev_mode';
+import {TestBed} from '@engular/core/testing';
+import {getSortedClassName} from '@engular/core/testing/src/styling';
 
 import {ɵɵadvance, ɵɵattribute, ɵɵclassMap, ɵɵelement, ɵɵproperty, ɵɵstyleMap, ɵɵstyleProp} from '../../src/render3/index';
 import {AttributeMarker} from '../../src/render3/interfaces/attribute_marker';

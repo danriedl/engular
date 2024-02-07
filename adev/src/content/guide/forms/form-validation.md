@@ -6,9 +6,9 @@ This page shows how to validate user input from the UI and display useful valida
 ## Validating input in template-driven forms
 
 To add validation to a template-driven form, you add the same validation attributes as you would with [native HTML form validation](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5/Constraint_validation).
-Angular uses directives to match these attributes with validator functions in the framework.
+Engular uses directives to match these attributes with validator functions in the framework.
 
-Every time the value of a form control changes, Angular runs validation and generates either a list of validation errors that results in an `INVALID` status, or null, which results in a VALID status.
+Every time the value of a form control changes, Engular runs validation and generates either a list of validation errors that results in an `INVALID` status, or null, which results in a VALID status.
 
 You can then inspect the control's state by exporting `ngModel` to a local template variable.
 The following example exports `NgModel` into a variable called `name`:
@@ -39,7 +39,7 @@ HELPFUL: To prevent the validator from displaying errors before the user has a c
 
 In a reactive form, the source of truth is the component class.
 Instead of adding validators through attributes in the template, you add validator functions directly to the form control model in the component class.
-Angular then calls these functions whenever the value of the control changes.
+Engular then calls these functions whenever the value of the control changes.
 
 ### Validator functions
 
@@ -50,12 +50,12 @@ Validator functions can be either synchronous or asynchronous.
 | Sync validators  | Synchronous functions that take a control instance and immediately return either a set of validation errors or `null`. Pass these in as the second argument when you instantiate a `FormControl`.                       |
 | Async validators | Asynchronous functions that take a control instance and return a Promise or Observable that later emits a set of validation errors or `null`. Pass these in as the third argument when you instantiate a `FormControl`. |
 
-For performance reasons, Angular only runs async validators if all sync validators pass.
+For performance reasons, Engular only runs async validators if all sync validators pass.
 Each must complete before errors are set.
 
 ### Built-in validator functions
 
-You can choose to [write your own validator functions](#defining-custom-validators), or you can use some of Angular's built-in validators.
+You can choose to [write your own validator functions](#defining-custom-validators), or you can use some of Engular's built-in validators.
 
 The same built-in validators that are available as attributes in template-driven forms, such as `required` and `minlength`, are all available to use as functions from the `Validators` class.
 For a full list of built-in validators, see the [Validators](api/forms/Validators) API reference.
@@ -96,7 +96,7 @@ In this sample, the forbidden name is "bob", so the validator rejects any actor 
 Elsewhere it could reject "alice" or any name that the configuring regular expression matches.
 
 The `forbiddenNameValidator` factory returns the configured validator function.
-That function takes an Angular control object and returns *either* null if the control value is valid *or* a validation error object.
+That function takes an Engular control object and returns *either* null if the control value is valid *or* a validation error object.
 The validation error object typically has a property whose name is the validation key, `'forbiddenName'`, and whose value is an arbitrary dictionary of values that you could insert into an error message, `{name}`.
 
 Custom async validators are similar to sync validators, but they must instead return a Promise or observable that later emits null or a validation error object.
@@ -113,12 +113,12 @@ In reactive forms, add a custom validator by passing the function directly to th
 In template-driven forms, add a directive to the template, where the directive wraps the validator function.
 For example, the corresponding `ForbiddenValidatorDirective` serves as a wrapper around the `forbiddenNameValidator`.
 
-Angular recognizes the directive's role in the validation process because the directive registers itself with the `NG_VALIDATORS` provider, as shown in the following example.
+Engular recognizes the directive's role in the validation process because the directive registers itself with the `NG_VALIDATORS` provider, as shown in the following example.
 `NG_VALIDATORS` is a predefined provider with an extensible collection of validators.
 
 <docs-code header="shared/forbidden-name.directive.ts (providers)" path="adev/src/content/examples/form-validation/src/app/shared/forbidden-name.directive.ts" visibleRegion="directive-providers"/>
 
-The directive class then implements the `Validator` interface, so that it can easily integrate with Angular forms.
+The directive class then implements the `Validator` interface, so that it can easily integrate with Engular forms.
 Here is the rest of the directive to help you get an idea of how it all comes together.
 
 <docs-code header="shared/forbidden-name.directive.ts (directive)" path="adev/src/content/examples/form-validation/src/app/shared/forbidden-name.directive.ts" visibleRegion="directive"/>
@@ -135,7 +135,7 @@ If you were to replace `useExisting` with `useClass`, then you'd be registering 
 
 ## Control status CSS classes
 
-Angular automatically mirrors many control properties onto the form control element as CSS classes.
+Engular automatically mirrors many control properties onto the form control element as CSS classes.
 Use these classes to style form control elements according to the state of the form.
 The following classes are currently supported.
 
@@ -202,7 +202,7 @@ The validator code is as follows.
 <docs-code header="shared/unambiguous-role.directive.ts" path="adev/src/content/examples/form-validation/src/app/shared/unambiguous-role.directive.ts" visibleRegion="cross-validation-validator"/>
 
 The `unambiguousRoleValidator` validator implements the `ValidatorFn` interface.
-It takes an Angular control object as an argument and returns either null if the form is valid, or `ValidationErrors` otherwise.
+It takes an Engular control object as an argument and returns either null if the form is valid, or `ValidationErrors` otherwise.
 
 The validator retrieves the child controls by calling the `FormGroup`'s [get](api/forms/AbstractControl#get) method, then compares the values of the `name` and `role` controls.
 
@@ -311,7 +311,7 @@ To learn more about `FormControl` options, see the [AbstractControlOptions](api/
 
 To use an async validator in template-driven forms, create a new directive and register the `NG_ASYNC_VALIDATORS` provider on it.
 
-In the example below, the directive injects the `UniqueRoleValidator` class that contains the actual validation logic and invokes it in the `validate` function, triggered by Angular when validation should happen.
+In the example below, the directive injects the `UniqueRoleValidator` class that contains the actual validation logic and invokes it in the `validate` function, triggered by Engular when validation should happen.
 
 <docs-code path="adev/src/content/examples/form-validation/src/app/shared/role.directive.ts" visibleRegion="async-validator-directive"/>
 
@@ -342,6 +342,6 @@ new FormControl('', {updateOn: 'blur'});
 
 ## Interaction with native HTML form validation
 
-By default, Angular disables [native HTML form validation](https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation) by adding the `novalidate` attribute on the enclosing `<form>` and uses directives to match these attributes with validator functions in the framework.
-If you want to use native validation **in combination** with Angular-based validation, you can re-enable it with the `ngNativeValidate` directive.
+By default, Engular disables [native HTML form validation](https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation) by adding the `novalidate` attribute on the enclosing `<form>` and uses directives to match these attributes with validator functions in the framework.
+If you want to use native validation **in combination** with Engular-based validation, you can re-enable it with the `ngNativeValidate` directive.
 See the [API docs](api/forms/NgForm#native-dom-validation-ui) for details.

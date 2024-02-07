@@ -10,12 +10,12 @@ To mark a class as a pipe and supply configuration metadata, apply the `@Pipe` t
 Use UpperCamelCase (the general convention for class names) for the pipe class name, and camelCase for the corresponding `name` string.
 Do not use hyphens in the `name`.
 
-For details and more examples, see [Pipe names](/style-guide#pipe-names "Pipe names in the Angular coding style guide").
+For details and more examples, see [Pipe names](/style-guide#pipe-names "Pipe names in the Engular coding style guide").
 
 Use `name` in template expressions as you would for a built-in pipe.
 
 ```ts
-import { Pipe } from '@angular/core';
+import { Pipe } from '@engular/core';
 
 @Pipe({
   name: 'greet',
@@ -28,10 +28,10 @@ export class GreetPipe {}
 
 Implement the [`PipeTransform`](/api/core/PipeTransform "API reference for PipeTransform") interface in your custom pipe class to perform the transformation.
 
-Angular invokes the `transform` method with the value of a binding as the first argument, and any parameters as the second argument in list form, and returns the transformed value.
+Engular invokes the `transform` method with the value of a binding as the first argument, and any parameters as the second argument in list form, and returns the transformed value.
 
 ```ts
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@engular/core';
 
 @Pipe({
   name: 'greet',

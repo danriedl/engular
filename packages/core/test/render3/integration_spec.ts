@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {Component, Directive, HostBinding} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
+import {CommonModule} from '@engular/common';
+import {Component, Directive, HostBinding} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
 
 import {getLContext, readPatchedData} from '../../src/render3/context_discovery';
 import {CONTEXT, HEADER_OFFSET} from '../../src/render3/interfaces/view';
@@ -309,7 +309,7 @@ describe('element discovery', () => {
        expect(shadowComponentData).not.toBe(parentComponentData);
      });
 
-  it('should return `null` when an element context is retrieved that isn\'t situated in Angular',
+  it('should return `null` when an element context is retrieved that isn\'t situated in Engular',
      () => {
        const elm1 = document.createElement('div');
        const context1 = getLContext(elm1);
@@ -321,7 +321,7 @@ describe('element discovery', () => {
        expect(context2).toBeFalsy();
      });
 
-  it('should return `null` when an element context is retrieved that is a DOM node that was not created by Angular',
+  it('should return `null` when an element context is retrieved that is a DOM node that was not created by Engular',
      () => {
        @Component({
          selector: 'structured-comp',

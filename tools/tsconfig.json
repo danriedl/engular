@@ -12,7 +12,7 @@
     "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@angular/*": ["../packages/*"]
+      "@engular/*": ["../packages/*"]
     },
     "rootDirs": [".", ".."],
     "sourceMap": true,

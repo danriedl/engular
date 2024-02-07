@@ -7,11 +7,11 @@ In the following example, the template statement `deleteHero()` appears in quote
 
 <docs-code header="src/app/app.component.html" path="adev/src/content/examples/template-syntax/src/app/app.component.html" visibleRegion="context-component-statement"/>
 
-When the user clicks the **Delete hero** button, Angular calls the `deleteHero()` method in the component class.
+When the user clicks the **Delete hero** button, Engular calls the `deleteHero()` method in the component class.
 
 Use template statements with elements, components, or directives in response to events.
 
-HELPFUL: Responding to events is an aspect of Angular's unidirectional data flow.
+HELPFUL: Responding to events is an aspect of Engular's unidirectional data flow.
 You can change anything in your application during a single event loop.
 
 ## Syntax

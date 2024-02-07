@@ -1,6 +1,6 @@
 # Understanding binding
 
-In an Angular template, a binding creates a live connection between a part of the UI created from a template (a DOM element, directive, or component) and the model (the component instance to which the template belongs). This connection can be used to synchronize the view with the model, to notify the model when an event or user action takes place in the view, or both. Angular's [Change Detection](best-practices/runtime-performance) algorithm is responsible for keeping the view and the model in sync.
+In an Engular template, a binding creates a live connection between a part of the UI created from a template (a DOM element, directive, or component) and the model (the component instance to which the template belongs). This connection can be used to synchronize the view with the model, to notify the model when an event or user action takes place in the view, or both. Engular's [Change Detection](best-practices/runtime-performance) algorithm is responsible for keeping the view and the model in sync.
 
 Examples of binding include:
 
@@ -51,7 +51,7 @@ HELPFUL: Template expressions cannot refer to anything in the global namespace, 
 ### Preventing name collisions
 
 The context against which an expression evaluates is the union of the template variables, the directive's context object&mdash;if it has one&mdash;and the component's members.
-If you reference a name that belongs to more than one of these namespaces, Angular applies the following precedence logic to determine the context:
+If you reference a name that belongs to more than one of these namespaces, Engular applies the following precedence logic to determine the context:
 
 1. The template variable name.
 1. A name in the directive's context.
@@ -78,17 +78,17 @@ Use property names or method calls whenever possible.  Keep application and busi
 
 * **Quick execution**
 
-Angular executes a template expression after every change detection cycle.  Many asynchronous activities trigger change detection cycles, such as promise resolutions, HTTP results, timer events, key presses, and mouse moves.
+Engular executes a template expression after every change detection cycle.  Many asynchronous activities trigger change detection cycles, such as promise resolutions, HTTP results, timer events, key presses, and mouse moves.
 
 An expression should finish quickly to keep the user experience as efficient as possible, especially on slower devices.  Consider caching values when their computation requires greater resources.
 
 ## No visible side effects
 
-According to Angular's unidirectional data flow model, a template expression should not change any application state other than the value of the target property.  Reading a component value should not change some other displayed value.  The view should be stable throughout a single rendering pass.
+According to Engular's unidirectional data flow model, a template expression should not change any application state other than the value of the target property.  Reading a component value should not change some other displayed value.  The view should be stable throughout a single rendering pass.
 
   <docs-callout title='Idempotent expressions reduce side effects'>
 
-An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.  In Angular terms, an idempotent expression always returns _exactly the same thing_ until one of its dependent values changes.
+An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Engular's change detection performance.  In Engular terms, an idempotent expression always returns _exactly the same thing_ until one of its dependent values changes.
 
 Dependent values should not change during a single turn of the event loop.  If an idempotent expression returns a string or a number, it returns the same string or number if you call it twice consecutively.  If the expression returns an object, including an `array`, it returns the same object _reference_ if you call it twice consecutively.
 

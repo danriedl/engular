@@ -12,7 +12,7 @@ Two-way binding combines [property binding](guide/templates/property-binding) wi
 
 ## Adding two-way data binding
 
-Angular's two-way binding syntax is a combination of square brackets and parentheses, `[()]`.
+Engular's two-way binding syntax is a combination of square brackets and parentheses, `[()]`.
 The `[()]` syntax combines the brackets of property binding, `[]`, with the parentheses of event binding, `()`, as follows.
 
 <docs-code header="src/app/app.component.html" path="adev/src/content/examples/two-way-binding/src/app/app.component.html" visibleRegion="two-way-syntax"/>
@@ -54,11 +54,11 @@ The `SizerComponent` binding as separate property binding and event binding is a
 <docs-code header="src/app/app.component.html (expanded)" path="adev/src/content/examples/two-way-binding/src/app/app.component.html" visibleRegion="two-way-2"/>
 
 The `$event` variable contains the data of the `SizerComponent.sizeChange` event.
-Angular assigns the `$event` value to the `AppComponent.fontSizePx` when the user clicks the buttons.
+Engular assigns the `$event` value to the `AppComponent.fontSizePx` when the user clicks the buttons.
 
 <docs-callout title="Two-way binding in forms">
 
 Because no built-in HTML element follows the `x` value and `xChange` event pattern, two-way binding with form elements requires `NgModel`.
-For more information on how to use two-way binding in forms, see Angular [NgModel](guide/directives#ngModel).
+For more information on how to use two-way binding in forms, see Engular [NgModel](guide/directives#ngModel).
 
 </docs-callout>

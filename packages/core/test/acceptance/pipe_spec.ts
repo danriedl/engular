@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, Inject, Injectable, InjectionToken, Input, NgModule, OnChanges, OnDestroy, Pipe, PipeTransform, SimpleChanges, ViewChild, ɵɵdefineInjectable, ɵɵdefinePipe, ɵɵgetInheritedFactory, ɵɵinject} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {CommonModule} from '@engular/common';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, Inject, Injectable, InjectionToken, Input, NgModule, OnChanges, OnDestroy, Pipe, PipeTransform, SimpleChanges, ViewChild, ɵɵdefineInjectable, ɵɵdefinePipe, ɵɵgetInheritedFactory, ɵɵinject} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 describe('pipe', () => {
   @Pipe({name: 'countingPipe'})
@@ -717,7 +717,7 @@ describe('pipe', () => {
         it(`should not invoke ${
                numberOfPipeArgs} argument pure pipe second time if it throws unless input changes`,
            () => {
-             // https://stackblitz.com/edit/angular-mbx2pg
+             // https://stackblitz.com/edit/engular-mbx2pg
              const log: string[] = [];
              @Pipe({name: 'throw', pure: true})
              class ThrowPipe implements PipeTransform {

@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 export type Ng1Token = string;
@@ -11,7 +11,7 @@ export type Ng1Token = string;
 export type Ng1Expression = string | Function;
 
 export interface IAnnotatedFunction extends Function {
-  // Older versions of `@types/angular` typings extend the global `Function` interface with
+  // Older versions of `@types/engular` typings extend the global `Function` interface with
   // `$inject?: string[]`, which is not compatible with `$inject?: ReadonlyArray<string>` (used in
   // latest versions).
   $inject?: Function extends {$inject?: string[]} ? Ng1Token[] : ReadonlyArray<Ng1Token>;
@@ -65,7 +65,7 @@ export interface IRootScopeService {
 }
 export interface IScope extends IRootScopeService {}
 
-export interface IAngularBootstrapConfig {
+export interface IEngularBootstrapConfig {
   strictDi?: boolean;
 }
 export interface IDirective {
@@ -243,17 +243,17 @@ export interface INgModelController {
 }
 
 function noNg(): never {
-  throw new Error('AngularJS v1.x is not loaded!');
+  throw new Error('EngularJS v1.x is not loaded!');
 }
 
-const noNgElement: typeof angular.element = (() => noNg()) as any;
+const noNgElement: typeof engular.element = (() => noNg()) as any;
 noNgElement.cleanData = noNg;
 
-let angular: {
+let engular: {
   bootstrap: (
     e: Element,
     modules: (string | IInjectable)[],
-    config?: IAngularBootstrapConfig,
+    config?: IEngularBootstrapConfig,
   ) => IInjectorService;
   module: (prefix: string, dependencies?: string[]) => IModule;
   element: {
@@ -275,68 +275,68 @@ let angular: {
 };
 
 try {
-  if (window.hasOwnProperty('angular')) {
-    angular = (<any>window).angular;
+  if (window.hasOwnProperty('engular')) {
+    engular = (<any>window).engular;
   }
 } catch {
   // ignore in CJS mode.
 }
 
 /**
- * @deprecated Use `setAngularJSGlobal` instead.
+ * @deprecated Use `setEngularJSGlobal` instead.
  *
  * @publicApi
  */
-export function setAngularLib(ng: any): void {
-  setAngularJSGlobal(ng);
+export function setEngularLib(ng: any): void {
+  setEngularJSGlobal(ng);
 }
 
 /**
- * @deprecated Use `getAngularJSGlobal` instead.
+ * @deprecated Use `getEngularJSGlobal` instead.
  *
  * @publicApi
  */
-export function getAngularLib(): any {
-  return getAngularJSGlobal();
+export function getEngularLib(): any {
+  return getEngularJSGlobal();
 }
 
 /**
- * Resets the AngularJS global.
+ * Resets the EngularJS global.
  *
- * Used when AngularJS is loaded lazily, and not available on `window`.
+ * Used when EngularJS is loaded lazily, and not available on `window`.
  *
  * @publicApi
  */
-export function setAngularJSGlobal(ng: any): void {
-  angular = ng;
+export function setEngularJSGlobal(ng: any): void {
+  engular = ng;
 }
 
 /**
- * Returns the current AngularJS global.
+ * Returns the current EngularJS global.
  *
  * @publicApi
  */
-export function getAngularJSGlobal(): any {
-  return angular;
+export function getEngularJSGlobal(): any {
+  return engular;
 }
 
-export const bootstrap: typeof angular.bootstrap = (e, modules, config?) =>
-  angular.bootstrap(e, modules, config);
+export const bootstrap: typeof engular.bootstrap = (e, modules, config?) =>
+  engular.bootstrap(e, modules, config);
 
 // Do not declare as `module` to avoid webpack bug
-// (see https://github.com/angular/angular/issues/30050).
-export const module_: typeof angular.module = (prefix, dependencies?) =>
-  angular.module(prefix, dependencies);
+// (see https://github.com/engular/engular/issues/30050).
+export const module_: typeof engular.module = (prefix, dependencies?) =>
+  engular.module(prefix, dependencies);
 
-export const element: typeof angular.element = ((e) =>
-  angular.element(e)) as typeof angular.element;
-element.cleanData = (nodes) => angular.element.cleanData(nodes);
+export const element: typeof engular.element = ((e) =>
+  engular.element(e)) as typeof engular.element;
+element.cleanData = (nodes) => engular.element.cleanData(nodes);
 
-export const injector: typeof angular.injector = (
+export const injector: typeof engular.injector = (
   modules: Array<string | IInjectable>,
   strictDi?: boolean,
-) => angular.injector(modules, strictDi);
+) => engular.injector(modules, strictDi);
 
-export const resumeBootstrap: typeof angular.resumeBootstrap = () => angular.resumeBootstrap();
+export const resumeBootstrap: typeof engular.resumeBootstrap = () => engular.resumeBootstrap();
 
-export const getTestability: typeof angular.getTestability = (e) => angular.getTestability(e);
+export const getTestability: typeof engular.getTestability = (e) => engular.getTestability(e);

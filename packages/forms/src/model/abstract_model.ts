@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {EventEmitter, ɵRuntimeError as RuntimeError, ɵWritable as Writable} from '@angular/core';
+import {EventEmitter, ɵRuntimeError as RuntimeError, ɵWritable as Writable} from '@engular/core';
 import {Observable} from 'rxjs';
 
 import {asyncValidatorsDroppedWithOptsWarning, missingControlError, missingControlValueError, noControlsError} from '../directives/reactive_errors';
@@ -168,7 +168,7 @@ export type ɵIsAny<T, Y, N> = 0 extends(1&T) ? Y : N;
  * `TypedOrUntyped` allows one of two different types to be selected, depending on whether the Forms
  * class it's applied to is typed or not.
  *
- * This is for internal Angular usage to support typed forms; do not directly use it.
+ * This is for internal Engular usage to support typed forms; do not directly use it.
  */
 export type ɵTypedOrUntyped<T, Typed, Untyped> = ɵIsAny<T, Untyped, Typed>;
 

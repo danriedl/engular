@@ -3,46 +3,46 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Injector, NgModule, NgZone, PlatformRef, Testability} from '@angular/core';
+import {Injector, NgModule, NgZone, PlatformRef, Testability} from '@engular/core';
 
-import {ɵangular1, ɵconstants, ɵutil} from '../common';
+import {ɵengular1, ɵconstants, ɵutil} from '../common';
 
-import {angular1Providers, setTempInjectorRef} from './angular1_providers';
+import {engular1Providers, setTempInjectorRef} from './engular1_providers';
 import {NgAdapterInjector} from './util';
 
 /**
  * @description
  *
- * An `NgModule`, which you import to provide AngularJS core services,
+ * An `NgModule`, which you import to provide EngularJS core services,
  * and has an instance method used to bootstrap the hybrid upgrade application.
  *
  * *Part of the [upgrade/static](api?query=upgrade/static)
  * library for hybrid upgrade apps that support AOT compilation*
  *
- * The `upgrade/static` package contains helpers that allow AngularJS and Angular components
+ * The `upgrade/static` package contains helpers that allow EngularJS and Engular components
  * to be used together inside a hybrid upgrade application, which supports AOT compilation.
  *
  * Specifically, the classes and functions in the `upgrade/static` module allow the following:
  *
- * 1. Creation of an Angular directive that wraps and exposes an AngularJS component so
- *    that it can be used in an Angular template. See `UpgradeComponent`.
- * 2. Creation of an AngularJS directive that wraps and exposes an Angular component so
- *    that it can be used in an AngularJS template. See `downgradeComponent`.
- * 3. Creation of an Angular root injector provider that wraps and exposes an AngularJS
- *    service so that it can be injected into an Angular context. See
- *    {@link UpgradeModule#upgrading-an-angular-1-service Upgrading an AngularJS service} below.
- * 4. Creation of an AngularJS service that wraps and exposes an Angular injectable
- *    so that it can be injected into an AngularJS context. See `downgradeInjectable`.
- * 3. Bootstrapping of a hybrid Angular application which contains both of the frameworks
+ * 1. Creation of an Engular directive that wraps and exposes an EngularJS component so
+ *    that it can be used in an Engular template. See `UpgradeComponent`.
+ * 2. Creation of an EngularJS directive that wraps and exposes an Engular component so
+ *    that it can be used in an EngularJS template. See `downgradeComponent`.
+ * 3. Creation of an Engular root injector provider that wraps and exposes an EngularJS
+ *    service so that it can be injected into an Engular context. See
+ *    {@link UpgradeModule#upgrading-an-engular-1-service Upgrading an EngularJS service} below.
+ * 4. Creation of an EngularJS service that wraps and exposes an Engular injectable
+ *    so that it can be injected into an EngularJS context. See `downgradeInjectable`.
+ * 3. Bootstrapping of a hybrid Engular application which contains both of the frameworks
  *    coexisting in a single application.
  *
  * @usageNotes
  *
  * ```ts
- * import {UpgradeModule} from '@angular/upgrade/static';
+ * import {UpgradeModule} from '@engular/upgrade/static';
  * ```
  *
  * See also the {@link UpgradeModule#examples examples} below.
@@ -57,15 +57,15 @@ import {NgAdapterInjector} from './util';
  * 2. Each DOM element on the page is owned exactly by one framework. Whichever framework
  *    instantiated the element is the owner. Each framework only updates/interacts with its own
  *    DOM elements and ignores others.
- * 3. AngularJS directives always execute inside the AngularJS framework codebase regardless of
+ * 3. EngularJS directives always execute inside the EngularJS framework codebase regardless of
  *    where they are instantiated.
- * 4. Angular components always execute inside the Angular framework codebase regardless of
+ * 4. Engular components always execute inside the Engular framework codebase regardless of
  *    where they are instantiated.
- * 5. An AngularJS component can be "upgraded"" to an Angular component. This is achieved by
- *    defining an Angular directive, which bootstraps the AngularJS component at its location
+ * 5. An EngularJS component can be "upgraded"" to an Engular component. This is achieved by
+ *    defining an Engular directive, which bootstraps the EngularJS component at its location
  *    in the DOM. See `UpgradeComponent`.
- * 6. An Angular component can be "downgraded" to an AngularJS component. This is achieved by
- *    defining an AngularJS directive, which bootstraps the Angular component at its location
+ * 6. An Engular component can be "downgraded" to an EngularJS component. This is achieved by
+ *    defining an EngularJS directive, which bootstraps the Engular component at its location
  *    in the DOM. See `downgradeComponent`.
  * 7. Whenever an "upgraded"/"downgraded" component is instantiated the host element is owned by
  *    the framework doing the instantiation. The other framework then instantiates and owns the
@@ -73,78 +73,78 @@ import {NgAdapterInjector} from './util';
  *    1. This implies that the component bindings will always follow the semantics of the
  *       instantiation framework.
  *    2. The DOM attributes are parsed by the framework that owns the current template. So
- *       attributes in AngularJS templates must use kebab-case, while AngularJS templates must use
+ *       attributes in EngularJS templates must use kebab-case, while EngularJS templates must use
  *       camelCase.
- *    3. However the template binding syntax will always use the Angular style, e.g. square
+ *    3. However the template binding syntax will always use the Engular style, e.g. square
  *       brackets (`[...]`) for property binding.
- * 8. Angular is bootstrapped first; AngularJS is bootstrapped second. AngularJS always owns the
+ * 8. Engular is bootstrapped first; EngularJS is bootstrapped second. EngularJS always owns the
  *    root component of the application.
- * 9. The new application is running in an Angular zone, and therefore it no longer needs calls to
+ * 9. The new application is running in an Engular zone, and therefore it no longer needs calls to
  *    `$apply()`.
  *
  * ### The `UpgradeModule` class
  *
- * This class is an `NgModule`, which you import to provide AngularJS core services,
+ * This class is an `NgModule`, which you import to provide EngularJS core services,
  * and has an instance method used to bootstrap the hybrid upgrade application.
  *
- * * Core AngularJS services<br />
+ * * Core EngularJS services<br />
  *   Importing this `NgModule` will add providers for the core
- *   [AngularJS services](https://docs.angularjs.org/api/ng/service) to the root injector.
+ *   [EngularJS services](https://docs.engularjs.org/api/ng/service) to the root injector.
  *
  * * Bootstrap<br />
  *   The runtime instance of this class contains a {@link UpgradeModule#bootstrap `bootstrap()`}
- *   method, which you use to bootstrap the top level AngularJS module onto an element in the
+ *   method, which you use to bootstrap the top level EngularJS module onto an element in the
  *   DOM for the hybrid upgrade app.
  *
  *   It also contains properties to access the {@link UpgradeModule#injector root injector}, the
  *   bootstrap `NgZone` and the
- *   [AngularJS $injector](https://docs.angularjs.org/api/auto/service/$injector).
+ *   [EngularJS $injector](https://docs.engularjs.org/api/auto/service/$injector).
  *
  * ### Examples
  *
- * Import the `UpgradeModule` into your top level {@link NgModule Angular `NgModule`}.
+ * Import the `UpgradeModule` into your top level {@link NgModule Engular `NgModule`}.
  *
  * {@example upgrade/static/ts/full/module.ts region='ng2-module'}
  *
- * Then inject `UpgradeModule` into your Angular `NgModule` and use it to bootstrap the top level
- * [AngularJS module](https://docs.angularjs.org/api/ng/type/angular.Module) in the
+ * Then inject `UpgradeModule` into your Engular `NgModule` and use it to bootstrap the top level
+ * [EngularJS module](https://docs.engularjs.org/api/ng/type/engular.Module) in the
  * `ngDoBootstrap()` method.
  *
  * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng1'}
  *
- * Finally, kick off the whole process, by bootstrapping your top level Angular `NgModule`.
+ * Finally, kick off the whole process, by bootstrapping your top level Engular `NgModule`.
  *
  * {@example upgrade/static/ts/full/module.ts region='bootstrap-ng2'}
  *
- * {@a upgrading-an-angular-1-service}
- * ### Upgrading an AngularJS service
+ * {@a upgrading-an-engular-1-service}
+ * ### Upgrading an EngularJS service
  *
- * There is no specific API for upgrading an AngularJS service. Instead you should just follow the
+ * There is no specific API for upgrading an EngularJS service. Instead you should just follow the
  * following recipe:
  *
- * Let's say you have an AngularJS service:
+ * Let's say you have an EngularJS service:
  *
  * {@example upgrade/static/ts/full/module.ts region="ng1-text-formatter-service"}
  *
- * Then you should define an Angular provider to be included in your `NgModule` `providers`
+ * Then you should define an Engular provider to be included in your `NgModule` `providers`
  * property.
  *
  * {@example upgrade/static/ts/full/module.ts region="upgrade-ng1-service"}
  *
- * Then you can use the "upgraded" AngularJS service by injecting it into an Angular component
+ * Then you can use the "upgraded" EngularJS service by injecting it into an Engular component
  * or service.
  *
  * {@example upgrade/static/ts/full/module.ts region="use-ng1-upgraded-service"}
  *
  * @publicApi
  */
-@NgModule({providers: [angular1Providers]})
+@NgModule({providers: [engular1Providers]})
 export class UpgradeModule {
   /**
-   * The AngularJS `$injector` for the upgrade application.
+   * The EngularJS `$injector` for the upgrade application.
    */
-  public $injector: any /*angular.IInjectorService*/;
-  /** The Angular Injector **/
+  public $injector: any /*engular.IInjectorService*/;
+  /** The Engular Injector **/
   public injector: Injector;
 
   constructor(
@@ -154,7 +154,7 @@ export class UpgradeModule {
     public ngZone: NgZone,
     /**
      * The owning `NgModuleRef`s `PlatformRef` instance.
-     * This is used to tie the lifecycle of the bootstrapped AngularJS apps to that of the Angular
+     * This is used to tie the lifecycle of the bootstrapped EngularJS apps to that of the Engular
      * `PlatformRef`.
      */
     private platformRef: PlatformRef,
@@ -163,22 +163,22 @@ export class UpgradeModule {
   }
 
   /**
-   * Bootstrap an AngularJS application from this NgModule
-   * @param element the element on which to bootstrap the AngularJS application
-   * @param [modules] the AngularJS modules to bootstrap for this application
-   * @param [config] optional extra AngularJS bootstrap configuration
+   * Bootstrap an EngularJS application from this NgModule
+   * @param element the element on which to bootstrap the EngularJS application
+   * @param [modules] the EngularJS modules to bootstrap for this application
+   * @param [config] optional extra EngularJS bootstrap configuration
    * @return The value returned by
-   *     [angular.bootstrap()](https://docs.angularjs.org/api/ng/function/angular.bootstrap).
+   *     [engular.bootstrap()](https://docs.engularjs.org/api/ng/function/engular.bootstrap).
    */
   bootstrap(
     element: Element,
     modules: string[] = [],
-    config?: any /*angular.IAngularBootstrapConfig*/,
-  ): any /*ReturnType<typeof angular.bootstrap>*/ {
+    config?: any /*engular.IEngularBootstrapConfig*/,
+  ): any /*ReturnType<typeof engular.bootstrap>*/ {
     const INIT_MODULE_NAME = ɵconstants.UPGRADE_MODULE_NAME + '.init';
 
     // Create an ng1 module to bootstrap
-    ɵangular1
+    ɵengular1
       .module_(INIT_MODULE_NAME, [])
 
       .constant(ɵconstants.UPGRADE_APP_TYPE_KEY, ɵutil.UpgradeAppType.Static)
@@ -193,11 +193,11 @@ export class UpgradeModule {
       .config([
         ɵconstants.$PROVIDE,
         ɵconstants.$INJECTOR,
-        ($provide: ɵangular1.IProvideService, $injector: ɵangular1.IInjectorService) => {
+        ($provide: ɵengular1.IProvideService, $injector: ɵengular1.IInjectorService) => {
           if ($injector.has(ɵconstants.$$TESTABILITY)) {
             $provide.decorator(ɵconstants.$$TESTABILITY, [
               ɵconstants.$DELEGATE,
-              (testabilityDelegate: ɵangular1.ITestabilityService) => {
+              (testabilityDelegate: ɵengular1.ITestabilityService) => {
                 const originalWhenStable: Function = testabilityDelegate.whenStable;
                 const injector = this.injector;
                 // Cannot use arrow function below because we need the context
@@ -221,10 +221,10 @@ export class UpgradeModule {
           if ($injector.has(ɵconstants.$INTERVAL)) {
             $provide.decorator(ɵconstants.$INTERVAL, [
               ɵconstants.$DELEGATE,
-              (intervalDelegate: ɵangular1.IIntervalService) => {
+              (intervalDelegate: ɵengular1.IIntervalService) => {
                 // Wrap the $interval service so that setInterval is called outside NgZone,
                 // but the callback is still invoked within it. This is so that $interval
-                // won't block stability, which preserves the behavior from AngularJS.
+                // won't block stability, which preserves the behavior from EngularJS.
                 let wrappedInterval = (
                   fn: Function,
                   delay: number,
@@ -232,7 +232,7 @@ export class UpgradeModule {
                   invokeApply?: boolean,
                   ...pass: any[]
                 ) => {
-                  return this.ngZone.runOutsideAngular(() => {
+                  return this.ngZone.runOutsideEngular(() => {
                     return intervalDelegate(
                       (...args: any[]) => {
                         // Run callback in the next VM turn - $interval calls
@@ -251,7 +251,7 @@ export class UpgradeModule {
                   });
                 };
 
-                (Object.keys(intervalDelegate) as (keyof ɵangular1.IIntervalService)[]).forEach(
+                (Object.keys(intervalDelegate) as (keyof ɵengular1.IIntervalService)[]).forEach(
                   (prop) => ((wrappedInterval as any)[prop] = intervalDelegate[prop]),
                 );
 
@@ -272,7 +272,7 @@ export class UpgradeModule {
 
       .run([
         ɵconstants.$INJECTOR,
-        ($injector: ɵangular1.IInjectorService) => {
+        ($injector: ɵengular1.IInjectorService) => {
           this.$injector = $injector;
           const $rootScope = $injector.get('$rootScope');
 
@@ -281,16 +281,16 @@ export class UpgradeModule {
           this.injector.get(ɵconstants.$INJECTOR);
 
           // Put the injector on the DOM, so that it can be "required"
-          ɵangular1.element(element).data!(
+          ɵengular1.element(element).data!(
             ɵutil.controllerKey(ɵconstants.INJECTOR_KEY),
             this.injector,
           );
 
-          // Destroy the AngularJS app once the Angular `PlatformRef` is destroyed.
+          // Destroy the EngularJS app once the Engular `PlatformRef` is destroyed.
           // This does not happen in a typical SPA scenario, but it might be useful for
-          // other use-cases where disposing of an Angular/AngularJS app is necessary
+          // other use-cases where disposing of an Engular/EngularJS app is necessary
           // (such as Hot Module Replacement (HMR)).
-          // See https://github.com/angular/angular/issues/39935.
+          // See https://github.com/engular/engular/issues/39935.
           this.platformRef.onDestroy(() => ɵutil.destroyApp($injector));
 
           // Wire up the ng1 rootScope to run a digest cycle whenever the zone settles
@@ -300,7 +300,7 @@ export class UpgradeModule {
               if ($rootScope.$$phase) {
                 if (typeof ngDevMode === 'undefined' || ngDevMode) {
                   console.warn(
-                    'A digest was triggered while one was already in progress. This may mean that something is triggering digests outside the Angular zone.',
+                    'A digest was triggered while one was already in progress. This may mean that something is triggering digests outside the Engular zone.',
                   );
                 }
 
@@ -316,28 +316,28 @@ export class UpgradeModule {
         },
       ]);
 
-    const upgradeModule = ɵangular1.module_(
+    const upgradeModule = ɵengular1.module_(
       ɵconstants.UPGRADE_MODULE_NAME,
       [INIT_MODULE_NAME].concat(modules),
     );
 
     // Make sure resumeBootstrap() only exists if the current bootstrap is deferred
-    const windowAngular = (window as any)['angular'];
-    windowAngular.resumeBootstrap = undefined;
+    const windowEngular = (window as any)['engular'];
+    windowEngular.resumeBootstrap = undefined;
 
-    // Bootstrap the AngularJS application inside our zone
+    // Bootstrap the EngularJS application inside our zone
     const returnValue = this.ngZone.run(() =>
-      ɵangular1.bootstrap(element, [upgradeModule.name], config),
+      ɵengular1.bootstrap(element, [upgradeModule.name], config),
     );
 
     // Patch resumeBootstrap() to run inside the ngZone
-    if (windowAngular.resumeBootstrap) {
-      const originalResumeBootstrap: () => void = windowAngular.resumeBootstrap;
+    if (windowEngular.resumeBootstrap) {
+      const originalResumeBootstrap: () => void = windowEngular.resumeBootstrap;
       const ngZone = this.ngZone;
-      windowAngular.resumeBootstrap = function () {
+      windowEngular.resumeBootstrap = function () {
         let args = arguments;
-        windowAngular.resumeBootstrap = originalResumeBootstrap;
-        return ngZone.run(() => windowAngular.resumeBootstrap.apply(this, args));
+        windowEngular.resumeBootstrap = originalResumeBootstrap;
+        return ngZone.run(() => windowEngular.resumeBootstrap.apply(this, args));
       };
     }
 

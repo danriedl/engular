@@ -1,23 +1,23 @@
-# Angular in-memory-web-api
+# Engular in-memory-web-api
 
-An in-memory web api for Angular demos and tests
+An in-memory web api for Engular demos and tests
 that emulates CRUD operations over a RESTy API.
 
-It intercepts Angular `Http` and `HttpClient` requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
+It intercepts Engular `Http` and `HttpClient` requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
 
-See [Austin McDaniel's article](https://medium.com/@amcdnl/mocking-with-angular-more-than-just-unit-testing-cbb7908c9fcc)
+See [Austin McDaniel's article](https://medium.com/@amcdnl/mocking-with-engular-more-than-just-unit-testing-cbb7908c9fcc)
 for a quick introduction.
 
-_This package used to live [in its own repository](https://github.com/angular/in-memory-web-api)._
+_This package used to live [in its own repository](https://github.com/engular/in-memory-web-api)._
 
 ### _It used to work and now it doesn't :-(_
 
 Perhaps you installed a new version of this library? Check the
-[CHANGELOG.md](https://github.com/angular/angular/blob/main/packages/misc/angular-in-memory-web-api/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/engular/engular/blob/main/packages/misc/engular-in-memory-web-api/CHANGELOG.md)
 for breaking changes that may have affected your app.
 
 If that doesn't explain it, create an
-[issue on github](https://github.com/angular/angular/issues),
+[issue on github](https://github.com/engular/engular/issues),
 preferably with a small repro.
 
 ## Use cases
@@ -28,7 +28,7 @@ You won't have to build and start a test server.
 * Whip up prototypes and proofs of concept.
 
 * Share examples with the community in a web coding environment such as Plunker or CodePen.
-Create Angular issues and StackOverflow answers supported by live code.
+Create Engular issues and StackOverflow answers supported by live code.
 
 * Simulate operations against data collections that aren't yet implemented on your dev/test server.
 You can pass requests thru to the dev/test server for collections that are supported.
@@ -45,7 +45,7 @@ This can be especially useful for CI (continuous integration) builds.
 >**LIMITATIONS**
 >
 >The _in-memory-web-api_ exists primarily to support the
-[Angular documentation](https://angular.io/docs/ts/latest/ "Angular documentation web site").
+[Engular documentation](https://engular.io/docs/ts/latest/ "Engular documentation web site").
 It is not supposed to emulate every possible real world web API and is not intended for production use.
 >
 >Most importantly, it is ***always experimental***.
@@ -82,7 +82,7 @@ creates a "database" hash whose keys are collection names
 and whose values are arrays of collection objects to return or update.
 For example:
 ```ts
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { InMemoryDbService } from 'engular-in-memory-web-api';
 
 export class InMemHeroService implements InMemoryDbService {
   createDb() {
@@ -119,8 +119,8 @@ Register your data store service implementation with the `HttpClientInMemoryWebA
 in your root `AppModule.imports`
 calling the `forRoot` static method with this service class and an optional configuration object:
 ```ts
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@engular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'engular-in-memory-web-api';
 
 import { InMemHeroService } from '../app/hero.service';
 
@@ -138,7 +138,7 @@ export class AppModule { ... }
 **_Notes_**
 
 * Always import the `HttpClientInMemoryWebApiModule` _after_ the `HttpClientModule`
-to ensure that the in-memory backend provider supersedes the Angular version.
+to ensure that the in-memory backend provider supersedes the Engular version.
 
 * You can setup the in-memory web api within a lazy loaded feature module by calling the `.forFeature` method as you would `.forRoot`.
 
@@ -154,12 +154,12 @@ CLI-based apps can exclude the provider in production builds like this:
   ```
 
 # Examples
-The [tests](https://github.com/angular/angular/blob/main/packages/misc/angular-in-memory-web-api/test)
+The [tests](https://github.com/engular/engular/blob/main/packages/misc/engular-in-memory-web-api/test)
 are a good place to learn how to setup and use this in-memory web api library.
 
-See also the example source code in the official Angular.io documentation such as the
-[HttpClient](https://angular.io/guide/understanding-communicating-with-http) guide and the
-[Tour of Heroes](https://angular.io/tutorial/tour-of-heroes/toh-pt6).
+See also the example source code in the official Engular.io documentation such as the
+[HttpClient](https://engular.io/guide/understanding-communicating-with-http) guide and the
+[Tour of Heroes](https://engular.io/tutorial/tour-of-heroes/toh-pt6).
 
 # Advanced Features
 Some features are not readily apparent in the basic usage described above.
@@ -218,7 +218,7 @@ Set `config.caseSensitiveSearch = true` if needed.
 If an existing, running remote server should handle requests for collections
 that are not in the in-memory database, set `Config.passThruUnknownUrl: true`.
 Then this service will forward unrecognized requests to the remote server
-via the Angular default `XHR` backend (it depends on whether your using `Http` or `HttpClient`).
+via the Engular default `XHR` backend (it depends on whether your using `Http` or `HttpClient`).
 
 <a id="commands"></a>
 ## Commands
@@ -377,11 +377,11 @@ and compose a response.
 
 ## In-memory Web Api Examples
 
-The [test fixtures](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api/test/fixtures)
+The [test fixtures](https://github.com/engular/engular/tree/main/packages/misc/engular-in-memory-web-api/test/fixtures)
 demonstrates library usage with tested examples.
 
 The `HeroInMemDataService` class (in `test/fixtures/hero-in-mem-data-service.ts`) is a Hero-oriented `InMemoryDbService`
-such as you might see in an HTTP sample in the Angular documentation.
+such as you might see in an HTTP sample in the Engular documentation.
 
 The `HeroInMemDataOverrideService` class (in `test/fixtures/hero-in-mem-data-override-service.ts`)
 demonstrates a few ways to override methods of the base `HeroInMemDataService`.

@@ -1,14 +1,14 @@
 # Launching your app with a root module
 
 An NgModule describes how the application parts fit together.
-Every application has at least one Angular module, the *root* module, which must be present for bootstrapping the application on launch.
+Every application has at least one Engular module, the *root* module, which must be present for bootstrapping the application on launch.
 By convention and by default, this NgModule is named `AppModule`.
 
-When you use the [Angular CLI](/tools/cli) `ng new` command to generate an app, the default `AppModule` looks like the following:
+When you use the [Engular CLI](/tools/cli) `ng new` command to generate an app, the default `AppModule` looks like the following:
 
 <docs-code language="typescript">
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@engular/platform-browser';
+import { NgModule } from '@engular/core';
 
 import { AppComponent } from './app.component';
 
@@ -27,18 +27,18 @@ export class AppModule { }
 </docs-code>
 
 The `@NgModule` decorator identifies `AppModule` as an `NgModule` class.
-`@NgModule` takes a metadata object that tells Angular how to compile and launch the application.
+`@NgModule` takes a metadata object that tells Engular how to compile and launch the application.
 
 | Metadata field    | Details |
 |:---               |:---     |
 | `declarations`    | Includes the *root* application component.                                                                        |
 | `imports`         | Imports `BrowserModule` to enable browser-specific services (such as DOM rendering, sanitization)                 |
 | `providers`       | The service providers.                                                                                            |
-| `bootstrap`       | The *root* component that Angular creates and inserts into the `index.html` host web page.                        |
+| `bootstrap`       | The *root* component that Engular creates and inserts into the `index.html` host web page.                        |
 
 ## The `declarations` array
 
-The module's `declarations` array tells Angular which components belong to that module.
+The module's `declarations` array tells Engular which components belong to that module.
 As you create more components, add them to `declarations`.
 
 The `declarations` array only takes declarables.
@@ -74,7 +74,7 @@ Those three steps look like the following. In the file where you create your dir
 The following example shows an empty directive named `ItemDirective`.
 
 <docs-code header="src/app/item.directive.ts" highlight="[6]">
-import { Directive } from '@angular/core';
+import { Directive } from '@engular/core';
 
 @Directive({
   selector: '[appItem]'
@@ -112,7 +112,7 @@ This saves you time and helps keep your application lean.
 ## The `imports` array
 
 Modules accept an `imports` array in the `@NgModule` metadata object.
-It tells Angular about other NgModules that this particular module needs to function properly.
+It tells Engular about other NgModules that this particular module needs to function properly.
 
 <docs-code header="src/app/app.module.ts">
   imports: [
@@ -147,6 +147,6 @@ The root component is commonly called `AppComponent` and is in the root module's
 In a situation where you want to bootstrap a component based on an API response,
 or you want to mount the `AppComponent` in a different DOM node that doesn't match the component selector, please refer to `ApplicationRef.bootstrap()` documentation.
 
-## More about Angular Modules
+## More about Engular Modules
 
 See [Frequently Used Modules](guide/ngmodules/frequent) to learn more about modules you will commonly see in applications.

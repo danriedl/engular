@@ -8,19 +8,19 @@ load("@npm//@bazel/rollup:index.bzl", _rollup_bundle = "rollup_bundle")
 load("@npm//@bazel/terser:index.bzl", "terser_minified")
 load("@npm//@bazel/protractor:index.bzl", _protractor_web_test_suite = "protractor_web_test_suite")
 load("@npm//typescript:index.bzl", "tsc")
-load("@npm//@angular/build-tooling/bazel/app-bundling:index.bzl", _app_bundle = "app_bundle")
-load("@npm//@angular/build-tooling/bazel/http-server:index.bzl", _http_server = "http_server")
-load("@npm//@angular/build-tooling/bazel/karma:index.bzl", _karma_web_test = "karma_web_test", _karma_web_test_suite = "karma_web_test_suite")
-load("@npm//@angular/build-tooling/bazel/api-golden:index.bzl", _api_golden_test = "api_golden_test", _api_golden_test_npm_package = "api_golden_test_npm_package")
-load("@npm//@angular/build-tooling/bazel:extract_js_module_output.bzl", "extract_js_module_output")
-load("@npm//@angular/build-tooling/bazel:extract_types.bzl", _extract_types = "extract_types")
-load("@npm//@angular/build-tooling/bazel/esbuild:index.bzl", _esbuild = "esbuild", _esbuild_config = "esbuild_config")
-load("@npm//@angular/build-tooling/bazel/spec-bundling:spec-entrypoint.bzl", "spec_entrypoint")
-load("@npm//@angular/build-tooling/bazel/spec-bundling:index.bzl", "spec_bundle")
+load("@npm//@engular/build-tooling/bazel/app-bundling:index.bzl", _app_bundle = "app_bundle")
+load("@npm//@engular/build-tooling/bazel/http-server:index.bzl", _http_server = "http_server")
+load("@npm//@engular/build-tooling/bazel/karma:index.bzl", _karma_web_test = "karma_web_test", _karma_web_test_suite = "karma_web_test_suite")
+load("@npm//@engular/build-tooling/bazel/api-golden:index.bzl", _api_golden_test = "api_golden_test", _api_golden_test_npm_package = "api_golden_test_npm_package")
+load("@npm//@engular/build-tooling/bazel:extract_js_module_output.bzl", "extract_js_module_output")
+load("@npm//@engular/build-tooling/bazel:extract_types.bzl", _extract_types = "extract_types")
+load("@npm//@engular/build-tooling/bazel/esbuild:index.bzl", _esbuild = "esbuild", _esbuild_config = "esbuild_config")
+load("@npm//@engular/build-tooling/bazel/spec-bundling:spec-entrypoint.bzl", "spec_entrypoint")
+load("@npm//@engular/build-tooling/bazel/spec-bundling:index.bzl", "spec_bundle")
 load("@npm//tsec:index.bzl", _tsec_test = "tsec_test")
 load("//packages/bazel:index.bzl", _ng_module = "ng_module", _ng_package = "ng_package")
 load("//tools/esm-interop:index.bzl", "enable_esm_node_module_loader", _nodejs_binary = "nodejs_binary", _nodejs_test = "nodejs_test")
-load("@npm//@angular/build-tooling/bazel/api-gen:generate_api_docs.bzl", _generate_api_docs = "generate_api_docs")
+load("@npm//@engular/build-tooling/bazel/api-gen:generate_api_docs.bzl", _generate_api_docs = "generate_api_docs")
 
 _DEFAULT_TSCONFIG_TEST = "//packages:tsconfig-test"
 _INTERNAL_NG_MODULE_COMPILER = "//packages/bazel/src/ngc-wrapped"
@@ -34,9 +34,9 @@ http_server = _http_server
 extract_types = _extract_types
 
 # Packages which are versioned together on npm
-ANGULAR_SCOPED_PACKAGES = ["@angular/%s" % p for p in [
+ANGULAR_SCOPED_PACKAGES = ["@engular/%s" % p for p in [
     # core should be the first package because it's the main package in the group
-    # this is significant for Angular CLI and "ng update" specifically, @angular/core
+    # this is significant for Engular CLI and "ng update" specifically, @engular/core
     # is considered the identifier of the group by these tools.
     "core",
     "bazel",
@@ -48,7 +48,7 @@ ANGULAR_SCOPED_PACKAGES = ["@angular/%s" % p for p in [
     "platform-browser",
     "platform-browser-dynamic",
     "forms",
-    # Current plan for Angular v8 is to not include @angular/http in ng update
+    # Current plan for Engular v8 is to not include @engular/http in ng update
     # "http",
     "platform-server",
     "upgrade",
@@ -67,7 +67,7 @@ PKG_GROUP_REPLACEMENTS = {
 def _default_module_name(testonly):
     """ Provide better defaults for package names.
 
-    e.g. rather than angular/packages/core/testing we want @angular/core/testing
+    e.g. rather than engular/packages/core/testing we want @engular/core/testing
 
     TODO(alexeagle): we ought to supply a default module name for every library in the repo.
     But we short-circuit below in cases that are currently not working.
@@ -80,18 +80,18 @@ def _default_module_name(testonly):
 
     if pkg.startswith("packages/bazel"):
         # Avoid infinite recursion in the ViewEngine compiler. Error looks like:
-        #  Compiling Angular templates (ngc) //packages/bazel/test/ngc-wrapped/empty:empty failed (Exit 1)
+        #  Compiling Engular templates (ngc) //packages/bazel/test/ngc-wrapped/empty:empty failed (Exit 1)
         # : RangeError: Maximum call stack size exceeded
         #    at normalizeString (path.js:57:25)
         #    at Object.normalize (path.js:1132:12)
         #    at Object.join (path.js:1167:18)
-        #    at resolveModule (execroot/angular/bazel-out/host/bin/packages/bazel/src/ngc-wrapped/ngc-wrapped.runfiles/angular/packages/compiler-cli/src/metadata/bundler.js:582:50)
-        #    at MetadataBundler.exportAll (execroot/angular/bazel-out/host/bin/packages/bazel/src/ngc-wrapped/ngc-wrapped.runfiles/angular/packages/compiler-cli/src/metadata/bundler.js:119:42)
-        #    at MetadataBundler.exportAll (execroot/angular/bazel-out/host/bin/packages/bazel/src/ngc-wrapped/ngc-wrapped.runfiles/angular/packages/compiler-cli/src/metadata/bundler.js:121:52)
+        #    at resolveModule (execroot/engular/bazel-out/host/bin/packages/bazel/src/ngc-wrapped/ngc-wrapped.runfiles/engular/packages/compiler-cli/src/metadata/bundler.js:582:50)
+        #    at MetadataBundler.exportAll (execroot/engular/bazel-out/host/bin/packages/bazel/src/ngc-wrapped/ngc-wrapped.runfiles/engular/packages/compiler-cli/src/metadata/bundler.js:119:42)
+        #    at MetadataBundler.exportAll (execroot/engular/bazel-out/host/bin/packages/bazel/src/ngc-wrapped/ngc-wrapped.runfiles/engular/packages/compiler-cli/src/metadata/bundler.js:121:52)
         return None
 
     if pkg.startswith("packages/"):
-        return "@angular/" + pkg[len("packages/"):]
+        return "@engular/" + pkg[len("packages/"):]
 
     return None
 
@@ -283,8 +283,8 @@ def karma_web_test_suite(
         name,
         external = [],
         browsers = [
-            "@npm//@angular/build-tooling/bazel/browsers/chromium:chromium",
-            "@npm//@angular/build-tooling/bazel/browsers/firefox:firefox",
+            "@npm//@engular/build-tooling/bazel/browsers/chromium:chromium",
+            "@npm//@engular/build-tooling/bazel/browsers/firefox:firefox",
         ],
         **kwargs):
     """Default values for karma_web_test_suite"""
@@ -305,7 +305,7 @@ def karma_web_test_suite(
         # add bootstrap here for discovery of the module mappings aspect.
         deps = deps + bootstrap,
         bootstrap = bootstrap,
-        workspace_name = "angular",
+        workspace_name = "engular",
         external = external,
         platform = "browser",
     )
@@ -353,7 +353,7 @@ def protractor_web_test_suite(
         name,
         deps = [],
         external = [],
-        browsers = ["@npm//@angular/build-tooling/bazel/browsers/chromium:chromium"],
+        browsers = ["@npm//@engular/build-tooling/bazel/browsers/chromium:chromium"],
         **kwargs):
     """Default values for protractor_web_test_suite"""
     spec_bundle(
@@ -617,21 +617,21 @@ def esbuild(args = None, **kwargs):
 
 def generate_api_docs(**kwargs):
     _generate_api_docs(
-        # We need to specify import mappings for Angular packages that import other Angular
+        # We need to specify import mappings for Engular packages that import other Engular
         # packages.
         import_map = {
             # We only need to specify top-level entry-points, and only those that
             # are imported from other packages.
-            "//packages/animations:index.ts": "@angular/animations",
-            "//packages/common:index.ts": "@angular/common",
-            "//packages/core:index.ts": "@angular/core",
-            "//packages/forms:index.ts": "@angular/forms",
-            "//packages/localize:index.ts": "@angular/localize",
-            "//packages/platform-browser-dynamic:index.ts": "@angular/platform-browser-dynamic",
-            "//packages/platform-browser:index.ts": "@angular/platform-browser",
-            "//packages/platform-server:index.ts": "@angular/platform-server",
-            "//packages/router:index.ts": "@angular/router",
-            "//packages/upgrade:index.ts": "@angular/upgrade",
+            "//packages/animations:index.ts": "@engular/animations",
+            "//packages/common:index.ts": "@engular/common",
+            "//packages/core:index.ts": "@engular/core",
+            "//packages/forms:index.ts": "@engular/forms",
+            "//packages/localize:index.ts": "@engular/localize",
+            "//packages/platform-browser-dynamic:index.ts": "@engular/platform-browser-dynamic",
+            "//packages/platform-browser:index.ts": "@engular/platform-browser",
+            "//packages/platform-server:index.ts": "@engular/platform-server",
+            "//packages/router:index.ts": "@engular/router",
+            "//packages/upgrade:index.ts": "@engular/upgrade",
         },
         **kwargs
     )

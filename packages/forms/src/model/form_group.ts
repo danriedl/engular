@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵWritable as Writable} from '@angular/core';
+import {ɵWritable as Writable} from '@engular/core';
 
 import {AsyncValidatorFn, ValidatorFn} from '../directives/validators';
 
@@ -16,7 +16,7 @@ import {AbstractControl, AbstractControlOptions, assertAllValuesPresent, assertC
  * FormGroupValue extracts the type of `.value` from a FormGroup's inner object type. The untyped
  * case falls back to {[key: string]: any}.
  *
- * Angular uses this type internally to support Typed Forms; do not use it directly.
+ * Engular uses this type internally to support Typed Forms; do not use it directly.
  *
  * For internal use only.
  */
@@ -27,7 +27,7 @@ export type ɵFormGroupValue<T extends {[K in keyof T]?: AbstractControl<any>}> 
  * FormGroupRawValue extracts the type of `.getRawValue()` from a FormGroup's inner object type. The
  * untyped case falls back to {[key: string]: any}.
  *
- * Angular uses this type internally to support Typed Forms; do not use it directly.
+ * Engular uses this type internally to support Typed Forms; do not use it directly.
  *
  * For internal use only.
  */
@@ -37,7 +37,7 @@ export type ɵFormGroupRawValue<T extends {[K in keyof T]?: AbstractControl<any>
 /**
  * OptionalKeys returns the union of all optional keys in the object.
  *
- * Angular uses this type internally to support Typed Forms; do not use it directly.
+ * Engular uses this type internally to support Typed Forms; do not use it directly.
  */
 export type ɵOptionalKeys<T> = {
   [K in keyof T] -?: undefined extends T[K] ? K : never
@@ -51,7 +51,7 @@ export type ɵOptionalKeys<T> = {
  * of its children. For example, if one of the controls in a group is invalid, the entire
  * group becomes invalid.
  *
- * `FormGroup` is one of the four fundamental building blocks used to define forms in Angular,
+ * `FormGroup` is one of the four fundamental building blocks used to define forms in Engular,
  * along with `FormControl`, `FormArray`, and `FormRecord`.
  *
  * When instantiating a `FormGroup`, pass in a collection of child controls as the first

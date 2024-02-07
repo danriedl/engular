@@ -1,6 +1,6 @@
 # Property binding
 
-Property binding in Angular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.
+Property binding in Engular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.
 
 ## Understanding the flow of data
 
@@ -24,13 +24,13 @@ In most cases, the target name is the name of a property, even when it appears t
 
 In this example, `src` is the name of the `<img>` element property.
 
-<!-- vale Angular.Google_WordListSuggestions = NO -->
+<!-- vale Engular.Google_WordListSuggestions = NO -->
 
-The brackets, `[]`, cause Angular to evaluate the right-hand side of the assignment as a dynamic expression.
+The brackets, `[]`, cause Engular to evaluate the right-hand side of the assignment as a dynamic expression.
 
-<!-- vale Angular.Google_WordListSuggestions = NO -->
+<!-- vale Engular.Google_WordListSuggestions = NO -->
 
-Without the brackets, Angular treats the right-hand side as a string literal and sets the property to that static value.
+Without the brackets, Engular treats the right-hand side as a string literal and sets the property to that static value.
 
 To assign a string to a property, type the following code:
 
@@ -72,15 +72,15 @@ To set the model property of a custom component for parent and child components 
 
 ## Toggling button features
 
-<!-- vale Angular.Google_WordListSuggestions = NO -->
+<!-- vale Engular.Google_WordListSuggestions = NO -->
 
 To use a Boolean value to disable a button's features, bind the `disabled` DOM attribute to a Boolean property in the class.
 
-<!-- vale Angular.Google_WordListSuggestions = YES -->
+<!-- vale Engular.Google_WordListSuggestions = YES -->
 
 <docs-code path="adev/src/content/examples/property-binding/src/app/app.component.html" visibleRegion="disabled-button" header="src/app/app.component.html"/>
 
-Because the value of the property `isUnchanged` is `true` in the `AppComponent`, Angular disables the button.
+Because the value of the property `isUnchanged` is `true` in the `AppComponent`, Engular disables the button.
 
 <docs-code path="adev/src/content/examples/property-binding/src/app/app.component.ts" visibleRegion="boolean" header="src/app/app.component.ts"/>
 

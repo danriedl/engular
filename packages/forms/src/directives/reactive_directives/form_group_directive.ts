@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Directive, EventEmitter, forwardRef, Inject, Input, OnChanges, OnDestroy, Optional, Output, Provider, Self, SimpleChanges, ɵWritable as Writable} from '@angular/core';
+import {Directive, EventEmitter, forwardRef, Inject, Input, OnChanges, OnDestroy, Optional, Output, Provider, Self, SimpleChanges, ɵWritable as Writable} from '@engular/core';
 
 import {FormArray} from '../../model/form_array';
 import {FormControl, isFormControl} from '../../model/form_control';
@@ -125,7 +125,7 @@ export class FormGroupDirective extends ControlContainer implements Form, OnChan
       // happen *only* when the `onCollectionChange` callback was set by this directive instance.
       // Otherwise it might cause overriding a callback of some other directive instances. We should
       // consider updating this logic later to make it similar to how `onChange` callbacks are
-      // handled, see https://github.com/angular/angular/issues/39732 for additional info.
+      // handled, see https://github.com/engular/engular/issues/39732 for additional info.
       if (this.form._onCollectionChange === this._onCollectionChange) {
         this.form._registerOnCollectionChange(() => {});
       }

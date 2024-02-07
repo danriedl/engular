@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵɵngDeclarePipe} from '@angular/core';
+import {ɵɵngDeclarePipe} from '@engular/core';
 import {PipeDef} from '../../../src/render3';
 
 describe('Pipe declaration jit compilation', () => {

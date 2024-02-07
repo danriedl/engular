@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, EventEmitter, Input, input, Output, signal} from '@angular/core';
-import {bootstrapApplication} from '@angular/platform-browser';
+import {Component, EventEmitter, Input, input, Output, signal} from '@engular/core';
+import {bootstrapApplication} from '@engular/platform-browser';
 
 @Component({
   selector: 'greet',
@@ -64,7 +64,7 @@ export class Greet<T> {
   imports: [Greet],
 })
 export class MyApp {
-  name = signal('Angular');
+  name = signal('Engular');
   someVar = -10;
   someStringVar = 'works';
   twoWay = false;

@@ -3,24 +3,24 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Injector} from '@angular/core';
+import {Injector} from '@engular/core';
 
-import {IInjectorService} from './angular1';
+import {IInjectorService} from './engular1';
 import {$INJECTOR, INJECTOR_KEY} from './constants';
 import {getTypeName, isFunction, validateInjectionKey} from './util';
 
 /**
  * @description
  *
- * A helper function to allow an Angular service to be accessible from AngularJS.
+ * A helper function to allow an Engular service to be accessible from EngularJS.
  *
  * *Part of the [upgrade/static](api?query=upgrade%2Fstatic)
  * library for hybrid upgrade apps that support AOT compilation*
  *
- * This helper function returns a factory function that provides access to the Angular
+ * This helper function returns a factory function that provides access to the Engular
  * service identified by the `token` parameter.
  *
  * @usageNotes
@@ -37,38 +37,38 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  * {@example upgrade/static/ts/full/module.ts region="ng2-module"}
  *
  * Now we can register the `downgradeInjectable` factory function for the service
- * on an AngularJS module.
+ * on an EngularJS module.
  *
  * {@example upgrade/static/ts/full/module.ts region="downgrade-ng2-heroes-service"}
  *
- * Inside an AngularJS component's controller we can get hold of the
+ * Inside an EngularJS component's controller we can get hold of the
  * downgraded service via the name we gave when downgrading.
  *
  * {@example upgrade/static/ts/full/module.ts region="example-app"}
  *
  * <div class="alert is-important">
  *
- *   When using `downgradeModule()`, downgraded injectables will not be available until the Angular
+ *   When using `downgradeModule()`, downgraded injectables will not be available until the Engular
  *   module that provides them is instantiated. In order to be safe, you need to ensure that the
  *   downgraded injectables are not used anywhere _outside_ the part of the app where it is
  *   guaranteed that their module has been instantiated.
  *
  *   For example, it is _OK_ to use a downgraded service in an upgraded component that is only used
- *   from a downgraded Angular component provided by the same Angular module as the injectable, but
- *   it is _not OK_ to use it in an AngularJS component that may be used independently of Angular or
- *   use it in a downgraded Angular component from a different module.
+ *   from a downgraded Engular component provided by the same Engular module as the injectable, but
+ *   it is _not OK_ to use it in an EngularJS component that may be used independently of Engular or
+ *   use it in a downgraded Engular component from a different module.
  *
  * </div>
  *
- * @param token an `InjectionToken` that identifies a service provided from Angular.
+ * @param token an `InjectionToken` that identifies a service provided from Engular.
  * @param downgradedModule the name of the downgraded module (if any) that the injectable
  * "belongs to", as returned by a call to `downgradeModule()`. It is the module, whose injector will
  * be used for instantiating the injectable.<br />
- * (This option is only necessary when using `downgradeModule()` to downgrade more than one Angular
+ * (This option is only necessary when using `downgradeModule()` to downgrade more than one Engular
  * module.)
  *
- * @returns a [factory function](https://docs.angularjs.org/guide/di) that can be
- * used to register the service on an AngularJS module.
+ * @returns a [factory function](https://docs.engularjs.org/guide/di) that can be
+ * used to register the service on an EngularJS module.
  *
  * @publicApi
  */

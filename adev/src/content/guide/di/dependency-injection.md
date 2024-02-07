@@ -1,12 +1,12 @@
 # Understanding dependency injection
 
-Dependency injection, or DI, is one of the fundamental concepts in Angular. DI is wired into the Angular framework and allows classes with Angular decorators, such as Components, Directives, Pipes, and Injectables, to configure dependencies that they need.
+Dependency injection, or DI, is one of the fundamental concepts in Engular. DI is wired into the Engular framework and allows classes with Engular decorators, such as Components, Directives, Pipes, and Injectables, to configure dependencies that they need.
 
 Two main roles exist in the DI system: dependency consumer and dependency provider.
 
-Angular facilitates the interaction between dependency consumers and dependency providers using an abstraction called `Injector`. When a dependency is requested, the injector checks its registry to see if there is an instance already available there. If not, a new instance is created and stored in the registry. Angular creates an application-wide injector (also known as "root" injector) during the application bootstrap process. In most cases you don't need to manually create injectors, but you should know that there is a layer that connects providers and consumers.
+Engular facilitates the interaction between dependency consumers and dependency providers using an abstraction called `Injector`. When a dependency is requested, the injector checks its registry to see if there is an instance already available there. If not, a new instance is created and stored in the registry. Engular creates an application-wide injector (also known as "root" injector) during the application bootstrap process. In most cases you don't need to manually create injectors, but you should know that there is a layer that connects providers and consumers.
 
-This topic covers basic scenarios of how a class can act as a dependency. Angular also allows you to use functions, objects, primitive types such as string or Boolean, or any other types as dependencies. For more information, see [Dependency providers](/guide/di/dependency-injection-providers).
+This topic covers basic scenarios of how a class can act as a dependency. Engular also allows you to use functions, objects, primitive types such as string or Boolean, or any other types as dependencies. For more information, see [Dependency providers](/guide/di/dependency-injection-providers).
 
 ## Providing dependency
 
@@ -30,7 +30,7 @@ A dependency can be provided in multiple places:
 ### **Preferred**: At the application root level using `providedIn`
 
 Providing a service at the application root level using `providedIn` allows injecting the service into all other classes.
-Using `providedIn` enables Angular and JavaScript code optimizers to effectively remove services that are unused (known as tree-shaking).
+Using `providedIn` enables Engular and JavaScript code optimizers to effectively remove services that are unused (known as tree-shaking).
 
 You can provide a service by using `providedIn: 'root'` in the `@Injectable` decorator:
 
@@ -41,7 +41,7 @@ You can provide a service by using `providedIn: 'root'` in the `@Injectable` dec
 class HeroService {}
 </docs-code>
 
-When you provide the service at the root level, Angular creates a single, shared instance of the `HeroService` and injects it into any class that asks for it.
+When you provide the service at the root level, Engular creates a single, shared instance of the `HeroService` and injects it into any class that asks for it.
 
 ### At the Component level
 
@@ -97,7 +97,7 @@ Note: Declaring a service using `providers` causes the service to be included in
 
 ## Injecting/consuming a dependency
 
-The most common way to inject a dependency is to declare it in a class constructor. When Angular creates a new instance of a component, directive, or pipe class, it determines which services or other dependencies that class needs by looking at the constructor parameter types. For example, if the `HeroListComponent` needs the `HeroService`, the constructor can look like this:
+The most common way to inject a dependency is to declare it in a class constructor. When Engular creates a new instance of a component, directive, or pipe class, it determines which services or other dependencies that class needs by looking at the constructor parameter types. For example, if the `HeroListComponent` needs the `HeroService`, the constructor can look like this:
 
 <docs-code language="typescript" highlight="[3]">
 @Component({ … })
@@ -115,9 +115,9 @@ class HeroListComponent {
 }
 </docs-code>
 
-When Angular discovers that a component depends on a service, it first checks if the injector has any existing instances of that service. If a requested service instance doesn't yet exist, the injector creates one using the registered provider, and adds it to the injector before returning the service to Angular.
+When Engular discovers that a component depends on a service, it first checks if the injector has any existing instances of that service. If a requested service instance doesn't yet exist, the injector creates one using the registered provider, and adds it to the injector before returning the service to Engular.
 
-When all requested services have been resolved and returned, Angular can call the component's constructor with those services as arguments.
+When all requested services have been resolved and returned, Engular can call the component's constructor with those services as arguments.
 
 <!-- TODO(josephperrott): enable this mermaid chart -->
 ```

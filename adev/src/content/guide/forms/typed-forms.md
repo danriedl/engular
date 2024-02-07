@@ -1,14 +1,14 @@
 # Typed Forms
 
-As of Angular 14, reactive forms are strictly typed by default.
+As of Engular 14, reactive forms are strictly typed by default.
 
-As background for this guide, you should already be familiar with [Angular Reactive Forms](guide/forms/reactive-forms).
+As background for this guide, you should already be familiar with [Engular Reactive Forms](guide/forms/reactive-forms).
 
 ## Overview of Typed Forms
 
-<docs-video src="https://www.youtube.com/embed/L-odCf4MfJc" alt="Typed Forms in Angular" />
+<docs-video src="https://www.youtube.com/embed/L-odCf4MfJc" alt="Typed Forms in Engular" />
 
-With Angular reactive forms, you explicitly specify a *form model*. As a simple example, consider this basic user login form:
+With Engular reactive forms, you explicitly specify a *form model*. As a simple example, consider this basic user login form:
 
 ```ts
 const login = new FormGroup({
@@ -17,9 +17,9 @@ const login = new FormGroup({
 });
 ```
 
-Angular provides many APIs for interacting with this `FormGroup`. For example, you may call `login.value`, `login.controls`, `login.patchValue`, etc. (For a full API reference, see the [API documentation](api/forms/FormGroup).)
+Engular provides many APIs for interacting with this `FormGroup`. For example, you may call `login.value`, `login.controls`, `login.patchValue`, etc. (For a full API reference, see the [API documentation](api/forms/FormGroup).)
 
-In previous Angular versions, most of these APIs included `any` somewhere in their types, and interacting with the structure of the controls, or the values themselves, was not type-safe. For example: you could write the following invalid code:
+In previous Engular versions, most of these APIs included `any` somewhere in their types, and interacting with the structure of the controls, or the values themselves, was not type-safe. For example: you could write the following invalid code:
 
 ```ts
 const emailDomain = login.value.email.domain;
@@ -33,7 +33,7 @@ These improvements currently apply only to *reactive* forms (not [*template-driv
 
 ## Untyped Forms
 
-Non-typed forms are still supported, and will continue to work as before. To use them, you must import the `Untyped` symbols from `@angular/forms`:
+Non-typed forms are still supported, and will continue to work as before. To use them, you must import the `Untyped` symbols from `@engular/forms`:
 
 ```ts
 const login = new UntypedFormGroup({
@@ -42,14 +42,14 @@ const login = new UntypedFormGroup({
 });
 ```
 
-Each `Untyped` symbol has exactly the same semantics as in previous Angular version. By removing the `Untyped` prefixes, you can incrementally enable the types.
+Each `Untyped` symbol has exactly the same semantics as in previous Engular version. By removing the `Untyped` prefixes, you can incrementally enable the types.
 
 ## `FormControl`: Getting Started
 
 The simplest possible form consists of a single control:
 
 ```ts
-const email = new FormControl('angularrox@gmail.com');
+const email = new FormControl('engularrox@gmail.com');
 ```
 
 This control will be automatically inferred to have the type `FormControl<string|null>`. TypeScript will automatically enforce this type throughout the [`FormControl` API](api/forms/FormControl), such as `email.value`, `email.valueChanges`, `email.setValue(...)`, etc.
@@ -59,7 +59,7 @@ This control will be automatically inferred to have the type `FormControl<string
 You might wonder: why does the type of this control include `null`?  This is because the control can become `null` at any time, by calling reset:
 
 ```ts
-const email = new FormControl('angularrox@gmail.com');
+const email = new FormControl('engularrox@gmail.com');
 email.reset();
 console.log(email.value); // null
 ```
@@ -67,9 +67,9 @@ console.log(email.value); // null
 TypeScript will enforce that you always handle the possibility that the control has become `null`. If you want to make this control non-nullable, you may use the `nonNullable` option. This will cause the control to reset to its initial value, instead of `null`:
 
 ```ts
-const email = new FormControl('angularrox@gmail.com', {nonNullable: true});
+const email = new FormControl('engularrox@gmail.com', {nonNullable: true});
 email.reset();
-console.log(email.value); // angularrox@gmail.com
+console.log(email.value); // engularrox@gmail.com
 ```
 
 To reiterate, this option affects the runtime behavior of your form when `.reset()` is called, and should be flipped with care.
@@ -80,14 +80,14 @@ It is possible to specify the type, instead of relying on inference. Consider a 
 
 ```ts
 const email = new FormControl(null);
-email.setValue('angularrox@gmail.com'); // Error!
+email.setValue('engularrox@gmail.com'); // Error!
 ```
 
 To prevent this, we explicitly specify the type as `string|null`:
 
 ```ts
 const email = new FormControl<string|null>(null);
-email.setValue('angularrox@gmail.com');
+email.setValue('engularrox@gmail.com');
 ```
 
 ## `FormArray`: Dynamic, Homogenous Collections
@@ -105,7 +105,7 @@ If you want to have multiple different element types inside the array, you must 
 
 ## `FormGroup` and `FormRecord`
 
-Angular provides the `FormGroup` type for forms with an enumerated set of keys, and a type called `FormRecord`, for open-ended or dynamic groups.
+Engular provides the `FormGroup` type for forms with an enumerated set of keys, and a type called `FormRecord`, for open-ended or dynamic groups.
 
 ### Partial Values
 

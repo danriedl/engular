@@ -14,8 +14,8 @@ ts_config(
 )
 
 platform(
-    name = "rbe_ubuntu1604-angular",
-    parents = ["@rbe_ubuntu1604_angular//config:platform"],
+    name = "rbe_ubuntu1604-engular",
+    parents = ["@rbe_ubuntu1604_engular//config:platform"],
     remote_execution_properties = """
         {PARENT_REMOTE_EXECUTION_PROPERTIES}
         properties: {

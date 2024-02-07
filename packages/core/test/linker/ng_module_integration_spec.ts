@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Compiler, Component, CUSTOM_ELEMENTS_SCHEMA, Directive, forwardRef, getModuleFactory, getNgModuleById, HostBinding, Inject, Injectable, InjectionToken, Injector, Input, NgModule, NgModuleRef, Optional, Pipe, Provider, Self, Type} from '@angular/core';
-import {ɵɵdefineInjectable} from '@angular/core/src/di/interface/defs';
-import {NgModuleType} from '@angular/core/src/render3';
-import {getNgModuleDef} from '@angular/core/src/render3/definition';
-import {ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import {Compiler, Component, CUSTOM_ELEMENTS_SCHEMA, Directive, forwardRef, getModuleFactory, getNgModuleById, HostBinding, Inject, Injectable, InjectionToken, Injector, Input, NgModule, NgModuleRef, Optional, Pipe, Provider, Self, Type} from '@engular/core';
+import {ɵɵdefineInjectable} from '@engular/core/src/di/interface/defs';
+import {NgModuleType} from '@engular/core/src/render3';
+import {getNgModuleDef} from '@engular/core/src/render3/definition';
+import {ComponentFixture, inject, TestBed} from '@engular/core/testing';
 
 import {InternalNgModuleRef, NgModuleFactory} from '../../src/linker/ng_module_factory';
 import {clearModulesForTest, setAllowDuplicateNgModuleIdsForTest} from '../../src/linker/ng_module_registration';

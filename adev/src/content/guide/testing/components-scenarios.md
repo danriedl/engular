@@ -35,9 +35,9 @@ expected '' to contain 'Test Tour of Heroes'.
 
 </docs-code>
 
-Binding happens when Angular performs **change detection**.
+Binding happens when Engular performs **change detection**.
 
-In production, change detection kicks in automatically when Angular creates a component or the user enters a keystroke or an asynchronous activity \(for example, AJAX\) completes.
+In production, change detection kicks in automatically when Engular creates a component or the user enters a keystroke or an asynchronous activity \(for example, AJAX\) completes.
 
 The `TestBed.createComponent` does *not* trigger change detection; a fact confirmed in the revised test:
 
@@ -51,7 +51,7 @@ Only then does the `<h1>` have the expected title.
 <docs-code path="adev/src/content/examples/testing/src/app/banner/banner.component.spec.ts" visibleRegion="expect-h1-default"/>
 
 Delayed change detection is intentional and useful.
-It gives the tester an opportunity to inspect and change the state of the component *before Angular initiates data binding and calls [lifecycle hooks](guide/components/lifecycle)*.
+It gives the tester an opportunity to inspect and change the state of the component *before Engular initiates data binding and calls [lifecycle hooks](guide/components/lifecycle)*.
 
 Here's another test that changes the component's `title` property *before* calling `fixture.detectChanges()`.
 
@@ -60,7 +60,7 @@ Here's another test that changes the component's `title` property *before* calli
 ### Automatic change detection
 
 The `BannerComponent` tests frequently call `detectChanges`.
-Some testers prefer that the Angular test environment run change detection automatically.
+Some testers prefer that the Engular test environment run change detection automatically.
 
 That's possible by configuring the `TestBed` with the `ComponentFixtureAutoDetect` provider.
 First import it from the testing utility library:
@@ -78,7 +78,7 @@ Here are three tests that illustrate how automatic change detection works.
 The first test shows the benefit of automatic change detection.
 
 The second and third test reveal an important limitation.
-The Angular testing environment does *not* know that the test changed the component's `title`.
+The Engular testing environment does *not* know that the test changed the component's `title`.
 The `ComponentFixtureAutoDetect` service responds to *asynchronous activities* such as promise resolution, timers, and DOM events.
 But a direct, synchronous update of the component property is invisible.
 The test must call `fixture.detectChanges()` manually to trigger another cycle of change detection.
@@ -90,10 +90,10 @@ There is no harm in calling `detectChanges()` more often than is strictly necess
 
 To simulate user input, find the input element and set its `value` property.
 
-You will call `fixture.detectChanges()` to trigger Angular's change detection.
+You will call `fixture.detectChanges()` to trigger Engular's change detection.
 But there is an essential, intermediate step.
 
-Angular doesn't know that you set the input element's `value` property.
+Engular doesn't know that you set the input element's `value` property.
 It won't read that property until you raise the element's `input` event by calling `dispatchEvent()`.
 *Then* you call `detectChanges()`.
 
@@ -109,7 +109,7 @@ Many components specify *external templates* and *external css* with the `@Compo
 
 <docs-code header="app/banner/banner-external.component.ts (metadata)" path="adev/src/content/examples/testing/src/app/banner/banner-external.component.ts" visibleRegion="metadata"/>
 
-This syntax tells the Angular compiler to read the external files during component compilation.
+This syntax tells the Engular compiler to read the external files during component compilation.
 
 That's not a problem when you run the CLI `ng test` command because it *compiles the application before running the tests*.
 
@@ -165,7 +165,7 @@ This particular test suite supplies a minimal mock of the `UserService` that sat
 
 The tests need access to the stub `UserService` injected into the `WelcomeComponent`.
 
-Angular has a hierarchical injection system.
+Engular has a hierarchical injection system.
 There can be injectors at multiple levels, from the root injector created by the `TestBed` down through the component tree.
 
 The safest way to get the injected service, the way that ***always works***,
@@ -178,7 +178,7 @@ The component injector is a property of the fixture's `DebugElement`.
 
 You *might* also be able to get the service from the root injector using `TestBed.inject()`.
 This is easier to remember and less verbose.
-But it only works when Angular injects the component with the service instance in the test's root injector.
+But it only works when Engular injects the component with the service instance in the test's root injector.
 
 In this test suite, the *only* provider of `UserService` is the root testing module, so it is safe to call `TestBed.inject()` as follows:
 
@@ -252,7 +252,7 @@ A key advantage of a synchronous `Observable` is that you can often turn asynchr
 
 <docs-code path="adev/src/content/examples/testing/src/app/twain/twain.component.spec.ts" visibleRegion="sync-test"/>
 
-Because the spy result returns synchronously, the `getQuote()` method updates the message on screen immediately *after* the first change detection cycle during which Angular calls `ngOnInit`.
+Because the spy result returns synchronously, the `getQuote()` method updates the message on screen immediately *after* the first change detection cycle during which Engular calls `ngOnInit`.
 
 You're not so lucky when testing the error path.
 Although the service spy will return an error synchronously, the component method calls `setTimeout()`.
@@ -262,7 +262,7 @@ The test must become *asynchronous*.
 ### Async test with `fakeAsync()`
 
 To use `fakeAsync()` functionality, you must import `zone.js/testing` in your test setup file.
-If you created your project with the Angular CLI, `zone-testing` is already imported in `src/test.ts`.
+If you created your project with the Engular CLI, `zone-testing` is already imported in `src/test.ts`.
 
 The following test confirms the expected behavior when the service returns an `ErrorObservable`.
 
@@ -296,7 +296,7 @@ The optional `tickOptions` parameter has a property named `processNewMacroTasksS
 
 <docs-code path="adev/src/content/examples/testing/src/app/demo/async-helper.spec.ts" visibleRegion="fake-async-test-tick"/>
 
-The [tick()](api/core/testing/tick) function is one of the Angular testing utilities that you import with `TestBed`.
+The [tick()](api/core/testing/tick) function is one of the Engular testing utilities that you import with `TestBed`.
 It's a companion to `fakeAsync()` and you can only call it within a `fakeAsync()` body.
 
 ### tickOptions
@@ -318,13 +318,13 @@ In some case, you don't want to trigger the new macro task when ticking. You can
 ### jasmine.clock with fakeAsync()
 
 Jasmine also provides a `clock` feature to mock dates.
-Angular automatically runs tests that are run after `jasmine.clock().install()` is called inside a `fakeAsync()` method until `jasmine.clock().uninstall()` is called.
+Engular automatically runs tests that are run after `jasmine.clock().install()` is called inside a `fakeAsync()` method until `jasmine.clock().uninstall()` is called.
 `fakeAsync()` is not needed and throws an error if nested.
 
 By default, this feature is disabled.
 To enable it, set a global flag before importing `zone-testing`.
 
-If you use the Angular CLI, configure this flag in `src/test.ts`.
+If you use the Engular CLI, configure this flag in `src/test.ts`.
 
 <docs-code language="typescript">
 
@@ -411,14 +411,14 @@ Notice that the quote element displays the placeholder value \(`'...'`\) after `
 The first quote hasn't arrived yet.
 
 To flush the first quote from the observable, you call [tick()](api/core/testing/tick).
-Then call `detectChanges()` to tell Angular to update the screen.
+Then call `detectChanges()` to tell Engular to update the screen.
 
 Then you can assert that the quote element displays the expected text.
 
 ### Async test with `waitForAsync()`
 
 To use `waitForAsync()` functionality, you must import `zone.js/testing` in your test setup file.
-If you created your project with the Angular CLI, `zone-testing` is already imported in `src/test.ts`.
+If you created your project with the Engular CLI, `zone-testing` is already imported in `src/test.ts`.
 
 Here's the previous `fakeAsync()` test, re-written with the `waitForAsync()` utility.
 
@@ -443,7 +443,7 @@ The test resumes within the promise callback, which calls `detectChanges()` to u
 
 ### Jasmine `done()`
 
-While the `waitForAsync()` and `fakeAsync()` functions greatly simplify Angular asynchronous testing, you can still fall back to the traditional technique and pass `it` a function that takes a [`done` callback](https://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support).
+While the `waitForAsync()` and `fakeAsync()` functions greatly simplify Engular asynchronous testing, you can still fall back to the traditional technique and pass `it` a function that takes a [`done` callback](https://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support).
 
 You can't call `done()` in `waitForAsync()` or `fakeAsync()` functions, because the `done parameter` is `undefined`.
 
@@ -571,7 +571,7 @@ A quick look at the `DashboardComponent` constructor discourages the first appro
 
 <docs-code header="app/dashboard/dashboard.component.ts (constructor)" path="adev/src/content/examples/testing/src/app/dashboard/dashboard.component.ts" visibleRegion="ctor"/>
 
-The `DashboardComponent` depends on the Angular router and the `HeroService`.
+The `DashboardComponent` depends on the Engular router and the `HeroService`.
 You'd probably have to replace them both with test doubles, which is a lot of work.
 The router seems particularly challenging.
 
@@ -591,9 +591,9 @@ The following test verifies that the hero name is propagated to the template usi
 
 <docs-code path="adev/src/content/examples/testing/src/app/dashboard/dashboard-hero.component.spec.ts" visibleRegion="name-test"/>
 
-Because the [template](#dashboard-hero-component) passes the hero name through the Angular `UpperCasePipe`, the test must match the element value with the upper-cased name.
+Because the [template](#dashboard-hero-component) passes the hero name through the Engular `UpperCasePipe`, the test must match the element value with the upper-cased name.
 
-HELPFUL: This small test demonstrates how Angular tests can verify a component's visual representation &mdash;something not possible with [component class tests](guide/testing/components-basics#component-class-testing)&mdash; at low cost and without resorting to much slower and more complicated end-to-end tests.
+HELPFUL: This small test demonstrates how Engular tests can verify a component's visual representation &mdash;something not possible with [component class tests](guide/testing/components-basics#component-class-testing)&mdash; at low cost and without resorting to much slower and more complicated end-to-end tests.
 
 ### Clicking
 
@@ -612,11 +612,11 @@ The test detects that event through its subscription to `selected`.
 
 The `heroDe` in the previous test is a `DebugElement` that represents the hero `<div>`.
 
-It has Angular properties and methods that abstract interaction with the native element.
+It has Engular properties and methods that abstract interaction with the native element.
 This test calls the `DebugElement.triggerEventHandler` with the "click" event name.
 The "click" event binding responds by calling `DashboardHeroComponent.click()`.
 
-The Angular `DebugElement.triggerEventHandler` can raise *any data-bound event* by its *event name*.
+The Engular `DebugElement.triggerEventHandler` can raise *any data-bound event* by its *event name*.
 The second parameter is the event object passed to the handler.
 
 The test triggered a "click" event.
@@ -647,7 +647,7 @@ The first parameter is the *element-to-click*.
 If you want, pass a custom event object as the second parameter.
 The default is a partial [left-button mouse event object](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) accepted by many handlers including the `RouterLink` directive.
 
-IMPORTANT: The `click()` helper function is **not** one of the Angular testing utilities.
+IMPORTANT: The `click()` helper function is **not** one of the Engular testing utilities.
 It's a function defined in *this guide's sample code*.
 All of the sample tests use it.
 If you like it, add it to your own collection of helpers.
@@ -709,7 +709,7 @@ Testing the `DashboardComponent` seemed daunting in part because it involves the
 
 <docs-code header="app/dashboard/dashboard.component.ts (goToDetail)" path="adev/src/content/examples/testing/src/app/dashboard/dashboard.component.ts" visibleRegion="goto-detail" />
 
-Angular provides test helpers to reduce boilerplate and more effectively test code which depends on the Router and HttpClient.
+Engular provides test helpers to reduce boilerplate and more effectively test code which depends on the Router and HttpClient.
 
 <docs-code header="app/dashboard/dashboard.component.spec.ts" path="adev/src/content/examples/testing/src/app/dashboard/dashboard.component.spec.ts" visibleRegion="router-harness"/>
 
@@ -776,7 +776,7 @@ The `BannerComponent` and `WelcomeComponent` \(indicated by `<app-banner>` and `
 
 Yet any test that creates the `AppComponent` in the DOM also creates instances of these three components and, if you let that happen, you'll have to configure the `TestBed` to create them.
 
-If you neglect to declare them, the Angular compiler won't recognize the `<app-banner>`, `<app-welcome>`, and `<router-outlet>` tags in the `AppComponent` template and will throw an error.
+If you neglect to declare them, the Engular compiler won't recognize the `<app-banner>`, `<app-welcome>`, and `<router-outlet>` tags in the `AppComponent` template and will throw an error.
 
 If you declare the real components, you'll also have to declare *their* nested components and provide for *all* services injected in *any* component in the tree.
 
@@ -808,7 +808,7 @@ In the second approach, add `NO_ERRORS_SCHEMA` to the `TestBed.schemas` metadata
 
 <docs-code header="app/app.component.spec.ts (NO_ERRORS_SCHEMA)" path="adev/src/content/examples/testing/src/app/app.component.spec.ts" visibleRegion="no-errors-schema"/>
 
-The `NO_ERRORS_SCHEMA` tells the Angular compiler to ignore unrecognized elements and attributes.
+The `NO_ERRORS_SCHEMA` tells the Engular compiler to ignore unrecognized elements and attributes.
 
 The compiler recognizes the `<app-root>` element and the `routerLink` attribute because you declared a corresponding `AppComponent` and `RouterLink` in the `TestBed` configuration.
 
@@ -833,7 +833,7 @@ In practice you will combine the two techniques in the same setup, as seen in th
 
 <docs-code header="app/app.component.spec.ts (mixed setup)" path="adev/src/content/examples/testing/src/app/app.component.spec.ts" visibleRegion="mixed-setup"/>
 
-The Angular compiler creates the `BannerStubComponent` for the `<app-banner>` element and applies the `RouterLink` to the anchors with the `routerLink` attribute, but it ignores the `<app-welcome>` and `<router-outlet>` tags.
+The Engular compiler creates the `BannerStubComponent` for the `<app-banner>` element and applies the `RouterLink` to the anchors with the `routerLink` attribute, but it ignores the `<app-welcome>` and `<router-outlet>` tags.
 
 ### `By.directive` and injected directives
 
@@ -1015,7 +1015,7 @@ One approach is to configure the testing module from the individual pieces as in
 
 HELPFUL: Notice that the `beforeEach()` is asynchronous and calls `TestBed.compileComponents` because the `HeroDetailComponent` has an external template and css file.
 
-As explained in [Calling `compileComponents()`](#compile-components), these tests could be run in a non-CLI environment where Angular would have to compile them in the browser.
+As explained in [Calling `compileComponents()`](#compile-components), these tests could be run in a non-CLI environment where Engular would have to compile them in the browser.
 
 ### Import a shared module
 
@@ -1037,7 +1037,7 @@ Try a test configuration that imports the `HeroModule` like this one:
 Only the *test doubles* in the `providers` remain.
 Even the `HeroDetailComponent` declaration is gone.
 
-In fact, if you try to declare it, Angular will throw an error because `HeroDetailComponent` is declared in both the `HeroModule` and the `DynamicTestModule` created by the `TestBed`.
+In fact, if you try to declare it, Engular will throw an error because `HeroDetailComponent` is declared in both the `HeroModule` and the `DynamicTestModule` created by the `TestBed`.
 
 HELPFUL: Importing the component's feature module can be the best way to configure tests when there are many mutual dependencies within the module and the module is small, as feature modules tend to be.
 
@@ -1051,13 +1051,13 @@ It's not possible to stub the component's `HeroDetailService` in the `providers`
 Those are providers for the *testing module*, not the component.
 They prepare the dependency injector at the *fixture level*.
 
-Angular creates the component with its *own* injector, which is a *child* of the fixture injector.
+Engular creates the component with its *own* injector, which is a *child* of the fixture injector.
 It registers the component's providers \(the `HeroDetailService` in this case\) with the child injector.
 
 A test cannot get to child injector services from the fixture injector.
 And `TestBed.configureTestingModule` can't configure them either.
 
-Angular has created new instances of the real `HeroDetailService` all along!
+Engular has created new instances of the real `HeroDetailService` all along!
 
 HELPFUL: These tests could fail or timeout if the `HeroDetailService` made its own XHR calls to a remote server.
 There might not be a remote server to call.

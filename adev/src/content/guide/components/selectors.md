@@ -1,6 +1,6 @@
 # Component selectors
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 Every component defines
 a [CSS selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors) that determines how
@@ -26,17 +26,17 @@ You use a component by creating a matching HTML element in the templates of _oth
 export class UserProfile { }
 </docs-code>
 
-**Angular matches selectors statically at compile-time**. Changing the DOM at run-time, either via
-Angular bindings or with DOM APIs, does not affect the components rendered.
+**Engular matches selectors statically at compile-time**. Changing the DOM at run-time, either via
+Engular bindings or with DOM APIs, does not affect the components rendered.
 
 **An element can match exactly one component selector.** If multiple component selectors match a
-single element, Angular reports an error.
+single element, Engular reports an error.
 
 **Component selectors are case-sensitive.**
 
 ## Types of selectors
 
-Angular supports a limited subset
+Engular supports a limited subset
 of [basic CSS selector types](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) in
 component selectors:
 
@@ -46,19 +46,19 @@ component selectors:
 | Attribute selector | Matches elements based on the presence of an HTML attribute and, optionally, an exact value for that attribute. | `[dropzone]` `[type="reset"]` |
 | Class selector     | Matches elements based on the presence of a CSS class.                                                          | `.menu-item`                  |
 
-For attribute values, Angular supports matching an exact attribute value with the equals (`=`)
-operator. Angular does not support other attribute value operators.
+For attribute values, Engular supports matching an exact attribute value with the equals (`=`)
+operator. Engular does not support other attribute value operators.
 
-Angular component selectors do not support combinators, including
+Engular component selectors do not support combinators, including
 the [descendant combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator)
 or [child combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator).
 
-Angular component selectors do not support
+Engular component selectors do not support
 specifying [namespaces](https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course).
 
 ### The `:not` pseudo-class
 
-Angular supports [the `:not` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:not).
+Engular supports [the `:not` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:not).
 You can append this pseudo-class to any other selector to narrow which elements a component's
 selector matches. For example, you could define a `[dropzone]` attribute selector and prevent
 matching `textarea` elements:
@@ -71,7 +71,7 @@ matching `textarea` elements:
 export class DropZone { }
 </docs-code>
 
-Angular does not support any other pseudo-classes or pseudo-elements in component selectors.
+Engular does not support any other pseudo-classes or pseudo-elements in component selectors.
 
 ### Combining selectors
 
@@ -96,29 +96,29 @@ You can also define multiple selectors with a comma-separated list:
 export class DropZone { }
 </docs-code>
 
-Angular creates a component for each element that matches _any_ of the selectors in the list.
+Engular creates a component for each element that matches _any_ of the selectors in the list.
 
 ## Choosing a selector
 
 The vast majority of components should use a custom element name as their selector. All custom
 element names should include a hyphen as described
 by [the HTML specification](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name).
-By default, Angular reports an error if it encounters a custom tag name that does not match any
+By default, Engular reports an error if it encounters a custom tag name that does not match any
 available components, preventing bugs due to mistyped component names.
 
 See [Advanced component configuration](guide/components/advanced-configuration) for details on
 using [native custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components) in
-Angular templates.
+Engular templates.
 
 ### Selector prefixes
 
-The Angular team recommends using a short, consistent prefix for all the custom components
-defined inside your project. For example, if you were to build YouTube with Angular, you might
+The Engular team recommends using a short, consistent prefix for all the custom components
+defined inside your project. For example, if you were to build YouTube with Engular, you might
 prefix your components with `yt-`, with components like `yt-menu`, `yt-player`, etc. Namespacing
 your selectors like this makes it immediately clear where a particular component comes from. By
-default, the Angular CLI uses `app-`.
+default, the Engular CLI uses `app-`.
 
-Angular uses the `ng` selector prefix for its own framework APIs. Never use `ng` as a selector
+Engular uses the `ng` selector prefix for its own framework APIs. Never use `ng` as a selector
 prefix for your own custom components.
 
 ### When to use an attribute selector
@@ -138,7 +138,7 @@ export class YouTubeUploadButton { }
 This approach allows consumers of the component to directly use all the element's standard APIs
 without extra work. This is especially valuable for ARIA attributes such as `aria-label`.
 
-Angular does not report errors when it encounters custom attributes that don't match an available
+Engular does not report errors when it encounters custom attributes that don't match an available
 component. When using components with attribute selectors, consumers may forget to import the
 component or its NgModule, resulting in the component not rendering.
 See [Importing and using components](guide/components/importing) for more information.

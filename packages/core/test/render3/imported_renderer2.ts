@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {PLATFORM_BROWSER_ID, PLATFORM_SERVER_ID} from '@angular/common/src/platform_id';
-import {NgZone, RendererFactory2, RendererType2} from '@angular/core';
-import {NoopNgZone} from '@angular/core/src/zone/ng_zone';
-import {EventManager, ɵDomRendererFactory2, ɵSharedStylesHost} from '@angular/platform-browser';
-import {EventManagerPlugin} from '@angular/platform-browser/src/dom/events/event_manager';
+import {PLATFORM_BROWSER_ID, PLATFORM_SERVER_ID} from '@engular/common/src/platform_id';
+import {NgZone, RendererFactory2, RendererType2} from '@engular/core';
+import {NoopNgZone} from '@engular/core/src/zone/ng_zone';
+import {EventManager, ɵDomRendererFactory2, ɵSharedStylesHost} from '@engular/platform-browser';
+import {EventManagerPlugin} from '@engular/platform-browser/src/dom/events/event_manager';
 
 export class SimpleDomEventsPlugin extends EventManagerPlugin {
   constructor(doc: any) {

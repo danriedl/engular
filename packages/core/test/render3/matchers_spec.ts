@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {createTNode, createTView} from '@angular/core/src/render3/instructions/shared';
-import {TNodeType} from '@angular/core/src/render3/interfaces/node';
-import {TViewType} from '@angular/core/src/render3/interfaces/view';
+import {createTNode, createTView} from '@engular/core/src/render3/instructions/shared';
+import {TNodeType} from '@engular/core/src/render3/interfaces/node';
+import {TViewType} from '@engular/core/src/render3/interfaces/view';
 
 import {isShapeOf, ShapeOf} from './is_shape_of';
 import {matchDomElement, matchDomText, matchObjectShape, matchTNode, matchTView} from './matchers';

@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {I18nDebug, IcuCreateOpCodes, TI18n, TIcu} from '@angular/core/src/render3/interfaces/i18n';
-import {TNode} from '@angular/core/src/render3/interfaces/node';
-import {TView} from '@angular/core/src/render3/interfaces/view';
+import {I18nDebug, IcuCreateOpCodes, TI18n, TIcu} from '@engular/core/src/render3/interfaces/i18n';
+import {TNode} from '@engular/core/src/render3/interfaces/node';
+import {TView} from '@engular/core/src/render3/interfaces/view';
 
 import {isDOMElement, isDOMText, isTI18n, isTIcu, isTNode, isTView} from './is_shape_of';
 

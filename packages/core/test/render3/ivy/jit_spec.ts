@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, ContentChild, ContentChildren, Directive, ElementRef, forwardRef, getNgModuleById, HostBinding, HostListener, Input, NgModule, Pipe, QueryList, ViewChild, ViewChildren, ɵNgModuleDef as NgModuleDef, ɵɵngDeclareComponent as ngDeclareComponent} from '@angular/core';
-import {Injectable} from '@angular/core/src/di/injectable';
-import {setCurrentInjector, ɵɵinject} from '@angular/core/src/di/injector_compatibility';
-import {ɵɵdefineInjectable, ɵɵInjectorDef} from '@angular/core/src/di/interface/defs';
-import {FactoryFn} from '@angular/core/src/render3/definition_factory';
-import {ComponentDef, PipeDef,} from '@angular/core/src/render3/interfaces/definition';
+import {Component, ContentChild, ContentChildren, Directive, ElementRef, forwardRef, getNgModuleById, HostBinding, HostListener, Input, NgModule, Pipe, QueryList, ViewChild, ViewChildren, ɵNgModuleDef as NgModuleDef, ɵɵngDeclareComponent as ngDeclareComponent} from '@engular/core';
+import {Injectable} from '@engular/core/src/di/injectable';
+import {setCurrentInjector, ɵɵinject} from '@engular/core/src/di/injector_compatibility';
+import {ɵɵdefineInjectable, ɵɵInjectorDef} from '@engular/core/src/di/interface/defs';
+import {FactoryFn} from '@engular/core/src/render3/definition_factory';
+import {ComponentDef, PipeDef,} from '@engular/core/src/render3/interfaces/definition';
 
 
 
@@ -461,7 +461,7 @@ describe('render3 jit', () => {
       expect(ServiceAny.ɵprov.providedIn).toBe('root');
       expect(() => ɵɵinject(Service))
           .toThrowError(
-              /constructor is not compatible with Angular Dependency Injection because its dependency at index 1 of the parameter list is invalid/);
+              /constructor is not compatible with Engular Dependency Injection because its dependency at index 1 of the parameter list is invalid/);
     });
 
     it('should error when creating an @Directive that extends an undecorated class with parameters',
@@ -483,7 +483,7 @@ describe('render3 jit', () => {
          expect(TestDirAny.ɵfac).toBeDefined();
          expect(() => TestDirAny.ɵfac())
              .toThrowError(
-                 /constructor is not compatible with Angular Dependency Injection because its dependency at index 0 of the parameter list is invalid/);
+                 /constructor is not compatible with Engular Dependency Injection because its dependency at index 0 of the parameter list is invalid/);
        });
   });
 });

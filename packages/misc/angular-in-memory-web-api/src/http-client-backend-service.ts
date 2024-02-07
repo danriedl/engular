@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {XhrFactory} from '@angular/common';
+import {XhrFactory} from '@engular/common';
 import {
   HttpBackend,
   HttpEvent,
@@ -15,8 +15,8 @@ import {
   HttpRequest,
   HttpResponse,
   HttpXhrBackend,
-} from '@angular/common/http';
-import {Inject, Injectable, Optional} from '@angular/core';
+} from '@engular/common/http';
+import {Inject, Injectable, Optional} from '@engular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -30,7 +30,7 @@ import {
 } from './interfaces';
 
 /**
- * For Angular `HttpClient` simulate the behavior of a RESTy web api
+ * For Engular `HttpClient` simulate the behavior of a RESTy web api
  * backed by the simple in-memory data store provided by the injected `InMemoryDbService`.
  * Conforms mostly to behavior described here:
  * https://www.restapitutorial.com/lessons/httpmethods.html
@@ -41,8 +41,8 @@ import {
  * Call `config` static method with this service class and optional configuration object:
  * ```
  * // other imports
- * import { HttpClientModule } from '@angular/common/http';
- * import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+ * import { HttpClientModule } from '@engular/common/http';
+ * import { HttpClientInMemoryWebApiModule } from 'engular-in-memory-web-api';
  *
  * import { InMemHeroService, inMemConfig } from '../api/in-memory-hero.service';
  * @NgModule({

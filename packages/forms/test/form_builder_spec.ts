@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import {Component} from '@angular/core';
-import {fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {FormBuilder, NonNullableFormBuilder, ReactiveFormsModule, UntypedFormBuilder, Validators} from '@angular/forms';
+import {Component} from '@engular/core';
+import {fakeAsync, TestBed, tick} from '@engular/core/testing';
+import {FormBuilder, NonNullableFormBuilder, ReactiveFormsModule, UntypedFormBuilder, Validators} from '@engular/forms';
 import {of} from 'rxjs';
 
 (function() {

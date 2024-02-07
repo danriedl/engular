@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, createEnvironmentInjector, EnvironmentInjector, importProvidersFrom, InjectionToken, NgModule} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
+import {Component, createEnvironmentInjector, EnvironmentInjector, importProvidersFrom, InjectionToken, NgModule} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
 
 import {internalImportProvidersFrom} from '../../src/di/provider_collection';
 

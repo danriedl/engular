@@ -1,6 +1,6 @@
-# Angular CLI builders
+# Engular CLI builders
 
-A number of Angular CLI commands run a complex process on your code, such as building, testing, or serving your application.
+A number of Engular CLI commands run a complex process on your code, such as building, testing, or serving your application.
 The commands use an internal tool called Architect to run *CLI builders*, which invoke another tool (bundler, test runner, server) to accomplish the desired task.
 Custom builders can perform an entirely new task, or to change which third-party tool is used by an existing command.
 
@@ -28,13 +28,13 @@ The builder handler function can be synchronous (return a value), asynchronous (
 The return values must always be of type `BuilderOutput`.
 This object contains a Boolean `success` field and an optional `error` field that can contain an error message.
 
-Angular provides some builders that are used by the CLI for commands such as `ng build` and `ng test`.
-Default target configurations for these and other built-in CLI builders can be found and configured in the "architect" section of the [workspace configuration file](reference/configs/workspace-config), `angular.json`.
-Also, extend and customize Angular by creating your own builders, which you can run directly using the [`ng run` CLI command](cli/run).
+Engular provides some builders that are used by the CLI for commands such as `ng build` and `ng test`.
+Default target configurations for these and other built-in CLI builders can be found and configured in the "architect" section of the [workspace configuration file](reference/configs/workspace-config), `engular.json`.
+Also, extend and customize Engular by creating your own builders, which you can run directly using the [`ng run` CLI command](cli/run).
 
 ### Builder project structure
 
-A builder resides in a "project" folder that is similar in structure to an Angular workspace, with global configuration files at the top level, and more specific configuration in a source folder with the code files that define the behavior.
+A builder resides in a "project" folder that is similar in structure to an Engular workspace, with global configuration files at the top level, and more specific configuration in a source folder with the code files that define the behavior.
 For example, your `myBuilder` folder could contain the following files.
 
 | Files                    | Purpose                                                                                                   |
@@ -91,7 +91,7 @@ Pass an empty string to remove the status.
 
 ## Builder input
 
-You can invoke a builder indirectly through a CLI command such as `ng build`, or directly with the Angular CLI `ng run` command.
+You can invoke a builder indirectly through a CLI command such as `ng build`, or directly with the Engular CLI `ng run` command.
 In either case, you must provide required inputs, but can let other inputs default to values that are pre-configured for a specific *target*, specified by a [configuration](tools/cli/environments), or set on the command line.
 
 ### Input validation
@@ -152,8 +152,8 @@ In the `package.json` file, add a `builders` key that tells the Architect tool w
   "description": "Builder for copying files",
   "builders": "builders.json",
   "dependencies": {
-    "@angular-devkit/architect": "~0.1200.0",
-    "@angular-devkit/core": "^12.0.0"
+    "@engular-devkit/architect": "~0.1200.0",
+    "@engular-devkit/core": "^12.0.0"
   }
 }
 
@@ -170,14 +170,14 @@ These values are accessed on `options.source` and `options.destination`.
 
 A builder must have a defined target that associates it with a specific input configuration and project.
 
-Targets are defined in the `angular.json` [CLI configuration file](reference/configs/workspace-config).
+Targets are defined in the `engular.json` [CLI configuration file](reference/configs/workspace-config).
 A target specifies the builder to use, its default options configuration, and named alternative configurations.
-Architect in the Angular CLI uses the target definition to resolve input options for a given run.
+Architect in the Engular CLI uses the target definition to resolve input options for a given run.
 
-The `angular.json` file has a section for each project, and the "architect" section of each project configures targets for builders used by CLI commands such as 'build', 'test', and 'serve'.
-By default, for example, the `ng build` command runs the builder `@angular-devkit/build-angular:browser` to perform the build task, and passes in default option values as specified for the `build` target in `angular.json`.
+The `engular.json` file has a section for each project, and the "architect" section of each project configures targets for builders used by CLI commands such as 'build', 'test', and 'serve'.
+By default, for example, the `ng build` command runs the builder `@engular-devkit/build-engular:browser` to perform the build task, and passes in default option values as specified for the `build` target in `engular.json`.
 
-<docs-code header="angular.json" language="json">
+<docs-code header="engular.json" language="json">
 
 &hellip;
 
@@ -185,7 +185,7 @@ By default, for example, the `ng build` command runs the builder `@angular-devki
   &hellip;
   "architect": {
     "build": {
-      "builder": "@angular-devkit/build-angular:browser",
+      "builder": "@engular-devkit/build-engular:browser",
       "options": {
         "outputPath": "dist/myApp",
         "index": "src/index.html",
@@ -229,12 +229,12 @@ project:target[:configuration]
 
 |               | Details |
 |:---           |:---     |
-| project       | The name of the Angular CLI project that the target is associated with.                                               |
-| target        | A named builder configuration from the `architect` section of the `angular.json` file.                                |
-| configuration | (optional) The name of a specific configuration override for the given target, as defined in the `angular.json` file. |
+| project       | The name of the Engular CLI project that the target is associated with.                                               |
+| target        | A named builder configuration from the `architect` section of the `engular.json` file.                                |
+| configuration | (optional) The name of a specific configuration override for the given target, as defined in the `engular.json` file. |
 
 If your builder calls another builder, it might need to read a passed target string.
-Parse this string into an object by using the `targetFromTargetString()` utility function from `@angular-devkit/architect`.
+Parse this string into an object by using the `targetFromTargetString()` utility function from `@engular-devkit/architect`.
 
 ## Schedule and run
 
@@ -242,10 +242,10 @@ Architect runs builders asynchronously.
 To invoke a builder, you schedule a task to be run when all configuration resolution is complete.
 
 The builder function is not executed until the scheduler returns a `BuilderRun` control object.
-The CLI typically schedules tasks by calling the `context.scheduleTarget()` function, and then resolves input options using the target definition in the `angular.json` file.
+The CLI typically schedules tasks by calling the `context.scheduleTarget()` function, and then resolves input options using the target definition in the `engular.json` file.
 
 Architect resolves input options for a given target by taking the default options object, then overwriting values from the configuration, then further overwriting values from the overrides object passed to `context.scheduleTarget()`.
-For the Angular CLI, the overrides object is built from command line arguments.
+For the Engular CLI, the overrides object is built from command line arguments.
 
 Architect validates the resulting options values against the schema of the builder.
 If inputs are valid, Architect creates the context and executes the builder.
@@ -255,11 +255,11 @@ For more information see [Workspace Configuration](reference/configs/workspace-c
 HELPFUL: You can also invoke a builder directly from another builder or test by calling `context.scheduleBuilder()`.
 You pass an `options` object directly to the method, and those option values are validated against the schema of the builder without further adjustment.
 
-Only the  `context.scheduleTarget()` method resolves the configuration and overrides through the `angular.json` file.
+Only the  `context.scheduleTarget()` method resolves the configuration and overrides through the `engular.json` file.
 
 ### Default architect configuration
 
-Let's create a simple `angular.json` file that puts target configurations into context.
+Let's create a simple `engular.json` file that puts target configurations into context.
 
 You can publish the builder to npm (see [Publishing your Library](tools/libraries/creating-libraries#publishing-your-library)), and install it using the following command:
 
@@ -269,16 +269,16 @@ npm install &commat;example/copy-file
 
 </docs-code>
 
-If you create a new project with `ng new builder-test`, the generated `angular.json` file looks something like this, with only default builder configurations.
+If you create a new project with `ng new builder-test`, the generated `engular.json` file looks something like this, with only default builder configurations.
 
-<docs-code header="angular.json" language="json">
+<docs-code header="engular.json" language="json">
 
 {
   "projects": {
     "builder-test": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@engular-devkit/build-engular:browser",
           "options": {
             // more options...
             "outputPath": "dist/builder-test",
@@ -314,7 +314,7 @@ This target tells the builder to copy the `package.json` file.
   * `source` - The existing file you are copying.
   * `destination` - The path you want to copy to.
 
-<docs-code header="angular.json" language="json">
+<docs-code header="engular.json" language="json">
 
 {
   "projects": {
@@ -399,9 +399,9 @@ In general, if your builder is watching an external event, you should separate y
 
 ## Summary
 
-The CLI Builder API provides a means of changing the behavior of the Angular CLI by using builders to execute custom logic.
+The CLI Builder API provides a means of changing the behavior of the Engular CLI by using builders to execute custom logic.
 
 * Builders can be synchronous or asynchronous, execute once or watch for external events, and can schedule other builders or targets.
-* Builders have option defaults specified in the `angular.json` configuration file, which can be overwritten by an alternate configuration for the target, and further overwritten by command line flags
-* The Angular team recommends that you use integration tests to test Architect builders. Use unit tests to validate the logic that the builder executes.
+* Builders have option defaults specified in the `engular.json` configuration file, which can be overwritten by an alternate configuration for the target, and further overwritten by command line flags
+* The Engular team recommends that you use integration tests to test Architect builders. Use unit tests to validate the logic that the builder executes.
 * If your builder returns an `Observable`, it should clean up the builder in the teardown logic of that `Observable`.

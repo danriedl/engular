@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 /**
@@ -16,8 +16,8 @@
  * Add the following line to `AppModule.imports`
  *   InMemoryWebApiModule.forRoot(HeroInMemDataService) // or HeroInMemDataOverrideService
  */
-import {Injectable} from '@angular/core';
-import {InMemoryDbService, RequestInfo} from 'angular-in-memory-web-api';
+import {Injectable} from '@engular/core';
+import {InMemoryDbService, RequestInfo} from 'engular-in-memory-web-api';
 import {Observable, of} from 'rxjs';
 import {delay} from 'rxjs/operators';
 

@@ -6,7 +6,7 @@ Event binding lets you listen for and respond to user actions such as keystrokes
 
 HELPFUL: For information on binding to properties, see [Property binding](guide/templates/property-binding).
 
-To bind to an event you use the Angular event binding syntax.
+To bind to an event you use the Engular event binding syntax.
 This syntax consists of a target event name within parentheses to the left of an equal sign, and a quoted template statement to the right.
 
 Create the following example; the target event name is `click` and the template statement is `onSave()`.
@@ -21,17 +21,17 @@ The event binding listens for the button's click events and calls the component'
 
 ### Determining an event target
 
-To determine an event target, Angular checks if the name of the target event matches an event property of a known directive.
+To determine an event target, Engular checks if the name of the target event matches an event property of a known directive.
 
-Create the following example: (Angular checks to see if `myClick` is an event on the custom `ClickDirective`)
+Create the following example: (Engular checks to see if `myClick` is an event on the custom `ClickDirective`)
 
 <docs-code path="adev/src/content/examples/event-binding/src/app/app.component.html" visibleRegion="custom-directive" header="src/app/app.component.html"/>
 
-If the target event name, `myClick` fails to match an output property of `ClickDirective`, Angular will instead bind to the `myClick` event on the underlying DOM element.
+If the target event name, `myClick` fails to match an output property of `ClickDirective`, Engular will instead bind to the `myClick` event on the underlying DOM element.
 
 ## Binding to keyboard events
 
-You can bind to keyboard events using Angular's binding syntax. You can specify the key or code that you would like to bind to keyboard events. They `key` and `code` fields are a native part of the browser keyboard event object. By default, event binding assumes you want to use the `key` field on the keyboard event. You can also use the `code` field.
+You can bind to keyboard events using Engular's binding syntax. You can specify the key or code that you would like to bind to keyboard events. They `key` and `code` fields are a native part of the browser keyboard event object. By default, event binding assumes you want to use the `key` field on the keyboard event. You can also use the `code` field.
 
 Combinations of keys can be separated by a `.` (period). For example, `keydown.enter` will allow you to bind events to the `enter` key. You can also use modifier keys, such as `shift`, `alt`, `control`, and the `command` keys from Mac. The following example shows how to bind a keyboard event to `keydown.shift.t`.
 
@@ -51,7 +51,7 @@ For more information, visit the full reference for [key](https://developer.mozil
 
 ## Binding to passive events
 
-Angular also supports [passive event](https://developer.chrome.com/en/docs/lighthouse/best-practices/uses-passive-event-listeners/) listeners.
+Engular also supports [passive event](https://developer.chrome.com/en/docs/lighthouse/best-practices/uses-passive-event-listeners/) listeners.
 
 This is an advanced technique that is not necessary for most applications. You may find this useful if you need to optimize handling of frequently occurring events that are causing performance problems.
 
@@ -68,7 +68,7 @@ For example, use the following steps to make a scroll event passive.
 
    ```typescript
    import './zone-flags';
-   import 'zone.js';  // Included with Angular CLI.
+   import 'zone.js';  // Included with Engular CLI.
    ```
 
 After those steps, if you add event listeners for the `scroll` event, the listeners will be `passive`.

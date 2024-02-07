@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, effect, inject, Injector, NgZone, signal} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
+import {Component, effect, inject, Injector, NgZone, signal} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
 
 describe('effects in TestBed', () => {
   it('created in the constructor should run with detectChanges()', () => {

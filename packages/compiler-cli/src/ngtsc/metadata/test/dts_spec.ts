@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {absoluteFrom, getFileSystem, getSourceFileOrError} from '../../file_system';
@@ -26,8 +26,8 @@ runInEachFileSystem(() => {
           [{
             name: mainPath,
             contents: `
-          import {ViewContainerRef} from '@angular/core';
-          import * as i0 from '@angular/core';
+          import {ViewContainerRef} from '@engular/core';
+          import * as i0 from '@engular/core';
 
           export declare class TestDir {
             constructor(p0: ViewContainerRef);
@@ -60,8 +60,8 @@ runInEachFileSystem(() => {
           [{
             name: mainPath,
             contents: `
-          import {TemplateRef, ViewContainerRef} from '@angular/core';
-          import * as i0 from '@angular/core';
+          import {TemplateRef, ViewContainerRef} from '@engular/core';
+          import * as i0 from '@engular/core';
 
           export declare class TestDir {
             constructor(p0: ViewContainerRef, p1: TemplateRef);
@@ -95,7 +95,7 @@ runInEachFileSystem(() => {
             {
               name: externalPath,
               contents: `
-          import * as i0 from '@angular/core';
+          import * as i0 from '@engular/core';
           import * as i1 from 'absolute';
           import * as i2 from './relative';
 
@@ -107,7 +107,7 @@ runInEachFileSystem(() => {
             {
               name: absoluteFrom('/relative.d.ts'),
               contents: `
-          import * as i0 from '@angular/core';
+          import * as i0 from '@engular/core';
 
           export declare class RelativeDir {
             static ɵdir: i0.ɵɵDirectiveDeclaration<RelativeDir, '[dir]', never, never, never, never>;
@@ -117,7 +117,7 @@ runInEachFileSystem(() => {
             {
               name: absoluteFrom('/node_modules/absolute.d.ts'),
               contents: `
-          import * as i0 from '@angular/core';
+          import * as i0 from '@engular/core';
 
           export declare class AbsoluteDir {
             static ɵdir: i0.ɵɵDirectiveDeclaration<ExternalDir, '[dir]', never, never, never, never>;
@@ -183,7 +183,7 @@ runInEachFileSystem(() => {
         [{
           name: mainPath,
           contents: `
-            import * as i0 from '@angular/core';
+            import * as i0 from '@engular/core';
 
             export declare class SimpleHostDir {
               static ɵdir: i0.ɵɵDirectiveDeclaration<TestDir, "[test]", never, {}, {}, never, never, true, never>
@@ -248,7 +248,7 @@ runInEachFileSystem(() => {
         [{
           name: mainPath,
           contents: `
-            import * as i0 from '@angular/core';
+            import * as i0 from '@engular/core';
 
             export declare class TestDir {
               static ɵdir: i0.ɵɵDirectiveDeclaration<TestDir, "[test]", never, {
@@ -285,7 +285,7 @@ runInEachFileSystem(() => {
         [{
           name: mainPath,
           contents: `
-            import * as i0 from '@angular/core';
+            import * as i0 from '@engular/core';
 
             export declare class TestDir {
               static ɵdir: i0.ɵɵDirectiveDeclaration<TestDir, "[test]", never, {

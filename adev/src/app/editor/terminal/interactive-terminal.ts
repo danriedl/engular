@@ -3,18 +3,18 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {inject} from '@angular/core';
+import {inject} from '@engular/core';
 import {Subject} from 'rxjs';
 import {Terminal} from 'xterm';
 
-import {WINDOW} from '@angular/docs';
+import {WINDOW} from '@engular/docs';
 
 import {CommandValidator} from './command-validator.service';
 
-export const NOT_VALID_COMMAND_MSG = 'Angular Documentation - Not allowed command!';
+export const NOT_VALID_COMMAND_MSG = 'Engular Documentation - Not allowed command!';
 export const ALLOWED_KEYS: Array<KeyboardEvent['key']> = [
   // Allow Backspace to delete what was typed
   'Backspace',
@@ -67,7 +67,7 @@ export class InteractiveTerminal extends Terminal {
         // Xterm does not have API to receive current text/command.
         // In that case we can read it using DOM methods.
         // As command to execute we can treat the last line in terminal which starts with '❯'.
-        // Hack: excluding `.xterm-fg-6` is required to run i.e `ng e2e`, `ng add @angular/material`.
+        // Hack: excluding `.xterm-fg-6` is required to run i.e `ng e2e`, `ng add @engular/material`.
         // Some steps with selecting options also starts with '❯'.
         let terminalContent = Array.from(this.element!.querySelectorAll('.xterm-rows>div'))
           .map((lines) =>

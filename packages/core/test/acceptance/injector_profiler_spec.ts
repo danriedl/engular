@@ -3,23 +3,23 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {NgForOf, PercentPipe} from '@angular/common';
-import {inject} from '@angular/core';
-import {afterRender, ClassProvider, Component, Directive, ElementRef, Injectable, InjectFlags, InjectionToken, Injector, NgModule, NgModuleRef, QueryList, ViewChild, ViewChildren} from '@angular/core/src/core';
-import {NullInjector} from '@angular/core/src/di/null_injector';
-import {isClassProvider, isExistingProvider, isFactoryProvider, isTypeProvider, isValueProvider} from '@angular/core/src/di/provider_collection';
-import {EnvironmentInjector, R3Injector} from '@angular/core/src/di/r3_injector';
-import {setupFrameworkInjectorProfiler} from '@angular/core/src/render3/debug/framework_injector_profiler';
-import {getInjectorProfilerContext, InjectedServiceEvent, InjectorCreatedInstanceEvent, InjectorProfilerEvent, InjectorProfilerEventType, ProviderConfiguredEvent, setInjectorProfiler} from '@angular/core/src/render3/debug/injector_profiler';
-import {getNodeInjectorLView, NodeInjector} from '@angular/core/src/render3/di';
-import {getDependenciesFromInjectable, getInjectorMetadata, getInjectorProviders, getInjectorResolutionPath} from '@angular/core/src/render3/util/injector_discovery_utils';
-import {fakeAsync, tick} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing/src/test_bed';
-import {BrowserModule} from '@angular/platform-browser';
-import {Router, RouterModule, RouterOutlet} from '@angular/router';
+import {NgForOf, PercentPipe} from '@engular/common';
+import {inject} from '@engular/core';
+import {afterRender, ClassProvider, Component, Directive, ElementRef, Injectable, InjectFlags, InjectionToken, Injector, NgModule, NgModuleRef, QueryList, ViewChild, ViewChildren} from '@engular/core/src/core';
+import {NullInjector} from '@engular/core/src/di/null_injector';
+import {isClassProvider, isExistingProvider, isFactoryProvider, isTypeProvider, isValueProvider} from '@engular/core/src/di/provider_collection';
+import {EnvironmentInjector, R3Injector} from '@engular/core/src/di/r3_injector';
+import {setupFrameworkInjectorProfiler} from '@engular/core/src/render3/debug/framework_injector_profiler';
+import {getInjectorProfilerContext, InjectedServiceEvent, InjectorCreatedInstanceEvent, InjectorProfilerEvent, InjectorProfilerEventType, ProviderConfiguredEvent, setInjectorProfiler} from '@engular/core/src/render3/debug/injector_profiler';
+import {getNodeInjectorLView, NodeInjector} from '@engular/core/src/render3/di';
+import {getDependenciesFromInjectable, getInjectorMetadata, getInjectorProviders, getInjectorResolutionPath} from '@engular/core/src/render3/util/injector_discovery_utils';
+import {fakeAsync, tick} from '@engular/core/testing';
+import {TestBed} from '@engular/core/testing/src/test_bed';
+import {BrowserModule} from '@engular/platform-browser';
+import {Router, RouterModule, RouterOutlet} from '@engular/router';
 
 describe('setProfiler', () => {
   let injectEvents: InjectedServiceEvent[] = [];
@@ -91,7 +91,7 @@ describe('setProfiler', () => {
     expect(myServiceInjectEvent!.service.value).toBe(myComp.myService);
     expect(myServiceInjectEvent!.service.flags).toBe(InjectFlags.Default);
 
-    // myComp is an angular instance that is able to call `inject` in it's constructor, so a
+    // myComp is an engular instance that is able to call `inject` in it's constructor, so a
     // create event should have been emitted for it
     const componentCreateEvent = searchForProfilerEvent<InjectorCreatedInstanceEvent>(
         createEvents, (event) => (event.instance.value === myComp));
@@ -636,7 +636,7 @@ describe('getInjectorProviders', () => {
        // path 1: MyStandaloneComponent -> ModuleD => ModuleB -> ModuleA
        // path 2: MyStandaloneComponent -> MyStandaloneComponentB -> ModuleD => ModuleB -> ModuleA
        //
-       // Angular discovers this provider through the first path it visits
+       // Engular discovers this provider through the first path it visits
        // during it's postorder traversal (in this case path 1). Therefore
        // we expect myServiceProvider.importPath to have 4 DI containers
        //
@@ -655,7 +655,7 @@ describe('getInjectorProviders', () => {
        // path 2: MyStandaloneComponent -> MyStandaloneComponentB -> ModuleD => ModuleC
        // path 3: MyStandaloneComponent -> MyStandaloneComponentC -> ModuleC
        //
-       // Angular discovers this provider through the first path it visits
+       // Engular discovers this provider through the first path it visits
        // during it's postorder traversal (in this case path 1). Therefore
        // we expect myServiceProvider.importPath to have 4 DI containers
        //

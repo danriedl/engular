@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 try {
@@ -47,7 +47,7 @@ sed('-i', '(\'response\' in xhr)', '(\'response\' in (xhr as any))',
 */
 
 log('\n# patch: delete d.ts files referring to rxjs-compat');
-// more info in https://github.com/angular/angular/pull/33786
+// more info in https://github.com/engular/engular/pull/33786
 rm('-rf', [
   'node_modules/rxjs/add/',
   'node_modules/rxjs/observable/',

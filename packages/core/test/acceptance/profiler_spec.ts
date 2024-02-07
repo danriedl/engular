@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ProfilerEvent, setProfiler} from '@angular/core/src/render3/profiler';
-import {TestBed} from '@angular/core/testing';
+import {ProfilerEvent, setProfiler} from '@engular/core/src/render3/profiler';
+import {TestBed} from '@engular/core/testing';
 
 import {AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ErrorHandler, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, ViewChild} from '../../src/core';
 

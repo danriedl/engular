@@ -3,14 +3,14 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Directive, InjectionToken, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
-import {EventEmitter} from '@angular/core/src/event_emitter';
-import {isLView} from '@angular/core/src/render3/interfaces/type_checks';
-import {CONTEXT} from '@angular/core/src/render3/interfaces/view';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {CommonModule} from '@engular/common';
+import {ChangeDetectionStrategy, Component, Directive, InjectionToken, Input, Output, ViewChild, ViewEncapsulation} from '@engular/core';
+import {EventEmitter} from '@engular/core/src/event_emitter';
+import {isLView} from '@engular/core/src/render3/interfaces/type_checks';
+import {CONTEXT} from '@engular/core/src/render3/interfaces/view';
+import {ComponentFixture, TestBed} from '@engular/core/testing';
 
 import {getLContext} from '../../src/render3/context_discovery';
 import {getHostElement} from '../../src/render3/index';

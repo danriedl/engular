@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ResourceLoader} from '@angular/compiler';
+import {ResourceLoader} from '@engular/compiler';
 
 /**
  * A mock implementation of {@link ResourceLoader} that allows outgoing requests to be mocked

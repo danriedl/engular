@@ -6,9 +6,9 @@ You can put commonly used directives, pipes, and components into one module and 
 Consider the following module from an imaginary app:
 
 <docs-code language="typescript" highlight="[9,19,20]">
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@engular/common';
+import { NgModule } from '@engular/core';
+import { FormsModule } from '@engular/forms';
 import { CustomerComponent } from './customer.component';
 import { NewItemDirective } from './new-item.directive';
 import { OrdersPipe } from './orders.pipe';

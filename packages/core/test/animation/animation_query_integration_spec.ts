@@ -3,17 +3,17 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import {animate, animateChild, AnimationPlayer, AUTO_STYLE, group, query, sequence, stagger, state, style, transition, trigger, ɵAnimationGroupPlayer as AnimationGroupPlayer} from '@angular/animations';
-import {AnimationDriver, ɵAnimationEngine, ɵnormalizeKeyframes as normalizeKeyframes} from '@angular/animations/browser';
-import {TransitionAnimationPlayer} from '@angular/animations/browser/src/render/transition_animation_engine';
-import {ENTER_CLASSNAME, LEAVE_CLASSNAME} from '@angular/animations/browser/src/util';
-import {MockAnimationDriver, MockAnimationPlayer} from '@angular/animations/browser/testing';
-import {CommonModule} from '@angular/common';
-import {Component, HostBinding, ViewChild} from '@angular/core';
-import {fakeAsync, flushMicrotasks, TestBed} from '@angular/core/testing';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {animate, animateChild, AnimationPlayer, AUTO_STYLE, group, query, sequence, stagger, state, style, transition, trigger, ɵAnimationGroupPlayer as AnimationGroupPlayer} from '@engular/animations';
+import {AnimationDriver, ɵAnimationEngine, ɵnormalizeKeyframes as normalizeKeyframes} from '@engular/animations/browser';
+import {TransitionAnimationPlayer} from '@engular/animations/browser/src/render/transition_animation_engine';
+import {ENTER_CLASSNAME, LEAVE_CLASSNAME} from '@engular/animations/browser/src/util';
+import {MockAnimationDriver, MockAnimationPlayer} from '@engular/animations/browser/testing';
+import {CommonModule} from '@engular/common';
+import {Component, HostBinding, ViewChild} from '@engular/core';
+import {fakeAsync, flushMicrotasks, TestBed} from '@engular/core/testing';
+import {BrowserAnimationsModule} from '@engular/platform-browser/animations';
 
 import {HostListener} from '../../src/metadata/directives';
 

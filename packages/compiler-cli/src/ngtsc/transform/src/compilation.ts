@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ConstantPool} from '@angular/compiler';
+import {ConstantPool} from '@engular/compiler';
 import ts from 'typescript';
 
 import {SourceFileTypeIdentifier} from '../../core/api';
@@ -31,7 +31,7 @@ import {PendingTrait, Trait, TraitState} from './trait';
  */
 export interface ClassRecord {
   /**
-   * The `ClassDeclaration` of the class which has Angular traits applied.
+   * The `ClassDeclaration` of the class which has Engular traits applied.
    */
   node: ClassDeclaration;
 
@@ -42,7 +42,7 @@ export interface ClassRecord {
 
   /**
    * Meta-diagnostics about the class, which are usually related to whether certain combinations of
-   * Angular decorators are not permitted.
+   * Engular decorators are not permitted.
    */
   metaDiagnostics: ts.Diagnostic[]|null;
 
@@ -61,10 +61,10 @@ export interface ClassRecord {
 }
 
 /**
- * The heart of Angular compilation.
+ * The heart of Engular compilation.
  *
  * The `TraitCompiler` is responsible for processing all classes in the program. Any time a
- * `DecoratorHandler` matches a class, a "trait" is created to represent that Angular aspect of the
+ * `DecoratorHandler` matches a class, a "trait" is created to represent that Engular aspect of the
  * class (such as the class having a component definition).
  *
  * The `TraitCompiler` transitions each trait through the various phases of compilation, culminating
@@ -259,8 +259,8 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
     let record: ClassRecord|null = this.recordFor(clazz);
     let foundTraits: PendingTrait<unknown, unknown, SemanticSymbol|null, unknown>[] = [];
 
-    // A set to track the non-Angular decorators in local compilation mode. An error will be issued
-    // if non-Angular decorators is found in local compilation mode.
+    // A set to track the non-Engular decorators in local compilation mode. An error will be issued
+    // if non-Engular decorators is found in local compilation mode.
     const nonNgDecoratorsInLocalMode =
         this.compilationMode === CompilationMode.LOCAL ? new Set(decorators) : null;
 
@@ -353,7 +353,7 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
             start: decorator.node.getStart(),
             length: decorator.node.getWidth(),
             messageText:
-                'In local compilation mode, Angular does not support custom decorators. Ensure all class decorators are from Angular.',
+                'In local compilation mode, Engular does not support custom decorators. Ensure all class decorators are from Engular.',
           }));
       record.traits = foundTraits = [];
     }

@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵPLATFORM_BROWSER_ID as PLATFORM_BROWSER_ID} from '@angular/common';
-import {Component, PLATFORM_ID} from '@angular/core';
-import {DeferBlockBehavior, DeferBlockState, TestBed} from '@angular/core/testing';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {ɵPLATFORM_BROWSER_ID as PLATFORM_BROWSER_ID} from '@engular/common';
+import {Component, PLATFORM_ID} from '@engular/core';
+import {DeferBlockBehavior, DeferBlockState, TestBed} from '@engular/core/testing';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 @Component({
   selector: 'second-deferred-comp',

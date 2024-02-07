@@ -5,7 +5,7 @@ package(default_visibility = ["//visibility:public"])
 ts_library(
     name = "api",
     srcs = glob(["**/*.ts"]),
-    module_name = "@angular/compiler-cli/src/ngtsc/typecheck/api",
+    module_name = "@engular/compiler-cli/src/ngtsc/typecheck/api",
     deps = [
         "//packages:types",
         "//packages/compiler",

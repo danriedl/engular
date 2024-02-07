@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {createWatch, Watch, WatchCleanupFn} from '@angular/core/primitives/signals';
+import {createWatch, Watch, WatchCleanupFn} from '@engular/core/primitives/signals';
 
 let queue = new Set<Watch>();
 

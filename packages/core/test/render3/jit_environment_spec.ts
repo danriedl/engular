@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ExternalReference} from '@angular/compiler';
-import {Identifiers} from '@angular/compiler/src/render3/r3_identifiers';
+import {ExternalReference} from '@engular/compiler';
+import {Identifiers} from '@engular/compiler/src/render3/r3_identifiers';
 
-import {angularCoreEnv} from '../../src/render3/jit/environment';
+import {engularCoreEnv} from '../../src/render3/jit/environment';
 
 const INTERFACE_EXCEPTIONS = new Set<string>([
   'ɵɵComponentDeclaration',
@@ -69,8 +69,8 @@ describe('r3 jit environment', () => {
             sym => !INTERFACE_EXCEPTIONS.has(sym.name) && !AOT_ONLY.has(sym.name) &&
                 !PARTIAL_ONLY.has(sym.name))
         .forEach(sym => {
-          // Assert that angularCoreEnv has a reference to the runtime symbol.
-          expect(angularCoreEnv.hasOwnProperty(sym.name))
+          // Assert that engularCoreEnv has a reference to the runtime symbol.
+          expect(engularCoreEnv.hasOwnProperty(sym.name))
               .toBe(true, `Missing symbol ${sym.name} in render3/jit/environment`);
         });
   });

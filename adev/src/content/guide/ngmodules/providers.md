@@ -5,7 +5,7 @@ Most of the time, these dependencies are services that you create and provide.
 
 ## Providing a service
 
-If you already have an application that was created with the [Angular CLI](/tools/cli), you can create a service using the `ng generate` CLI command in the root project directory.
+If you already have an application that was created with the [Engular CLI](/tools/cli), you can create a service using the `ng generate` CLI command in the root project directory.
 Replace *User* with the name of your service.
 
 <docs-code language="shell">
@@ -17,7 +17,7 @@ ng generate service User
 This command creates the following `UserService` skeleton:
 
 <docs-code header="src/app/user.service.ts">
-import { Injectable } from '@angular/core';
+import { Injectable } from '@engular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +30,7 @@ You can now inject `UserService` anywhere in your application.
 
 The service itself is a class that the CLI generated and that's decorated with `@Injectable()`.
 By default, this decorator has a `providedIn` property, which creates a provider for the service.
-In this case, `providedIn: 'root'` specifies that Angular should provide the service in the root injector.
+In this case, `providedIn: 'root'` specifies that Engular should provide the service in the root injector.
 
 ## Provider scope
 
@@ -42,7 +42,7 @@ You should always provide your service in the root injector unless there is a ca
 ## Limiting provider scope by lazy loading modules
 
 In the basic CLI-generated app, modules are eagerly loaded which means that they are all loaded when the application launches.
-Angular uses an injector system to make things available between modules.
+Engular uses an injector system to make things available between modules.
 In an eagerly loaded app, the root application injector makes all of the providers in all of the modules available throughout the application.
 
 This behavior necessarily changes when you use lazy loading.
@@ -53,7 +53,7 @@ This means that any services listed in their provider arrays aren't available be
 <!--todo: KW--Make diagram here -->
 <!--todo: KW--per Misko: not clear if the lazy modules are siblings or grand-children. They are both depending on router structure. -->
 
-When the Angular router lazy-loads a module, it creates a new injector.
+When the Engular router lazy-loads a module, it creates a new injector.
 This injector is a child of the root application injector.
 Imagine a tree of injectors; there is a single root injector and then a child injector for each lazy loaded module.
 This child injector gets populated with all the module-specific providers, if any.
@@ -66,11 +66,11 @@ Though you can provide services by lazy loading modules, not all services can be
 For instance, some modules only work in the root module, such as the Router.
 The Router works with the global location object in the browser.
 
-As of Angular version 9, you can provide a new instance of a service with each lazy loaded module.
+As of Engular version 9, you can provide a new instance of a service with each lazy loaded module.
 The following code adds this functionality to `UserService`.
 
 <docs-code header="src/app/user.service.ts" highlight="[4]">
-import { Injectable } from '@angular/core';
+import { Injectable } from '@engular/core';
 
 @Injectable({
   providedIn: 'any',
@@ -114,12 +114,12 @@ Then each new instance of the `UserEditorComponent` gets its own cached service 
 
 Services are singletons within the scope of an injector, which means there is at most one instance of a service in a given injector.
 
-Angular DI has a [hierarchical injection system](/guide/di/hierarchical-dependency-injection), which means that nested injectors can create their own service instances.
-Whenever Angular creates a new instance of a component that has `providers` specified in `@Component()`, it also creates a new child injector for that instance.
-Similarly, when a new NgModule is lazy-loaded at run time, Angular can create an injector for it with its own providers.
+Engular DI has a [hierarchical injection system](/guide/di/hierarchical-dependency-injection), which means that nested injectors can create their own service instances.
+Whenever Engular creates a new instance of a component that has `providers` specified in `@Component()`, it also creates a new child injector for that instance.
+Similarly, when a new NgModule is lazy-loaded at run time, Engular can create an injector for it with its own providers.
 
 Child modules and component injectors are independent of each other, and create their own separate instances of the provided services.
-When Angular destroys an NgModule or component instance, it also destroys that injector and that injector's service instances.
+When Engular destroys an NgModule or component instance, it also destroys that injector and that injector's service instances.
 
 For more information, see [Hierarchical injectors](guide/di/hierarchical-dependency-injection).
 

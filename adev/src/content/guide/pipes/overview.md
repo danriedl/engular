@@ -11,7 +11,7 @@ You can create your own custom pipes to expose reusable transformations in templ
 
 ## Built-in pipes
 
-Angular provides built-in pipes for typical data transformations, including transformations for internationalization (i18n), which use locale information to format data.
+Engular provides built-in pipes for typical data transformations, including transformations for internationalization (i18n), which use locale information to format data.
 The following are commonly used built-in pipes for data formatting:
 
 - [`DatePipe`](api/common/DatePipe): Formats a date value according to locale rules.

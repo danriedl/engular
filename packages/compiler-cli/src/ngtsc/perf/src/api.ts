@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 /**
@@ -50,12 +50,12 @@ export enum PerfPhase {
   TypeScriptDiagnostics,
 
   /**
-   * Time spent in Angular analysis of individual classes in the program.
+   * Time spent in Engular analysis of individual classes in the program.
    */
   Analysis,
 
   /**
-   * Time spent in Angular global analysis (synthesis of analysis information into a complete
+   * Time spent in Engular global analysis (synthesis of analysis information into a complete
    * understanding of the program).
    */
   Resolve,
@@ -82,7 +82,7 @@ export enum PerfPhase {
   TypeScriptEmit,
 
   /**
-   * Time spent by Angular performing code transformations of ASTs as they're about to be emitted.
+   * Time spent by Engular performing code transformations of ASTs as they're about to be emitted.
    *
    * This includes the actual code generation step for templates, and occurs during the emit phase
    * (but is tracked separately from `TypeScriptEmit` time).
@@ -105,52 +105,52 @@ export enum PerfPhase {
   TtcSymbol,
 
   /**
-   * Time spent by the Angular Language Service calculating a "get references" or a renaming
+   * Time spent by the Engular Language Service calculating a "get references" or a renaming
    * operation.
    */
   LsReferencesAndRenames,
 
   /**
-   * Time spent by the Angular Language Service calculating a "quick info" operation.
+   * Time spent by the Engular Language Service calculating a "quick info" operation.
    */
   LsQuickInfo,
 
   /**
-   * Time spent by the Angular Language Service calculating a "get type definition" or "get
+   * Time spent by the Engular Language Service calculating a "get type definition" or "get
    * definition" operation.
    */
   LsDefinition,
 
   /**
-   * Time spent by the Angular Language Service calculating a "get completions" (AKA autocomplete)
+   * Time spent by the Engular Language Service calculating a "get completions" (AKA autocomplete)
    * operation.
    */
   LsCompletions,
 
   /**
-   * Time spent by the Angular Language Service calculating a "view template typecheck block"
+   * Time spent by the Engular Language Service calculating a "view template typecheck block"
    * operation.
    */
   LsTcb,
 
   /**
-   * Time spent by the Angular Language Service calculating diagnostics.
+   * Time spent by the Engular Language Service calculating diagnostics.
    */
   LsDiagnostics,
 
   /**
-   * Time spent by the Angular Language Service calculating a "get component locations for template"
+   * Time spent by the Engular Language Service calculating a "get component locations for template"
    * operation.
    */
   LsComponentLocations,
 
   /**
-   * Time spent by the Angular Language Service calculating signature help.
+   * Time spent by the Engular Language Service calculating signature help.
    */
   LsSignatureHelp,
 
   /**
-   * Time spent by the Angular Language Service calculating outlining spans.
+   * Time spent by the Engular Language Service calculating outlining spans.
    */
   OutliningSpans,
 
@@ -160,12 +160,12 @@ export enum PerfPhase {
   LAST,
 
   /**
-   * Time spent by the Angular Language Service calculating code fixes.
+   * Time spent by the Engular Language Service calculating code fixes.
    */
   LsCodeFixes,
 
   /**
-   * Time spent by the Angular Language Service to fix all detected same type errors.
+   * Time spent by the Engular Language Service to fix all detected same type errors.
    */
   LsCodeFixesAll,
 }
@@ -295,7 +295,7 @@ export enum PerfCheckpoint {
   TypeScriptProgramCreate,
 
   /**
-   * The point just before Angular analysis starts.
+   * The point just before Engular analysis starts.
    *
    * In the main usage pattern for the compiler, TypeScript diagnostics have been calculated at this
    * point, so the `ts.TypeChecker` has fully ingested the current program, all `ts.Type` structures
@@ -304,12 +304,12 @@ export enum PerfCheckpoint {
   PreAnalysis,
 
   /**
-   * The point just after Angular analysis completes.
+   * The point just after Engular analysis completes.
    */
   Analysis,
 
   /**
-   * The point just after Angular resolution is complete.
+   * The point just after Engular resolution is complete.
    */
   Resolve,
 

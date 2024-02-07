@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 /**
@@ -12,7 +12,7 @@
  * Entry point for all public APIs of the forms package.
  */
 
-import {Version} from '@angular/core';
+import {Version} from '@engular/core';
 
 /**
  * @publicApi

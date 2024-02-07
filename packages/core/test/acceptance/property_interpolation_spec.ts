@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import {Component} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import {Component} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
 import {of} from 'rxjs';
 
 describe('property interpolation', () => {
@@ -82,7 +82,7 @@ describe('property interpolation', () => {
     expect(img.title).toBe('cool image');
   });
 
-  // From https://angular-team.atlassian.net/browse/FW-1287
+  // From https://engular-team.atlassian.net/browse/FW-1287
   it('should handle multiple elvis operators', () => {
     @Component({
       template: `

@@ -56,7 +56,7 @@ set -u -e -o pipefail
 # Sauce service functions
 
 readonly SCRIPT_DIR=$(cd $(dirname $0); pwd)
-readonly TMP_DIR="/tmp/angular/sauce-service"
+readonly TMP_DIR="/tmp/engular/sauce-service"
 mkdir -p ${TMP_DIR}
 
 # Location for the saucelabs log file.

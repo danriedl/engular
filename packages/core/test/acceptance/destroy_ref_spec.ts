@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {NgIf} from '@angular/common';
-import {Component, createEnvironmentInjector, DestroyRef, Directive, EnvironmentInjector, inject} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
+import {NgIf} from '@engular/common';
+import {Component, createEnvironmentInjector, DestroyRef, Directive, EnvironmentInjector, inject} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
 
 describe('DestroyRef', () => {
   describe('for environnement injector', () => {

@@ -10,8 +10,8 @@ The component's `birthday` value flows through the pipe operator (`|`) to the [`
 The pipe renders the date in the default format like **Apr 07, 2023**.
 
 <docs-code header="app.component.ts" preview>
-import { Component } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { Component } from '@engular/core';
+import { DatePipe } from '@engular/common';
 
 @Component({
   standalone: true,

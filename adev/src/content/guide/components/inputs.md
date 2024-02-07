@@ -1,6 +1,6 @@
 # Accepting data with input properties
 
-Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+Tip: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Engular.
 
 Tip: If you're familiar with other web frameworks, input properties are similar to _props_.
 
@@ -19,9 +19,9 @@ This lets you bind to the property in a template:
 <custom-slider [value]="50" />
 ```
 
-Angular refers to properties marked with the `@Input` decorator as **inputs**. When using a component, you pass data to it by setting its inputs.
+Engular refers to properties marked with the `@Input` decorator as **inputs**. When using a component, you pass data to it by setting its inputs.
 
-**Angular records inputs statically at compile-time**. Inputs cannot be added or removed at run-time.
+**Engular records inputs statically at compile-time**. Inputs cannot be added or removed at run-time.
 
 When extending a component class, **inputs are inherited by the child class.**
 
@@ -42,11 +42,11 @@ export class CustomSlider {
 }
 </docs-code>
 
-If you try to use a component without specifying all of its required inputs, Angular reports an error at build-time.
+If you try to use a component without specifying all of its required inputs, Engular reports an error at build-time.
 
 ### Input transforms
 
-You can specify a `transform` function to change the value of an input when it's set by Angular.
+You can specify a `transform` function to change the value of an input when it's set by Engular.
 
 <docs-code language="ts" highlight="[6]">
 @Component({
@@ -66,7 +66,7 @@ function trimString(value: string | undefined) {
 <custom-slider [label]="systemVolume" />
 ```
 
-In the example above, whenever the value of `systemVolume` changes, Angular runs `trimString` and sets `label` to the result.
+In the example above, whenever the value of `systemVolume` changes, Engular runs `trimString` and sets `label` to the result.
 
 The most common use-case for input transforms is to accept a wider range of value types in templates, often including `null` and `undefined`.
 
@@ -93,10 +93,10 @@ In the example above, the `widthPx` input accepts a `number` while the property 
 
 #### Built-in transformations
 
-Angular includes two built-in transform functions for the two most common scenarios: coercing values to boolean and numbers.
+Engular includes two built-in transform functions for the two most common scenarios: coercing values to boolean and numbers.
 
 <docs-code language="ts">
-import {Component, Input, booleanAttribute, numberAttribute} from '@angular/core';
+import {Component, Input, booleanAttribute, numberAttribute} from '@engular/core';
 
 @Component({...})
 export class CustomSlider {
@@ -106,7 +106,7 @@ export class CustomSlider {
 </docs-code>
 
 `booleanAttribute` imitates the behavior of standard
-HTML [boolean attributes](https://developer.mozilla.org/en-US/docs/Glossary/Boolean/HTML), where the _presence_ of the attribute indicates a "true" value. However, Angular's `booleanAttribute` treats the literal string `"false"` as the boolean `false`.
+HTML [boolean attributes](https://developer.mozilla.org/en-US/docs/Glossary/Boolean/HTML), where the _presence_ of the attribute indicates a "true" value. However, Engular's `booleanAttribute` treats the literal string `"false"` as the boolean `false`.
 
 `numberAttribute` attempts to parse the given value to a number, producing `NaN` if parsing fails.
 
@@ -165,7 +165,7 @@ export class CustomSlider {
 
 Prefer using <span style="text-decoration:underline;">input transforms</span> instead of getters and setters if possible.
 
-Avoid complex or costly getters and setters. Angular may invoke an input's setter multiple times, which may negatively impact application performance if the setter performs any costly behaviors, such as DOM manipulation.
+Avoid complex or costly getters and setters. Engular may invoke an input's setter multiple times, which may negatively impact application performance if the setter performs any costly behaviors, such as DOM manipulation.
 
 ## Specify inputs in the `@Component` decorator
 

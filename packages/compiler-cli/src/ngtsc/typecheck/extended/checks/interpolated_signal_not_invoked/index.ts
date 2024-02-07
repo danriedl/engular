@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AST, Interpolation, PropertyRead, TmplAstNode} from '@angular/compiler';
+import {AST, Interpolation, PropertyRead, TmplAstNode} from '@engular/compiler';
 import ts from 'typescript';
 
 import {ErrorCode, ExtendedTemplateDiagnosticName} from '../../../../diagnostics';
@@ -41,7 +41,7 @@ function isSignal(symbol: ts.Symbol|undefined): boolean {
   return (symbol?.escapedName === 'WritableSignal' || symbol?.escapedName === 'Signal' ||
           symbol?.escapedName === 'InputSignal' ||
           symbol?.escapedName === 'InputSignalWithTransform') &&
-      (symbol as any).parent.escapedName.includes('@angular/core');
+      (symbol as any).parent.escapedName.includes('@engular/core');
 }
 
 function buildDiagnosticForSignal(

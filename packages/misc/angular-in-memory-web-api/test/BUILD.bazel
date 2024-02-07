@@ -11,7 +11,7 @@ ts_library(
         "//packages/common/http",
         "//packages/core",
         "//packages/core/testing",
-        "//packages/misc/angular-in-memory-web-api",
+        "//packages/misc/engular-in-memory-web-api",
         "@npm//@types/jasmine-ajax",
         "@npm//jasmine-ajax",
         "@npm//rxjs",

@@ -23,12 +23,12 @@ For example, the following code snippet imports the `transitionAnimation` variab
 
 <docs-code header="src/app/open-close.component.ts" path="adev/src/content/examples/animations/src/app/open-close.component.3.ts" visibleRegion="reusable"/>
 
-## More on Angular animations
+## More on Engular animations
 
 You might also be interested in the following:
 
 <docs-pill-row>
-  <docs-pill href="guide/animations" title="Introduction to Angular animations"/>
+  <docs-pill href="guide/animations" title="Introduction to Engular animations"/>
   <docs-pill href="guide/animations/transition-and-triggers" title="Transition and triggers"/>
   <docs-pill href="guide/animations/complex-sequences" title="Complex animation sequences"/>
   <docs-pill href="guide/animations/route-animations" title="Route transition animations"/>

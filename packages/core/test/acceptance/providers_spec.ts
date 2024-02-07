@@ -3,15 +3,15 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule} from '@angular/common';
-import {Component, Directive, forwardRef, Inject, Injectable, InjectionToken, Injector, NgModule, Optional} from '@angular/core';
-import {leaveView, specOnlyIsInstructionStateEmpty} from '@angular/core/src/render3/state';
-import {inject, TestBed, waitForAsync} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {CommonModule} from '@engular/common';
+import {Component, Directive, forwardRef, Inject, Injectable, InjectionToken, Injector, NgModule, Optional} from '@engular/core';
+import {leaveView, specOnlyIsInstructionStateEmpty} from '@engular/core/src/render3/state';
+import {inject, TestBed, waitForAsync} from '@engular/core/testing';
+import {By} from '@engular/platform-browser';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 describe('providers', () => {
   describe('inheritance', () => {

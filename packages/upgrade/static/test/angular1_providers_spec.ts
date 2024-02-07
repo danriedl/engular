@@ -3,19 +3,19 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Ng1Token} from '../../src/common/src/angular1';
+import {Ng1Token} from '../../src/common/src/engular1';
 import {
   compileFactory,
   injectorFactory,
   parseFactory,
   rootScopeFactory,
   setTempInjectorRef,
-} from '../src/angular1_providers';
+} from '../src/engular1_providers';
 
-describe('upgrade angular1_providers', () => {
+describe('upgrade engular1_providers', () => {
   describe('compileFactory', () => {
     it('should retrieve and return `$compile`', () => {
       const services: {[key: string]: any} = {$compile: 'foo'};
@@ -37,8 +37,8 @@ describe('upgrade angular1_providers', () => {
       // Ensure the injector is not set. This shouldn't be necessary, but on CI there seems to be
       // some race condition with previous tests not being cleaned up properly.
       // Related:
-      //   - https://github.com/angular/angular/pull/28045
-      //   - https://github.com/angular/angular/pull/28181
+      //   - https://github.com/engular/engular/pull/28045
+      //   - https://github.com/engular/engular/pull/28181
       setTempInjectorRef(null as any);
 
       expect(injectorFactory).toThrowError();

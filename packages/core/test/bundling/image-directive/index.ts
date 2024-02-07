@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, importProvidersFrom} from '@angular/core';
-import {bootstrapApplication, provideProtractorTestingSupport} from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
+import {Component, importProvidersFrom} from '@engular/core';
+import {bootstrapApplication, provideProtractorTestingSupport} from '@engular/platform-browser';
+import {RouterModule} from '@engular/router';
 
 import {BasicComponent} from './e2e/basic/basic';
 import {FillModeFailingComponent, FillModePassingComponent} from './e2e/fill-mode/fill-mode';

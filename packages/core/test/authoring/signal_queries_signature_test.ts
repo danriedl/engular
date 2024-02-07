@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ElementRef, forwardRef, InjectionToken, Signal} from '@angular/core';
+import {ElementRef, forwardRef, InjectionToken, Signal} from '@engular/core';
 // TODO: export authoring functions
-import {contentChild, contentChildren, viewChild, viewChildren} from '@angular/core/src/authoring/queries';
+import {contentChild, contentChildren, viewChild, viewChildren} from '@engular/core/src/authoring/queries';
 
 class QueryType {
   // a random field to brand the type
@@ -34,7 +34,7 @@ export class SignalQuerySignatureTest {
   /** ElementRef<HTMLAnchorElement> | undefined */
   viewChildStringLocatorNoReadElementRefTypeHint = viewChild<ElementRef<HTMLAnchorElement>>('ref');
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> | undefined */
   viewChildStringLocatorWithElementRefRead =
       viewChild('ref', {read: ElementRef<HTMLAnchorElement>});
@@ -54,7 +54,7 @@ export class SignalQuerySignatureTest {
   /** ReadType | undefined */
   viewChildTypeLocatorAndRead = viewChild(QueryType, {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> | undefined */
   viewChildTypeLocatorAndElementRefRead =
       viewChild(QueryType, {read: ElementRef<HTMLAnchorElement>});
@@ -65,7 +65,7 @@ export class SignalQuerySignatureTest {
   viewChildStringLocatorNoReadElementRefTypeHintReq =
       viewChild.required<ElementRef<HTMLAnchorElement>>('ref');
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> */
   viewChildStringLocatorWithElementRefReadReq =
       viewChild.required('ref', {read: ElementRef<HTMLAnchorElement>});
@@ -79,7 +79,7 @@ export class SignalQuerySignatureTest {
   /** ReadType */
   viewChildTypeLocatorAndReadReq = viewChild.required(QueryType, {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> */
   viewChildTypeLocatorAndElementRefReadReq =
       viewChild.required(QueryType, {read: ElementRef<HTMLAnchorElement>});
@@ -96,7 +96,7 @@ export class SignalQuerySignatureTest {
   /** readonly ReadType[] */
   viewChildrenStringLocatorWithTypeRead = viewChildren('ref', {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** readonly ElementRef<any>[] */
   viewChildrenStringLocatorWithElementRefRead =
       viewChildren('ref', {read: ElementRef<HTMLAnchorElement>});
@@ -113,7 +113,7 @@ export class SignalQuerySignatureTest {
   /** readonly ReadType[] */
   viewChildrenTypeLocatorAndRead = viewChildren(QueryType, {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** readonly ElementRef<any>[] */
   viewChildrenTypeLocatorAndElementRefRead =
       viewChildren(QueryType, {read: ElementRef<HTMLAnchorElement>});
@@ -127,7 +127,7 @@ export class SignalQuerySignatureTest {
   contentChildStringLocatorNoReadElementRefTypeHint =
       contentChild<ElementRef<HTMLAnchorElement>>('ref');
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> | undefined */
   contentChildStringLocatorWithElementRefRead =
       contentChild('ref', {read: ElementRef<HTMLAnchorElement>});
@@ -147,7 +147,7 @@ export class SignalQuerySignatureTest {
   /** ReadType | undefined */
   contentChildTypeLocatorAndRead = contentChild(QueryType, {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> | undefined */
   contentChildTypeLocatorAndElementRefRead =
       contentChild(QueryType, {read: ElementRef<HTMLAnchorElement>});
@@ -158,7 +158,7 @@ export class SignalQuerySignatureTest {
   contentChildStringLocatorNoReadElementRefTypeHintReq =
       contentChild.required<ElementRef<HTMLAnchorElement>>('ref');
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> */
   contentChildStringLocatorWithElementRefReadReq =
       contentChild.required('ref', {read: ElementRef<HTMLAnchorElement>});
@@ -172,7 +172,7 @@ export class SignalQuerySignatureTest {
   /** ReadType */
   contentChildTypeLocatorAndReadReq = contentChild.required(QueryType, {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** ElementRef<any> */
   contentChildTypeLocatorAndElementRefReadReq =
       contentChild.required(QueryType, {read: ElementRef<HTMLAnchorElement>});
@@ -189,7 +189,7 @@ export class SignalQuerySignatureTest {
   /** readonly ReadType[] */
   contentChildrenStringLocatorWithTypeRead = contentChildren('ref', {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** readonly ElementRef<any>[] */
   contentChildrenStringLocatorWithElementRefRead =
       contentChildren('ref', {read: ElementRef<HTMLAnchorElement>});
@@ -206,7 +206,7 @@ export class SignalQuerySignatureTest {
   /** readonly ReadType[] */
   contentChildrenTypeLocatorAndRead = contentChildren(QueryType, {read: ReadType});
 
-  // any due to https://github.com/angular/angular/issues/53894
+  // any due to https://github.com/engular/engular/issues/53894
   /** readonly ElementRef<any>[] */
   contentChildrenTypeLocatorAndElementRefRead =
       contentChildren(QueryType, {read: ElementRef<HTMLAnchorElement>});

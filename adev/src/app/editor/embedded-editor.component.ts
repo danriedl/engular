@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {NgIf, isPlatformBrowser} from '@angular/common';
+import {NgIf, isPlatformBrowser} from '@engular/common';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -20,15 +20,15 @@ import {
   computed,
   inject,
   signal,
-} from '@angular/core';
-import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
-import {IconComponent} from '@angular/docs';
-import {MatTabGroup, MatTabsModule} from '@angular/material/tabs';
+} from '@engular/core';
+import {takeUntilDestroyed, toObservable} from '@engular/core/rxjs-interop';
+import {IconComponent} from '@engular/docs';
+import {MatTabGroup, MatTabsModule} from '@engular/material/tabs';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {MAX_RECOMMENDED_WEBCONTAINERS_INSTANCES} from './alert-manager.service';
 
-import {AngularSplitModule} from 'angular-split';
+import {EngularSplitModule} from 'engular-split';
 import {CodeEditor} from './code-editor/code-editor.component';
 import {DiagnosticsState} from './code-editor/services/diagnostics-state.service';
 import {EditorUiState} from './editor-ui-state.service';
@@ -48,7 +48,7 @@ export const LARGE_EDITOR_HEIGHT_BREAKPOINT = 550;
   selector: EMBEDDED_EDITOR_SELECTOR,
   templateUrl: './embedded-editor.component.html',
   styleUrls: ['./embedded-editor.component.scss'],
-  imports: [AngularSplitModule, CodeEditor, Preview, Terminal, NgIf, MatTabsModule, IconComponent],
+  imports: [EngularSplitModule, CodeEditor, Preview, Terminal, NgIf, MatTabsModule, IconComponent],
   providers: [EditorUiState],
 })
 export class EmbeddedEditor implements OnInit, AfterViewInit, OnDestroy {

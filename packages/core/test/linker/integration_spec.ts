@@ -3,22 +3,22 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {CommonModule, DOCUMENT, ɵgetDOM as getDOM} from '@angular/common';
-import {Attribute, Compiler, Component, ComponentFactory, ComponentRef, ContentChildren, createComponent, Directive, EnvironmentInjector, EventEmitter, Host, HostBinding, HostListener, Inject, Injectable, InjectionToken, Injector, Input, NgModule, NgModuleRef, NO_ERRORS_SCHEMA, OnDestroy, Output, Pipe, reflectComponentType, SkipSelf, ViewChild, ViewRef, ɵsetClassDebugInfo} from '@angular/core';
-import {ChangeDetectionStrategy, ChangeDetectorRef, PipeTransform} from '@angular/core/src/change_detection/change_detection';
-import {ComponentFactoryResolver} from '@angular/core/src/linker/component_factory_resolver';
-import {ElementRef} from '@angular/core/src/linker/element_ref';
-import {QueryList} from '@angular/core/src/linker/query_list';
-import {TemplateRef} from '@angular/core/src/linker/template_ref';
-import {ViewContainerRef} from '@angular/core/src/linker/view_container_ref';
-import {EmbeddedViewRef} from '@angular/core/src/linker/view_ref';
-import {fakeAsync, getTestBed, TestBed, tick, waitForAsync} from '@angular/core/testing';
-import {TestBedCompiler} from '@angular/core/testing/src/test_bed_compiler';
-import {createMouseEvent, dispatchEvent, el, isCommentNode} from '@angular/platform-browser/testing/src/browser_util';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {CommonModule, DOCUMENT, ɵgetDOM as getDOM} from '@engular/common';
+import {Attribute, Compiler, Component, ComponentFactory, ComponentRef, ContentChildren, createComponent, Directive, EnvironmentInjector, EventEmitter, Host, HostBinding, HostListener, Inject, Injectable, InjectionToken, Injector, Input, NgModule, NgModuleRef, NO_ERRORS_SCHEMA, OnDestroy, Output, Pipe, reflectComponentType, SkipSelf, ViewChild, ViewRef, ɵsetClassDebugInfo} from '@engular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, PipeTransform} from '@engular/core/src/change_detection/change_detection';
+import {ComponentFactoryResolver} from '@engular/core/src/linker/component_factory_resolver';
+import {ElementRef} from '@engular/core/src/linker/element_ref';
+import {QueryList} from '@engular/core/src/linker/query_list';
+import {TemplateRef} from '@engular/core/src/linker/template_ref';
+import {ViewContainerRef} from '@engular/core/src/linker/view_container_ref';
+import {EmbeddedViewRef} from '@engular/core/src/linker/view_ref';
+import {fakeAsync, getTestBed, TestBed, tick, waitForAsync} from '@engular/core/testing';
+import {TestBedCompiler} from '@engular/core/testing/src/test_bed_compiler';
+import {createMouseEvent, dispatchEvent, el, isCommentNode} from '@engular/platform-browser/testing/src/browser_util';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 import {stringify} from '../../src/util/stringify';
 
@@ -246,7 +246,7 @@ describe('integration tests', function() {
       expect(fixture.nativeElement).toHaveText('hello');
     });
 
-    // GH issue 328 - https://github.com/angular/angular/issues/328
+    // GH issue 328 - https://github.com/engular/engular/issues/328
     it('should support different directive types on a single node', () => {
       TestBed.configureTestingModule({declarations: [MyComp, ChildComp, MyDir]});
       const template = '<child-cmp my-dir [elprop]="ctxProp"></child-cmp>';

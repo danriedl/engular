@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {
@@ -23,12 +23,12 @@ import {
   SimpleChange,
   SimpleChanges,
   Testability,
-} from '@angular/core';
-import {fakeAsync, flushMicrotasks, TestBed, tick, waitForAsync} from '@angular/core/testing';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+} from '@engular/core';
+import {fakeAsync, flushMicrotasks, TestBed, tick, waitForAsync} from '@engular/core/testing';
+import {BrowserModule} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
 
-import * as angular from '../../common/src/angular1';
+import * as engular from '../../common/src/engular1';
 import {$EXCEPTION_HANDLER, $ROOT_SCOPE} from '../../common/src/constants';
 import {html, multiTrim, withEachNg1Version} from '../../common/test/helpers/common_test_helpers';
 import {UpgradeAdapter, UpgradeAdapterRef} from '../src/upgrade_adapter';
@@ -43,11 +43,11 @@ withEachNg1Version(() => {
     afterEach(() => destroyPlatform());
 
     describe('(basic use)', () => {
-      it('should have AngularJS loaded', () =>
-        expect(angular.getAngularJSGlobal().version.major).toBe(1));
+      it('should have EngularJS loaded', () =>
+        expect(engular.getEngularJSGlobal().version.major).toBe(1));
 
       it('should instantiate ng2 in ng1 template and project content', waitForAsync(() => {
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         @Component({
           selector: 'ng2',
@@ -70,7 +70,7 @@ withEachNg1Version(() => {
 
       it('should instantiate ng1 in ng2 template and project content', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         @Component({
           selector: 'ng2',
@@ -103,7 +103,7 @@ withEachNg1Version(() => {
         spyOn(platformRef, 'bootstrapModule').and.callThrough();
         spyOn(platformRef, 'bootstrapModuleFactory').and.callThrough();
 
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         @Component({selector: 'ng2', template: `{{ 'NG2' }}(<ng-content></ng-content>)`})
         class Ng2 {}
 
@@ -132,10 +132,10 @@ withEachNg1Version(() => {
         });
       }));
 
-      it('should destroy the AngularJS app when `PlatformRef` is destroyed', waitForAsync(() => {
+      it('should destroy the EngularJS app when `PlatformRef` is destroyed', waitForAsync(() => {
         const platformRef = platformBrowserDynamic();
         const adapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         @Component({selector: 'ng2', template: '<span>NG2</span>'})
         class Ng2Component {}
@@ -154,13 +154,13 @@ withEachNg1Version(() => {
         const element = html('<div><ng1></ng1></div>');
 
         adapter.bootstrap(element, [ng1Module.name]).ready((ref) => {
-          const $rootScope: angular.IRootScopeService = ref.ng1Injector.get($ROOT_SCOPE);
+          const $rootScope: engular.IRootScopeService = ref.ng1Injector.get($ROOT_SCOPE);
           const rootScopeDestroySpy = spyOn($rootScope, '$destroy');
 
-          const appElem = angular.element(element);
-          const ng1Elem = angular.element(element.querySelector('ng1') as Element);
-          const ng2Elem = angular.element(element.querySelector('ng2') as Element);
-          const ng2ChildElem = angular.element(element.querySelector('ng2 span') as Element);
+          const appElem = engular.element(element);
+          const ng1Elem = engular.element(element.querySelector('ng1') as Element);
+          const ng2Elem = engular.element(element.querySelector('ng2') as Element);
+          const ng2ChildElem = engular.element(element.querySelector('ng2 span') as Element);
 
           // Attach data to all elements.
           appElem.data!('testData', 1);
@@ -195,7 +195,7 @@ withEachNg1Version(() => {
       let zone: NgZone;
 
       beforeEach(() => {
-        angular.module_('ng1', []);
+        engular.module_('ng1', []);
 
         @Component({
           selector: 'ng2',
@@ -253,7 +253,7 @@ withEachNg1Version(() => {
         @NgModule({declarations: [AppComponent], imports: [BrowserModule]})
         class Ng2Module {}
 
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
         const element = html('<my-app></my-app>');
 
@@ -285,7 +285,7 @@ withEachNg1Version(() => {
 
       it('should interleave scope and component expressions', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         const log: string[] = [];
         const l = (value: string) => {
           log.push(value);
@@ -325,7 +325,7 @@ withEachNg1Version(() => {
         const element = html("<div>{{reset(); l('1A');}}<ng2>{{l('1B')}}</ng2>{{l('1C')}}</div>");
         adapter.bootstrap(element, ['ng1']).ready((ref) => {
           expect(document.body.textContent).toEqual('1A;2A;ng1a;2B;ng1b;2C;1C;');
-          // https://github.com/angular/angular.js/issues/12983
+          // https://github.com/engular/engular.js/issues/12983
           expect(log).toEqual(['1A', '1C', '2A', '2B', '2C', 'ng1a', 'ng1b']);
           ref.dispose();
         });
@@ -351,7 +351,7 @@ withEachNg1Version(() => {
           valueFromPromise?: number;
           @Input()
           set value(v: number) {
-            expect(NgZone.isInAngularZone()).toBe(true);
+            expect(NgZone.isInEngularZone()).toBe(true);
           }
 
           constructor(private zone: NgZone) {}
@@ -372,7 +372,7 @@ withEachNg1Version(() => {
         class Ng2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [])
           .directive('myApp', adapter.downgradeNg2Component(AppComponent));
 
@@ -384,8 +384,8 @@ withEachNg1Version(() => {
         });
       }));
 
-      // This test demonstrates https://github.com/angular/angular/issues/6385
-      // which was invalidly fixed by https://github.com/angular/angular/pull/6386
+      // This test demonstrates https://github.com/engular/engular/issues/6385
+      // which was invalidly fixed by https://github.com/engular/engular/pull/6386
       // it('should not trigger $digest from an async operation in a watcher', async(() => {
       //      @Component({selector: 'my-app', template: ''})
       //      class AppComponent {
@@ -396,7 +396,7 @@ withEachNg1Version(() => {
       //      }
 
       //      const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-      //      const ng1Module = angular.module_('ng1', []).directive(
+      //      const ng1Module = engular.module_('ng1', []).directive(
       //          'myApp', adapter.downgradeNg2Component(AppComponent));
 
       //      const element = html('<my-app></my-app>');
@@ -425,7 +425,7 @@ withEachNg1Version(() => {
         class Ng2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         ng1Module.directive('ng2', adapter.downgradeNg2Component(WorksComponent));
 
         const element = html('<ng2></ng2>');
@@ -436,7 +436,7 @@ withEachNg1Version(() => {
 
       it('should bind properties, events', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []).value($EXCEPTION_HANDLER, (err: any) => {
+        const ng1Module = engular.module_('ng1', []).value($EXCEPTION_HANDLER, (err: any) => {
           throw err;
         });
 
@@ -564,7 +564,7 @@ withEachNg1Version(() => {
       it('should support two-way binding and event listener', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
         const listenerSpy = jasmine.createSpy('$rootScope.listener');
-        const ng1Module = angular.module_('ng1', []).run(($rootScope: angular.IScope) => {
+        const ng1Module = engular.module_('ng1', []).run(($rootScope: engular.IScope) => {
           $rootScope['value'] = 'world';
           $rootScope['listener'] = listenerSpy;
         });
@@ -640,7 +640,7 @@ withEachNg1Version(() => {
         @NgModule({imports: [BrowserModule], declarations: [Ng2Component]})
         class Ng2Module {}
 
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [])
           .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
 
@@ -667,7 +667,7 @@ withEachNg1Version(() => {
 
       it('should bind to ng-model', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         ng1Module.run(($rootScope: any) => {
           $rootScope.modelA = 'A';
@@ -736,7 +736,7 @@ withEachNg1Version(() => {
 
       it('should properly run cleanup when ng1 directive is destroyed', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         let ng2ComponentDestroyed = false;
 
         ng1Module.directive('ng1', () => ({
@@ -759,9 +759,9 @@ withEachNg1Version(() => {
         ng1Module.directive('ng2', adapter.downgradeNg2Component(Ng2));
         const element = html('<ng1></ng1>');
         adapter.bootstrap(element, ['ng1']).ready((ref) => {
-          const ng2Element = angular.element(element.querySelector('ng2') as Element);
+          const ng2Element = engular.element(element.querySelector('ng2') as Element);
           const ng2Descendants = Array.from(element.querySelectorAll('ng2 li')).map(
-            angular.element,
+            engular.element,
           );
           let ng2ElementDestroyed = false;
           let ng2DescendantsDestroyed = ng2Descendants.map(() => false);
@@ -816,7 +816,7 @@ withEachNg1Version(() => {
         })
         class Ng2Module {}
 
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [])
           .directive('ng1', () => ({template: '<ng2-inner></ng2-inner>'}))
           .directive('ng2Inner', adapter.downgradeNg2Component(Ng2InnerComponent))
@@ -837,7 +837,7 @@ withEachNg1Version(() => {
 
       it('should fallback to the root ng2.injector when compiled outside the dom', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         ng1Module.directive('ng1', [
           '$compile',
@@ -870,7 +870,7 @@ withEachNg1Version(() => {
       }));
 
       it('should support multi-slot projection', waitForAsync(() => {
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         @Component({
           selector: 'ng2',
@@ -907,10 +907,10 @@ withEachNg1Version(() => {
         class Ng2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(Ng2Module);
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1', [])
           .directive('ng2', adapter.downgradeNg2Component(Ng2Component))
-          .run(($rootScope: angular.IRootScopeService) => {
+          .run(($rootScope: engular.IRootScopeService) => {
             $rootScope['items'] = [
               {id: 'a', subitems: [1, 2, 3]},
               {id: 'b', subitems: [4, 5, 6]},
@@ -932,7 +932,7 @@ withEachNg1Version(() => {
 
       it('should allow attribute selectors for components in ng2', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => MyNg2Module));
-        const ng1Module = angular.module_('myExample', []);
+        const ng1Module = engular.module_('myExample', []);
 
         @Component({selector: '[works]', template: 'works!'})
         class WorksComponent {}
@@ -959,7 +959,7 @@ withEachNg1Version(() => {
         let ng2ComponentInstance: Ng2Component;
 
         // Define `ng1Component`
-        const ng1Component: angular.IComponent = {
+        const ng1Component: engular.IComponent = {
           template: 'Inside: {{ $ctrl.inputA }}, {{ $ctrl.inputB }}',
           bindings: {inputA: '@inputAttrA', inputB: '@'},
         };
@@ -982,7 +982,7 @@ withEachNg1Version(() => {
         }
 
         // Define `ng1Module`
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1Module', [])
           .component('ng1', ng1Component)
           .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -999,7 +999,7 @@ withEachNg1Version(() => {
 
         adapter.bootstrap(element, ['ng1Module']).ready((ref) => {
           const ng1 = element.querySelector('ng1')!;
-          const ng1Controller = angular.element(ng1).controller!('ng1');
+          const ng1Controller = engular.element(ng1).controller!('ng1');
 
           expect(multiTrim(element.textContent)).toBe('Inside: foo, bar | Outside: foo, bar');
 
@@ -1024,7 +1024,7 @@ withEachNg1Version(() => {
         let ng2ComponentInstance: Ng2Component;
 
         // Define `ng1Component`
-        const ng1Component: angular.IComponent = {
+        const ng1Component: engular.IComponent = {
           template: 'Inside: {{ $ctrl.inputA.value }}, {{ $ctrl.inputB.value }}',
           bindings: {inputA: '<inputAttrA', inputB: '<'},
         };
@@ -1047,7 +1047,7 @@ withEachNg1Version(() => {
         }
 
         // Define `ng1Module`
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1Module', [])
           .component('ng1', ng1Component)
           .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -1064,7 +1064,7 @@ withEachNg1Version(() => {
 
         adapter.bootstrap(element, ['ng1Module']).ready((ref) => {
           const ng1 = element.querySelector('ng1')!;
-          const ng1Controller = angular.element(ng1).controller!('ng1');
+          const ng1Controller = engular.element(ng1).controller!('ng1');
 
           expect(multiTrim(element.textContent)).toBe('Inside: foo, bar | Outside: foo, bar');
 
@@ -1089,7 +1089,7 @@ withEachNg1Version(() => {
         let ng2ComponentInstance: Ng2Component;
 
         // Define `ng1Component`
-        const ng1Component: angular.IComponent = {
+        const ng1Component: engular.IComponent = {
           template: 'Inside: {{ $ctrl.inputA.value }}, {{ $ctrl.inputB.value }}',
           bindings: {inputA: '=inputAttrA', inputB: '='},
         };
@@ -1112,7 +1112,7 @@ withEachNg1Version(() => {
         }
 
         // Define `ng1Module`
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1Module', [])
           .component('ng1', ng1Component)
           .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -1129,7 +1129,7 @@ withEachNg1Version(() => {
 
         adapter.bootstrap(element, ['ng1Module']).ready((ref) => {
           const ng1 = element.querySelector('ng1')!;
-          const ng1Controller = angular.element(ng1).controller!('ng1');
+          const ng1Controller = engular.element(ng1).controller!('ng1');
 
           expect(multiTrim(element.textContent)).toBe('Inside: foo, bar | Outside: foo, bar');
 
@@ -1153,7 +1153,7 @@ withEachNg1Version(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
 
         // Define `ng1Component`
-        const ng1Component: angular.IComponent = {
+        const ng1Component: engular.IComponent = {
           template: 'Inside: -',
           bindings: {outputA: '&outputAttrA', outputB: '&'},
         };
@@ -1172,7 +1172,7 @@ withEachNg1Version(() => {
         }
 
         // Define `ng1Module`
-        const ng1Module = angular
+        const ng1Module = engular
           .module_('ng1Module', [])
           .component('ng1', ng1Component)
           .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -1189,7 +1189,7 @@ withEachNg1Version(() => {
 
         adapter.bootstrap(element, ['ng1Module']).ready((ref) => {
           const ng1 = element.querySelector('ng1')!;
-          const ng1Controller = angular.element(ng1).controller!('ng1');
+          const ng1Controller = engular.element(ng1).controller!('ng1');
 
           expect(multiTrim(element.textContent)).toBe('Inside: - | Outside: foo, bar');
 
@@ -1205,7 +1205,7 @@ withEachNg1Version(() => {
 
       it('should bind properties, events', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1262,7 +1262,7 @@ withEachNg1Version(() => {
 
       it('should bind optional properties', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1306,7 +1306,7 @@ withEachNg1Version(() => {
 
       it('should bind properties, events in controller when bindToController is not used', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1351,7 +1351,7 @@ withEachNg1Version(() => {
 
       it('should bind properties, events in link function', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1396,7 +1396,7 @@ withEachNg1Version(() => {
 
       it('should support templateUrl fetched from $httpBackend', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         ng1Module.value(
           '$httpBackend',
           (method: string, url: string, post: any, cbFn: Function) => {
@@ -1427,7 +1427,7 @@ withEachNg1Version(() => {
 
       it('should support templateUrl as a function', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         ng1Module.value(
           '$httpBackend',
           (method: string, url: string, post: any, cbFn: Function) => {
@@ -1462,7 +1462,7 @@ withEachNg1Version(() => {
 
       it('should support empty template', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {template: ''};
@@ -1488,7 +1488,7 @@ withEachNg1Version(() => {
 
       it('should support template as a function', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1518,7 +1518,7 @@ withEachNg1Version(() => {
 
       it('should support templateUrl fetched from $templateCache', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
         ng1Module.run(($templateCache: any) => $templateCache.put('url.html', 'WORKS'));
 
         const ng1 = () => {
@@ -1545,7 +1545,7 @@ withEachNg1Version(() => {
 
       it('should support controller with controllerAs', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1593,7 +1593,7 @@ withEachNg1Version(() => {
 
       it('should support bindToController', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1625,7 +1625,7 @@ withEachNg1Version(() => {
 
       it('should support bindToController with bindings', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = () => {
           return {
@@ -1657,7 +1657,7 @@ withEachNg1Version(() => {
 
       it('should support single require in linking fn', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = ($rootScope: any) => {
           return {
@@ -1698,7 +1698,7 @@ withEachNg1Version(() => {
 
       it('should support array require in linking fn', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const parent = () => {
           return {
@@ -1755,7 +1755,7 @@ withEachNg1Version(() => {
           @Component({selector: 'ng2', template: '<ng1-a></ng1-a> | <ng1-b></ng1-b>'})
           class Ng2Component {}
 
-          angular
+          engular
             .module_('ng1', [])
             .directive('ng1A', () => ({
               template: '',
@@ -1805,14 +1805,14 @@ withEachNg1Version(() => {
           @Component({selector: 'ng2', template: '<ng1-a></ng1-a> | <ng1-b></ng1-b>'})
           class Ng2Component {}
 
-          angular
+          engular
             .module_('ng1', [])
             .directive('ng1A', () => ({
               template: '',
               scope: {},
               bindToController: true,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 Object.getPrototypeOf($scope).$onInit = $onInitSpy;
               },
             }))
@@ -1821,7 +1821,7 @@ withEachNg1Version(() => {
               scope: {},
               bindToController: false,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 $scope['$onInit'] = $onInitSpy;
               },
             }))
@@ -1857,7 +1857,7 @@ withEachNg1Version(() => {
             }
           }
 
-          angular
+          engular
             .module_('ng1', [])
             .directive('ng1A', () => ({
               template: '',
@@ -1920,14 +1920,14 @@ withEachNg1Version(() => {
             }
           }
 
-          angular
+          engular
             .module_('ng1', [])
             .directive('ng1A', () => ({
               template: '',
               scope: {},
               bindToController: true,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 Object.getPrototypeOf($scope).$doCheck = $doCheckSpyA;
               },
             }))
@@ -1936,7 +1936,7 @@ withEachNg1Version(() => {
               scope: {},
               bindToController: false,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 $scope['$doCheck'] = $doCheckSpyB;
               },
             }))
@@ -1973,7 +1973,7 @@ withEachNg1Version(() => {
           @Component({selector: 'ng2', template: '<ng1-a></ng1-a> | <ng1-b></ng1-b>'})
           class Ng2Component {}
 
-          angular
+          engular
             .module_('ng1', [])
             .directive('ng1A', () => ({
               template: '',
@@ -2023,14 +2023,14 @@ withEachNg1Version(() => {
           @Component({selector: 'ng2', template: '<ng1-a></ng1-a> | <ng1-b></ng1-b>'})
           class Ng2Component {}
 
-          angular
+          engular
             .module_('ng1', [])
             .directive('ng1A', () => ({
               template: '',
               scope: {},
               bindToController: true,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 Object.getPrototypeOf($scope).$postLink = $postLinkSpy;
               },
             }))
@@ -2039,7 +2039,7 @@ withEachNg1Version(() => {
               scope: {},
               bindToController: false,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 $scope['$postLink'] = $postLinkSpy;
               },
             }))
@@ -2079,14 +2079,14 @@ withEachNg1Version(() => {
             }
           }
 
-          angular
+          engular
             .module_('ng1', [])
             .directive('ng1A', () => ({
               template: '',
               scope: {valA: '<'},
               bindToController: true,
               controllerAs: '$ctrl',
-              controller: function (this: any, $scope: angular.IScope) {
+              controller: function (this: any, $scope: engular.IScope) {
                 this.$onChanges = $onChangesControllerSpyA;
               },
             }))
@@ -2102,7 +2102,7 @@ withEachNg1Version(() => {
               },
             }))
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component))
-            .run(($rootScope: angular.IRootScopeService) => {
+            .run(($rootScope: engular.IRootScopeService) => {
               Object.getPrototypeOf($rootScope).$onChanges = $onChangesScopeSpy;
             });
 
@@ -2180,7 +2180,7 @@ withEachNg1Version(() => {
           // on
           // the queue at the end of the test, causing it to fail.
           // Mocking animations (via `ngAnimateMock`) avoids the issue.
-          angular
+          engular
             .module_('ng1', ['ngAnimateMock'])
             .directive('ng1A', () => ({
               template: '',
@@ -2274,14 +2274,14 @@ withEachNg1Version(() => {
           // on
           // the queue at the end of the test, causing it to fail.
           // Mocking animations (via `ngAnimateMock`) avoids the issue.
-          angular
+          engular
             .module_('ng1', ['ngAnimateMock'])
             .directive('ng1A', () => ({
               template: '',
               scope: {},
               bindToController: true,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 Object.getPrototypeOf($scope).$onDestroy = $onDestroySpy;
               },
             }))
@@ -2290,7 +2290,7 @@ withEachNg1Version(() => {
               scope: {},
               bindToController: false,
               controllerAs: '$ctrl',
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 $scope['$onDestroy'] = $onDestroySpy;
               },
             }))
@@ -2352,10 +2352,10 @@ withEachNg1Version(() => {
           // on
           // the queue at the end of the test, causing it to fail.
           // Mocking animations (via `ngAnimateMock`) avoids the issue.
-          angular
+          engular
             .module_('ng1', ['ngAnimateMock'])
             .component('ng1', {
-              controller: function ($scope: angular.IScope) {
+              controller: function ($scope: engular.IScope) {
                 $scope.$on('$destroy', scopeDestroyListener);
               },
             })
@@ -2399,11 +2399,11 @@ withEachNg1Version(() => {
           // `$animate` will use `setTimeout(..., 16.6)` instead. This timeout will still be
           // on the queue at the end of the test, causing it to fail.
           // Mocking animations (via `ngAnimateMock`) avoids the issue.
-          angular
+          engular
             .module_('ng1', ['ngAnimateMock'])
             .component('ng1', {
               controller: class {
-                constructor(private $element: angular.IAugmentedJQuery) {}
+                constructor(private $element: engular.IAugmentedJQuery) {}
                 $onInit() {
                   this.$element.on!('$destroy', elementDestroyListener);
                   this.$element.contents!().on!('$destroy', descendantDestroyListener);
@@ -2439,13 +2439,13 @@ withEachNg1Version(() => {
 
         it('should clear data on `$element` and descendants', fakeAsync(() => {
           const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-          let ng1ComponentElement: angular.IAugmentedJQuery;
+          let ng1ComponentElement: engular.IAugmentedJQuery;
           let ng2ComponentAInstance: Ng2ComponentA;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             controller: class {
-              constructor(private $element: angular.IAugmentedJQuery) {}
+              constructor(private $element: engular.IAugmentedJQuery) {}
               $onInit() {
                 this.$element.data!('test', 1);
                 this.$element.contents!().data!('test', 2);
@@ -2470,7 +2470,7 @@ withEachNg1Version(() => {
           class Ng2ComponentB {}
 
           // Define `ng1Module`
-          angular
+          engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2A', adapter.downgradeNg2Component(Ng2ComponentA));
@@ -2507,13 +2507,13 @@ withEachNg1Version(() => {
           const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
           const elementClickListener = jasmine.createSpy('elementClickListener');
           const descendantClickListener = jasmine.createSpy('descendantClickListener');
-          let ng1DescendantElement: angular.IAugmentedJQuery;
+          let ng1DescendantElement: engular.IAugmentedJQuery;
           let ng2ComponentAInstance: Ng2ComponentA;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             controller: class {
-              constructor(private $element: angular.IAugmentedJQuery) {}
+              constructor(private $element: engular.IAugmentedJQuery) {}
               $onInit() {
                 ng1DescendantElement = this.$element.contents!();
 
@@ -2538,7 +2538,7 @@ withEachNg1Version(() => {
           class Ng2ComponentB {}
 
           // Define `ng1Module`
-          angular
+          engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2A', adapter.downgradeNg2Component(Ng2ComponentA));
@@ -2580,7 +2580,7 @@ withEachNg1Version(() => {
           const log: string[] = [];
 
           // Define `ng1Directive`
-          const ng1Directive: angular.IDirective = {
+          const ng1Directive: engular.IDirective = {
             template: '',
             link: {pre: () => log.push('ng1-pre')},
             controller: class {
@@ -2595,7 +2595,7 @@ withEachNg1Version(() => {
           class Ng2Component {}
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [])
             .directive('ng1', () => ng1Directive)
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -2620,19 +2620,19 @@ withEachNg1Version(() => {
           const log: string[] = [];
 
           // Define `ng1Directive`
-          const ng1DirectiveA: angular.IDirective = {
+          const ng1DirectiveA: engular.IDirective = {
             template: '<ng1-b></ng1-b>',
             link: {pre: () => log.push('ng1A-pre')},
           };
 
-          const ng1DirectiveB: angular.IDirective = {link: () => log.push('ng1B-post')};
+          const ng1DirectiveB: engular.IDirective = {link: () => log.push('ng1B-post')};
 
           // Define `Ng2Component`
           @Component({selector: 'ng2', template: '<ng1-a></ng1-a>'})
           class Ng2Component {}
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [])
             .directive('ng1A', () => ng1DirectiveA)
             .directive('ng1B', () => ng1DirectiveB)
@@ -2659,19 +2659,19 @@ withEachNg1Version(() => {
           const log: string[] = [];
 
           // Define `ng1Directive`
-          const ng1DirectiveA: angular.IDirective = {
+          const ng1DirectiveA: engular.IDirective = {
             template: '<ng1-b></ng1-b>',
             link: {post: () => log.push('ng1A-post')},
           };
 
-          const ng1DirectiveB: angular.IDirective = {link: () => log.push('ng1B-post')};
+          const ng1DirectiveB: engular.IDirective = {link: () => log.push('ng1B-post')};
 
           // Define `Ng2Component`
           @Component({selector: 'ng2', template: '<ng1-a></ng1-a>'})
           class Ng2Component {}
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [])
             .directive('ng1A', () => ng1DirectiveA)
             .directive('ng1B', () => ng1DirectiveB)
@@ -2698,19 +2698,19 @@ withEachNg1Version(() => {
           const log: string[] = [];
 
           // Define `ng1Directive`
-          const ng1DirectiveA: angular.IDirective = {
+          const ng1DirectiveA: engular.IDirective = {
             template: '<ng1-b></ng1-b>',
             link: () => log.push('ng1A-post'),
           };
 
-          const ng1DirectiveB: angular.IDirective = {link: () => log.push('ng1B-post')};
+          const ng1DirectiveB: engular.IDirective = {link: () => log.push('ng1B-post')};
 
           // Define `Ng2Component`
           @Component({selector: 'ng2', template: '<ng1-a></ng1-a>'})
           class Ng2Component {}
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [])
             .directive('ng1A', () => ng1DirectiveA)
             .directive('ng1B', () => ng1DirectiveB)
@@ -2737,7 +2737,7 @@ withEachNg1Version(() => {
           const log: string[] = [];
 
           // Define `ng1Directive`
-          const ng1Directive: angular.IDirective = {
+          const ng1Directive: engular.IDirective = {
             template: '',
             link: () => log.push('ng1-post'),
             controller: class {
@@ -2752,7 +2752,7 @@ withEachNg1Version(() => {
           class Ng2Component {}
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1', [])
             .directive('ng1', () => ng1Directive)
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -2780,7 +2780,7 @@ withEachNg1Version(() => {
           let ng2ComponentBInstance: Ng2ComponentB;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             template: 'ng1(<div ng-transclude></div>)',
             transclude: true,
           };
@@ -2807,7 +2807,7 @@ withEachNg1Version(() => {
           }
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2A', adapter.downgradeNg2Component(Ng2ComponentA));
@@ -2844,7 +2844,7 @@ withEachNg1Version(() => {
           let ng2ComponentInstance: Ng2Component;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             template: 'ng1(<div ng-transclude>{{ $ctrl.value }}</div>)',
             transclude: true,
             controller: class {
@@ -2878,7 +2878,7 @@ withEachNg1Version(() => {
           }
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -2913,7 +2913,7 @@ withEachNg1Version(() => {
           let ng2ComponentInstance: Ng2Component;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             template:
               'ng1(x(<div ng-transclude="slotX"></div>) | y(<div ng-transclude="slotY"></div>))',
             transclude: {slotX: 'contentX', slotY: 'contentY'},
@@ -2940,7 +2940,7 @@ withEachNg1Version(() => {
           }
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -2973,7 +2973,7 @@ withEachNg1Version(() => {
           let ng2ComponentInstance: Ng2Component;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             template: 'ng1(default(<div ng-transclude="">fallback-{{ $ctrl.value }}</div>))',
             transclude: {slotX: 'contentX', slotY: 'contentY'},
             controller: class {
@@ -2998,7 +2998,7 @@ withEachNg1Version(() => {
               |
 
               <!--
-                    Remove any whitespace, because in AngularJS versions prior to 1.6
+                    Remove any whitespace, because in EngularJS versions prior to 1.6
                     even whitespace counts as transcluded content.
                   -->
               <ng1><content-x>ignored x</content-x><content-y>ignored y</content-y></ng1> |
@@ -3021,7 +3021,7 @@ withEachNg1Version(() => {
           }
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -3059,7 +3059,7 @@ withEachNg1Version(() => {
           let ng2ComponentInstance: Ng2Component;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             template: `
                 ng1(
                   x(<div ng-transclude="slotX">{{ $ctrl.x }}</div>) |
@@ -3097,7 +3097,7 @@ withEachNg1Version(() => {
           }
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -3137,7 +3137,7 @@ withEachNg1Version(() => {
           let errorMessage: string;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             template: '',
             transclude: {slotX: '?contentX', slotY: 'contentY'},
           };
@@ -3147,7 +3147,7 @@ withEachNg1Version(() => {
           class Ng2Component {}
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1Module', [])
             .value($EXCEPTION_HANDLER, (error: Error) => (errorMessage = error.message))
             .component('ng1', ng1Component)
@@ -3173,7 +3173,7 @@ withEachNg1Version(() => {
           let ng2ComponentInstance: Ng2Component;
 
           // Define `ng1Component`
-          const ng1Component: angular.IComponent = {
+          const ng1Component: engular.IComponent = {
             template:
               'ng1(x(<div ng-transclude="slotX"></div>) | default(<div ng-transclude=""></div>))',
             transclude: {slotX: 'contentX'},
@@ -3205,7 +3205,7 @@ withEachNg1Version(() => {
           }
 
           // Define `ng1Module`
-          const ng1Module = angular
+          const ng1Module = engular
             .module_('ng1Module', [])
             .component('ng1', ng1Component)
             .directive('ng2', adapter.downgradeNg2Component(Ng2Component));
@@ -3241,7 +3241,7 @@ withEachNg1Version(() => {
 
       it('should bind input properties (<) of components', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = {
           bindings: {personProfile: '<'},
@@ -3272,7 +3272,7 @@ withEachNg1Version(() => {
 
       it('should support ng2 > ng1 > ng2', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         const ng1 = {
           template: 'ng1(<ng2b></ng2b>)',
@@ -3311,7 +3311,7 @@ withEachNg1Version(() => {
         class MyNg2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(MyNg2Module);
-        const module = angular.module_('myExample', []);
+        const module = engular.module_('myExample', []);
         module.factory('someToken', adapter.downgradeNg2Provider(SomeToken));
         adapter.bootstrap(html('<div>'), ['myExample']).ready((ref) => {
           expect(ref.ng1Injector.get('someToken')).toBe('correct_value');
@@ -3324,7 +3324,7 @@ withEachNg1Version(() => {
         class MyNg2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(MyNg2Module);
-        const module = angular.module_('myExample', []);
+        const module = engular.module_('myExample', []);
         module.value('testValue', 'secreteToken');
         adapter.upgradeNg1Provider('testValue');
         adapter.upgradeNg1Provider('testValue', {asToken: 'testToken'});
@@ -3338,7 +3338,7 @@ withEachNg1Version(() => {
       }));
 
       it('should respect hierarchical dependency injection for ng2', waitForAsync(() => {
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         @Component({selector: 'ng2-parent', template: `ng2-parent(<ng-content></ng-content>)`})
         class Ng2Parent {}
@@ -3369,7 +3369,7 @@ withEachNg1Version(() => {
         class MyNg2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(MyNg2Module);
-        angular.module_('ng1', []);
+        engular.module_('ng1', []);
         let bootstrapResumed: boolean = false;
 
         const element = html('<div></div>');
@@ -3382,7 +3382,7 @@ withEachNg1Version(() => {
 
         setTimeout(() => {
           bootstrapResumed = true;
-          (<any>window).angular.resumeBootstrap();
+          (<any>window).engular.resumeBootstrap();
         }, 100);
       }));
 
@@ -3391,11 +3391,11 @@ withEachNg1Version(() => {
         class MyNg2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(MyNg2Module);
-        const ng1Module = angular.module_('ng1', []);
-        let a1Injector: angular.IInjectorService | undefined;
+        const ng1Module = engular.module_('ng1', []);
+        let a1Injector: engular.IInjectorService | undefined;
         ng1Module.run([
           '$injector',
-          function ($injector: angular.IInjectorService) {
+          function ($injector: engular.IInjectorService) {
             a1Injector = $injector;
           },
         ]);
@@ -3409,7 +3409,7 @@ withEachNg1Version(() => {
 
         tick(100);
 
-        const value = (<any>window).angular.resumeBootstrap();
+        const value = (<any>window).engular.resumeBootstrap();
         expect(value).toBe(a1Injector);
       }));
 
@@ -3418,14 +3418,14 @@ withEachNg1Version(() => {
         class MyNg2Module {}
 
         const adapter: UpgradeAdapter = new UpgradeAdapter(MyNg2Module);
-        angular.module_('ng1', []);
+        engular.module_('ng1', []);
         const element = html('<div></div>');
         adapter.bootstrap(element, ['ng1']).ready((ref) => {
           const ng2Testability: Testability = ref.ng2Injector.get(Testability);
           ng2Testability.increasePendingRequestCount();
           let ng2Stable = false;
 
-          angular.getTestability(element).whenStable(() => {
+          engular.getTestability(element).whenStable(() => {
             expect(ng2Stable).toEqual(true);
             ref.dispose();
           });
@@ -3441,7 +3441,7 @@ withEachNg1Version(() => {
     describe('examples', () => {
       it('should verify UpgradeAdapter example', waitForAsync(() => {
         const adapter: UpgradeAdapter = new UpgradeAdapter(forwardRef(() => Ng2Module));
-        const module = angular.module_('myExample', []);
+        const module = engular.module_('myExample', []);
 
         const ng1 = () => {
           return {
@@ -3480,11 +3480,11 @@ withEachNg1Version(() => {
 
     describe('registerForNg1Tests', () => {
       let upgradeAdapterRef: UpgradeAdapterRef;
-      let $compile: angular.ICompileService;
-      let $rootScope: angular.IRootScopeService;
+      let $compile: engular.ICompileService;
+      let $rootScope: engular.IRootScopeService;
 
       beforeEach(() => {
-        const ng1Module = angular.module_('ng1', []);
+        const ng1Module = engular.module_('ng1', []);
 
         @Component({
           selector: 'ng2',
@@ -3502,7 +3502,7 @@ withEachNg1Version(() => {
       });
 
       beforeEach(() => {
-        inject((_$compile_: angular.ICompileService, _$rootScope_: angular.IRootScopeService) => {
+        inject((_$compile_: engular.ICompileService, _$rootScope_: engular.IRootScopeService) => {
           $compile = _$compile_;
           $rootScope = _$rootScope_;
         });
@@ -3519,12 +3519,12 @@ withEachNg1Version(() => {
   });
 });
 
-function $apply(adapter: UpgradeAdapterRef, exp: angular.Ng1Expression) {
-  const $rootScope = adapter.ng1Injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+function $apply(adapter: UpgradeAdapterRef, exp: engular.Ng1Expression) {
+  const $rootScope = adapter.ng1Injector.get($ROOT_SCOPE) as engular.IRootScopeService;
   $rootScope.$apply(exp);
 }
 
 function $digest(adapter: UpgradeAdapterRef) {
-  const $rootScope = adapter.ng1Injector.get($ROOT_SCOPE) as angular.IRootScopeService;
+  const $rootScope = adapter.ng1Injector.get($ROOT_SCOPE) as engular.IRootScopeService;
   $rootScope.$digest();
 }

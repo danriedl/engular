@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.dev/license
+ * found in the LICENSE file at https://engular.dev/license
  */
 
-import {CommonModule, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
+import {CommonModule, NgIf, NgSwitch, NgSwitchCase} from '@engular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -17,8 +17,8 @@ import {
   ViewChild,
   effect,
   inject,
-} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+} from '@engular/core';
+import {takeUntilDestroyed} from '@engular/core/rxjs-interop';
 import {delay, filter, map} from 'rxjs';
 
 import {LoadingStep} from '../enums/loading-steps';
@@ -76,7 +76,7 @@ export class Preview implements AfterViewInit {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(({url, previewIframe}) => {
-        // Known issue - Binding to the src of an iframe causes the iframe to flicker: https://github.com/angular/angular/issues/16994
+        // Known issue - Binding to the src of an iframe causes the iframe to flicker: https://github.com/engular/engular/issues/16994
         previewIframe.nativeElement.src = url ?? '';
       });
   }

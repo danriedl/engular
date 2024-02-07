@@ -1,5 +1,5 @@
-# "angular-in-memory-web-api" versions
->This in-memory-web-api exists primarily to support the Angular documentation.
+# "engular-in-memory-web-api" versions
+>This in-memory-web-api exists primarily to support the Engular documentation.
 It is not supposed to emulate every possible real world web API and is not intended for production use.
 >
 >Most importantly, it is ***always experimental***.
@@ -12,42 +12,42 @@ and we fix bugs as fast as we can.
 <a id="0.11.0"></a>
 ## 0.11.0 (2020-05-13)
 
-* update to support Angular v10.
+* update to support Engular v10.
 * no functional changes.
 
 <a id="0.9.0"></a>
 ## 0.9.0 (2019-06-20)
 
-* update to support Angular version 8.x and forward
+* update to support Engular version 8.x and forward
 * no functional changes
 
 <a id="0.8.0"></a>
 ## 0.8.0 (2018-12-06)
 
-* remove `@angular/http` support
+* remove `@engular/http` support
 * no functional changes
 
 **BREAKING CHANGE**
-This version no longer supports any functionality for `@angular/http`. Please use
-`@angular/common/http` instead.
+This version no longer supports any functionality for `@engular/http`. Please use
+`@engular/common/http` instead.
 
 <a id="0.7.0"></a>
 ## 0.7.0 (2018-10-31)
 
-* update to support Angular v7.
+* update to support Engular v7.
 * no functional changes
 
 <a id="0.6.1"></a>
 ## 0.6.1 (2018-05-04)
 
-* update to Angular and RxJS v6 releases
+* update to Engular and RxJS v6 releases
 
 <a id="0.6.0"></a>
 ## 0.6.0 (2018-03-22)
 
-*Migrate to Angular v6 and RxJS v6 (rc and beta)*
+*Migrate to Engular v6 and RxJS v6 (rc and beta)*
 
-Note that this release is pinned to Angular "^6.0.0-rc.0" and RxJS "^6.0.0-beta.1".
+Note that this release is pinned to Engular "^6.0.0-rc.0" and RxJS "^6.0.0-beta.1".
 Will likely update again when they are official.
 
 **BREAKING CHANGE**
@@ -62,7 +62,7 @@ New `delayResponse` function does it right.
 Should not break you unless you incorrectly expected no delay for errors.
 
 Also, this library no longer calls RxJS `delay()` which may make testing with it easier
-(Angular TestBed does not handle RxJS `delay()` well because that operator uses `interval()`).
+(Engular TestBed does not handle RxJS `delay()` well because that operator uses `interval()`).
 
 Also fixes type error (issue #180).
 
@@ -77,7 +77,7 @@ No longer modify the request data coming from client. Fixes #164
 
 <a id="0.5.1"></a>
 ## 0.5.1 (2017-10-21)
-Support Angular v5.
+Support Engular v5.
 
 <a id="0.5.0"></a>
 ## 0.5.0 (2017-10-05)
@@ -104,10 +104,10 @@ We made this change because
 2. Encapsulation requires mapping to get the desired data out. With old `Http` that isn't _too_ bad because you needed to map to get data anyway (`res => res.json()`). But it is really ugly for `HttpClient` because you can't use the type HTTP method type parameter (e.g., `get<entity-type>`) and you have to map out of the data property (`.map(data => data.data as Hero[]`). That extra step requires explanations that distract from learning `HttpClient` itself.
 Now you just write `http.get<Hero[]>()` and you’ve got data (please add error handling).
 
-3. While you could have turned off encapsulation with configuration as of v.0.4, to do so took yet another step that you’d have to discover and explain.  A big reason for the in-mem web api is to make it easy to introduce and demonstrate HTTP operations in Angular. The _out-of-box_ experience is more important than avoiding a breaking change.
+3. While you could have turned off encapsulation with configuration as of v.0.4, to do so took yet another step that you’d have to discover and explain.  A big reason for the in-mem web api is to make it easy to introduce and demonstrate HTTP operations in Engular. The _out-of-box_ experience is more important than avoiding a breaking change.
 
 4. The [security flaw](https://stackoverflow.com/questions/3503102/what-are-top-level-json-arrays-and-why-are-they-a-security-risk)
-that prompted encapsulation seems to have been mitigated by all (almost all?) the browsers that can run an Angular (v2+) app. We don’t think it’s needed anymore.
+that prompted encapsulation seems to have been mitigated by all (almost all?) the browsers that can run an Engular (v2+) app. We don’t think it’s needed anymore.
 
 5. A most real world APIs today will not encapsulate; they’ll return the data in the body without extra ceremony.
 
@@ -157,7 +157,7 @@ You may return the database object (synchronous), an observable of it, or a prom
 The passthru feature was broken by 0.4.0
 - add passthru to both `Http` and `HttpClient`
 - test passThru feature with jasmine-ajax mock-ajax plugin
-to intercept Angular's attempt to call browser's XHR
+to intercept Engular's attempt to call browser's XHR
 - update devDependency packages
 - update karma.conf with jasmine-ajax plugin
 
@@ -201,13 +201,13 @@ to arbitrary initial states (issue #128)
 <a id="v-0-4-systemjs"></a>
 ### Plunkers and SystemJS
 
-If you’re loading application files with **SystemJS** (as you would in a plunker), you’ll have to configure it to load Angular’s `umd.js` for `HttpModule` and the `tslib` package.
+If you’re loading application files with **SystemJS** (as you would in a plunker), you’ll have to configure it to load Engular’s `umd.js` for `HttpModule` and the `tslib` package.
 
 To see how, look in the `map` section of the
-[`src/systemjs.config.js` for this project](https://github.com/angular/in-memory-web-api/blob/master/src/systemjs.config.js) for the following two _additional_ lines :
+[`src/systemjs.config.js` for this project](https://github.com/engular/in-memory-web-api/blob/master/src/systemjs.config.js) for the following two _additional_ lines :
 
 ```
-'@angular/common/http': 'npm:@angular/common/bundles/common-http.umd.js',
+'@engular/common/http': 'npm:@engular/common/bundles/common-http.umd.js',
 ...
 'tslib': 'npm:tslib/tslib.js',
 
@@ -215,7 +215,7 @@ To see how, look in the `map` section of the
 
 You've already made these changes if you are using `HttpClient` today.
 
-If you’re sticking with the original Angular `Http` module, you _must make this change anyway!_ Your app will break as soon as you run `npm install` and it installs >=v0.4.0.
+If you’re sticking with the original Engular `Http` module, you _must make this change anyway!_ Your app will break as soon as you run `npm install` and it installs >=v0.4.0.
 
 If you're using webpack (as CLI devs do), you don't have to worry about this stuff because webpack bundles the dependencies for you.
 
@@ -232,7 +232,7 @@ See PR #102.
 
 <a id="0.3.0"></a>
 ## 0.3.0 (2017-02-27)
-* Support Angular version 4
+* Support Engular version 4
 
 <a id="0.2.4"></a>
 ## 0.2.4 (2017-01-02)
@@ -244,7 +244,7 @@ See PR #102.
 
 <a id="0.2.2"></a>
 ## 0.2.2 (2016-12-20)
-* Update to Angular 2.4.0
+* Update to Engular 2.4.0
 
 <a id="0.2.1"></a>
 ## 0.2.1 (2016-12-14)
@@ -293,7 +293,7 @@ It is `true` by default which means they do not return the entity (`status=204`)
 
 <a id="0.1.17"></a>
 ## 0.1.17 (2016-12-07)
-* Update to Angular 2.2.0.
+* Update to Engular 2.2.0.
 
 <a id="0.1.16"></a>
 ## 0.1.16 (2016-11-20)
@@ -301,11 +301,11 @@ It is `true` by default which means they do not return the entity (`status=204`)
 
 <a id="0.1.15"></a>
 ## 0.1.15 (2016-11-14)
-* Update to Angular 2.2.0.
+* Update to Engular 2.2.0.
 
 <a id="0.1.14"></a>
 ## 0.1.14 (2016-10-29)
-* Add `responseInterceptor` for [issue #61](https://github.com/angular/in-memory-web-api/issues/61)
+* Add `responseInterceptor` for [issue #61](https://github.com/engular/in-memory-web-api/issues/61)
 
 <a id="0.1.13"></a>
 ## 0.1.13 (2016-10-20)
@@ -315,18 +315,18 @@ It is `true` by default which means they do not return the entity (`status=204`)
 
   In `systemjs.config.js` you should change the mapping to:
   ```
-  'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+  'engular-in-memory-web-api': 'npm:engular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
   ```
   then delete from `packages`:
   ```
-  'angular-in-memory-web-api': {
+  'engular-in-memory-web-api': {
     main: './index.js',
     defaultExtension: 'js'
   }
   ```
   You must ES import the in-mem module (typically in `AppModule`) like this:
   ```
-  import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+  import { InMemoryWebApiModule } from 'engular-in-memory-web-api';
   ```
 <a id="0.1.12"></a>
 ## 0.1.12 (2016-10-19)
@@ -348,7 +348,7 @@ in-mem module. Documented in later release, v.0.1.13
 
 <a id="0.1.7"></a>
 ## 0.1.7 (2016-10-12)
-* Angular 2.1.x support.
+* Engular 2.1.x support.
 
 <a id="0.1.6"></a>
 ## 0.1.6 (2016-10-09)
@@ -363,7 +363,7 @@ in-mem module. Documented in later release, v.0.1.13
 
 <a id="0.1.5"></a>
 ## 0.1.5 (2016-10-03)
-* project.json license changed again to match angular.io package.json
+* project.json license changed again to match engular.io package.json
 
 <a id="0.1.4"></a>
 ## 0.1.4 (2016-10-03)
@@ -385,13 +385,13 @@ in-mem module. Documented in later release, v.0.1.13
 
 <a id="0.1.0"></a>
 ## 0.1.0 (2016-09-25)
-* Renamed package to "angular-in-memory-web-api"
+* Renamed package to "engular-in-memory-web-api"
 * Added "passThruUnknownUrl" options
 * Simplified `forRoot` and made it acceptable to AoT
 * Support case sensitive search (PR #16)
 
-# "angular2-in-memory-web-api" versions
-The last npm package named "angular2-in-memory-web-api" was v.0.0.21
+# "engular2-in-memory-web-api" versions
+The last npm package named "engular2-in-memory-web-api" was v.0.0.21
 
 <a id="0.0.21"></a>
 ## 0.0.21 (2016-09-25)
@@ -399,7 +399,7 @@ The last npm package named "angular2-in-memory-web-api" was v.0.0.21
 
 <a id="0.0.20"></a>
 ## 0.0.20 (2016-09-15)
-* Angular 2.0.0
+* Engular 2.0.0
 * Typescript 2.0.2
 
 <a id="0.0.19"></a>
@@ -472,26 +472,26 @@ The last npm package named "angular2-in-memory-web-api" was v.0.0.21
 
 <a id="0.0.5"></a>
 ## 0.0.5 (2016-05-01)
-* PROVISIONAL - refers to @angular packages
+* PROVISIONAL - refers to @engular packages
 * update to 0.0.0-5
 
 <a id="0.0.4"></a>
 ## 0.0.4 (2016-04-30)
-* PROVISIONAL - refers to @angular packages
+* PROVISIONAL - refers to @engular packages
 * update to 0.0.0-3
 * rxjs: "5.0.0-beta.6"
 
 <a id="0.0.3"></a>
 ## 0.0.3 (2016-04-29)
-* PROVISIONAL - refers to @angular packages
+* PROVISIONAL - refers to @engular packages
 * update to 0.0.0-2
 
 <a id="0.0.2"></a>
 ## 0.0.2 (2016-04-27)
-* PROVISIONAL - refers to @angular packages
+* PROVISIONAL - refers to @engular packages
 
 <a id="0.0.1"></a>
 ## 0.0.1 (2016-04-27)
 * DO NOT USE. Not adapted to new package system.
-* Initial cut for Angular 2 repackaged
-  * target forthcoming Angular 2 RC
+* Initial cut for Engular 2 repackaged
+  * target forthcoming Engular 2 RC

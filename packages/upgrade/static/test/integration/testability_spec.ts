@@ -3,17 +3,17 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {destroyPlatform, NgModule, Testability} from '@angular/core';
-import {NgZone} from '@angular/core/src/zone/ng_zone';
-import {fakeAsync, flush, tick} from '@angular/core/testing';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {UpgradeModule} from '@angular/upgrade/static';
+import {destroyPlatform, NgModule, Testability} from '@engular/core';
+import {NgZone} from '@engular/core/src/zone/ng_zone';
+import {fakeAsync, flush, tick} from '@engular/core/testing';
+import {BrowserModule} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
+import {UpgradeModule} from '@engular/upgrade/static';
 
-import * as angular from '../../../src/common/src/angular1';
+import * as engular from '../../../src/common/src/engular1';
 import {html, withEachNg1Version} from '../../../src/common/test/helpers/common_test_helpers';
 
 import {bootstrap} from './static_test_helpers';
@@ -31,9 +31,9 @@ withEachNg1Version(() => {
     it('should handle deferred bootstrap', fakeAsync(() => {
       let applicationRunning = false;
       let stayedInTheZone: boolean = undefined!;
-      const ng1Module = angular.module_('ng1', []).run(() => {
+      const ng1Module = engular.module_('ng1', []).run(() => {
         applicationRunning = true;
-        stayedInTheZone = NgZone.isInAngularZone();
+        stayedInTheZone = NgZone.isInEngularZone();
       });
 
       const element = html('<div></div>');
@@ -42,7 +42,7 @@ withEachNg1Version(() => {
       bootstrap(platformBrowserDynamic(), Ng2Module, element, ng1Module);
 
       setTimeout(() => {
-        (<any>window).angular.resumeBootstrap();
+        (<any>window).engular.resumeBootstrap();
       }, 100);
 
       expect(applicationRunning).toEqual(false);
@@ -52,11 +52,11 @@ withEachNg1Version(() => {
     }));
 
     it('should propagate return value of resumeBootstrap', fakeAsync(() => {
-      const ng1Module = angular.module_('ng1', []);
-      let a1Injector: angular.IInjectorService | undefined;
+      const ng1Module = engular.module_('ng1', []);
+      let a1Injector: engular.IInjectorService | undefined;
       ng1Module.run([
         '$injector',
-        function ($injector: angular.IInjectorService) {
+        function ($injector: engular.IInjectorService) {
           a1Injector = $injector;
         },
       ]);
@@ -67,14 +67,14 @@ withEachNg1Version(() => {
 
       tick(100);
 
-      const value = (<any>window).angular.resumeBootstrap();
+      const value = (<any>window).engular.resumeBootstrap();
       expect(value).toBe(a1Injector);
 
       flush();
     }));
 
     it('should wait for ng2 testability', fakeAsync(() => {
-      const ng1Module = angular.module_('ng1', []);
+      const ng1Module = engular.module_('ng1', []);
       const element = html('<div></div>');
 
       bootstrap(platformBrowserDynamic(), Ng2Module, element, ng1Module).then((upgrade) => {
@@ -83,7 +83,7 @@ withEachNg1Version(() => {
         let ng2Stable = false;
         let ng1Stable = false;
 
-        angular.getTestability(element).whenStable(() => {
+        engular.getTestability(element).whenStable(() => {
           ng1Stable = true;
         });
 
@@ -101,12 +101,12 @@ withEachNg1Version(() => {
     }));
 
     it('should not wait for $interval', fakeAsync(() => {
-      const ng1Module = angular.module_('ng1', []);
+      const ng1Module = engular.module_('ng1', []);
       const element = html('<div></div>');
 
       bootstrap(platformBrowserDynamic(), Ng2Module, element, ng1Module).then((upgrade) => {
         const ng2Testability: Testability = upgrade.injector.get(Testability);
-        const $interval: angular.IIntervalService = upgrade.$injector.get('$interval');
+        const $interval: engular.IIntervalService = upgrade.$injector.get('$interval');
 
         let ng2Stable = false;
         let intervalDone = false;
@@ -117,7 +117,7 @@ withEachNg1Version(() => {
             expect(intervalDone).toEqual(false);
 
             intervalDone = true;
-            expect(NgZone.isInAngularZone()).toEqual(true);
+            expect(NgZone.isInEngularZone()).toEqual(true);
             expect(arg).toEqual('passed argument');
           },
           200,

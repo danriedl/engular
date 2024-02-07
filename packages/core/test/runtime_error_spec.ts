@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {RuntimeError, RuntimeErrorCode} from '../src/errors';
@@ -11,7 +11,7 @@ import {RuntimeError, RuntimeErrorCode} from '../src/errors';
 describe('RuntimeError utils', () => {
   it('should correctly format an error without an error message', () => {
     const error = new RuntimeError<RuntimeErrorCode>(RuntimeErrorCode.EXPORT_NOT_FOUND, '');
-    expect(error.toString()).toBe('Error: NG0301. Find more at https://angular.io/errors/NG0301');
+    expect(error.toString()).toBe('Error: NG0301. Find more at https://engular.io/errors/NG0301');
   });
 
   it('should correctly format an error without an error message not aio guide', () => {
@@ -27,7 +27,7 @@ describe('RuntimeError utils', () => {
   it('should correctly format an error with both an error message and an aio guide', () => {
     const error = new RuntimeError(RuntimeErrorCode.EXPORT_NOT_FOUND, 'Some error message');
     expect(error.toString())
-        .toBe('Error: NG0301: Some error message. Find more at https://angular.io/errors/NG0301');
+        .toBe('Error: NG0301: Some error message. Find more at https://engular.io/errors/NG0301');
   });
 
   ['.', ',', ';', '!', '?'].forEach(
@@ -40,6 +40,6 @@ describe('RuntimeError utils', () => {
                 new RuntimeError<RuntimeErrorCode>(RuntimeErrorCode.PIPE_NOT_FOUND, errorMessage);
             expect(error.toString())
                 .toBe(`Error: NG0302: Pipe not found${
-                    character} Find more at https://angular.io/errors/NG0302`);
+                    character} Find more at https://engular.io/errors/NG0302`);
           }));
 });

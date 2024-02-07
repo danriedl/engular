@@ -3,16 +3,16 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import '@angular/compiler';
+import '@engular/compiler';
 
 import {runfiles} from '@bazel/runfiles';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const PACKAGE = 'angular/packages/core/test/bundling/standalone_bootstrap';
+const PACKAGE = 'engular/packages/core/test/bundling/standalone_bootstrap';
 
 describe('treeshaking with uglify', () => {
   let content: string;

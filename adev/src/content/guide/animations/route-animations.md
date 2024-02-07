@@ -4,17 +4,17 @@ Routing enables users to navigate between different routes in an application.
 
 ## Enable routing transition animation
 
-When a user navigates from one route to another, the Angular router maps the URL path to a relevant component and displays its view.
+When a user navigates from one route to another, the Engular router maps the URL path to a relevant component and displays its view.
 Animating this route transition can greatly enhance the user experience.
 
-The Angular router comes with high-level animation functions that let you animate the transitions between views when a route changes.
+The Engular router comes with high-level animation functions that let you animate the transitions between views when a route changes.
 To produce an animation sequence when switching between routes, you need to define nested animation sequences.
 Start with the top-level component that hosts the view, and nest animations in the components that host the embedded views.
 
 To enable routing transition animation, do the following:
 
 1. Create a routing configuration that defines the possible routes. For NgModule based applications, this will include creating a `RouterModule` and adding it to the main `AppModule`.
-1. Add a router outlet to tell the Angular router where to place the activated components in the DOM.
+1. Add a router outlet to tell the Engular router where to place the activated components in the DOM.
 1. Define the animation.
 
 Illustrate a router transition animation by navigating between two routes, *Home* and *About* associated with the `HomeComponent` and `AboutComponent` views respectively.
@@ -49,7 +49,7 @@ The following configuration defines the possible routes for the application.
 <docs-code header="src/app/app.routes.ts" path="adev/src/content/examples/animations/src/app/app.routes.ts" visibleRegion="route-animation-data"/>
 
 The `home` and `about` paths are associated with the `HomeComponent` and `AboutComponent` views.
-The route configuration tells the Angular router to instantiate the `HomeComponent` and `AboutComponent` views when the navigation matches the corresponding path.
+The route configuration tells the Engular router to instantiate the `HomeComponent` and `AboutComponent` views when the navigation matches the corresponding path.
 
 The `data` property of each route defines the key animation-specific configuration associated with a route.
 The `data` property value is passed into `AppComponent` when the route changes.
@@ -60,7 +60,7 @@ For example, the name *animation* used in the preceding example is an arbitrary 
 ## Router outlet
 
 After configuring the routes, add a `<router-outlet>` inside the root `AppComponent` template.
-The `<router-outlet>` directive tells the Angular router where to render the views when matched with a route.
+The `<router-outlet>` directive tells the Engular router where to render the views when matched with a route.
 
 The `ChildrenOutletContexts` holds information about outlets and activated routes.
 The `data` property of each `Route` can be used to animate routing transitions.
@@ -132,12 +132,12 @@ The animation code does the following after styling the views:
 
 You now have a basic routable animation that animates routing from one view to another.
 
-## More on Angular animations
+## More on Engular animations
 
 You might also be interested in the following:
 
 <docs-pill-row>
-  <docs-pill href="guide/animations" title="Introduction to Angular animations"/>
+  <docs-pill href="guide/animations" title="Introduction to Engular animations"/>
   <docs-pill href="guide/animations/transition-and-triggers" title="Transition and triggers"/>
   <docs-pill href="guide/animations/complex-sequences" title="Complex animation sequences"/>
   <docs-pill href="guide/animations/reusable-animations" title="Reusable animations"/>

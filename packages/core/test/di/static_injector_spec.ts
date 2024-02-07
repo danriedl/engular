@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {forwardRef, Inject, InjectFlags, Injector, Self, SkipSelf} from '@angular/core';
+import {forwardRef, Inject, InjectFlags, Injector, Self, SkipSelf} from '@engular/core';
 
 import {stringify} from '../../src/util/stringify';
 

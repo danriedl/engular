@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {DefaultIterableDiffer, DefaultIterableDifferFactory} from '@angular/core/src/change_detection/differs/default_iterable_differ';
+import {DefaultIterableDiffer, DefaultIterableDifferFactory} from '@engular/core/src/change_detection/differs/default_iterable_differ';
 
 import {TestIterable} from '../../util/iterable';
 import {iterableChangesAsString, iterableDifferToString} from '../util';
@@ -283,7 +283,7 @@ describe('iterable differ', function() {
       }));
     });
 
-    // https://github.com/angular/angular/issues/17852
+    // https://github.com/engular/engular/issues/17852
     it('support re-insertion', () => {
       const l = ['a', '*', '*', 'd', '-', '-', '-', 'e'];
       differ.check(l);

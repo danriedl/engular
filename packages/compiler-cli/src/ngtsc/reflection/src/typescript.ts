@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import ts from 'typescript';
@@ -64,7 +64,7 @@ export class TypeScriptReflectionHost implements ReflectionHost {
 
       // Check if we are dealing with a simple nullable union type e.g. `foo: Foo|null`
       // and extract the type. More complex union types e.g. `foo: Foo|Bar` are not supported.
-      // We also don't need to support `foo: Foo|undefined` because Angular's DI injects `null` for
+      // We also don't need to support `foo: Foo|undefined` because Engular's DI injects `null` for
       // optional tokes that don't have providers.
       if (typeNode && ts.isUnionTypeNode(typeNode)) {
         let childTypeNodes = typeNode.types.filter(

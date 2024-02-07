@@ -1,8 +1,8 @@
 {
-  "name": "@angular/forms",
+  "name": "@engular/forms",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "Angular - directives and services for creating forms",
-  "author": "angular",
+  "description": "Engular - directives and services for creating forms",
+  "author": "engular",
   "license": "MIT",
   "engines": {
     "node": "^18.13.0 || >=20.9.0"
@@ -11,14 +11,14 @@
     "tslib": "^2.3.0"
   },
   "peerDependencies": {
-    "@angular/core": "0.0.0-PLACEHOLDER",
-    "@angular/common": "0.0.0-PLACEHOLDER",
-    "@angular/platform-browser": "0.0.0-PLACEHOLDER",
+    "@engular/core": "0.0.0-PLACEHOLDER",
+    "@engular/common": "0.0.0-PLACEHOLDER",
+    "@engular/platform-browser": "0.0.0-PLACEHOLDER",
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angular/angular.git",
+    "url": "https://github.com/engular/engular.git",
     "directory": "packages/forms"
   },
   "ng-update": {

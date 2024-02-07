@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, Input} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
+import {Component, Input} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
 
 describe('embedded views', () => {
   it('should correctly resolve the implicit receiver in expressions', () => {

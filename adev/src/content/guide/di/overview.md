@@ -1,18 +1,18 @@
-<docs-decorative-header title="Dependency injection in Angular" imgSrc="adev/src/assets/images/dependency_injection.svg"> <!-- markdownlint-disable-line -->
+<docs-decorative-header title="Dependency injection in Engular" imgSrc="adev/src/assets/images/dependency_injection.svg"> <!-- markdownlint-disable-line -->
 "DI" is a design pattern and mechanism for creating and delivering some parts of an app to other parts of an app that require them.
 </docs-decorative-header>
 
-Tip: Check out Angular's [Essentials](essentials/sharing-logic) before diving into this comprehensive guide.
+Tip: Check out Engular's [Essentials](essentials/sharing-logic) before diving into this comprehensive guide.
 
-When you develop a smaller part of your system, like a module or a class, you may need to use features from other classes. For example, you may need an HTTP service to make backend calls. Dependency Injection, or DI, is a design pattern and mechanism for creating and delivering some parts of an application to other parts of an application that require them. Angular supports this design pattern and you can use it in your applications to increase flexibility and modularity.
+When you develop a smaller part of your system, like a module or a class, you may need to use features from other classes. For example, you may need an HTTP service to make backend calls. Dependency Injection, or DI, is a design pattern and mechanism for creating and delivering some parts of an application to other parts of an application that require them. Engular supports this design pattern and you can use it in your applications to increase flexibility and modularity.
 
-In Angular, dependencies are typically services, but they also can be values, such as strings or functions. An injector for an application (created automatically during bootstrap) instantiates dependencies when needed, using a configured provider of the service or value.
+In Engular, dependencies are typically services, but they also can be values, such as strings or functions. An injector for an application (created automatically during bootstrap) instantiates dependencies when needed, using a configured provider of the service or value.
 
-## Learn about Angular dependency injection
+## Learn about Engular dependency injection
 
 <docs-card-container>
   <docs-card title="Understanding dependency injection" href="/guide/di/dependency-injection">
-    Learn basic principles of dependency injection in Angular.
+    Learn basic principles of dependency injection in Engular.
   </docs-card>
   <docs-card title="Creating and injecting service" href="/guide/di/creating-injectable-service">
     Describes how to create a service and inject it in other services and components.

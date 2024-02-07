@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, asNativeElements, Component, ContentChild, ContentChildren, Directive, QueryList, TemplateRef, Type, ViewChild, ViewChildren, ViewContainerRef} from '@angular/core';
-import {ElementRef} from '@angular/core/src/core';
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, asNativeElements, Component, ContentChild, ContentChildren, Directive, QueryList, TemplateRef, Type, ViewChild, ViewChildren, ViewContainerRef} from '@engular/core';
+import {ElementRef} from '@engular/core/src/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@engular/core/testing';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 import {Subject} from 'rxjs';
 
 import {stringify} from '../../src/util/stringify';

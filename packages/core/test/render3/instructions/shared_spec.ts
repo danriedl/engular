@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {createLView, createTNode, createTView} from '@angular/core/src/render3/instructions/shared';
-import {TNodeType} from '@angular/core/src/render3/interfaces/node';
-import {HEADER_OFFSET, LViewFlags, TVIEW, TViewType} from '@angular/core/src/render3/interfaces/view';
-import {enterView, getBindingRoot, getLView, setBindingIndex, setSelectedIndex} from '@angular/core/src/render3/state';
+import {createLView, createTNode, createTView} from '@engular/core/src/render3/instructions/shared';
+import {TNodeType} from '@engular/core/src/render3/interfaces/node';
+import {HEADER_OFFSET, LViewFlags, TVIEW, TViewType} from '@engular/core/src/render3/interfaces/view';
+import {enterView, getBindingRoot, getLView, setBindingIndex, setSelectedIndex} from '@engular/core/src/render3/state';
 
 import {MockRendererFactory} from './mock_renderer_factory';
 

@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {ɵgetDOM as getDOM} from '@angular/common';
-import {isTextNode} from '@angular/platform-browser/testing/src/browser_util';
+import {ɵgetDOM as getDOM} from '@engular/common';
+import {isTextNode} from '@engular/platform-browser/testing/src/browser_util';
 
 describe('dom adapter', () => {
   let defaultDoc: any;

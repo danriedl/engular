@@ -8,11 +8,11 @@ When the data necessary for server-side rendering remains consistent across all 
 
 ## How to prerender a page
 
-To prerender a static page, add SSR capabilities to your application with the following Angular CLI command:
+To prerender a static page, add SSR capabilities to your application with the following Engular CLI command:
 
 <docs-code language="shell">
 
-ng add @angular/ssr
+ng add @engular/ssr
 
 </docs-code>
 
@@ -37,7 +37,7 @@ When the option is `false`, no prerendering is done. When it is `true`, all opti
 
 | Options          | Details                                                                                                                                                                   | Default Value |
 | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------ |
-| `discoverRoutes` | Whether the builder should process the Angular Router configuration to find all unparameterized routes and prerender them.                                                | `true`        |
+| `discoverRoutes` | Whether the builder should process the Engular Router configuration to find all unparameterized routes and prerender them.                                                | `true`        |
 | `routesFile`     | The path to a file that contains a list of all routes to prerender, separated by newlines. This option is useful if you want to prerender routes with parameterized URLs. |               |
 
 <docs-code language="json">
@@ -47,7 +47,7 @@ When the option is `false`, no prerendering is done. When it is `true`, all opti
     "my-app": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@engular-devkit/build-engular:application",
           "options": {
             "prerender": {
               "discoverRoutes": false
@@ -83,7 +83,7 @@ With routes specified in the `routes.txt` file, use the `routesFile` option to c
     "my-app": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@engular-devkit/build-engular:application",
           "options": {
             "prerender": {
               "routesFile": "routes.txt"

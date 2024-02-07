@@ -7,7 +7,7 @@ index 191622f..24b475e 100755
  fi
 
 +if [[ "TEMPLATED_use_esm" == "true" ]]; then
-+  esmLoaderPath=$(rlocation  "angular/tools/esm-interop/esm-main-loader.mjs")
++  esmLoaderPath=$(rlocation  "engular/tools/esm-interop/esm-main-loader.mjs")
 +  LAUNCHER_NODE_OPTIONS+=( "--loader" "file://$esmLoaderPath" )
 +  LAUNCHER_NODE_OPTIONS+=( "--no-warnings" )
 +fi
@@ -85,7 +85,7 @@ index 3b8ce74..85bc77d 100755
          allow_files = True,
      ),
 +    "_esm_interop_runfiles": attr.label_list(
-+        default = ["@angular//tools/esm-interop:loaders"],
++        default = ["@engular//tools/esm-interop:loaders"],
 +        allow_files = True,
 +    ),
 +    "use_esm": attr.bool(default = False),

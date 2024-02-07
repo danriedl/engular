@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Directive, Optional, Self, ɵWritable as Writable} from '@angular/core';
+import {Directive, Optional, Self, ɵWritable as Writable} from '@engular/core';
 
 import {AbstractControlDirective} from './abstract_control_directive';
 import {ControlContainer} from './control_container';
@@ -77,7 +77,7 @@ export const ngGroupStatusHost = {
 
 /**
  * @description
- * Directive automatically applied to Angular form controls that sets CSS classes
+ * Directive automatically applied to Engular form controls that sets CSS classes
  * based on control status.
  *
  * @usageNotes
@@ -107,7 +107,7 @@ export class NgControlStatus extends AbstractControlStatus {
 
 /**
  * @description
- * Directive automatically applied to Angular form groups that sets CSS classes
+ * Directive automatically applied to Engular form groups that sets CSS classes
  * based on control status (valid/invalid/dirty/etc). On groups, this includes the additional
  * class ng-submitted.
  *

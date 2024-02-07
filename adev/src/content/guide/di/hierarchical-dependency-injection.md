@@ -1,9 +1,9 @@
 # Hierarchical injectors
 
-Injectors in Angular have rules that you can leverage to achieve the desired visibility of injectables in your applications.
+Injectors in Engular have rules that you can leverage to achieve the desired visibility of injectables in your applications.
 By understanding these rules, you can determine whether to declare a provider at the application level, in a Component, or in a Directive.
 
-The applications you build with Angular can become quite large, and one way to manage this complexity is to split up the application into a well-defined tree of components.
+The applications you build with Engular can become quite large, and one way to manage this complexity is to split up the application into a well-defined tree of components.
 
 There can be sections of your page that work in a completely independent way than the rest of the application, with its own local copies of the services and other dependencies that it needs.
 Some of the services that these sections of the application use might be shared with other parts of the application, or with parent components that are further up in the component tree, while other dependencies are meant to be private.
@@ -12,7 +12,7 @@ With hierarchical dependency injection, you can isolate sections of the applicat
 
 ## Types of injector hierarchies
 
-Angular has two injector hierarchies:
+Engular has two injector hierarchies:
 
 | Injector hierarchies        | Details |
 |:---                         |:---     |
@@ -43,7 +43,7 @@ Tree-shaking is especially useful for a library because the application which us
 Provide services using `providedIn` of `@Injectable()` as follows:
 
 <docs-code language="typescript" highlight="[4]">
-import { Injectable } from '@angular/core';
+import { Injectable } from '@engular/core';
 
 @Injectable({
   providedIn: 'root'  // &lt;--provides this service in the root EnvironmentInjector
@@ -72,7 +72,7 @@ Child `ModuleInjector` hierarchies are created when lazy loading other `@NgModul
 
 There are two more injectors above `root`, an additional `EnvironmentInjector` and `NullInjector()`.
 
-Consider how Angular bootstraps the application with the following in `main.ts`:
+Consider how Engular bootstraps the application with the following in `main.ts`:
 
 <docs-code language="javascript">
 bootstrapApplication(AppComponent, appConfig);
@@ -95,7 +95,7 @@ The following diagram represents the relationship between the `root` `ModuleInje
 <!-- TODO(josephperrott): enable this mermaid chart -->
 ```
 stateDiagram-v2
-    elementInjector: EnvironmentInjector\n(configured by Angular)\nhas special things like DomSanitizer => providedIn 'platform'
+    elementInjector: EnvironmentInjector\n(configured by Engular)\nhas special things like DomSanitizer => providedIn 'platform'
     rootInjector: root EnvironmentInjector\n(configured by AppConfig)\nhas things for your app => bootstrapApplication(..., AppConfig)
     nullInjector: NullInjector\nalways throws an error unless\nyou use @Optional()
 
@@ -128,7 +128,7 @@ For `NgModule` based applications, configure app-wide providers in the `AppModul
 
 ### `ElementInjector`
 
-Angular creates `ElementInjector` hierarchies implicitly for each DOM element.
+Engular creates `ElementInjector` hierarchies implicitly for each DOM element.
 
 Providing a service in the `@Component()` decorator using its `providers` or `viewProviders` property configures an `ElementInjector`.
 For example, the following `TestComponent` configures the `ElementInjector` by providing the service as follows:
@@ -157,39 +157,39 @@ Components and directives on the same element share an injector.
 
 ## Resolution rules
 
-When resolving a token for a component/directive, Angular resolves it in two phases:
+When resolving a token for a component/directive, Engular resolves it in two phases:
 
 1. Against its parents in the `ElementInjector` hierarchy.
 2. Against its parents in the `EnvironmentInjector` hierarchy.
 
-When a component declares a dependency, Angular tries to satisfy that dependency with its own `ElementInjector`.
+When a component declares a dependency, Engular tries to satisfy that dependency with its own `ElementInjector`.
 If the component's injector lacks the provider, it passes the request up to its parent component's `ElementInjector`.
 
-The requests keep forwarding up until Angular finds an injector that can handle the request or runs out of ancestor `ElementInjector` hierarchies.
+The requests keep forwarding up until Engular finds an injector that can handle the request or runs out of ancestor `ElementInjector` hierarchies.
 
-If Angular doesn't find the provider in any `ElementInjector` hierarchies, it goes back to the element where the request originated and looks in the `EnvironmentInjector` hierarchy.
-If Angular still doesn't find the provider, it throws an error.
+If Engular doesn't find the provider in any `ElementInjector` hierarchies, it goes back to the element where the request originated and looks in the `EnvironmentInjector` hierarchy.
+If Engular still doesn't find the provider, it throws an error.
 
-If you have registered a provider for the same DI token at different levels, the first one Angular encounters is the one it uses to resolve the dependency.
+If you have registered a provider for the same DI token at different levels, the first one Engular encounters is the one it uses to resolve the dependency.
 If, for example, a provider is registered locally in the component that needs a service,
-Angular doesn't look for another provider of the same service.
+Engular doesn't look for another provider of the same service.
 
-HELPFUL: For `NgModule` based applications, Angular will search the `ModuleInjector` hierarchy if it cannot find a provider in the `ElementInjector` hierarchies.
+HELPFUL: For `NgModule` based applications, Engular will search the `ModuleInjector` hierarchy if it cannot find a provider in the `ElementInjector` hierarchies.
 
 ## Resolution modifiers
 
-Angular's resolution behavior can be modified with `@Optional()`, `@Self()`, `@SkipSelf()` and `@Host()`.
-Import each of them from `@angular/core` and use each in the component class constructor or in the `inject` configuration when you inject your service.
+Engular's resolution behavior can be modified with `@Optional()`, `@Self()`, `@SkipSelf()` and `@Host()`.
+Import each of them from `@engular/core` and use each in the component class constructor or in the `inject` configuration when you inject your service.
 
 ### Types of modifiers
 
 Resolution modifiers fall into three categories:
 
-* What to do if Angular doesn't find what you're looking for, that is `@Optional()`
+* What to do if Engular doesn't find what you're looking for, that is `@Optional()`
 * Where to start looking, that is `@SkipSelf()`
 * Where to stop looking, `@Host()` and `@Self()`
 
-By default, Angular always starts at the current `Injector` and keeps searching all the way up.
+By default, Engular always starts at the current `Injector` and keeps searching all the way up.
 Modifiers allow you to change the starting, or _self_, location and the ending location.
 
 Additionally, you can combine all of the modifiers except:
@@ -199,8 +199,8 @@ Additionally, you can combine all of the modifiers except:
 
 ### `@Optional()`
 
-`@Optional()` allows Angular to consider a service you inject to be optional.
-This way, if it can't be resolved at runtime, Angular resolves the service as `null`, rather than throwing an error.
+`@Optional()` allows Engular to consider a service you inject to be optional.
+This way, if it can't be resolved at runtime, Engular resolves the service as `null`, rather than throwing an error.
 In the following example, the service, `OptionalService`, isn't provided in the service, `ApplicationConfig`, `@NgModule()`, or component class, so it isn't available anywhere in the app.
 
 <docs-code header="src/app/optional/optional.component.ts" language="typescript">
@@ -211,7 +211,7 @@ export class OptionalComponent {
 
 ### `@Self()`
 
-Use `@Self()` so that Angular will only look at the `ElementInjector` for the current component or directive.
+Use `@Self()` so that Engular will only look at the `ElementInjector` for the current component or directive.
 
 A good use case for `@Self()` is to inject a service but only if it is available on the current host element.
 To avoid errors in this situation, combine `@Self()` with `@Optional()`.
@@ -240,8 +240,8 @@ In this case, the injector looks no further than the current `ElementInjector` b
 ### `@SkipSelf()`
 
 `@SkipSelf()` is the opposite of `@Self()`.
-With `@SkipSelf()`, Angular starts its search for a service in the parent `ElementInjector`, rather than in the current one.
-So if the parent `ElementInjector` were using the fern <code>&#x1F33F;</code> value for `emoji`, but you had maple leaf <code>&#x1F341;</code> in the component's `providers` array, Angular would ignore maple leaf <code>&#x1F341;</code> and use fern <code>&#x1F33F;</code>.
+With `@SkipSelf()`, Engular starts its search for a service in the parent `ElementInjector`, rather than in the current one.
+So if the parent `ElementInjector` were using the fern <code>&#x1F33F;</code> value for `emoji`, but you had maple leaf <code>&#x1F341;</code> in the component's `providers` array, Engular would ignore maple leaf <code>&#x1F341;</code> and use fern <code>&#x1F33F;</code>.
 
 To see this in code, assume that the following value for `emoji` is what the parent component were using, as in this service:
 
@@ -260,7 +260,7 @@ This is when you'd use `@SkipSelf()`:
   selector: 'app-skipself',
   templateUrl: './skipself.component.html',
   styleUrls: ['./skipself.component.css'],
-  // Angular would ignore this LeafService instance
+  // Engular would ignore this LeafService instance
   providers: [{ provide: LeafService, useValue: { emoji: '🍁' } }]
 })
 export class SkipselfComponent {
@@ -276,7 +276,7 @@ In this case, the value you'd get for `emoji` would be fern <code>&#x1F33F;</cod
 Use `@SkipSelf()` with `@Optional()` to prevent an error if the value is `null`.
 
 In the following example, the `Person` service is injected in the constructor.
-`@SkipSelf()` tells Angular to skip the current injector and `@Optional()` will prevent an error should the `Person` service be `null`.
+`@SkipSelf()` tells Engular to skip the current injector and `@Optional()` will prevent an error should the `Person` service be `null`.
 
 <docs-code language="typescript">
 class Person {
@@ -290,7 +290,7 @@ class Person {
 
 `@Host()` lets you designate a component as the last stop in the injector tree when searching for providers.
 
-Even if there is a service instance further up the tree, Angular won't continue looking.
+Even if there is a service instance further up the tree, Engular won't continue looking.
 Use `@Host()` as follows:
 
 <docs-code header="src/app/host/host.component.ts" language="typescript"
@@ -314,7 +314,7 @@ Since `HostComponent` has `@Host()` in its constructor, no matter what the paren
 
 When you provide services in the component class, services are visible within the `ElementInjector` tree relative to where and how you provide those services.
 
-Understanding the underlying logical structure of the Angular template will give you a foundation for configuring services and in turn control their visibility.
+Understanding the underlying logical structure of the Engular template will give you a foundation for configuring services and in turn control their visibility.
 
 Components are used in your templates, as in the following example:
 
@@ -357,14 +357,14 @@ A component class can provide services in two ways:
 | With a `providers` array     | `@Component({ providers: [SomeService] })`     |
 | With a `viewProviders` array | `@Component({ viewProviders: [SomeService] })` |
 
-In the examples below, you will see the logical tree of an Angular application.
+In the examples below, you will see the logical tree of an Engular application.
 To illustrate how the injector works in the context of templates, the logical tree will represent the HTML structure of the application.
 For example, the logical tree will show that `<child-component>` is a direct children of `<parent-component>`.
 
 In the logical tree, you will see special attributes: `@Provide`, `@Inject`, and `@ApplicationConfig`.
 These aren't real attributes but are here to demonstrate what is going on under the hood.
 
-| Angular service attribute                                                                                          | Details |
+| Engular service attribute                                                                                          | Details |
 |:---                                                                                                                |:---     |
 | `@Inject(Token)=>Value`     | If `Token` is injected at this location in the logical tree, its value would be `Value`.     |
 | `@Provide(Token=Value)`     | Indicates that `Token` is provided with `Value` at this location in the logical tree.        |
@@ -395,7 +395,7 @@ The most basic rendered view would look like nested HTML elements such as the fo
 
 </docs-code>
 
-However, behind the scenes, Angular uses a logical view representation as follows when resolving injection requests:
+However, behind the scenes, Engular uses a logical view representation as follows when resolving injection requests:
 
 <docs-code language="html">
 &lt;app-root&gt; &lt;!-- AppComponent selector --&gt;
@@ -543,7 +543,7 @@ For demonstration, we are building an `AnimalService` to demonstrate `viewProvid
 First, create an `AnimalService` with an `emoji` property of whale <code>&#x1F433;</code>:
 
 <docs-code header="src/app/animal.service.ts" language="typescript">
-import { Injectable } from '@angular/core';
+import { Injectable } from '@engular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -999,7 +999,7 @@ The `HeroTaxReturnService` caches a single `HeroTaxReturn`, tracks changes to th
 It also delegates to the application-wide singleton `HeroService`, which it gets by injection.
 
 <docs-code header="src/app/hero-tax-return.service.ts" language="typescript">
-import { Injectable } from '@angular/core';
+import { Injectable } from '@engular/core';
 import { HeroTaxReturn } from './hero';
 import { HeroesService } from './heroes.service';
 
@@ -1033,7 +1033,7 @@ export class HeroTaxReturnService {
 Here is the `HeroTaxReturnComponent` that makes use of `HeroTaxReturnService`.
 
 <docs-code header="src/app/hero-tax-return.component.ts" language="typescript">
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@engular/core';
 import { HeroTaxReturn } from './hero';
 import { HeroTaxReturnService } from './hero-tax-return.service';
 
@@ -1096,7 +1096,7 @@ The `HeroTaxReturnComponent` has its own provider of the `HeroTaxReturnService`.
 Recall that every component _instance_ has its own injector.
 Providing the service at the component level ensures that _every_ instance of the component gets a private instance of the service. This makes sure that no tax return gets overwritten.
 
-HELPFUL: The rest of the scenario code relies on other Angular features and techniques that you can learn about elsewhere in the documentation.
+HELPFUL: The rest of the scenario code relies on other Engular features and techniques that you can learn about elsewhere in the documentation.
 
 ### Scenario: specialized providers
 

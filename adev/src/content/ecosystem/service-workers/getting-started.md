@@ -1,20 +1,20 @@
 # Getting started with service workers
 
-This document explains how to enable Angular service worker support in projects that you created with the [Angular CLI](tools/cli). It then uses an example to show you a service worker in action, demonstrating loading and basic caching.
+This document explains how to enable Engular service worker support in projects that you created with the [Engular CLI](tools/cli). It then uses an example to show you a service worker in action, demonstrating loading and basic caching.
 
 ## Adding a service worker to your project
 
-To set up the Angular service worker in your project, run the following CLI command:
+To set up the Engular service worker in your project, run the following CLI command:
 
 <docs-code language="shell">
 
-ng add @angular/pwa
+ng add @engular/pwa
 
 </docs-code>
 
 The CLI configures your application to use service workers with the following actions:
 
-1. Adds the `@angular/service-worker` package to your project.
+1. Adds the `@engular/service-worker` package to your project.
 1. Enables service worker build support in the CLI.
 1. Imports and registers the service worker with the application's root providers.
 1. Updates the `index.html` file:
@@ -32,7 +32,7 @@ ng build
 
 </docs-code>
 
-The CLI project is now set up to use the Angular service worker.
+The CLI project is now set up to use the Engular service worker.
 
 ## Service worker in action: a tour
 
@@ -44,7 +44,7 @@ using an example application.
 With the server running on port `8080`, point your browser at `http://localhost:8080`.
 Your application should load normally.
 
-Tip: When testing Angular service workers, it's a good idea to use an incognito or private window in your browser to ensure the service worker doesn't end up reading from a previous leftover state, which can cause unexpected behavior.
+Tip: When testing Engular service workers, it's a good idea to use an incognito or private window in your browser to ensure the service worker doesn't end up reading from a previous leftover state, which can cause unexpected behavior.
 
 HELPFUL: If you are not using HTTPS, the service worker will only be registered when accessing the application on `localhost`.
 
@@ -62,9 +62,9 @@ In Chrome:
 
 Now the application has no access to network interaction.
 
-For applications that do not use the Angular service worker, refreshing now would display Chrome's Internet disconnected page that says "There is no Internet connection".
+For applications that do not use the Engular service worker, refreshing now would display Chrome's Internet disconnected page that says "There is no Internet connection".
 
-With the addition of an Angular service worker, the application behavior changes.
+With the addition of an Engular service worker, the application behavior changes.
 On a refresh, the page loads normally.
 
 Look at the Network tab to verify that the service worker is active.
@@ -125,7 +125,7 @@ Now look at how the browser and service worker handle the updated application.
 
     What went wrong?
     _Nothing, actually!_
-    The Angular service worker is doing its job and serving the version of the application that it has **installed**, even though there is an update available.
+    The Engular service worker is doing its job and serving the version of the application that it has **installed**, even though there is an update available.
     In the interest of speed, the service worker doesn't wait to check for updates before it serves the application that it has cached.
 
     Look at the `http-server` logs to see the service worker requesting `/ngsw.json`.
@@ -142,7 +142,7 @@ Now look at how the browser and service worker handle the updated application.
 
     The service worker installed the updated version of your application _in the background_, and the next time the page is loaded or reloaded, the service worker switches to the latest version.
 
-## More on Angular service workers
+## More on Engular service workers
 
 You might also be interested in the following:
 

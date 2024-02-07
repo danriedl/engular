@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Attribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, createComponent as coreCreateComponent, createEnvironmentInjector, DebugElement, Directive, ElementRef, EmbeddedViewRef, EnvironmentInjector, Host, Inject, InjectionToken, Injector, Input, NgModule, Optional, Pipe, PipeTransform, Provider, Self, SkipSelf, TemplateRef, Type, ViewContainerRef} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
-import {expect} from '@angular/platform-browser/testing/src/matchers';
+import {Attribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, createComponent as coreCreateComponent, createEnvironmentInjector, DebugElement, Directive, ElementRef, EmbeddedViewRef, EnvironmentInjector, Host, Inject, InjectionToken, Injector, Input, NgModule, Optional, Pipe, PipeTransform, Provider, Self, SkipSelf, TemplateRef, Type, ViewContainerRef} from '@engular/core';
+import {ComponentFixture, fakeAsync, TestBed} from '@engular/core/testing';
+import {expect} from '@engular/platform-browser/testing/src/matchers';
 
 @Directive({selector: '[simpleDirective]'})
 class SimpleDirective {
@@ -619,7 +619,7 @@ describe('View injector', () => {
       TestBed.configureTestingModule({declarations: [CycleDirective]});
       expect(() => createComponent('<div cycleDirective></div>'))
           .toThrowError(
-              'NG0200: Circular dependency in DI detected for CycleDirective. Find more at https://angular.io/errors/NG0200');
+              'NG0200: Circular dependency in DI detected for CycleDirective. Find more at https://engular.io/errors/NG0200');
     });
 
     it('should not instantiate a directive in a view that has a host dependency on providers' +
@@ -633,7 +633,7 @@ describe('View injector', () => {
 
          expect(() => createComponent('<div simpleComponent></div>'))
              .toThrowError(
-                 'NG0201: No provider for service found in NodeInjector. Find more at https://angular.io/errors/NG0201');
+                 'NG0201: No provider for service found in NodeInjector. Find more at https://engular.io/errors/NG0201');
        });
 
     it('should not instantiate a directive in a view that has a host dependency on providers' +
@@ -648,7 +648,7 @@ describe('View injector', () => {
 
          expect(() => createComponent('<div simpleComponent someOtherDirective></div>'))
              .toThrowError(
-                 'NG0201: No provider for service found in NodeInjector. Find more at https://angular.io/errors/NG0201');
+                 'NG0201: No provider for service found in NodeInjector. Find more at https://engular.io/errors/NG0201');
        });
 
     it('should not instantiate a directive in a view that has a self dependency on a parent directive',
@@ -657,7 +657,7 @@ describe('View injector', () => {
          expect(
              () => createComponent('<div simpleDirective><div needsDirectiveFromSelf></div></div>'))
              .toThrowError(
-                 'NG0201: No provider for SimpleDirective found in NodeInjector. Find more at https://angular.io/errors/NG0201');
+                 'NG0201: No provider for SimpleDirective found in NodeInjector. Find more at https://engular.io/errors/NG0201');
        });
 
     it('should instantiate directives that depend on other directives', fakeAsync(() => {
@@ -699,7 +699,7 @@ describe('View injector', () => {
           SimpleComponent, {set: {template: '<div needsDirectiveFromHost></div>'}});
       expect(() => createComponent('<div simpleComponent simpleDirective></div>'))
           .toThrowError(
-              'NG0201: No provider for SimpleDirective found in NodeInjector. Find more at https://angular.io/errors/NG0201');
+              'NG0201: No provider for SimpleDirective found in NodeInjector. Find more at https://engular.io/errors/NG0201');
     });
 
     it('should allow to use the NgModule injector from a root ViewContainerRef.parentInjector',

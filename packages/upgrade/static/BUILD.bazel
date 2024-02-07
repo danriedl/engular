@@ -35,5 +35,5 @@ generate_api_docs(
         "//packages/upgrade:files_for_docgen",
     ],
     entry_point = ":index.ts",
-    module_name = "@angular/upgrade/static",
+    module_name = "@engular/upgrade/static",
 )

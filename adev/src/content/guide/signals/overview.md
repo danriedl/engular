@@ -1,14 +1,14 @@
-<docs-decorative-header title="Angular Signals" imgSrc="adev/src/assets/images/signals.svg"> <!-- markdownlint-disable-line -->
-Angular Signals is a system that granularly tracks how and where your state is used throughout an application, allowing the framework to optimize rendering updates.
+<docs-decorative-header title="Engular Signals" imgSrc="adev/src/assets/images/signals.svg"> <!-- markdownlint-disable-line -->
+Engular Signals is a system that granularly tracks how and where your state is used throughout an application, allowing the framework to optimize rendering updates.
 </docs-decorative-header>
 
-Tip: Check out Angular's [Essentials](essentials/managing-dynamic-data) before diving into this comprehensive guide.
+Tip: Check out Engular's [Essentials](essentials/managing-dynamic-data) before diving into this comprehensive guide.
 
 ## What are signals?
 
 A **signal** is a wrapper around a value that notifies interested consumers when that value changes. Signals can contain any value, from primitives to complex data structures.
 
-You read a signal's value by calling its getter function, which allows Angular to track where the signal is used.
+You read a signal's value by calling its getter function, which allows Engular to track where the signal is used.
 
 Signals may be either _writable_ or _read-only_.
 
@@ -47,13 +47,13 @@ const count: WritableSignal<number> = signal(0);
 const doubleCount: Signal<number> = computed(() => count() * 2);
 ```
 
-The `doubleCount` signal depends on the `count` signal. Whenever `count` updates, Angular knows that `doubleCount` needs to update as well.
+The `doubleCount` signal depends on the `count` signal. Whenever `count` updates, Engular knows that `doubleCount` needs to update as well.
 
 #### Computed signals are both lazily evaluated and memoized
 
 `doubleCount`'s derivation function does not run to calculate its value until the first time you read `doubleCount`. The calculated value is then cached, and if you read `doubleCount` again, it will return the cached value without recalculating.
 
-If you then change `count`, Angular knows that `doubleCount`'s cached value is no longer valid, and the next time you read `doubleCount` its new value will be calculated.
+If you then change `count`, Engular knows that `doubleCount`'s cached value is no longer valid, and the next time you read `doubleCount` its new value will be calculated.
 
 As a result, you can safely perform computationally expensive derivations in computed signals, such as filtering arrays.
 
@@ -91,7 +91,7 @@ Note that dependencies can be removed during a derivation as well as added. If y
 
 ## Reading signals in `OnPush` components
 
-When you read a signal within an `OnPush` component's template, Angular tracks the signal as a dependency of that component. When the value of that signal changes, Angular automatically [marks](api/core/ChangeDetectorRef#markforcheck) the component to ensure it gets updated the next time change detection runs. Refer to the [Skipping component subtrees](best-practices/skipping-subtrees) guide for more information about `OnPush` components.
+When you read a signal within an `OnPush` component's template, Engular tracks the signal as a dependency of that component. When the value of that signal changes, Engular automatically [marks](api/core/ChangeDetectorRef#markforcheck) the component to ensure it gets updated the next time change detection runs. Refer to the [Skipping component subtrees](best-practices/skipping-subtrees) guide for more information about `OnPush` components.
 
 ## Effects
 
@@ -119,7 +119,7 @@ Effects are rarely needed in most application code, but may be useful in specifi
 <docs-callout critical title="When not to use effects">
 Avoid using effects for propagation of state changes. This can result in `ExpressionChangedAfterItHasBeenChecked` errors, infinite circular updates, or unnecessary change detection cycles.
 
-Because of these risks, Angular by default prevents you from setting signals in effects. It can be enabled if absolutely necessary by setting the `allowSignalWrites` flag when you create an effect.
+Because of these risks, Engular by default prevents you from setting signals in effects. It can be enabled if absolutely necessary by setting the `allowSignalWrites` flag when you create an effect.
 
 Instead, use `computed` signals to model state that depends on other state.
 </docs-callout>

@@ -1,10 +1,10 @@
 <docs-decorative-header title="Kitchen sink" imgSrc="assets/images/components.svg"> <!-- markdownlint-disable-line -->
-This is a visual list of all custom components and styles for Angular.dev.
+This is a visual list of all custom components and styles for Engular.dev.
 </docs-decorative-header>
 
 As a design system, this page contains visual and Markdown authoring guidance for:
 
-* Custom Angular docs elements: [`docs-card`](#cards), [`docs-callout`](#callouts), [`docs-pill`](#pills), and [`docs-steps`](#workflow)
+* Custom Engular docs elements: [`docs-card`](#cards), [`docs-callout`](#callouts), [`docs-pill`](#pills), and [`docs-steps`](#workflow)
 * Custom text elements: [alerts](#alerts)
 * Code examples: [`docs-code`](#code)
 * Built-in Markdown styled elements: links, lists, [headers](#headers), [horizontal lines](#horizontal-line-divider), [tables](#tables)
@@ -29,10 +29,10 @@ Get ready to:
 ## Cards
 
 <docs-card-container>
-  <docs-card title="What is Angular?" link="Platform Overview" href="tutorials/first-app">
+  <docs-card title="What is Engular?" link="Platform Overview" href="tutorials/first-app">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare ligula nisi
   </docs-card>
-  <docs-card title="Second Card" link="Try It Now" href="essentials/what-is-angular">
+  <docs-card title="Second Card" link="Try It Now" href="essentials/what-is-engular">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare ligula nisi
   </docs-card>
     <docs-card title="No Link Card">
@@ -132,7 +132,7 @@ example code
 Or using the `<docs-code>` element.
 
 <docs-code header="Your first example" language="ts" linenums>
-import { Component } from '@angular/core';
+import { Component } from '@engular/core';
 
 @Component({
   selector: 'example-code',
@@ -159,7 +159,7 @@ Here's a code example fully styled:
 We also have styling for the terminal, just set the language as `shell`:
 
 <docs-code language="shell">
-  npm install @angular/material --save
+  npm install @engular/material --save
 </docs-code>
 
 #### `<docs-code>` Attributes
@@ -256,18 +256,18 @@ Steps must start on a new line, and can contain `docs-code`s and other nested el
 
 <docs-workflow>
 
-<docs-step title="Install the Angular CLI">
-  You use the Angular CLI to create projects, generate application and library code, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.
+<docs-step title="Install the Engular CLI">
+  You use the Engular CLI to create projects, generate application and library code, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.
 
-  To install the Angular CLI, open a terminal window and run the following command:
+  To install the Engular CLI, open a terminal window and run the following command:
 
   <docs-code language="shell">
-    npm install -g @angular/cli
+    npm install -g @engular/cli
   </docs-code>
 </docs-step>
 
 <docs-step title="Create a workspace and initial application">
-  You develop apps in the context of an Angular workspace.
+  You develop apps in the context of an Engular workspace.
 
   To create a new workspace and initial starter app:
 
@@ -278,13 +278,13 @@ Steps must start on a new line, and can contain `docs-code`s and other nested el
 
 * The ng new command prompts you for information about features to include in the initial app. Accept the defaults by pressing the Enter or Return key.
 
-  The Angular CLI installs the necessary Angular npm packages and other dependencies. This can take a few minutes.
+  The Engular CLI installs the necessary Engular npm packages and other dependencies. This can take a few minutes.
 
   The CLI creates a new workspace and a simple Welcome app, ready to run.
 </docs-step>
 
 <docs-step title="Run the application">
-  The Angular CLI includes a server, for you to build and serve your app locally.
+  The Engular CLI includes a server, for you to build and serve your app locally.
 
   1. Navigate to the workspace folder, such as `my-app`.
   2. Run the following command:

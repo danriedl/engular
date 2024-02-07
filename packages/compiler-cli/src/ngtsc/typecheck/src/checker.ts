@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AST, CssSelector, DomElementSchemaRegistry, ExternalExpr, LiteralPrimitive, ParseSourceSpan, PropertyRead, SafePropertyRead, TmplAstElement, TmplAstNode, TmplAstTemplate, TmplAstTextAttribute, WrappedNodeExpr} from '@angular/compiler';
+import {AST, CssSelector, DomElementSchemaRegistry, ExternalExpr, LiteralPrimitive, ParseSourceSpan, PropertyRead, SafePropertyRead, TmplAstElement, TmplAstNode, TmplAstTemplate, TmplAstTextAttribute, WrappedNodeExpr} from '@engular/compiler';
 import ts from 'typescript';
 
 import {ErrorCode, ngErrorCode} from '../../diagnostics';
@@ -666,7 +666,7 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
     return REGISTRY.allKnownEventsOfElement(tagName);
   }
 
-  getPrimaryAngularDecorator(target: ts.ClassDeclaration): ts.Decorator|null {
+  getPrimaryEngularDecorator(target: ts.ClassDeclaration): ts.Decorator|null {
     this.ensureAllShimsForOneFile(target.getSourceFile());
 
     if (!isNamedClassDeclaration(target)) {

@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AbsoluteSourceSpan, ParseSourceSpan, R3Identifiers} from '@angular/compiler';
+import {AbsoluteSourceSpan, ParseSourceSpan, R3Identifiers} from '@engular/compiler';
 import ts from 'typescript';
 
 import {ClassDeclaration, ReflectionHost} from '../../../../src/ngtsc/reflection';

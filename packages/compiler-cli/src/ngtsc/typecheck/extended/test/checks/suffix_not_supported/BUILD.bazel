@@ -20,7 +20,7 @@ ts_library(
 
 jasmine_node_test(
     name = "test",
-    bootstrap = ["//tools/testing:node_no_angular"],
+    bootstrap = ["//tools/testing:node_no_engular"],
     deps = [
         ":test_lib",
     ],

@@ -1,5 +1,5 @@
-Provides support for upgrading applications from Angular JS to Angular.
+Provides support for upgrading applications from Engular JS to Engular.
 The primary entry point is deprecated. Use the secondary entry point,
  `upgrade/static`.
 
-See [Angular deprecation policy](guide/deprecations).
+See [Engular deprecation policy](guide/deprecations).

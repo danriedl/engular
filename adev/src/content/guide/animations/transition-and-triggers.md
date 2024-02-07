@@ -5,7 +5,7 @@ This section also explores multiple animation triggers, animation callbacks, and
 
 ## Predefined states and wildcard matching
 
-In Angular, transition states can be defined explicitly through the [`state()`](api/animations/state) function, or using the predefined `*` wildcard and `void` states.
+In Engular, transition states can be defined explicitly through the [`state()`](api/animations/state) function, or using the predefined `*` wildcard and `void` states.
 
 ### Wildcard state
 
@@ -98,7 +98,7 @@ Use the aliases `:enter` and `:leave` to target HTML elements that are inserted 
 The `:enter` transition runs when any `*ngIf` or `*ngFor` views are placed on the page, and `:leave` runs when those views are removed from the page.
 
 IMPORTANT: Entering/leaving behaviors can sometime be confusing.
-As a rule of thumb consider that any element being added to the DOM by Angular passes via the `:enter` transition. Only elements being directly removed from the DOM by Angular pass via the `:leave` transition. For example, an element's view is removed from the DOM because its parent is being removed from the DOM.
+As a rule of thumb consider that any element being added to the DOM by Engular passes via the `:enter` transition. Only elements being directly removed from the DOM by Engular pass via the `:leave` transition. For example, an element's view is removed from the DOM because its parent is being removed from the DOM.
 
 This example has a special trigger for the enter and leave animation called `myInsertRemoveTrigger`.
 The HTML template contains the following code.
@@ -143,7 +143,7 @@ Attach animation triggers to different elements, and the parent-child relationsh
 
 ### Parent-child animations
 
-Each time an animation is triggered in Angular, the parent animation always gets priority and child animations are blocked.
+Each time an animation is triggered in Engular, the parent animation always gets priority and child animations are blocked.
 For a child animation to run, the parent animation must query each of the elements containing child animations. It then lets the animations run using the [`animateChild()`](api/animations/animateChild) function.
 
 #### Disable an animation on an HTML element
@@ -173,7 +173,7 @@ A selective child animations can still be run on a disabled parent in one of the
 
 #### Disable all animations
 
-To turn off all animations for an Angular application, place the `@.disabled` host binding on the topmost Angular component.
+To turn off all animations for an Engular application, place the `@.disabled` host binding on the topmost Engular component.
 
 <docs-code header="src/app/app.component.ts" path="adev/src/content/examples/animations/src/app/app.component.ts" visibleRegion="toggle-app-animations"/>
 
@@ -208,7 +208,7 @@ The following code snippet creates console log output for the original example, 
 
 To create an animation with multiple steps run in sequence, use *keyframes*.
 
-Angular's `keyframe()` function allows several style changes within a single timing segment.
+Engular's `keyframe()` function allows several style changes within a single timing segment.
 For example, the button, instead of fading, could change color several times over a single 2-second time span.
 
 <img alt="keyframes" src="assets/content/images/guide/animations/keyframes-500.png">
@@ -252,7 +252,7 @@ The code snippet for this animation might look like this.
 
 ### Animatable properties and units
 
-Angular animations support builds on top of web animations, so you can animate any property that the browser considers animatable.
+Engular animations support builds on top of web animations, so you can animate any property that the browser considers animatable.
 This includes positions, sizes, transforms, colors, borders, and more.
 The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1) page.
 
@@ -267,7 +267,7 @@ For properties with a numeric value, define a unit by providing the value as a s
 * Percentage:
     `'100%'`
 
-You can also provide the value as a number. In such cases Angular assumes a default unit of pixels, or `px`.
+You can also provide the value as a number. In such cases Engular assumes a default unit of pixels, or `px`.
 Expressing 50 pixels as `50` is the same as saying `'50px'`.
 
 HELPFUL: The string `"50"` would instead not be considered valid\).
@@ -287,14 +287,14 @@ The animation takes whatever height the element has before it leaves, and animat
 
 ### Keyframes summary
 
-The `keyframes()` function in Angular allows you to specify multiple interim styles within a single transition. An optional `offset` can be used to define the point in the animation where each style change should occur.
+The `keyframes()` function in Engular allows you to specify multiple interim styles within a single transition. An optional `offset` can be used to define the point in the animation where each style change should occur.
 
-## More on Angular animations
+## More on Engular animations
 
 You might also be interested in the following:
 
 <docs-pill-row>
-  <docs-pill href="guide/animations" title="Introduction to Angular animations"/>
+  <docs-pill href="guide/animations" title="Introduction to Engular animations"/>
   <docs-pill href="guide/animations/complex-sequences" title="Complex animation sequences"/>
   <docs-pill href="guide/animations/reusable-animations" title="Reusable animations"/>
   <docs-pill href="guide/animations/route-animations" title="Route transition animations"/>

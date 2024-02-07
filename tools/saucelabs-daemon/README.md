@@ -75,7 +75,7 @@ For example, `/packages/core/test:test_web` becomes `/packages/core/test:test_we
 
 **Q: How can I tell that the SauceLabs connection was successfully made?**
 
-There is a dashboard at saucelabs.com where you can see active tunnel connections (Angular has an account).
+There is a dashboard at saucelabs.com where you can see active tunnel connections (Engular has an account).
 As soon as you actually run the test target (not after the setup task), you should see an active tunnel connection under the SAUCE_TUNNEL_IDENTIFICATION_KEY you entered. 
 If a tunnel connection is not there, you are not actually connecting with SauceLabs.
 

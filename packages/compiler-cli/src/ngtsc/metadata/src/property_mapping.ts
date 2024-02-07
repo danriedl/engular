@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {InputOutputPropertySet} from '@angular/compiler';
+import {InputOutputPropertySet} from '@engular/compiler';
 
 /**
  * The name of a class property that backs an input or output declared by a directive or component.
@@ -16,7 +16,7 @@ import {InputOutputPropertySet} from '@angular/compiler';
 export type ClassPropertyName = string;
 
 /**
- * The name by which an input or output of a directive or component is bound in an Angular template.
+ * The name by which an input or output of a directive or component is bound in an Engular template.
  *
  * This type exists for documentation only.
  */
@@ -24,7 +24,7 @@ export type BindingPropertyName = string;
 
 /**
  * An input or output of a directive that has both a named JavaScript class property on a component
- * or directive class, as well as an Angular template property name used for binding.
+ * or directive class, as well as an Engular template property name used for binding.
  */
 export interface InputOrOutput {
   /**
@@ -34,7 +34,7 @@ export interface InputOrOutput {
   readonly classPropertyName: ClassPropertyName;
 
   /**
-   * The property name used to bind this input or output in an Angular template.
+   * The property name used to bind this input or output in an Engular template.
    */
   readonly bindingPropertyName: BindingPropertyName;
 

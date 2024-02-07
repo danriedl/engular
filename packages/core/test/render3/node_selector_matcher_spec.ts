@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {createTNode} from '@angular/core/src/render3/instructions/shared';
+import {createTNode} from '@engular/core/src/render3/instructions/shared';
 
 import {AttributeMarker} from '../../src/render3/interfaces/attribute_marker';
 import {TAttributes, TNode, TNodeType} from '../../src/render3/interfaces/node';
@@ -78,7 +78,7 @@ describe('css selector matching', () => {
       });
 
       // TODO: this case will not work, need more discussion
-      // https://github.com/angular/angular/pull/34625#discussion_r401791275
+      // https://github.com/engular/engular/pull/34625#discussion_r401791275
       xit('should match namespaced attributes', () => {
         expect(isMatching(
                    'span', [AttributeMarker.NamespaceURI, 'http://some/uri', 'title', 'name'],

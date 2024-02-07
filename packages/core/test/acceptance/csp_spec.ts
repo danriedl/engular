@@ -3,12 +3,12 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Component, CSP_NONCE, destroyPlatform, ElementRef, inject, ViewEncapsulation} from '@angular/core';
-import {bootstrapApplication} from '@angular/platform-browser';
-import {withBody} from '@angular/private/testing';
+import {Component, CSP_NONCE, destroyPlatform, ElementRef, inject, ViewEncapsulation} from '@engular/core';
+import {bootstrapApplication} from '@engular/platform-browser';
+import {withBody} from '@engular/private/testing';
 
 describe('CSP integration', () => {
   beforeEach(destroyPlatform);

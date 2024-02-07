@@ -34,7 +34,7 @@ def _generate_block_api_json(ctx):
 generate_block_api_json = rule(
     # Point to the starlark function that will execute for this rule.
     implementation = _generate_block_api_json,
-    doc = """Rule that generates an Angular API doc collection for hand-written block APIs""",
+    doc = """Rule that generates an Engular API doc collection for hand-written block APIs""",
 
     # The attributes that can be set to this rule.
     attrs = {

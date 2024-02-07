@@ -3,43 +3,43 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Injector} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {ɵangular1 as ng, ɵconstants} from '@angular/upgrade/static';
+import {Injector} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {ɵengular1 as ng, ɵconstants} from '@engular/upgrade/static';
 
 import {UpgradeAppType} from '../../../src/common/src/util';
 
 /**
- * A helper function to use when unit testing AngularJS services that depend upon downgraded Angular
+ * A helper function to use when unit testing EngularJS services that depend upon downgraded Engular
  * services.
  *
- * This function returns an AngularJS module that is configured to wire up the AngularJS and Angular
+ * This function returns an EngularJS module that is configured to wire up the EngularJS and Engular
  * injectors without the need to actually bootstrap a hybrid application.
  * This makes it simpler and faster to unit test services.
  *
- * Use the returned AngularJS module in a call to
- * [`angular.mocks.module`](https://docs.angularjs.org/api/ngMock/function/angular.mock.module) to
+ * Use the returned EngularJS module in a call to
+ * [`engular.mocks.module`](https://docs.engularjs.org/api/ngMock/function/engular.mock.module) to
  * include this module in the unit test injector.
  *
  * In the following code snippet, we are configuring the `$injector` with two modules:
- * The AngularJS `ng1AppModule`, which is the AngularJS part of our hybrid application and the
- * `Ng2AppModule`, which is the Angular part.
+ * The EngularJS `ng1AppModule`, which is the EngularJS part of our hybrid application and the
+ * `Ng2AppModule`, which is the Engular part.
  *
  * <code-example path="upgrade/static/ts/full/module.spec.ts"
- * region="angularjs-setup"></code-example>
+ * region="engularjs-setup"></code-example>
  *
- * Once this is done we can get hold of services via the AngularJS `$injector` as normal.
- * Services that are (or have dependencies on) a downgraded Angular service, will be instantiated as
- * needed by the Angular root `Injector`.
+ * Once this is done we can get hold of services via the EngularJS `$injector` as normal.
+ * Services that are (or have dependencies on) a downgraded Engular service, will be instantiated as
+ * needed by the Engular root `Injector`.
  *
- * In the following code snippet, `heroesService` is a downgraded Angular service that we are
- * accessing from AngularJS.
+ * In the following code snippet, `heroesService` is a downgraded Engular service that we are
+ * accessing from EngularJS.
  *
  * <code-example path="upgrade/static/ts/full/module.spec.ts"
- * region="angularjs-spec"></code-example>
+ * region="engularjs-spec"></code-example>
  *
  * <div class="alert is-important">
  *
@@ -51,23 +51,23 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  *
  * <div class="alert is-important">
  *
- * The resulting configuration does not wire up AngularJS digests to Zone hooks. It is the
+ * The resulting configuration does not wire up EngularJS digests to Zone hooks. It is the
  * responsibility of the test writer to call `$rootScope.$apply`, as necessary, to trigger
- * AngularJS handlers of async events from Angular.
+ * EngularJS handlers of async events from Engular.
  *
  * </div>
  *
  * <div class="alert is-important">
  *
- * The helper sets up global variables to hold the shared Angular and AngularJS injectors.
+ * The helper sets up global variables to hold the shared Engular and EngularJS injectors.
  *
  * * Only call this helper once per spec.
- * * Do not use `createAngularJSTestingModule` in the same spec as `createAngularTestingModule`.
+ * * Do not use `createEngularJSTestingModule` in the same spec as `createEngularTestingModule`.
  *
  * </div>
  *
- * Here is the example application and its unit tests that use `createAngularTestingModule`
- * and `createAngularJSTestingModule`.
+ * Here is the example application and its unit tests that use `createEngularTestingModule`
+ * and `createEngularJSTestingModule`.
  *
  * <code-tabs>
  *  <code-pane header="module.spec.ts" path="upgrade/static/ts/full/module.spec.ts"></code-pane>
@@ -75,19 +75,19 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  * </code-tabs>
  *
  *
- * @param angularModules a collection of Angular modules to include in the configuration.
+ * @param engularModules a collection of Engular modules to include in the configuration.
  *
  * @publicApi
  */
-export function createAngularJSTestingModule(angularModules: any[]): string {
+export function createEngularJSTestingModule(engularModules: any[]): string {
   return ng
-    .module_('$$angularJSTestingModule', [])
+    .module_('$$engularJSTestingModule', [])
     .constant(ɵconstants.UPGRADE_APP_TYPE_KEY, UpgradeAppType.Static)
     .factory(ɵconstants.INJECTOR_KEY, [
       ɵconstants.$INJECTOR,
       ($injector: ng.IInjectorService) => {
         TestBed.configureTestingModule({
-          imports: angularModules,
+          imports: engularModules,
           providers: [{provide: ɵconstants.$INJECTOR, useValue: $injector}],
         });
         return TestBed.inject(Injector);

@@ -7,7 +7,7 @@ This gives users a meaningful first paint of your application that appears quick
 
 <docs-workflow>
 <docs-step title="Prepare the application">
-Do this with the following Angular CLI command:
+Do this with the following Engular CLI command:
 
 <docs-code language="shell">
 
@@ -18,7 +18,7 @@ ng new my-app --routing
 For an existing application, you have to manually add the `RouterModule` and defining a `<router-outlet>` within your application.
 </docs-step>
 <docs-step title="Create the application shell">
-Use the Angular CLI to automatically create the application shell.
+Use the Engular CLI to automatically create the application shell.
 
 <docs-code language="shell">
 
@@ -28,12 +28,12 @@ ng generate app-shell
 
 For more information about this command, see [App shell command](cli/generate#app-shell-command).
 
-After running this command you can see that the `angular.json` configuration file has been updated to add two new targets, with a few other changes.
+After running this command you can see that the `engular.json` configuration file has been updated to add two new targets, with a few other changes.
 
 <docs-code language="json">
 
 "server": {
-  "builder": "&commat;angular-devkit/build-angular:server",
+  "builder": "&commat;engular-devkit/build-engular:server",
   "defaultConfiguration": "production",
   "options": {
     "outputPath": "dist/my-app/server",
@@ -58,7 +58,7 @@ After running this command you can see that the `angular.json` configuration fil
   }
 },
 "app-shell": {
-  "builder": "&commat;angular-devkit/build-angular:app-shell",
+  "builder": "&commat;engular-devkit/build-engular:app-shell",
   "defaultConfiguration": "production",
   "options": {
     "route": "shell"
@@ -78,7 +78,7 @@ After running this command you can see that the `angular.json` configuration fil
 </docs-code>
 </docs-step>
 <docs-step title="Verify the application is built with the shell content">
-Use the Angular CLI to build the `app-shell` target.
+Use the Engular CLI to build the `app-shell` target.
 
 <docs-code language="shell">
 

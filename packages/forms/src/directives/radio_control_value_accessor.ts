@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {Directive, ElementRef, forwardRef, inject, Injectable, Injector, Input, OnDestroy, OnInit, Provider, Renderer2, ɵRuntimeError as RuntimeError} from '@angular/core';
+import {Directive, ElementRef, forwardRef, inject, Injectable, Injector, Input, OnDestroy, OnInit, Provider, Renderer2, ɵRuntimeError as RuntimeError} from '@engular/core';
 
 import {RuntimeErrorCode} from '../errors';
 
@@ -29,7 +29,7 @@ function throwNameError() {
 
 /**
  * @description
- * Class used by Angular to track radio buttons. For internal use only.
+ * Class used by Engular to track radio buttons. For internal use only.
  */
 @Injectable({providedIn: 'root'})
 export class RadioControlRegistry {

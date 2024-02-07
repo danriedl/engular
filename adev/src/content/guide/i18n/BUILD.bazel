@@ -1,4 +1,4 @@
-load("@npm//@angular/docs:index.bzl", "generate_guides")
+load("@npm//@engular/docs:index.bzl", "generate_guides")
 
 generate_guides(
     name = "i18n",
@@ -6,7 +6,7 @@ generate_guides(
         "*.md",
     ]),
     data = [
-        "//adev/src/content/examples/i18n:angular.json",
+        "//adev/src/content/examples/i18n:engular.json",
         "//adev/src/content/examples/i18n:doc-files/apache2.conf",
         "//adev/src/content/examples/i18n:doc-files/app.component.html",
         "//adev/src/content/examples/i18n:doc-files/commands.sh",

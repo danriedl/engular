@@ -3,13 +3,13 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
-import {state, style, trigger} from '@angular/animations';
-import {CommonModule} from '@angular/common';
-import {Component, Directive, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {By, DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {state, style, trigger} from '@engular/animations';
+import {CommonModule} from '@engular/common';
+import {Component, Directive, EventEmitter, Input, Output, ViewContainerRef} from '@engular/core';
+import {TestBed} from '@engular/core/testing';
+import {By, DomSanitizer, SafeUrl} from '@engular/platform-browser';
 
 describe('property bindings', () => {
   it('should support bindings to properties', () => {

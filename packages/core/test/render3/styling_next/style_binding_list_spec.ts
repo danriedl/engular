@@ -3,16 +3,16 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {createTNode} from '@angular/core/src/render3/instructions/shared';
-import {TNode, TNodeType} from '@angular/core/src/render3/interfaces/node';
-import {getTStylingRangeNext, getTStylingRangeNextDuplicate, getTStylingRangePrev, getTStylingRangePrevDuplicate, TStylingKey, TStylingRange} from '@angular/core/src/render3/interfaces/styling';
-import {LView, TData} from '@angular/core/src/render3/interfaces/view';
-import {enterView, leaveView} from '@angular/core/src/render3/state';
-import {insertTStylingBinding} from '@angular/core/src/render3/styling/style_binding_list';
-import {newArray} from '@angular/core/src/util/array_utils';
+import {createTNode} from '@engular/core/src/render3/instructions/shared';
+import {TNode, TNodeType} from '@engular/core/src/render3/interfaces/node';
+import {getTStylingRangeNext, getTStylingRangeNextDuplicate, getTStylingRangePrev, getTStylingRangePrevDuplicate, TStylingKey, TStylingRange} from '@engular/core/src/render3/interfaces/styling';
+import {LView, TData} from '@engular/core/src/render3/interfaces/view';
+import {enterView, leaveView} from '@engular/core/src/render3/state';
+import {insertTStylingBinding} from '@engular/core/src/render3/styling/style_binding_list';
+import {newArray} from '@engular/core/src/util/array_utils';
 
 describe('TNode styling linked list', () => {
   const mockFirstUpdatePassLView: LView = [null, {firstUpdatePass: true}] as any;

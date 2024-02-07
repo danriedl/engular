@@ -3,7 +3,7 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
 import {
@@ -14,13 +14,13 @@ import {
   Injector,
   Input,
   NgModule,
-} from '@angular/core';
-import {waitForAsync} from '@angular/core/testing';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {downgradeComponent, UpgradeComponent, UpgradeModule} from '@angular/upgrade/static';
+} from '@engular/core';
+import {waitForAsync} from '@engular/core/testing';
+import {BrowserModule} from '@engular/platform-browser';
+import {platformBrowserDynamic} from '@engular/platform-browser-dynamic';
+import {downgradeComponent, UpgradeComponent, UpgradeModule} from '@engular/upgrade/static';
 
-import * as angular from '../../../src/common/src/angular1';
+import * as engular from '../../../src/common/src/engular1';
 import {
   html,
   multiTrim,
@@ -52,11 +52,11 @@ withEachNg1Version(() => {
       }
 
       // the ng1 app module that will consume the downgraded component
-      const ng1Module = angular
+      const ng1Module = engular
         .module_('ng1', [])
         // create an ng1 facade of the ng2 component
         .directive('ng2', downgradeComponent({component: Ng2Component}))
-        .run(($rootScope: angular.IRootScopeService) => {
+        .run(($rootScope: engular.IRootScopeService) => {
           $rootScope['prop'] = 'NG1';
           $rootScope['ngContent'] = 'ng1-content';
         });
@@ -82,10 +82,10 @@ withEachNg1Version(() => {
         ngDoBootstrap() {}
       }
 
-      const ng1Module = angular
+      const ng1Module = engular
         .module_('ng1', [])
         .directive('ng2', downgradeComponent({component: Ng2Component}))
-        .run(($rootScope: angular.IRootScopeService) => {
+        .run(($rootScope: engular.IRootScopeService) => {
           $rootScope['items'] = [
             {id: 'a', subitems: [1, 2, 3]},
             {id: 'b', subitems: [4, 5, 6]},
@@ -130,14 +130,14 @@ withEachNg1Version(() => {
         ngDoBootstrap() {}
       }
 
-      const ng1Module = angular
+      const ng1Module = engular
         .module_('ng1', [])
         .directive('ng1', () => ({
           transclude: true,
           template: '{{ prop }}(<ng-transclude></ng-transclude>)',
         }))
         .directive('ng2', downgradeComponent({component: Ng2Component}))
-        .run(($rootScope: angular.IRootScopeService) => {
+        .run(($rootScope: engular.IRootScopeService) => {
           $rootScope['prop'] = 'ng1';
           $rootScope['transclude'] = 'ng1-transclude';
         });
@@ -165,7 +165,7 @@ withEachNg1Version(() => {
         ngDoBootstrap() {}
       }
 
-      const ng1Module = angular
+      const ng1Module = engular
         .module_('ng1', [])
         .directive('ng2', downgradeComponent({component: Ng2Component}));
 

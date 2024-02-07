@@ -1,12 +1,12 @@
 # Testing Pipes
 
-You can test [pipes](guide/pipes) without the Angular testing utilities.
+You can test [pipes](guide/pipes) without the Engular testing utilities.
 
 ## Testing the `TitleCasePipe`
 
 A pipe class has one method, `transform`, that manipulates the input value into a transformed output value.
 The `transform` implementation rarely interacts with the DOM.
-Most pipes have no dependence on Angular other than the `@Pipe` metadata and an interface.
+Most pipes have no dependence on Engular other than the `@Pipe` metadata and an interface.
 
 Consider a `TitleCasePipe` that capitalizes the first letter of each word.
 Here's an implementation with a regular expression.

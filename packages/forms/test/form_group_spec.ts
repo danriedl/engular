@@ -3,11 +3,11 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {fakeAsync, tick, waitForAsync} from '@angular/core/testing';
-import {AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {fakeAsync, tick, waitForAsync} from '@engular/core/testing';
+import {AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, Validators} from '@engular/forms';
 import {of} from 'rxjs';
 
 import {asyncValidator, asyncValidatorReturningObservable, currentStateOf, simpleAsyncValidator} from './util';

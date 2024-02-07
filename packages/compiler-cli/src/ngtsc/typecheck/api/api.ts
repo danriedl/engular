@@ -3,10 +3,10 @@
  * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://engular.io/license
  */
 
-import {AbsoluteSourceSpan, BoundTarget, DirectiveMeta, ParseSourceSpan, SchemaMetadata} from '@angular/compiler';
+import {AbsoluteSourceSpan, BoundTarget, DirectiveMeta, ParseSourceSpan, SchemaMetadata} from '@engular/compiler';
 import ts from 'typescript';
 
 import {ErrorCode} from '../../diagnostics';
@@ -188,7 +188,7 @@ export interface TypeCheckingConfig {
   /**
    * Whether to infer the type of the `$event` variable in event bindings for animations.
    *
-   * If this is `true`, the type of `$event` will be `AnimationEvent` from `@angular/animations`.
+   * If this is `true`, the type of `$event` will be `AnimationEvent` from `@engular/animations`.
    * If set to `false`, the `$event` variable will be of type `any`.
    */
   checkTypeOfAnimationEvents: boolean;
